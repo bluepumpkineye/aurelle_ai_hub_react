@@ -1,0 +1,25 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.3.1
+streamlit
+openai==1.68.2
+langchain==0.2.0
+langchain-openai==0.1.7
+langchain-community==0.2.0
+faiss-cpu==1.13.0
+pandas==2.2.2
+matplotlib
+numpy==1.26.4
+plotly==5.22.0
+scikit-learn==1.5.0
+python-dotenv==1.0.1
+tiktoken==0.7.0
+pydantic==2.7.1
+httpx==0.27.0
+truststore==0.10.4
+sentence-transformers==3.0.1
+lightrag-hku==1.4.16
+
+
+
+# Atelier — governed context layer (Mode A: embedded governance core, no mcp pulled)
+atelier-mcp @ git+https://github.com/bluepumpkineye/atelier_luxury_industry_MCP_connector-.git@main#subdirectory=server

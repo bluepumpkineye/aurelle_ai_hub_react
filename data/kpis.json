@@ -1,0 +1,20 @@
+{
+  "total_revenue_ytd_usd": 2055647321.5,
+  "revenue_target_ytd_usd": 1973421428.6399999,
+  "revenue_vs_target_pct": 4.1,
+  "gross_margin_pct": 74.4,
+  "total_clients_apac": 48320,
+  "new_clients_ytd": 6840,
+  "vip_clients": 1240,
+  "client_retention_rate": 0.847,
+  "avg_transaction_value_usd": 93438.51,
+  "nps_score": 74,
+  "top_market": "China",
+  "top_channel": "Boutique",
+  "top_category": "Watches",
+  "marketing_roi_pct": 165.6,
+  "inventory_health_pct": 92.4,
+  "on_time_delivery_pct": 94.7,
+  "digital_revenue_share_pct": 21.8,
+  "travel_retail_growth_pct": 16.2
+}

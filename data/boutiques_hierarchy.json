@@ -1,0 +1,2326 @@
+[
+  {
+    "id": "hk-1",
+    "name": "Aurelle Landmark Prince's Hong Kong",
+    "market": "Hong Kong",
+    "tier": "Flagship",
+    "lat": 22.2812,
+    "lng": 114.1574,
+    "annualRevenue": 68200000.0,
+    "saCount": 18,
+    "saPerformance": [
+      {
+        "id": "SA-HK-1-01",
+        "name": "Kenji Wong",
+        "clients": 219,
+        "revenue": 2100691.43,
+        "tenure": "1y",
+        "retention": 78.6
+      },
+      {
+        "id": "SA-HK-1-02",
+        "name": "Priyan Kim",
+        "clients": 203,
+        "revenue": 3117064.83,
+        "tenure": "2y",
+        "retention": 89.8
+      },
+      {
+        "id": "SA-HK-1-03",
+        "name": "Somchai Wong",
+        "clients": 38,
+        "revenue": 1853802.45,
+        "tenure": "7y",
+        "retention": 72.7
+      },
+      {
+        "id": "SA-HK-1-04",
+        "name": "Priyan Sharma",
+        "clients": 184,
+        "revenue": 2115234.51,
+        "tenure": "10y",
+        "retention": 72.6
+      },
+      {
+        "id": "SA-HK-1-05",
+        "name": "Priyan Lee",
+        "clients": 137,
+        "revenue": 2274026.05,
+        "tenure": "10y",
+        "retention": 77.3
+      },
+      {
+        "id": "SA-HK-1-06",
+        "name": "Chen Liu",
+        "clients": 224,
+        "revenue": 3382533.18,
+        "tenure": "1y",
+        "retention": 91.3
+      },
+      {
+        "id": "SA-HK-1-07",
+        "name": "Eun-ji Park",
+        "clients": 101,
+        "revenue": 2201231.36,
+        "tenure": "6y",
+        "retention": 75.7
+      },
+      {
+        "id": "SA-HK-1-08",
+        "name": "Ananya Suzuki",
+        "clients": 53,
+        "revenue": 2205012.81,
+        "tenure": "2y",
+        "retention": 81.1
+      },
+      {
+        "id": "SA-HK-1-09",
+        "name": "Hiroto Chaichana",
+        "clients": 184,
+        "revenue": 2155682.54,
+        "tenure": "6y",
+        "retention": 78.3
+      },
+      {
+        "id": "SA-HK-1-10",
+        "name": "Yuki Lee",
+        "clients": 167,
+        "revenue": 2305792.56,
+        "tenure": "8y",
+        "retention": 75.0
+      },
+      {
+        "id": "SA-HK-1-11",
+        "name": "Wei Park",
+        "clients": 171,
+        "revenue": 1452862.59,
+        "tenure": "2y",
+        "retention": 79.0
+      },
+      {
+        "id": "SA-HK-1-12",
+        "name": "Kenji Zhang",
+        "clients": 177,
+        "revenue": 1825918.21,
+        "tenure": "6y",
+        "retention": 76.6
+      },
+      {
+        "id": "SA-HK-1-13",
+        "name": "Mei Tanaka",
+        "clients": 227,
+        "revenue": 2187452.4,
+        "tenure": "4y",
+        "retention": 78.9
+      },
+      {
+        "id": "SA-HK-1-14",
+        "name": "Mei Chaichana",
+        "clients": 251,
+        "revenue": 2132241.85,
+        "tenure": "4y",
+        "retention": 74.4
+      },
+      {
+        "id": "SA-HK-1-15",
+        "name": "Li Patel",
+        "clients": 71,
+        "revenue": 2536244.54,
+        "tenure": "6y",
+        "retention": 80.9
+      },
+      {
+        "id": "SA-HK-1-16",
+        "name": "Priyan Nakamura",
+        "clients": 209,
+        "revenue": 2281021.46,
+        "tenure": "5y",
+        "retention": 94.5
+      },
+      {
+        "id": "SA-HK-1-17",
+        "name": "Kenji Wong",
+        "clients": 166,
+        "revenue": 2677258.47,
+        "tenure": "3y",
+        "retention": 89.5
+      },
+      {
+        "id": "SA-HK-1-18",
+        "name": "Ji-woo Patel",
+        "clients": 99,
+        "revenue": 1987534.76,
+        "tenure": "7y",
+        "retention": 95.7
+      }
+    ]
+  },
+  {
+    "id": "hk-2",
+    "name": "Aurelle Peninsula Hong Kong",
+    "market": "Hong Kong",
+    "tier": "Major",
+    "lat": 22.2951,
+    "lng": 114.1722,
+    "annualRevenue": 39500000.0,
+    "saCount": 12,
+    "saPerformance": [
+      {
+        "id": "SA-HK-2-01",
+        "name": "Kenji Lee",
+        "clients": 86,
+        "revenue": 4166214.6,
+        "tenure": "10y",
+        "retention": 88.4
+      },
+      {
+        "id": "SA-HK-2-02",
+        "name": "Thanakorn Gupta",
+        "clients": 88,
+        "revenue": 5308774.9,
+        "tenure": "1y",
+        "retention": 91.7
+      },
+      {
+        "id": "SA-HK-2-03",
+        "name": "Ananya Suzuki",
+        "clients": 98,
+        "revenue": 1825407.15,
+        "tenure": "7y",
+        "retention": 73.6
+      },
+      {
+        "id": "SA-HK-2-04",
+        "name": "Wei Zhang",
+        "clients": 84,
+        "revenue": 4237260.96,
+        "tenure": "6y",
+        "retention": 87.7
+      },
+      {
+        "id": "SA-HK-2-05",
+        "name": "Min-su Chen",
+        "clients": 66,
+        "revenue": 3183514.31,
+        "tenure": "8y",
+        "retention": 78.4
+      },
+      {
+        "id": "SA-HK-2-06",
+        "name": "Priyan Lee",
+        "clients": 167,
+        "revenue": 2612144.43,
+        "tenure": "10y",
+        "retention": 78.3
+      },
+      {
+        "id": "SA-HK-2-07",
+        "name": "Chen Park",
+        "clients": 122,
+        "revenue": 3110221.35,
+        "tenure": "7y",
+        "retention": 77.3
+      },
+      {
+        "id": "SA-HK-2-08",
+        "name": "Ji-woo Prasert",
+        "clients": 53,
+        "revenue": 3096087.66,
+        "tenure": "8y",
+        "retention": 90.1
+      },
+      {
+        "id": "SA-HK-2-09",
+        "name": "Thanakorn Wong",
+        "clients": 190,
+        "revenue": 3842316.47,
+        "tenure": "3y",
+        "retention": 75.8
+      },
+      {
+        "id": "SA-HK-2-10",
+        "name": "Kenji Park",
+        "clients": 128,
+        "revenue": 3809030.85,
+        "tenure": "2y",
+        "retention": 81.2
+      },
+      {
+        "id": "SA-HK-2-11",
+        "name": "Sanjay Prasert",
+        "clients": 278,
+        "revenue": 2272049.58,
+        "tenure": "5y",
+        "retention": 85.3
+      },
+      {
+        "id": "SA-HK-2-12",
+        "name": "Yuki Nakamura",
+        "clients": 204,
+        "revenue": 4811750.59,
+        "tenure": "2y",
+        "retention": 93.2
+      }
+    ]
+  },
+  {
+    "id": "cn-1",
+    "name": "Aurelle Plaza 66 Shanghai",
+    "market": "China",
+    "tier": "Flagship",
+    "lat": 31.2286,
+    "lng": 121.4559,
+    "annualRevenue": 84100000.0,
+    "saCount": 22,
+    "saPerformance": [
+      {
+        "id": "SA-CN-1-01",
+        "name": "Ananya Liu",
+        "clients": 58,
+        "revenue": 1432982.94,
+        "tenure": "6y",
+        "retention": 79.0
+      },
+      {
+        "id": "SA-CN-1-02",
+        "name": "Ji-woo Patel",
+        "clients": 274,
+        "revenue": 2513047.36,
+        "tenure": "1y",
+        "retention": 89.3
+      },
+      {
+        "id": "SA-CN-1-03",
+        "name": "Eun-ji Liu",
+        "clients": 225,
+        "revenue": 1687227.96,
+        "tenure": "10y",
+        "retention": 76.3
+      },
+      {
+        "id": "SA-CN-1-04",
+        "name": "Wei Wong",
+        "clients": 245,
+        "revenue": 941653.46,
+        "tenure": "5y",
+        "retention": 87.3
+      },
+      {
+        "id": "SA-CN-1-05",
+        "name": "Chen Sharma",
+        "clients": 125,
+        "revenue": 1433782.14,
+        "tenure": "3y",
+        "retention": 90.3
+      },
+      {
+        "id": "SA-CN-1-06",
+        "name": "Somchai Gupta",
+        "clients": 265,
+        "revenue": 2007272.94,
+        "tenure": "10y",
+        "retention": 72.0
+      },
+      {
+        "id": "SA-CN-1-07",
+        "name": "Hiroto Patel",
+        "clients": 58,
+        "revenue": 763520.45,
+        "tenure": "1y",
+        "retention": 94.3
+      },
+      {
+        "id": "SA-CN-1-08",
+        "name": "Wei Chaichana",
+        "clients": 91,
+        "revenue": 1835581.79,
+        "tenure": "5y",
+        "retention": 73.4
+      },
+      {
+        "id": "SA-CN-1-09",
+        "name": "Wei Zhang",
+        "clients": 51,
+        "revenue": 1843673.63,
+        "tenure": "2y",
+        "retention": 89.6
+      },
+      {
+        "id": "SA-CN-1-10",
+        "name": "Thanakorn Wong",
+        "clients": 226,
+        "revenue": 984943.05,
+        "tenure": "10y",
+        "retention": 75.0
+      },
+      {
+        "id": "SA-CN-1-11",
+        "name": "Kenji Patel",
+        "clients": 72,
+        "revenue": 1682762.16,
+        "tenure": "10y",
+        "retention": 78.4
+      },
+      {
+        "id": "SA-CN-1-12",
+        "name": "Thanakorn Zhang",
+        "clients": 276,
+        "revenue": 1936772.31,
+        "tenure": "7y",
+        "retention": 77.1
+      },
+      {
+        "id": "SA-CN-1-13",
+        "name": "Somchai Gupta",
+        "clients": 212,
+        "revenue": 2628173.04,
+        "tenure": "4y",
+        "retention": 79.5
+      },
+      {
+        "id": "SA-CN-1-14",
+        "name": "Kenji Nakamura",
+        "clients": 142,
+        "revenue": 1738346.8,
+        "tenure": "6y",
+        "retention": 93.6
+      },
+      {
+        "id": "SA-CN-1-15",
+        "name": "Sanjay Wong",
+        "clients": 87,
+        "revenue": 2225268.69,
+        "tenure": "4y",
+        "retention": 73.5
+      },
+      {
+        "id": "SA-CN-1-16",
+        "name": "Yuki Zhang",
+        "clients": 88,
+        "revenue": 1622487.9,
+        "tenure": "10y",
+        "retention": 86.1
+      },
+      {
+        "id": "SA-CN-1-17",
+        "name": "Yuki Wong",
+        "clients": 88,
+        "revenue": 3508707.15,
+        "tenure": "1y",
+        "retention": 73.6
+      },
+      {
+        "id": "SA-CN-1-18",
+        "name": "Yuki Chaichana",
+        "clients": 48,
+        "revenue": 1624116.87,
+        "tenure": "6y",
+        "retention": 84.3
+      },
+      {
+        "id": "SA-CN-1-19",
+        "name": "Li Nakamura",
+        "clients": 84,
+        "revenue": 1220129.3,
+        "tenure": "8y",
+        "retention": 84.9
+      },
+      {
+        "id": "SA-CN-1-20",
+        "name": "Eun-ji Chen",
+        "clients": 92,
+        "revenue": 1237414.97,
+        "tenure": "8y",
+        "retention": 90.8
+      },
+      {
+        "id": "SA-CN-1-21",
+        "name": "Ananya Park",
+        "clients": 54,
+        "revenue": 969774.81,
+        "tenure": "4y",
+        "retention": 74.3
+      },
+      {
+        "id": "SA-CN-1-22",
+        "name": "Min-su Suzuki",
+        "clients": 135,
+        "revenue": 2134705.04,
+        "tenure": "7y",
+        "retention": 83.2
+      }
+    ]
+  },
+  {
+    "id": "cn-2",
+    "name": "Aurelle Kerry Centre Shanghai",
+    "market": "China",
+    "tier": "Major",
+    "lat": 31.2262,
+    "lng": 121.4487,
+    "annualRevenue": 45800000.0,
+    "saCount": 14,
+    "saPerformance": [
+      {
+        "id": "SA-CN-2-01",
+        "name": "Eun-ji Tanaka",
+        "clients": 45,
+        "revenue": 2645929.93,
+        "tenure": "2y",
+        "retention": 81.7
+      },
+      {
+        "id": "SA-CN-2-02",
+        "name": "Hiroto Gupta",
+        "clients": 93,
+        "revenue": 1894113.95,
+        "tenure": "2y",
+        "retention": 76.6
+      },
+      {
+        "id": "SA-CN-2-03",
+        "name": "Somchai Patel",
+        "clients": 138,
+        "revenue": 3301659.68,
+        "tenure": "3y",
+        "retention": 76.4
+      },
+      {
+        "id": "SA-CN-2-04",
+        "name": "Sanjay Sharma",
+        "clients": 143,
+        "revenue": 3151383.13,
+        "tenure": "2y",
+        "retention": 91.4
+      },
+      {
+        "id": "SA-CN-2-05",
+        "name": "Thanakorn Prasert",
+        "clients": 42,
+        "revenue": 2720064.84,
+        "tenure": "2y",
+        "retention": 87.7
+      },
+      {
+        "id": "SA-CN-2-06",
+        "name": "Somchai Chaichana",
+        "clients": 278,
+        "revenue": 1944887.57,
+        "tenure": "1y",
+        "retention": 74.2
+      },
+      {
+        "id": "SA-CN-2-07",
+        "name": "Ananya Chaichana",
+        "clients": 72,
+        "revenue": 2972776.44,
+        "tenure": "4y",
+        "retention": 81.8
+      },
+      {
+        "id": "SA-CN-2-08",
+        "name": "Sanjay Sharma",
+        "clients": 261,
+        "revenue": 3066540.58,
+        "tenure": "7y",
+        "retention": 73.4
+      },
+      {
+        "id": "SA-CN-2-09",
+        "name": "Min-su Tanaka",
+        "clients": 97,
+        "revenue": 2352959.21,
+        "tenure": "7y",
+        "retention": 94.2
+      },
+      {
+        "id": "SA-CN-2-10",
+        "name": "Ananya Patel",
+        "clients": 138,
+        "revenue": 3500364.75,
+        "tenure": "5y",
+        "retention": 88.7
+      },
+      {
+        "id": "SA-CN-2-11",
+        "name": "Eun-ji Gupta",
+        "clients": 199,
+        "revenue": 2857801.5,
+        "tenure": "10y",
+        "retention": 89.2
+      },
+      {
+        "id": "SA-CN-2-12",
+        "name": "Ji-woo Sharma",
+        "clients": 85,
+        "revenue": 2139469.96,
+        "tenure": "5y",
+        "retention": 95.2
+      },
+      {
+        "id": "SA-CN-2-13",
+        "name": "Chen Lee",
+        "clients": 45,
+        "revenue": 3166587.18,
+        "tenure": "10y",
+        "retention": 90.0
+      },
+      {
+        "id": "SA-CN-2-14",
+        "name": "Yuki Tanaka",
+        "clients": 158,
+        "revenue": 4218379.84,
+        "tenure": "8y",
+        "retention": 94.1
+      }
+    ]
+  },
+  {
+    "id": "cn-3",
+    "name": "Aurelle SKP Beijing",
+    "market": "China",
+    "tier": "Flagship",
+    "lat": 39.9147,
+    "lng": 116.4535,
+    "annualRevenue": 72500000.0,
+    "saCount": 20,
+    "saPerformance": [
+      {
+        "id": "SA-CN-3-01",
+        "name": "Somchai Kim",
+        "clients": 275,
+        "revenue": 1122079.53,
+        "tenure": "1y",
+        "retention": 84.2
+      },
+      {
+        "id": "SA-CN-3-02",
+        "name": "Thanakorn Kim",
+        "clients": 182,
+        "revenue": 2717149.31,
+        "tenure": "2y",
+        "retention": 73.6
+      },
+      {
+        "id": "SA-CN-3-03",
+        "name": "Thanakorn Sharma",
+        "clients": 60,
+        "revenue": 3400774.48,
+        "tenure": "7y",
+        "retention": 94.6
+      },
+      {
+        "id": "SA-CN-3-04",
+        "name": "Chen Sharma",
+        "clients": 188,
+        "revenue": 1559362.99,
+        "tenure": "1y",
+        "retention": 74.0
+      },
+      {
+        "id": "SA-CN-3-05",
+        "name": "Kenji Zhang",
+        "clients": 110,
+        "revenue": 999090.55,
+        "tenure": "10y",
+        "retention": 94.4
+      },
+      {
+        "id": "SA-CN-3-06",
+        "name": "Priyan Nakamura",
+        "clients": 91,
+        "revenue": 638073.0,
+        "tenure": "6y",
+        "retention": 78.4
+      },
+      {
+        "id": "SA-CN-3-07",
+        "name": "Ji-woo Nakamura",
+        "clients": 147,
+        "revenue": 1945576.68,
+        "tenure": "5y",
+        "retention": 79.6
+      },
+      {
+        "id": "SA-CN-3-08",
+        "name": "Ananya Chen",
+        "clients": 32,
+        "revenue": 1306800.99,
+        "tenure": "2y",
+        "retention": 83.0
+      },
+      {
+        "id": "SA-CN-3-09",
+        "name": "Chen Wong",
+        "clients": 167,
+        "revenue": 989179.95,
+        "tenure": "2y",
+        "retention": 77.1
+      },
+      {
+        "id": "SA-CN-3-10",
+        "name": "Li Kim",
+        "clients": 255,
+        "revenue": 1531254.16,
+        "tenure": "6y",
+        "retention": 73.7
+      },
+      {
+        "id": "SA-CN-3-11",
+        "name": "Priyan Suzuki",
+        "clients": 70,
+        "revenue": 2059174.66,
+        "tenure": "5y",
+        "retention": 82.5
+      },
+      {
+        "id": "SA-CN-3-12",
+        "name": "Somchai Lee",
+        "clients": 186,
+        "revenue": 1879017.57,
+        "tenure": "5y",
+        "retention": 95.6
+      },
+      {
+        "id": "SA-CN-3-13",
+        "name": "Ananya Nakamura",
+        "clients": 32,
+        "revenue": 1764065.32,
+        "tenure": "10y",
+        "retention": 88.0
+      },
+      {
+        "id": "SA-CN-3-14",
+        "name": "Somchai Liu",
+        "clients": 270,
+        "revenue": 1956972.61,
+        "tenure": "2y",
+        "retention": 93.1
+      },
+      {
+        "id": "SA-CN-3-15",
+        "name": "Li Wong",
+        "clients": 220,
+        "revenue": 2282411.07,
+        "tenure": "2y",
+        "retention": 85.3
+      },
+      {
+        "id": "SA-CN-3-16",
+        "name": "Li Liu",
+        "clients": 213,
+        "revenue": 1649823.99,
+        "tenure": "4y",
+        "retention": 80.2
+      },
+      {
+        "id": "SA-CN-3-17",
+        "name": "Kenji Nakamura",
+        "clients": 159,
+        "revenue": 2030197.03,
+        "tenure": "5y",
+        "retention": 83.7
+      },
+      {
+        "id": "SA-CN-3-18",
+        "name": "Wei Chen",
+        "clients": 53,
+        "revenue": 2142257.36,
+        "tenure": "1y",
+        "retention": 87.2
+      },
+      {
+        "id": "SA-CN-3-19",
+        "name": "Thanakorn Liu",
+        "clients": 30,
+        "revenue": 2662599.36,
+        "tenure": "1y",
+        "retention": 80.0
+      },
+      {
+        "id": "SA-CN-3-20",
+        "name": "Ji-woo Nakamura",
+        "clients": 71,
+        "revenue": 1940167.24,
+        "tenure": "5y",
+        "retention": 89.8
+      }
+    ]
+  },
+  {
+    "id": "cn-4",
+    "name": "Aurelle Taikoo Li Chengdu",
+    "market": "China",
+    "tier": "Major",
+    "lat": 30.6571,
+    "lng": 104.0836,
+    "annualRevenue": 32400000.0,
+    "saCount": 12,
+    "saPerformance": [
+      {
+        "id": "SA-CN-4-01",
+        "name": "Somchai Lee",
+        "clients": 173,
+        "revenue": 3135698.02,
+        "tenure": "7y",
+        "retention": 72.2
+      },
+      {
+        "id": "SA-CN-4-02",
+        "name": "Mei Chen",
+        "clients": 169,
+        "revenue": 4330455.34,
+        "tenure": "3y",
+        "retention": 72.9
+      },
+      {
+        "id": "SA-CN-4-03",
+        "name": "Hiroto Zhang",
+        "clients": 67,
+        "revenue": 2035662.99,
+        "tenure": "10y",
+        "retention": 82.3
+      },
+      {
+        "id": "SA-CN-4-04",
+        "name": "Yuki Liu",
+        "clients": 260,
+        "revenue": 2835795.81,
+        "tenure": "6y",
+        "retention": 94.4
+      },
+      {
+        "id": "SA-CN-4-05",
+        "name": "Thanakorn Tanaka",
+        "clients": 83,
+        "revenue": 2327245.0,
+        "tenure": "6y",
+        "retention": 88.4
+      },
+      {
+        "id": "SA-CN-4-06",
+        "name": "Kenji Wong",
+        "clients": 229,
+        "revenue": 3938132.75,
+        "tenure": "6y",
+        "retention": 85.4
+      },
+      {
+        "id": "SA-CN-4-07",
+        "name": "Thanakorn Park",
+        "clients": 266,
+        "revenue": 3693284.41,
+        "tenure": "3y",
+        "retention": 94.3
+      },
+      {
+        "id": "SA-CN-4-08",
+        "name": "Thanakorn Kim",
+        "clients": 255,
+        "revenue": 3061629.97,
+        "tenure": "3y",
+        "retention": 81.9
+      },
+      {
+        "id": "SA-CN-4-09",
+        "name": "Ji-woo Lee",
+        "clients": 230,
+        "revenue": 4097170.59,
+        "tenure": "6y",
+        "retention": 94.3
+      },
+      {
+        "id": "SA-CN-4-10",
+        "name": "Ananya Nakamura",
+        "clients": 98,
+        "revenue": 3893583.82,
+        "tenure": "4y",
+        "retention": 75.8
+      },
+      {
+        "id": "SA-CN-4-11",
+        "name": "Eun-ji Wong",
+        "clients": 253,
+        "revenue": 2880919.37,
+        "tenure": "7y",
+        "retention": 72.9
+      },
+      {
+        "id": "SA-CN-4-12",
+        "name": "Sanjay Sharma",
+        "clients": 239,
+        "revenue": 2275163.37,
+        "tenure": "4y",
+        "retention": 94.0
+      }
+    ]
+  },
+  {
+    "id": "cn-5",
+    "name": "Aurelle MixC Shenzhen",
+    "market": "China",
+    "tier": "Major",
+    "lat": 22.5365,
+    "lng": 114.0545,
+    "annualRevenue": 28100000.0,
+    "saCount": 10,
+    "saPerformance": [
+      {
+        "id": "SA-CN-5-01",
+        "name": "Hiroto Liu",
+        "clients": 87,
+        "revenue": 4306451.09,
+        "tenure": "4y",
+        "retention": 72.6
+      },
+      {
+        "id": "SA-CN-5-02",
+        "name": "Priyan Park",
+        "clients": 101,
+        "revenue": 5854528.72,
+        "tenure": "6y",
+        "retention": 92.7
+      },
+      {
+        "id": "SA-CN-5-03",
+        "name": "Ananya Liu",
+        "clients": 194,
+        "revenue": 4578957.06,
+        "tenure": "6y",
+        "retention": 84.2
+      },
+      {
+        "id": "SA-CN-5-04",
+        "name": "Kenji Chaichana",
+        "clients": 114,
+        "revenue": 2895644.65,
+        "tenure": "10y",
+        "retention": 94.5
+      },
+      {
+        "id": "SA-CN-5-05",
+        "name": "Mei Chen",
+        "clients": 75,
+        "revenue": 4525709.88,
+        "tenure": "5y",
+        "retention": 85.9
+      },
+      {
+        "id": "SA-CN-5-06",
+        "name": "Li Tanaka",
+        "clients": 182,
+        "revenue": 3359360.1,
+        "tenure": "2y",
+        "retention": 82.4
+      },
+      {
+        "id": "SA-CN-5-07",
+        "name": "Eun-ji Gupta",
+        "clients": 141,
+        "revenue": 4572489.29,
+        "tenure": "6y",
+        "retention": 86.5
+      },
+      {
+        "id": "SA-CN-5-08",
+        "name": "Somchai Wong",
+        "clients": 260,
+        "revenue": 2685642.68,
+        "tenure": "7y",
+        "retention": 85.8
+      },
+      {
+        "id": "SA-CN-5-09",
+        "name": "Li Tanaka",
+        "clients": 30,
+        "revenue": 2954833.92,
+        "tenure": "7y",
+        "retention": 84.5
+      },
+      {
+        "id": "SA-CN-5-10",
+        "name": "Ananya Prasert",
+        "clients": 123,
+        "revenue": 4455172.28,
+        "tenure": "4y",
+        "retention": 82.4
+      }
+    ]
+  },
+  {
+    "id": "jp-1",
+    "name": "Aurelle Mansion Tokyo Ginza",
+    "market": "Japan",
+    "tier": "Flagship",
+    "lat": 35.6717,
+    "lng": 139.7647,
+    "annualRevenue": 78400000.0,
+    "saCount": 25,
+    "saPerformance": [
+      {
+        "id": "SA-JP-1-01",
+        "name": "Kenji Chen",
+        "clients": 189,
+        "revenue": 723858.36,
+        "tenure": "6y",
+        "retention": 79.5
+      },
+      {
+        "id": "SA-JP-1-02",
+        "name": "Thanakorn Wong",
+        "clients": 159,
+        "revenue": 803706.92,
+        "tenure": "5y",
+        "retention": 79.4
+      },
+      {
+        "id": "SA-JP-1-03",
+        "name": "Min-su Suzuki",
+        "clients": 208,
+        "revenue": 819394.9,
+        "tenure": "7y",
+        "retention": 79.1
+      },
+      {
+        "id": "SA-JP-1-04",
+        "name": "Ji-woo Sharma",
+        "clients": 200,
+        "revenue": 1176254.01,
+        "tenure": "7y",
+        "retention": 94.6
+      },
+      {
+        "id": "SA-JP-1-05",
+        "name": "Kenji Lee",
+        "clients": 187,
+        "revenue": 2422499.29,
+        "tenure": "3y",
+        "retention": 85.7
+      },
+      {
+        "id": "SA-JP-1-06",
+        "name": "Min-su Prasert",
+        "clients": 107,
+        "revenue": 2313548.26,
+        "tenure": "1y",
+        "retention": 78.9
+      },
+      {
+        "id": "SA-JP-1-07",
+        "name": "Min-su Gupta",
+        "clients": 149,
+        "revenue": 1203414.81,
+        "tenure": "6y",
+        "retention": 82.6
+      },
+      {
+        "id": "SA-JP-1-08",
+        "name": "Kenji Sharma",
+        "clients": 151,
+        "revenue": 1570831.2,
+        "tenure": "10y",
+        "retention": 91.0
+      },
+      {
+        "id": "SA-JP-1-09",
+        "name": "Ananya Lee",
+        "clients": 198,
+        "revenue": 1766973.37,
+        "tenure": "3y",
+        "retention": 74.0
+      },
+      {
+        "id": "SA-JP-1-10",
+        "name": "Somchai Nakamura",
+        "clients": 53,
+        "revenue": 901941.42,
+        "tenure": "6y",
+        "retention": 91.6
+      },
+      {
+        "id": "SA-JP-1-11",
+        "name": "Ananya Sharma",
+        "clients": 87,
+        "revenue": 958524.46,
+        "tenure": "5y",
+        "retention": 91.4
+      },
+      {
+        "id": "SA-JP-1-12",
+        "name": "Ji-woo Tanaka",
+        "clients": 92,
+        "revenue": 2171853.27,
+        "tenure": "1y",
+        "retention": 95.6
+      },
+      {
+        "id": "SA-JP-1-13",
+        "name": "Chen Chaichana",
+        "clients": 146,
+        "revenue": 1849556.15,
+        "tenure": "2y",
+        "retention": 81.9
+      },
+      {
+        "id": "SA-JP-1-14",
+        "name": "Kenji Zhang",
+        "clients": 213,
+        "revenue": 436834.74,
+        "tenure": "4y",
+        "retention": 88.7
+      },
+      {
+        "id": "SA-JP-1-15",
+        "name": "Sanjay Park",
+        "clients": 67,
+        "revenue": 1911801.67,
+        "tenure": "4y",
+        "retention": 87.7
+      },
+      {
+        "id": "SA-JP-1-16",
+        "name": "Yuki Chen",
+        "clients": 229,
+        "revenue": 1245269.56,
+        "tenure": "2y",
+        "retention": 82.2
+      },
+      {
+        "id": "SA-JP-1-17",
+        "name": "Ji-woo Gupta",
+        "clients": 148,
+        "revenue": 713273.74,
+        "tenure": "10y",
+        "retention": 73.2
+      },
+      {
+        "id": "SA-JP-1-18",
+        "name": "Priyan Chen",
+        "clients": 146,
+        "revenue": 1069912.99,
+        "tenure": "2y",
+        "retention": 75.2
+      },
+      {
+        "id": "SA-JP-1-19",
+        "name": "Sanjay Nakamura",
+        "clients": 173,
+        "revenue": 1016492.1,
+        "tenure": "10y",
+        "retention": 86.3
+      },
+      {
+        "id": "SA-JP-1-20",
+        "name": "Ananya Chen",
+        "clients": 186,
+        "revenue": 879716.1,
+        "tenure": "8y",
+        "retention": 91.6
+      },
+      {
+        "id": "SA-JP-1-21",
+        "name": "Wei Prasert",
+        "clients": 242,
+        "revenue": 1321236.4,
+        "tenure": "7y",
+        "retention": 93.8
+      },
+      {
+        "id": "SA-JP-1-22",
+        "name": "Sanjay Chen",
+        "clients": 220,
+        "revenue": 1527024.64,
+        "tenure": "3y",
+        "retention": 92.7
+      },
+      {
+        "id": "SA-JP-1-23",
+        "name": "Sanjay Liu",
+        "clients": 245,
+        "revenue": 1898424.54,
+        "tenure": "4y",
+        "retention": 87.3
+      },
+      {
+        "id": "SA-JP-1-24",
+        "name": "Ananya Gupta",
+        "clients": 154,
+        "revenue": 1425759.69,
+        "tenure": "10y",
+        "retention": 87.0
+      },
+      {
+        "id": "SA-JP-1-25",
+        "name": "Li Patel",
+        "clients": 212,
+        "revenue": 1395351.25,
+        "tenure": "2y",
+        "retention": 78.9
+      }
+    ]
+  },
+  {
+    "id": "jp-2",
+    "name": "Aurelle Omotesando Tokyo",
+    "market": "Japan",
+    "tier": "Major",
+    "lat": 35.6692,
+    "lng": 139.7107,
+    "annualRevenue": 36100000.0,
+    "saCount": 15,
+    "saPerformance": [
+      {
+        "id": "SA-JP-2-01",
+        "name": "Li Suzuki",
+        "clients": 258,
+        "revenue": 3222075.94,
+        "tenure": "6y",
+        "retention": 85.0
+      },
+      {
+        "id": "SA-JP-2-02",
+        "name": "Ji-woo Kim",
+        "clients": 128,
+        "revenue": 3579621.67,
+        "tenure": "4y",
+        "retention": 88.7
+      },
+      {
+        "id": "SA-JP-2-03",
+        "name": "Eun-ji Sharma",
+        "clients": 136,
+        "revenue": 1938111.37,
+        "tenure": "2y",
+        "retention": 81.8
+      },
+      {
+        "id": "SA-JP-2-04",
+        "name": "Somchai Patel",
+        "clients": 45,
+        "revenue": 1414380.27,
+        "tenure": "7y",
+        "retention": 77.0
+      },
+      {
+        "id": "SA-JP-2-05",
+        "name": "Min-su Park",
+        "clients": 249,
+        "revenue": 2319421.46,
+        "tenure": "1y",
+        "retention": 93.1
+      },
+      {
+        "id": "SA-JP-2-06",
+        "name": "Chen Park",
+        "clients": 31,
+        "revenue": 2813530.45,
+        "tenure": "8y",
+        "retention": 94.6
+      },
+      {
+        "id": "SA-JP-2-07",
+        "name": "Li Gupta",
+        "clients": 248,
+        "revenue": 1504101.8,
+        "tenure": "7y",
+        "retention": 93.4
+      },
+      {
+        "id": "SA-JP-2-08",
+        "name": "Thanakorn Park",
+        "clients": 221,
+        "revenue": 2242093.01,
+        "tenure": "10y",
+        "retention": 89.6
+      },
+      {
+        "id": "SA-JP-2-09",
+        "name": "Ananya Zhang",
+        "clients": 154,
+        "revenue": 1887240.26,
+        "tenure": "4y",
+        "retention": 77.3
+      },
+      {
+        "id": "SA-JP-2-10",
+        "name": "Min-su Patel",
+        "clients": 129,
+        "revenue": 1647755.73,
+        "tenure": "1y",
+        "retention": 80.1
+      },
+      {
+        "id": "SA-JP-2-11",
+        "name": "Kenji Gupta",
+        "clients": 215,
+        "revenue": 3089456.67,
+        "tenure": "7y",
+        "retention": 76.0
+      },
+      {
+        "id": "SA-JP-2-12",
+        "name": "Sanjay Chen",
+        "clients": 189,
+        "revenue": 1769598.0,
+        "tenure": "3y",
+        "retention": 84.8
+      },
+      {
+        "id": "SA-JP-2-13",
+        "name": "Wei Park",
+        "clients": 51,
+        "revenue": 2498257.27,
+        "tenure": "1y",
+        "retention": 87.4
+      },
+      {
+        "id": "SA-JP-2-14",
+        "name": "Ji-woo Chaichana",
+        "clients": 76,
+        "revenue": 2928963.28,
+        "tenure": "8y",
+        "retention": 73.2
+      },
+      {
+        "id": "SA-JP-2-15",
+        "name": "Min-su Suzuki",
+        "clients": 146,
+        "revenue": 1113958.63,
+        "tenure": "4y",
+        "retention": 79.8
+      }
+    ]
+  },
+  {
+    "id": "jp-3",
+    "name": "Aurelle Shinsaibashi Osaka",
+    "market": "Japan",
+    "tier": "Major",
+    "lat": 34.6723,
+    "lng": 135.5022,
+    "annualRevenue": 31200000.0,
+    "saCount": 14,
+    "saPerformance": [
+      {
+        "id": "SA-JP-3-01",
+        "name": "Ananya Chen",
+        "clients": 101,
+        "revenue": 2642638.3,
+        "tenure": "7y",
+        "retention": 90.0
+      },
+      {
+        "id": "SA-JP-3-02",
+        "name": "Thanakorn Park",
+        "clients": 243,
+        "revenue": 1942044.43,
+        "tenure": "5y",
+        "retention": 74.0
+      },
+      {
+        "id": "SA-JP-3-03",
+        "name": "Yuki Lee",
+        "clients": 43,
+        "revenue": 2024828.69,
+        "tenure": "10y",
+        "retention": 96.0
+      },
+      {
+        "id": "SA-JP-3-04",
+        "name": "Hiroto Sharma",
+        "clients": 229,
+        "revenue": 3371229.1,
+        "tenure": "2y",
+        "retention": 95.0
+      },
+      {
+        "id": "SA-JP-3-05",
+        "name": "Yuki Gupta",
+        "clients": 273,
+        "revenue": 2230134.3,
+        "tenure": "1y",
+        "retention": 77.9
+      },
+      {
+        "id": "SA-JP-3-06",
+        "name": "Thanakorn Tanaka",
+        "clients": 91,
+        "revenue": 2864790.94,
+        "tenure": "3y",
+        "retention": 75.0
+      },
+      {
+        "id": "SA-JP-3-07",
+        "name": "Kenji Wong",
+        "clients": 149,
+        "revenue": 2872242.09,
+        "tenure": "4y",
+        "retention": 88.8
+      },
+      {
+        "id": "SA-JP-3-08",
+        "name": "Ananya Suzuki",
+        "clients": 185,
+        "revenue": 3306901.54,
+        "tenure": "3y",
+        "retention": 86.6
+      },
+      {
+        "id": "SA-JP-3-09",
+        "name": "Eun-ji Lee",
+        "clients": 229,
+        "revenue": 2757144.68,
+        "tenure": "2y",
+        "retention": 91.7
+      },
+      {
+        "id": "SA-JP-3-10",
+        "name": "Li Wong",
+        "clients": 267,
+        "revenue": 2638344.68,
+        "tenure": "1y",
+        "retention": 79.5
+      },
+      {
+        "id": "SA-JP-3-11",
+        "name": "Kenji Chen",
+        "clients": 131,
+        "revenue": 1548886.33,
+        "tenure": "7y",
+        "retention": 94.6
+      },
+      {
+        "id": "SA-JP-3-12",
+        "name": "Priyan Wong",
+        "clients": 56,
+        "revenue": 2029751.47,
+        "tenure": "4y",
+        "retention": 88.7
+      },
+      {
+        "id": "SA-JP-3-13",
+        "name": "Li Chaichana",
+        "clients": 233,
+        "revenue": 2708980.97,
+        "tenure": "2y",
+        "retention": 95.6
+      },
+      {
+        "id": "SA-JP-3-14",
+        "name": "Ananya Tanaka",
+        "clients": 166,
+        "revenue": 1503742.85,
+        "tenure": "6y",
+        "retention": 82.3
+      }
+    ]
+  },
+  {
+    "id": "kr-1",
+    "name": "Aurelle Cheongdam Maison Seoul",
+    "market": "South Korea",
+    "tier": "Flagship",
+    "lat": 37.5252,
+    "lng": 127.0427,
+    "annualRevenue": 48600000.0,
+    "saCount": 16,
+    "saPerformance": [
+      {
+        "id": "SA-KR-1-01",
+        "name": "Hiroto Wong",
+        "clients": 195,
+        "revenue": 1691770.65,
+        "tenure": "10y",
+        "retention": 80.2
+      },
+      {
+        "id": "SA-KR-1-02",
+        "name": "Thanakorn Park",
+        "clients": 57,
+        "revenue": 1644976.61,
+        "tenure": "8y",
+        "retention": 82.4
+      },
+      {
+        "id": "SA-KR-1-03",
+        "name": "Hiroto Nakamura",
+        "clients": 211,
+        "revenue": 3185769.43,
+        "tenure": "8y",
+        "retention": 75.7
+      },
+      {
+        "id": "SA-KR-1-04",
+        "name": "Ji-woo Lee",
+        "clients": 277,
+        "revenue": 3208586.94,
+        "tenure": "10y",
+        "retention": 87.6
+      },
+      {
+        "id": "SA-KR-1-05",
+        "name": "Chen Gupta",
+        "clients": 228,
+        "revenue": 2172680.72,
+        "tenure": "10y",
+        "retention": 83.6
+      },
+      {
+        "id": "SA-KR-1-06",
+        "name": "Min-su Chaichana",
+        "clients": 112,
+        "revenue": 1723940.21,
+        "tenure": "5y",
+        "retention": 92.4
+      },
+      {
+        "id": "SA-KR-1-07",
+        "name": "Thanakorn Chen",
+        "clients": 101,
+        "revenue": 2192474.95,
+        "tenure": "2y",
+        "retention": 93.2
+      },
+      {
+        "id": "SA-KR-1-08",
+        "name": "Priyan Gupta",
+        "clients": 175,
+        "revenue": 3584671.2,
+        "tenure": "8y",
+        "retention": 86.6
+      },
+      {
+        "id": "SA-KR-1-09",
+        "name": "Min-su Suzuki",
+        "clients": 156,
+        "revenue": 1429311.52,
+        "tenure": "1y",
+        "retention": 92.4
+      },
+      {
+        "id": "SA-KR-1-10",
+        "name": "Ji-woo Patel",
+        "clients": 120,
+        "revenue": 1793855.54,
+        "tenure": "4y",
+        "retention": 91.1
+      },
+      {
+        "id": "SA-KR-1-11",
+        "name": "Hiroto Liu",
+        "clients": 172,
+        "revenue": 2501682.42,
+        "tenure": "5y",
+        "retention": 72.2
+      },
+      {
+        "id": "SA-KR-1-12",
+        "name": "Priyan Wong",
+        "clients": 214,
+        "revenue": 2808095.82,
+        "tenure": "4y",
+        "retention": 81.8
+      },
+      {
+        "id": "SA-KR-1-13",
+        "name": "Somchai Gupta",
+        "clients": 206,
+        "revenue": 2572414.36,
+        "tenure": "4y",
+        "retention": 83.4
+      },
+      {
+        "id": "SA-KR-1-14",
+        "name": "Eun-ji Patel",
+        "clients": 232,
+        "revenue": 2408070.01,
+        "tenure": "8y",
+        "retention": 72.4
+      },
+      {
+        "id": "SA-KR-1-15",
+        "name": "Li Sharma",
+        "clients": 207,
+        "revenue": 3804086.14,
+        "tenure": "7y",
+        "retention": 77.8
+      },
+      {
+        "id": "SA-KR-1-16",
+        "name": "Kenji Zhang",
+        "clients": 151,
+        "revenue": 1317387.51,
+        "tenure": "6y",
+        "retention": 85.3
+      }
+    ]
+  },
+  {
+    "id": "kr-2",
+    "name": "Aurelle Lotte Main Seoul",
+    "market": "South Korea",
+    "tier": "Major",
+    "lat": 37.5651,
+    "lng": 126.981,
+    "annualRevenue": 29800000.0,
+    "saCount": 12,
+    "saPerformance": [
+      {
+        "id": "SA-KR-2-01",
+        "name": "Hiroto Park",
+        "clients": 114,
+        "revenue": 2871665.53,
+        "tenure": "10y",
+        "retention": 80.4
+      },
+      {
+        "id": "SA-KR-2-02",
+        "name": "Sanjay Liu",
+        "clients": 94,
+        "revenue": 5121841.3,
+        "tenure": "5y",
+        "retention": 77.5
+      },
+      {
+        "id": "SA-KR-2-03",
+        "name": "Eun-ji Sharma",
+        "clients": 60,
+        "revenue": 2532556.28,
+        "tenure": "6y",
+        "retention": 89.8
+      },
+      {
+        "id": "SA-KR-2-04",
+        "name": "Ananya Lee",
+        "clients": 79,
+        "revenue": 3269357.63,
+        "tenure": "3y",
+        "retention": 77.2
+      },
+      {
+        "id": "SA-KR-2-05",
+        "name": "Sanjay Liu",
+        "clients": 182,
+        "revenue": 2729550.21,
+        "tenure": "10y",
+        "retention": 78.8
+      },
+      {
+        "id": "SA-KR-2-06",
+        "name": "Mei Chaichana",
+        "clients": 105,
+        "revenue": 2280977.86,
+        "tenure": "4y",
+        "retention": 77.5
+      },
+      {
+        "id": "SA-KR-2-07",
+        "name": "Ji-woo Liu",
+        "clients": 211,
+        "revenue": 3239180.41,
+        "tenure": "1y",
+        "retention": 84.8
+      },
+      {
+        "id": "SA-KR-2-08",
+        "name": "Li Tanaka",
+        "clients": 171,
+        "revenue": 2805707.24,
+        "tenure": "1y",
+        "retention": 79.0
+      },
+      {
+        "id": "SA-KR-2-09",
+        "name": "Ji-woo Nakamura",
+        "clients": 56,
+        "revenue": 3843904.88,
+        "tenure": "8y",
+        "retention": 92.9
+      },
+      {
+        "id": "SA-KR-2-10",
+        "name": "Chen Liu",
+        "clients": 152,
+        "revenue": 2838310.51,
+        "tenure": "8y",
+        "retention": 82.6
+      },
+      {
+        "id": "SA-KR-2-11",
+        "name": "Ji-woo Tanaka",
+        "clients": 270,
+        "revenue": 2756885.99,
+        "tenure": "5y",
+        "retention": 92.7
+      },
+      {
+        "id": "SA-KR-2-12",
+        "name": "Mei Chaichana",
+        "clients": 132,
+        "revenue": 2136485.25,
+        "tenure": "2y",
+        "retention": 83.8
+      }
+    ]
+  },
+  {
+    "id": "sg-1",
+    "name": "Aurelle ION Orchard Singapore",
+    "market": "Singapore",
+    "tier": "Major",
+    "lat": 1.304,
+    "lng": 103.8318,
+    "annualRevenue": 34200000.0,
+    "saCount": 14,
+    "saPerformance": [
+      {
+        "id": "SA-SG-1-01",
+        "name": "Chen Nakamura",
+        "clients": 68,
+        "revenue": 2720958.12,
+        "tenure": "1y",
+        "retention": 75.6
+      },
+      {
+        "id": "SA-SG-1-02",
+        "name": "Chen Liu",
+        "clients": 93,
+        "revenue": 2439036.56,
+        "tenure": "2y",
+        "retention": 74.8
+      },
+      {
+        "id": "SA-SG-1-03",
+        "name": "Ananya Park",
+        "clients": 228,
+        "revenue": 2929255.26,
+        "tenure": "4y",
+        "retention": 84.5
+      },
+      {
+        "id": "SA-SG-1-04",
+        "name": "Sanjay Chen",
+        "clients": 106,
+        "revenue": 1451609.87,
+        "tenure": "8y",
+        "retention": 92.6
+      },
+      {
+        "id": "SA-SG-1-05",
+        "name": "Min-su Liu",
+        "clients": 186,
+        "revenue": 2342527.04,
+        "tenure": "1y",
+        "retention": 95.0
+      },
+      {
+        "id": "SA-SG-1-06",
+        "name": "Mei Gupta",
+        "clients": 190,
+        "revenue": 3674474.94,
+        "tenure": "4y",
+        "retention": 77.1
+      },
+      {
+        "id": "SA-SG-1-07",
+        "name": "Kenji Wong",
+        "clients": 91,
+        "revenue": 1945819.87,
+        "tenure": "3y",
+        "retention": 76.2
+      },
+      {
+        "id": "SA-SG-1-08",
+        "name": "Mei Kim",
+        "clients": 134,
+        "revenue": 2911088.92,
+        "tenure": "1y",
+        "retention": 82.8
+      },
+      {
+        "id": "SA-SG-1-09",
+        "name": "Chen Patel",
+        "clients": 38,
+        "revenue": 2483109.78,
+        "tenure": "5y",
+        "retention": 77.6
+      },
+      {
+        "id": "SA-SG-1-10",
+        "name": "Eun-ji Liu",
+        "clients": 48,
+        "revenue": 3213077.35,
+        "tenure": "8y",
+        "retention": 88.5
+      },
+      {
+        "id": "SA-SG-1-11",
+        "name": "Wei Liu",
+        "clients": 138,
+        "revenue": 3453300.76,
+        "tenure": "4y",
+        "retention": 74.8
+      },
+      {
+        "id": "SA-SG-1-12",
+        "name": "Priyan Nakamura",
+        "clients": 262,
+        "revenue": 2574823.66,
+        "tenure": "3y",
+        "retention": 78.4
+      },
+      {
+        "id": "SA-SG-1-13",
+        "name": "Ji-woo Wong",
+        "clients": 72,
+        "revenue": 2345808.74,
+        "tenure": "1y",
+        "retention": 91.0
+      },
+      {
+        "id": "SA-SG-1-14",
+        "name": "Chen Lee",
+        "clients": 142,
+        "revenue": 3357009.34,
+        "tenure": "5y",
+        "retention": 75.0
+      }
+    ]
+  },
+  {
+    "id": "au-1",
+    "name": "Aurelle Castlereagh St Sydney",
+    "market": "Australia",
+    "tier": "Major",
+    "lat": -33.8696,
+    "lng": 151.2098,
+    "annualRevenue": 26500000.0,
+    "saCount": 12,
+    "saPerformance": [
+      {
+        "id": "SA-AU-1-01",
+        "name": "Eun-ji Liu",
+        "clients": 271,
+        "revenue": 3028726.64,
+        "tenure": "7y",
+        "retention": 78.5
+      },
+      {
+        "id": "SA-AU-1-02",
+        "name": "Somchai Patel",
+        "clients": 50,
+        "revenue": 2496743.41,
+        "tenure": "8y",
+        "retention": 86.4
+      },
+      {
+        "id": "SA-AU-1-03",
+        "name": "Wei Park",
+        "clients": 184,
+        "revenue": 3015367.17,
+        "tenure": "6y",
+        "retention": 78.0
+      },
+      {
+        "id": "SA-AU-1-04",
+        "name": "Mei Sharma",
+        "clients": 225,
+        "revenue": 3204764.98,
+        "tenure": "1y",
+        "retention": 88.1
+      },
+      {
+        "id": "SA-AU-1-05",
+        "name": "Li Zhang",
+        "clients": 225,
+        "revenue": 2834362.43,
+        "tenure": "1y",
+        "retention": 90.2
+      },
+      {
+        "id": "SA-AU-1-06",
+        "name": "Sanjay Prasert",
+        "clients": 264,
+        "revenue": 2615872.29,
+        "tenure": "8y",
+        "retention": 78.7
+      },
+      {
+        "id": "SA-AU-1-07",
+        "name": "Chen Park",
+        "clients": 278,
+        "revenue": 2651756.64,
+        "tenure": "8y",
+        "retention": 74.2
+      },
+      {
+        "id": "SA-AU-1-08",
+        "name": "Hiroto Park",
+        "clients": 112,
+        "revenue": 4459660.26,
+        "tenure": "6y",
+        "retention": 88.1
+      },
+      {
+        "id": "SA-AU-1-09",
+        "name": "Thanakorn Kim",
+        "clients": 135,
+        "revenue": 2042143.09,
+        "tenure": "6y",
+        "retention": 88.6
+      },
+      {
+        "id": "SA-AU-1-10",
+        "name": "Li Nakamura",
+        "clients": 238,
+        "revenue": 3366549.45,
+        "tenure": "7y",
+        "retention": 90.3
+      },
+      {
+        "id": "SA-AU-1-11",
+        "name": "Yuki Patel",
+        "clients": 110,
+        "revenue": 3009443.03,
+        "tenure": "2y",
+        "retention": 78.1
+      },
+      {
+        "id": "SA-AU-1-12",
+        "name": "Mei Gupta",
+        "clients": 251,
+        "revenue": 2024228.24,
+        "tenure": "7y",
+        "retention": 84.4
+      }
+    ]
+  },
+  {
+    "id": "au-2",
+    "name": "Aurelle Collins St Melbourne",
+    "market": "Australia",
+    "tier": "Standard",
+    "lat": -37.8136,
+    "lng": 144.9701,
+    "annualRevenue": 18200000.0,
+    "saCount": 10,
+    "saPerformance": [
+      {
+        "id": "SA-AU-2-01",
+        "name": "Yuki Nakamura",
+        "clients": 148,
+        "revenue": 2286820.06,
+        "tenure": "10y",
+        "retention": 81.9
+      },
+      {
+        "id": "SA-AU-2-02",
+        "name": "Priyan Prasert",
+        "clients": 189,
+        "revenue": 3893664.42,
+        "tenure": "6y",
+        "retention": 90.2
+      },
+      {
+        "id": "SA-AU-2-03",
+        "name": "Kenji Patel",
+        "clients": 82,
+        "revenue": 5527811.76,
+        "tenure": "1y",
+        "retention": 78.4
+      },
+      {
+        "id": "SA-AU-2-04",
+        "name": "Ji-woo Chen",
+        "clients": 142,
+        "revenue": 1776924.57,
+        "tenure": "5y",
+        "retention": 93.1
+      },
+      {
+        "id": "SA-AU-2-05",
+        "name": "Sanjay Wong",
+        "clients": 279,
+        "revenue": 3591368.41,
+        "tenure": "1y",
+        "retention": 87.1
+      },
+      {
+        "id": "SA-AU-2-06",
+        "name": "Ananya Sharma",
+        "clients": 109,
+        "revenue": 4275791.99,
+        "tenure": "3y",
+        "retention": 85.2
+      },
+      {
+        "id": "SA-AU-2-07",
+        "name": "Somchai Park",
+        "clients": 87,
+        "revenue": 3190881.02,
+        "tenure": "2y",
+        "retention": 95.8
+      },
+      {
+        "id": "SA-AU-2-08",
+        "name": "Wei Wong",
+        "clients": 272,
+        "revenue": 2325267.52,
+        "tenure": "8y",
+        "retention": 74.8
+      },
+      {
+        "id": "SA-AU-2-09",
+        "name": "Thanakorn Kim",
+        "clients": 268,
+        "revenue": 2920774.01,
+        "tenure": "8y",
+        "retention": 89.2
+      },
+      {
+        "id": "SA-AU-2-10",
+        "name": "Somchai Lee",
+        "clients": 136,
+        "revenue": 3265240.87,
+        "tenure": "5y",
+        "retention": 92.0
+      }
+    ]
+  },
+  {
+    "id": "tw-1",
+    "name": "Aurelle Taipei 101 Mall",
+    "market": "Taiwan",
+    "tier": "Major",
+    "lat": 25.0336,
+    "lng": 121.5648,
+    "annualRevenue": 28700000.0,
+    "saCount": 12,
+    "saPerformance": [
+      {
+        "id": "SA-TW-1-01",
+        "name": "Sanjay Sharma",
+        "clients": 171,
+        "revenue": 3595251.33,
+        "tenure": "8y",
+        "retention": 75.5
+      },
+      {
+        "id": "SA-TW-1-02",
+        "name": "Priyan Chen",
+        "clients": 221,
+        "revenue": 2388214.56,
+        "tenure": "10y",
+        "retention": 93.1
+      },
+      {
+        "id": "SA-TW-1-03",
+        "name": "Thanakorn Wong",
+        "clients": 227,
+        "revenue": 4351690.06,
+        "tenure": "5y",
+        "retention": 91.0
+      },
+      {
+        "id": "SA-TW-1-04",
+        "name": "Min-su Suzuki",
+        "clients": 98,
+        "revenue": 3807694.48,
+        "tenure": "10y",
+        "retention": 91.7
+      },
+      {
+        "id": "SA-TW-1-05",
+        "name": "Li Lee",
+        "clients": 244,
+        "revenue": 3467157.21,
+        "tenure": "5y",
+        "retention": 86.1
+      },
+      {
+        "id": "SA-TW-1-06",
+        "name": "Kenji Patel",
+        "clients": 144,
+        "revenue": 3241187.54,
+        "tenure": "3y",
+        "retention": 84.9
+      },
+      {
+        "id": "SA-TW-1-07",
+        "name": "Hiroto Suzuki",
+        "clients": 225,
+        "revenue": 4265075.46,
+        "tenure": "10y",
+        "retention": 85.0
+      },
+      {
+        "id": "SA-TW-1-08",
+        "name": "Sanjay Chen",
+        "clients": 252,
+        "revenue": 3636081.04,
+        "tenure": "6y",
+        "retention": 76.5
+      },
+      {
+        "id": "SA-TW-1-09",
+        "name": "Eun-ji Sharma",
+        "clients": 89,
+        "revenue": 3051677.18,
+        "tenure": "7y",
+        "retention": 92.5
+      },
+      {
+        "id": "SA-TW-1-10",
+        "name": "Min-su Tanaka",
+        "clients": 220,
+        "revenue": 2511199.44,
+        "tenure": "6y",
+        "retention": 83.4
+      },
+      {
+        "id": "SA-TW-1-11",
+        "name": "Wei Gupta",
+        "clients": 128,
+        "revenue": 2800475.61,
+        "tenure": "7y",
+        "retention": 95.7
+      },
+      {
+        "id": "SA-TW-1-12",
+        "name": "Ananya Chaichana",
+        "clients": 156,
+        "revenue": 1780967.26,
+        "tenure": "3y",
+        "retention": 95.2
+      }
+    ]
+  },
+  {
+    "id": "mo-1",
+    "name": "Aurelle Wynn Palace Macau",
+    "market": "Macau",
+    "tier": "Major",
+    "lat": 22.1485,
+    "lng": 113.5678,
+    "annualRevenue": 31900000.0,
+    "saCount": 10,
+    "saPerformance": [
+      {
+        "id": "SA-MO-1-01",
+        "name": "Ji-woo Prasert",
+        "clients": 252,
+        "revenue": 3272069.0,
+        "tenure": "6y",
+        "retention": 74.4
+      },
+      {
+        "id": "SA-MO-1-02",
+        "name": "Thanakorn Patel",
+        "clients": 164,
+        "revenue": 4984286.92,
+        "tenure": "2y",
+        "retention": 93.9
+      },
+      {
+        "id": "SA-MO-1-03",
+        "name": "Yuki Lee",
+        "clients": 134,
+        "revenue": 3635177.43,
+        "tenure": "3y",
+        "retention": 92.9
+      },
+      {
+        "id": "SA-MO-1-04",
+        "name": "Ji-woo Wong",
+        "clients": 230,
+        "revenue": 3347316.53,
+        "tenure": "8y",
+        "retention": 95.3
+      },
+      {
+        "id": "SA-MO-1-05",
+        "name": "Hiroto Zhang",
+        "clients": 196,
+        "revenue": 4264705.64,
+        "tenure": "7y",
+        "retention": 73.9
+      },
+      {
+        "id": "SA-MO-1-06",
+        "name": "Hiroto Chaichana",
+        "clients": 127,
+        "revenue": 3347867.45,
+        "tenure": "10y",
+        "retention": 94.9
+      },
+      {
+        "id": "SA-MO-1-07",
+        "name": "Kenji Lee",
+        "clients": 253,
+        "revenue": 2525395.33,
+        "tenure": "8y",
+        "retention": 85.0
+      },
+      {
+        "id": "SA-MO-1-08",
+        "name": "Chen Wong",
+        "clients": 191,
+        "revenue": 5330220.52,
+        "tenure": "4y",
+        "retention": 88.4
+      },
+      {
+        "id": "SA-MO-1-09",
+        "name": "Li Sharma",
+        "clients": 141,
+        "revenue": 3341401.02,
+        "tenure": "2y",
+        "retention": 95.5
+      },
+      {
+        "id": "SA-MO-1-10",
+        "name": "Ananya Nakamura",
+        "clients": 143,
+        "revenue": 3122162.69,
+        "tenure": "2y",
+        "retention": 76.0
+      }
+    ]
+  },
+  {
+    "id": "th-1",
+    "name": "Aurelle Siam Paragon Bangkok",
+    "market": "Thailand",
+    "tier": "Major",
+    "lat": 13.7461,
+    "lng": 100.535,
+    "annualRevenue": 21400000.0,
+    "saCount": 8,
+    "saPerformance": [
+      {
+        "id": "SA-TH-1-01",
+        "name": "Li Chen",
+        "clients": 41,
+        "revenue": 2930621.21,
+        "tenure": "1y",
+        "retention": 79.8
+      },
+      {
+        "id": "SA-TH-1-02",
+        "name": "Yuki Liu",
+        "clients": 125,
+        "revenue": 3949848.7,
+        "tenure": "6y",
+        "retention": 82.3
+      },
+      {
+        "id": "SA-TH-1-03",
+        "name": "Priyan Prasert",
+        "clients": 174,
+        "revenue": 2235716.47,
+        "tenure": "7y",
+        "retention": 88.4
+      },
+      {
+        "id": "SA-TH-1-04",
+        "name": "Ji-woo Kim",
+        "clients": 50,
+        "revenue": 4188970.34,
+        "tenure": "3y",
+        "retention": 86.6
+      },
+      {
+        "id": "SA-TH-1-05",
+        "name": "Min-su Zhang",
+        "clients": 157,
+        "revenue": 3557981.34,
+        "tenure": "4y",
+        "retention": 93.9
+      },
+      {
+        "id": "SA-TH-1-06",
+        "name": "Ji-woo Sharma",
+        "clients": 193,
+        "revenue": 3183074.67,
+        "tenure": "8y",
+        "retention": 78.1
+      },
+      {
+        "id": "SA-TH-1-07",
+        "name": "Li Nakamura",
+        "clients": 260,
+        "revenue": 2461588.0,
+        "tenure": "1y",
+        "retention": 91.3
+      },
+      {
+        "id": "SA-TH-1-08",
+        "name": "Wei Liu",
+        "clients": 70,
+        "revenue": 2912899.6,
+        "tenure": "10y",
+        "retention": 73.8
+      }
+    ]
+  },
+  {
+    "id": "in-1",
+    "name": "Aurelle DLF Chanakya Delhi",
+    "market": "India",
+    "tier": "Standard",
+    "lat": 28.591,
+    "lng": 77.1895,
+    "annualRevenue": 14800000.0,
+    "saCount": 6,
+    "saPerformance": [
+      {
+        "id": "SA-IN-1-01",
+        "name": "Hiroto Zhang",
+        "clients": 193,
+        "revenue": 4194886.05,
+        "tenure": "5y",
+        "retention": 95.1
+      },
+      {
+        "id": "SA-IN-1-02",
+        "name": "Eun-ji Liu",
+        "clients": 246,
+        "revenue": 5071890.81,
+        "tenure": "8y",
+        "retention": 79.3
+      },
+      {
+        "id": "SA-IN-1-03",
+        "name": "Min-su Chaichana",
+        "clients": 57,
+        "revenue": 3945647.8,
+        "tenure": "8y",
+        "retention": 77.7
+      },
+      {
+        "id": "SA-IN-1-04",
+        "name": "Chen Suzuki",
+        "clients": 209,
+        "revenue": 3564975.45,
+        "tenure": "5y",
+        "retention": 79.1
+      },
+      {
+        "id": "SA-IN-1-05",
+        "name": "Thanakorn Nakamura",
+        "clients": 100,
+        "revenue": 4098001.23,
+        "tenure": "7y",
+        "retention": 72.2
+      },
+      {
+        "id": "SA-IN-1-06",
+        "name": "Thanakorn Nakamura",
+        "clients": 263,
+        "revenue": 4565257.76,
+        "tenure": "1y",
+        "retention": 86.6
+      }
+    ]
+  }
+]

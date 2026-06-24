@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply text-ink font-sans antialiased;
+    /* Warm parchment with the faintest gold sheen — premium paper feel. */
+    background-color: #f7f4ef;
+    background-image:
+      radial-gradient(1200px 600px at 12% -10%, rgba(184, 150, 90, 0.06), transparent 55%),
+      radial-gradient(1000px 700px at 100% 0%, rgba(139, 26, 43, 0.025), transparent 50%);
+    background-attachment: fixed;
+  }
+  /* Refined gold focus ring across inputs, selects, textareas, buttons. */
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(184, 150, 90, 0.35);
+  }
+}
+
+@layer utilities {
+  .label {
+    @apply font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-muted;
+  }
+  .hairline {
+    @apply border-t border-line;
+  }
+  /* thin, on-brand scrollbar for the streaming draft panel */
+  .scroll-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: #d9cdb6;
+    border-radius: 3px;
+  }
+}
+
+/* cult-ui-style light sweep on hover (used on stat cards) */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(184, 150, 90, 0.08) 44%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(184, 150, 90, 0.08) 56%,
+    transparent 70%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.group:hover .shine::after,
+.shine:hover::after {
+  transform: translateX(130%);
+}
+
+/* blinking caret used during AI streaming */
+@keyframes caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: #b8965a;
+  animation: caret 1s steps(1) infinite;
+}

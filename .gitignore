@@ -1,0 +1,36 @@
+# ── Secrets ──────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.toml
+
+# ── Python ───────────────────────────────────────────────
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# ── Node / Vite (web) ────────────────────────────────────
+web/node_modules/
+web/dist/
+web/.vite/
+
+# ── Regenerable / heavy data artifacts ───────────────────
+data/faiss.index
+data/faiss_meta.json
+data/mock_users.json
+data/New Knowledge Base/
+data/raw/
+data/customer/
+
+# ── Logs ─────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Misc ─────────────────────────────────────────────────
+.DS_Store
+*.xlsx
+*.xls
+out/

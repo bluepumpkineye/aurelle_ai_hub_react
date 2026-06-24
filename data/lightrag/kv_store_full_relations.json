@@ -1,0 +1,1362 @@
+{
+  "doc-35512f32ea45c1b275bccd44a565ae39": {
+    "relation_pairs": [
+      [
+        "Allocation Optimizer",
+        "High Jewellery"
+      ],
+      [
+        "Aurelle APAC",
+        "Switzerland Direct (ZHD)"
+      ],
+      [
+        "India Supply Corridor",
+        "Singapore Distribution Centre (SDC)"
+      ],
+      [
+        "Aurelle APAC",
+        "Regional Supply Chain VP"
+      ],
+      [
+        "Allocation Optimizer",
+        "Emergency Stock Request (ESR)"
+      ],
+      [
+        "Aurelle APAC",
+        "Singapore Distribution Centre (SDC)"
+      ],
+      [
+        "Allocation Optimizer",
+        "Watches"
+      ],
+      [
+        "Allocation Optimizer",
+        "Classic Jewellery"
+      ],
+      [
+        "Allocation Optimizer",
+        "Fragrances & Accessories"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1779675587,
+    "update_time": 1779675587,
+    "_id": "doc-35512f32ea45c1b275bccd44a565ae39"
+  },
+  "doc-a0504f98228375b771e952e83591e063": {
+    "relation_pairs": [
+      [
+        "Aurelle",
+        "Warranty"
+      ],
+      [
+        "Aurelle",
+        "Seoul Workshop"
+      ],
+      [
+        "Aurelle",
+        "Tokyo Service Centre"
+      ],
+      [
+        "Aurelle",
+        "Aurelle Prestige Care"
+      ],
+      [
+        "Aurelle",
+        "Certificate of Service"
+      ],
+      [
+        "Aurelle",
+        "Hong Kong Workshop"
+      ],
+      [
+        "Aurelle",
+        "Shanghai Service Centre"
+      ],
+      [
+        "After-Sales Service & Client Care Protocol APAC",
+        "Aurelle"
+      ],
+      [
+        "Aurelle",
+        "Singapore Service Centre"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1779675605,
+    "update_time": 1779675605,
+    "_id": "doc-a0504f98228375b771e952e83591e063"
+  },
+  "doc-16ec8e77a4e34699426d78e912f40ea4": {
+    "relation_pairs": [
+      [
+        "24% Churn Rate",
+        "Australia"
+      ],
+      [
+        "Aurelle APAC Portfolio",
+        "Australia"
+      ],
+      [
+        "Aurelle APAC Portfolio",
+        "Watches"
+      ],
+      [
+        "CRM Investment",
+        "VIC Program"
+      ],
+      [
+        "India",
+        "Mumbai DLF Emporio"
+      ],
+      [
+        "Aurelle",
+        "Australia"
+      ],
+      [
+        "Aurelle's Solitaire Collection",
+        "Bridal Opportunity"
+      ],
+      [
+        "Aurelle",
+        "Singapore"
+      ],
+      [
+        "Australia",
+        "Emotional Luxury Attachment"
+      ],
+      [
+        "Manila",
+        "Philippines"
+      ],
+      [
+        "Australia",
+        "Price Sensitivity"
+      ],
+      [
+        "Bridal Opportunity",
+        "Tiffany"
+      ],
+      [
+        "Bangkok",
+        "Thailand"
+      ]
+    ],
+    "count": 13,
+    "create_time": 1779675625,
+    "update_time": 1779675625,
+    "_id": "doc-16ec8e77a4e34699426d78e912f40ea4"
+  },
+  "doc-f684d5d153a17d84f12bce3fb2f629a4": {
+    "relation_pairs": [
+      [
+        "Aurelle",
+        "Aurelle Product Universe"
+      ],
+      [
+        "Aurelle",
+        "Bridal & Solitaires"
+      ],
+      [
+        "Aurelle",
+        "Écrou de Aurelle"
+      ],
+      [
+        "Aurelle",
+        "Juste un Clou"
+      ],
+      [
+        "Elizabeth Taylor",
+        "LOVE Collection"
+      ],
+      [
+        "Aurelle",
+        "High Jewellery"
+      ],
+      [
+        "Aurelle",
+        "Market Notes"
+      ],
+      [
+        "Aurelle",
+        "Trinity Collection"
+      ],
+      [
+        "Aurelle",
+        "Diamants Légers"
+      ],
+      [
+        "LOVE Collection",
+        "Qixi Festival"
+      ],
+      [
+        "LOVE Collection",
+        "Sophia Loren"
+      ],
+      [
+        "Aurelle",
+        "LOVE Collection"
+      ],
+      [
+        "APAC Commercial Role",
+        "Aurelle"
+      ],
+      [
+        "Chinese Valentine's Day",
+        "LOVE Collection"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "doc-f684d5d153a17d84f12bce3fb2f629a4"
+  },
+  "doc-91e8488b417561214acd20253c441bb5": {
+    "relation_pairs": [
+      [
+        "Aspirational Accessibility",
+        "Aurelle"
+      ],
+      [
+        "Australia",
+        "Melbourne"
+      ],
+      [
+        "APAC",
+        "Aurelle"
+      ],
+      [
+        "Aurelle Complications",
+        "VIC Concentration Strategy"
+      ],
+      [
+        "Delhi",
+        "India"
+      ],
+      [
+        "Aurelle",
+        "Santos de Aurelle"
+      ],
+      [
+        "APAC Brand Expression Guidelines v3.2",
+        "Brand Governance"
+      ],
+      [
+        "2025 Priority Cities",
+        "Greater China"
+      ],
+      [
+        "Aurelle",
+        "Timeless Modernity"
+      ],
+      [
+        "High Jewellery",
+        "Responsible Sourcing Charter"
+      ],
+      [
+        "Australia",
+        "Collins Street"
+      ],
+      [
+        "Taipei 101",
+        "Taiwan"
+      ],
+      [
+        "ION Orchard Maison Mansion",
+        "Singapore"
+      ],
+      [
+        "Aurelle",
+        "VIC Cultivation"
+      ],
+      [
+        "Aurelle",
+        "LOVE Bracelet"
+      ],
+      [
+        "India",
+        "Mumbai"
+      ],
+      [
+        "Bandra Kurla Complex",
+        "India"
+      ],
+      [
+        "Australia",
+        "Westfield Sydney"
+      ],
+      [
+        "Australia",
+        "Sydney"
+      ],
+      [
+        "Aurelle",
+        "Savoir-Faire Authenticity"
+      ]
+    ],
+    "count": 20,
+    "create_time": 1779675662,
+    "update_time": 1779675662,
+    "_id": "doc-91e8488b417561214acd20253c441bb5"
+  },
+  "doc-4d6756b7c5e945ba2ced8e47e37decbf": {
+    "relation_pairs": [
+      [
+        "Aurelle",
+        "HNW Gifting"
+      ],
+      [
+        "Client Profile",
+        "High Jewellery"
+      ],
+      [
+        "Client Profile",
+        "Very High Net Worth Individuals (VHNWIs)"
+      ],
+      [
+        "Aurelle Macau",
+        "Galaxy Macau"
+      ],
+      [
+        "Aurelle Macau",
+        "CRM Capture Rate"
+      ],
+      [
+        "Casino Resort Ecosystem",
+        "Very High Net Worth Individuals (VHNWIs)"
+      ],
+      [
+        "Client Profile",
+        "High Complication Watches"
+      ],
+      [
+        "Aurelle",
+        "Greater China Market Intelligence Report"
+      ],
+      [
+        "Aurelle Macau",
+        "Wynn Palace"
+      ],
+      [
+        "Cultural Nuance",
+        "Social Proof"
+      ],
+      [
+        "Aurelle Macau",
+        "VIP Program Integration"
+      ],
+      [
+        "Macau",
+        "Mainland VIPs"
+      ],
+      [
+        "Aurelle",
+        "Mainland VIPs"
+      ]
+    ],
+    "count": 13,
+    "create_time": 1779675683,
+    "update_time": 1779675683,
+    "_id": "doc-4d6756b7c5e945ba2ced8e47e37decbf"
+  },
+  "doc-eb4ce6331814fb5806addc773e0381ee": {
+    "relation_pairs": [
+      [
+        "Aurelle",
+        "Aurelle Watches Portfolio"
+      ],
+      [
+        "Tank Must",
+        "Tank Must Small Quartz"
+      ],
+      [
+        "Tank Louis",
+        "Tank Must"
+      ],
+      [
+        "Ballon Bleu 33mm",
+        "Trinity"
+      ],
+      [
+        "Santos 100 Chronograph",
+        "Santos de Aurelle"
+      ],
+      [
+        "Aurelle",
+        "Ballon Bleu de Aurelle"
+      ],
+      [
+        "Tank Must",
+        "Tank Must Large SolarBeat™"
+      ],
+      [
+        "Santos Large SSGP",
+        "Santos de Aurelle"
+      ],
+      [
+        "Aurelle",
+        "Santos de Aurelle"
+      ],
+      [
+        "APAC",
+        "Ballon Bleu de Aurelle"
+      ],
+      [
+        "Ballon Bleu 33mm",
+        "LOVE Bracelet"
+      ],
+      [
+        "Ballon Bleu 33mm",
+        "Ballon Bleu 36mm"
+      ],
+      [
+        "Aurelle",
+        "Panthère de Aurelle"
+      ],
+      [
+        "Aurelle",
+        "Tank Must"
+      ],
+      [
+        "Santos Medium Steel",
+        "Santos de Aurelle"
+      ],
+      [
+        "Aurelle",
+        "La Panthère de Aurelle"
+      ],
+      [
+        "Aurelle",
+        "Panthère Medium Full Gold Diamond Bracelet"
+      ],
+      [
+        "Aurelle",
+        "Panthère Small Steel"
+      ],
+      [
+        "APAC",
+        "Santos de Aurelle"
+      ],
+      [
+        "Santos de Aurelle",
+        "Santos de Aurelle Skeleton"
+      ],
+      [
+        "Aurelle",
+        "Rotonde de Aurelle"
+      ],
+      [
+        "APAC",
+        "Tank Must"
+      ]
+    ],
+    "count": 22,
+    "create_time": 1779675708,
+    "update_time": 1779675708,
+    "_id": "doc-eb4ce6331814fb5806addc773e0381ee"
+  },
+  "doc-b976e76819640086ce01bd86e3543660": {
+    "relation_pairs": [
+      [
+        "54% Baseline",
+        "Maison Private Event"
+      ],
+      [
+        "Event Invitation Protocol",
+        "Tier 1 VIP"
+      ],
+      [
+        "APAC Race Events",
+        "Japanese GP"
+      ],
+      [
+        "78% Repeat Purchase Rate",
+        "Maison Private Event"
+      ],
+      [
+        "APAC Race Events",
+        "Singapore GP"
+      ],
+      [
+        "19% RSVP Acceptance to Purchase Conversion",
+        "Brand Experience & Heritage Events"
+      ],
+      [
+        "Market Director",
+        "Tier 1 Icon"
+      ],
+      [
+        "Personal Stylist",
+        "Tier 1 VIP"
+      ],
+      [
+        "Aurelle",
+        "Watch Celebration Events"
+      ],
+      [
+        "41% RSVP Acceptance to Purchase Conversion",
+        "High Jewellery Private Viewings"
+      ],
+      [
+        "Aurelle",
+        "Brand Experience & Heritage Events"
+      ],
+      [
+        "APAC Race Events",
+        "Australian GP"
+      ],
+      [
+        "APAC Race Events",
+        "Aurelle Santos"
+      ],
+      [
+        "Event Invitation Protocol",
+        "Tier 2"
+      ],
+      [
+        "67% Lower Churn Rate",
+        "Event Attendees"
+      ],
+      [
+        "Aurelle",
+        "USD 8.4M"
+      ],
+      [
+        "Event Invitation Protocol",
+        "Tier 1 Icon"
+      ],
+      [
+        "Aurelle",
+        "High Jewellery Private Viewings"
+      ],
+      [
+        "28% RSVP Acceptance to Purchase Conversion",
+        "Watch Celebration Events"
+      ],
+      [
+        "Aurelle",
+        "Maison Private Event"
+      ],
+      [
+        "Boutique Director",
+        "Tier 1 Icon"
+      ]
+    ],
+    "count": 21,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "doc-b976e76819640086ce01bd86e3543660"
+  },
+  "doc-c83e025c2c782473dc73566b3aab24a3": {
+    "relation_pairs": [
+      [
+        "KakaoTalk Business",
+        "Salesforce Luxury CRM"
+      ],
+      [
+        "Paris High Jewellery Gala",
+        "TIER 1 - MAISON VIP"
+      ],
+      [
+        "SIHH",
+        "TIER 1 - MAISON VIP"
+      ],
+      [
+        "Market Director",
+        "Reactivation Pool"
+      ],
+      [
+        "Aurelle",
+        "Market Director"
+      ],
+      [
+        "CRM Director",
+        "Market Director"
+      ],
+      [
+        "TIER 1A - MAISON ICON",
+        "Watch Specialist"
+      ],
+      [
+        "Line Business",
+        "Salesforce Luxury CRM"
+      ],
+      [
+        "High Risk",
+        "Market Director"
+      ],
+      [
+        "Australia",
+        "Market Director"
+      ],
+      [
+        "TIER 1 - MAISON VIP",
+        "TIER 1A - MAISON ICON"
+      ],
+      [
+        "CRM Director",
+        "Critical Risk"
+      ],
+      [
+        "Gemologist",
+        "TIER 1A - MAISON ICON"
+      ],
+      [
+        "Aurelle",
+        "TIER 1 - MAISON VIP"
+      ],
+      [
+        "Aurelle",
+        "Aurelle APAC Client Segmentation Framework"
+      ],
+      [
+        "CRM Director",
+        "China"
+      ],
+      [
+        "Salesforce Luxury CRM",
+        "WeChat Work"
+      ],
+      [
+        "Aurelle",
+        "TIER 0 - PROSPECT"
+      ],
+      [
+        "Aurelle",
+        "TIER 2 - PREMIUM"
+      ],
+      [
+        "Boutique Director",
+        "South Korea"
+      ],
+      [
+        "TIER 1 - MAISON VIP",
+        "Watches & Wonders Geneva"
+      ],
+      [
+        "Aurelle",
+        "TIER 3 - ASPIRATIONAL"
+      ],
+      [
+        "Japan",
+        "Market Director"
+      ],
+      [
+        "Aurelle Private Foundation",
+        "TIER 1A - MAISON ICON"
+      ]
+    ],
+    "count": 24,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "doc-c83e025c2c782473dc73566b3aab24a3"
+  },
+  "doc-64590e49cd91c616289dacaa2ec5cf8c": {
+    "relation_pairs": [
+      [
+        "High-Net-Worth Individuals (HNWI)",
+        "TSMC"
+      ],
+      [
+        "Mainland China",
+        "Taiwan"
+      ],
+      [
+        "Aurelle",
+        "Japan"
+      ],
+      [
+        "SOGO Zhongxiao",
+        "Xinyi District"
+      ],
+      [
+        "Aurelle",
+        "South Korea"
+      ],
+      [
+        "LOVE Bracelet",
+        "Trinity Ring"
+      ],
+      [
+        "Consumer Profile",
+        "Taiwan"
+      ],
+      [
+        "Trinity Ring",
+        "Understated Luxury"
+      ],
+      [
+        "Rotonde Complications",
+        "Taiwan"
+      ],
+      [
+        "Aurelle",
+        "Taiwan"
+      ]
+    ],
+    "count": 10,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "doc-64590e49cd91c616289dacaa2ec5cf8c"
+  },
+  "doc-0e75dfca0f1f44ada8f07acdc5f6ea8c": {
+    "relation_pairs": [
+      [
+        "Aurelle",
+        "High Jewellery"
+      ],
+      [
+        "Aurelle",
+        "VIC Salon Spaces"
+      ],
+      [
+        "Aurelle",
+        "USD 543M"
+      ],
+      [
+        "APAC Region",
+        "USD 620M"
+      ],
+      [
+        "APAC Region",
+        "Aurelle"
+      ],
+      [
+        "Aurelle",
+        "USD 620M"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "doc-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+  },
+  "doc-cd79de94c473ecdf58192f9b355015d7": {
+    "relation_pairs": [
+      [
+        "Aurelle",
+        "NPS Surveys"
+      ],
+      [
+        "Aurelle",
+        "VIC Appointments"
+      ],
+      [
+        "Aurelle",
+        "Mystery Shopping"
+      ],
+      [
+        "Aurelle",
+        "Client Experience Protocol"
+      ],
+      [
+        "Aurelle",
+        "Performance Improvement Plan"
+      ],
+      [
+        "Boutique",
+        "Mystery Shopping"
+      ],
+      [
+        "Aurelle Boutique Operations Standards",
+        "Operations"
+      ],
+      [
+        "Aurelle",
+        "Maison Reality"
+      ],
+      [
+        "Aurelle",
+        "La Panthère"
+      ],
+      [
+        "Level 3",
+        "VIC Relationship"
+      ],
+      [
+        "Complaint & Escalation Protocol",
+        "Level 4"
+      ],
+      [
+        "Complaint & Escalation Protocol",
+        "Level 2"
+      ],
+      [
+        "Complaint & Escalation Protocol",
+        "Level 1"
+      ],
+      [
+        "Mystery Shopping",
+        "Performance Improvement Plan"
+      ],
+      [
+        "CRM",
+        "Level 2"
+      ],
+      [
+        "High Jewellery",
+        "Level 3"
+      ],
+      [
+        "Complaint & Escalation Protocol",
+        "Level 3"
+      ],
+      [
+        "Mystery Shopping",
+        "Mystery Shopping Scoring Dimensions"
+      ],
+      [
+        "Complaint & Escalation Protocol",
+        "NPS Target"
+      ],
+      [
+        "Aurelle",
+        "Aurelle Boutique Operations Standards"
+      ]
+    ],
+    "count": 20,
+    "create_time": 1779675787,
+    "update_time": 1779675787,
+    "_id": "doc-cd79de94c473ecdf58192f9b355015d7"
+  },
+  "doc-2d50239211f3b9ec90310d489fa0aa5f": {
+    "relation_pairs": [
+      [
+        "Gifting Calendar",
+        "LES HEURES DE AURELLE"
+      ],
+      [
+        "DÉCLARATION",
+        "Gifting Calendar"
+      ],
+      [
+        "Aurelle Product Universe",
+        "Client Acquisition"
+      ],
+      [
+        "Aurelle Product Universe",
+        "Fragrance & Accessories Portfolio"
+      ],
+      [
+        "Gifting Calendar",
+        "La Panthère EDP"
+      ],
+      [
+        "Gifting Calendar",
+        "Écrou de Aurelle Collection"
+      ],
+      [
+        "Aurelle Product Universe",
+        "Gifting Completeness"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "doc-2d50239211f3b9ec90310d489fa0aa5f"
+  },
+  "doc-3adaeaedad71891ccde22e57fcc2c918": {
+    "relation_pairs": [
+      [
+        "APAC SAV Network Structure",
+        "Certified Service Centres"
+      ],
+      [
+        "Certified Service Centres",
+        "Remote Market SAV Routing"
+      ],
+      [
+        "Aurelle APAC",
+        "Seoul CSC"
+      ],
+      [
+        "Aurelle APAC",
+        "Shanghai CSC"
+      ],
+      [
+        "Client Experience Team",
+        "SAV Assessments"
+      ],
+      [
+        "CSC",
+        "SAV Revenue & Commercial Policy"
+      ],
+      [
+        "CSC",
+        "Manufacture's Quality Team"
+      ],
+      [
+        "Aurelle APAC",
+        "Hong Kong CSC"
+      ],
+      [
+        "High Jewellery Restorations",
+        "Regional Gemologist"
+      ],
+      [
+        "SAV Protocol",
+        "Service Level Standards"
+      ],
+      [
+        "APAC SAV Tariff Grid v2025",
+        "Regional COO"
+      ],
+      [
+        "NPS (Net Promoter Score)",
+        "SAV Interactions"
+      ],
+      [
+        "Aurelle APAC",
+        "SAV Revenue & Commercial Policy"
+      ],
+      [
+        "Aurelle APAC",
+        "Delhi CSC"
+      ],
+      [
+        "APAC",
+        "SAV Revenue & Commercial Policy"
+      ],
+      [
+        "Aurelle APAC",
+        "Sydney CSC"
+      ],
+      [
+        "Aurelle APAC",
+        "Certified Service Centres"
+      ],
+      [
+        "Aurelle APAC",
+        "Singapore CSC"
+      ],
+      [
+        "Aurelle APAC",
+        "Tokyo CSC"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1779675857,
+    "update_time": 1779675857,
+    "_id": "doc-3adaeaedad71891ccde22e57fcc2c918"
+  },
+  "doc-ecb11b128e627b527f0da191faf5ac2f": {
+    "relation_pairs": [
+      [
+        "Module 3 - Watches Technical Excellence",
+        "Module 4 - Commercial Excellence"
+      ],
+      [
+        "Paris Maison Immersion",
+        "Track 3 - VIC Mastery"
+      ],
+      [
+        "Client Advisor Excellence Program",
+        "Retail Training Managers"
+      ],
+      [
+        "Client Advisor Excellence Program",
+        "Foundation Track"
+      ],
+      [
+        "Change Leadership",
+        "Track 4 - Leadership & Boutique Commerce"
+      ],
+      [
+        "P&L Management for Retail Leaders",
+        "Track 4 - Leadership & Boutique Commerce"
+      ],
+      [
+        "Client Advisor Excellence Program",
+        "Maison Academy"
+      ],
+      [
+        "CRM Data",
+        "VIC Relationships"
+      ],
+      [
+        "Aurelle APAC",
+        "Client Advisor Excellence Program"
+      ],
+      [
+        "APAC People Development Team",
+        "Client Advisor Excellence Program"
+      ],
+      [
+        "Assessment & Certification Standards",
+        "Performance Link - CAEP to Commercial KPIs"
+      ],
+      [
+        "Bespoke & Personalisation Masterclass",
+        "Track 3 - VIC Mastery"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1779675875,
+    "update_time": 1779675875,
+    "_id": "doc-ecb11b128e627b527f0da191faf5ac2f"
+  },
+  "doc-53c27c6465605b6c1dd221de3cdd71ea": {
+    "relation_pairs": [
+      [
+        "Audit & Financial Compliance",
+        "Aurelle Global"
+      ],
+      [
+        "Aurelle Global",
+        "Daily Flash Reports"
+      ],
+      [
+        "APAC President",
+        "Aurelle Global"
+      ],
+      [
+        "2025 Budget",
+        "2025 Budget Total"
+      ],
+      [
+        "Aurelle Global",
+        "Boutique Renovation & New Opening Capex Norms"
+      ],
+      [
+        "Aurelle APAC",
+        "Market Directors"
+      ],
+      [
+        "2025 Budget",
+        "Revenue Breakdown by Channel"
+      ],
+      [
+        "Aurelle Global",
+        "Regional COO"
+      ],
+      [
+        "Aurelle Global",
+        "Finance VP"
+      ],
+      [
+        "Operations Review",
+        "Regional COO"
+      ],
+      [
+        "Flash Sales",
+        "Market Directors"
+      ],
+      [
+        "Aurelle APAC",
+        "Bain & Company Luxury Study"
+      ],
+      [
+        "2025 Budget",
+        "Revenue Breakdown by Market"
+      ],
+      [
+        "Aurelle Global",
+        "Currency & FX Risk Management"
+      ],
+      [
+        "Aurelle Global",
+        "Aurelle Global Internal Audit"
+      ],
+      [
+        "Aurelle Global",
+        "Staff Sales & Compliance"
+      ],
+      [
+        "Aurelle APAC",
+        "Finance Business Partners"
+      ],
+      [
+        "Aurelle Global",
+        "Monthly P&L Structure"
+      ],
+      [
+        "Paris HQ",
+        "Regional VP Finance"
+      ],
+      [
+        "Aurelle APAC",
+        "McKinsey China Luxury Report"
+      ],
+      [
+        "Aurelle Global",
+        "Paris CFO"
+      ],
+      [
+        "Aurelle APAC",
+        "Regional VP Finance"
+      ],
+      [
+        "Aurelle Planning Portal",
+        "Market Directors"
+      ],
+      [
+        "Aurelle Global",
+        "Capex Approval Thresholds"
+      ],
+      [
+        "2025 Budget",
+        "Revenue Breakdown by Category"
+      ]
+    ],
+    "count": 25,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "doc-53c27c6465605b6c1dd221de3cdd71ea"
+  },
+  "doc-b247997af40ea628c3c7b98ed0c14948": {
+    "relation_pairs": [
+      [
+        "Aurelle",
+        "Pricing Governance"
+      ],
+      [
+        "Market Pricing",
+        "Pricing Governance"
+      ],
+      [
+        "Market Directors",
+        "Service Adjustment"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "doc-b247997af40ea628c3c7b98ed0c14948"
+  },
+  "doc-5ddd15151e7121a66b0b295c929e13d4": {
+    "relation_pairs": [
+      [
+        "Boutique Director",
+        "Tier 2 Extended Preview List"
+      ],
+      [
+        "Client Engagement Protocol",
+        "High Jewellery Launch Protocol - APAC"
+      ],
+      [
+        "Maison Mansion",
+        "Private Viewing Events"
+      ],
+      [
+        "CNY Gifting",
+        "High Jewellery Launch Protocol - APAC"
+      ],
+      [
+        "Full Annual High Jewellery Collection",
+        "Paris Gala"
+      ],
+      [
+        "High Jewellery",
+        "High Jewellery Launch Protocol - APAC"
+      ],
+      [
+        "Boutique Director",
+        "T+7"
+      ],
+      [
+        "Faune Sauvage",
+        "High Jewellery Launch Protocol - APAC"
+      ],
+      [
+        "Boutique Credit",
+        "Regional Performance Debrief"
+      ],
+      [
+        "Aurelle",
+        "High Jewellery Launch Protocol - APAC"
+      ],
+      [
+        "Boutique Director",
+        "Regional Performance Debrief"
+      ],
+      [
+        "Boutique Director",
+        "T+3"
+      ],
+      [
+        "Geneva Watches & Wonders",
+        "Lumière Éternelle"
+      ],
+      [
+        "High Jewellery Launch Protocol - APAC",
+        "Private Viewing Events"
+      ],
+      [
+        "Boutique Credit",
+        "Boutique Director"
+      ],
+      [
+        "High Jewellery Collections",
+        "High Jewellery Launch Protocol - APAC"
+      ],
+      [
+        "T+14",
+        "Tier 2 Extended Preview List"
+      ],
+      [
+        "Regional Performance Debrief",
+        "T+30"
+      ]
+    ],
+    "count": 18,
+    "create_time": 1779675911,
+    "update_time": 1779675911,
+    "_id": "doc-5ddd15151e7121a66b0b295c929e13d4"
+  },
+  "doc-43ab8f89f1b0988c108c45956261edbc": {
+    "relation_pairs": [
+      [
+        "Alibaba Analytics",
+        "WeChat Mini-Program"
+      ],
+      [
+        "Aurelle",
+        "Gen AI Drafting Tool"
+      ],
+      [
+        "APAC CRM Team",
+        "Sentiment Analysis"
+      ],
+      [
+        "APAC CRM Team",
+        "Recommendation Engine"
+      ],
+      [
+        "China",
+        "Great Firewall"
+      ],
+      [
+        "Client 360 Profile",
+        "Salesforce CRM"
+      ],
+      [
+        "Tencent Analytics",
+        "WeChat Work"
+      ],
+      [
+        "Southeast Asia",
+        "WhatsApp Business"
+      ],
+      [
+        "KakaoTalk Business Channel",
+        "South Korea"
+      ],
+      [
+        "Allocation Link",
+        "Salesforce CRM"
+      ],
+      [
+        "APAC CRM Team",
+        "Churn Prediction Model"
+      ],
+      [
+        "APAC CRM Team",
+        "Gen AI Drafting Tool"
+      ],
+      [
+        "Salesforce CN Instance",
+        "WeChat Mini-Program"
+      ],
+      [
+        "Japan",
+        "LINE Official Account"
+      ],
+      [
+        "Aurelle APAC",
+        "Salesforce CRM"
+      ],
+      [
+        "China",
+        "WeChat Work"
+      ],
+      [
+        "Salesforce CRM",
+        "Touchpoint Scheduler"
+      ],
+      [
+        "Aurelle APAC",
+        "Aurelle Client App"
+      ],
+      [
+        "Event Manager",
+        "Salesforce CRM"
+      ],
+      [
+        "APAC CRM Team",
+        "CRM Team Support"
+      ],
+      [
+        "NPS Integration",
+        "Salesforce CRM"
+      ]
+    ],
+    "count": 21,
+    "create_time": 1779675926,
+    "update_time": 1779675926,
+    "_id": "doc-43ab8f89f1b0988c108c45956261edbc"
+  },
+  "doc-6521e6b2c93340980686b8661f7cf680": {
+    "relation_pairs": [
+      [
+        "Aurelle Academy APAC",
+        "Foundation Program"
+      ],
+      [
+        "Aurelle",
+        "Aurelle Academy APAC"
+      ],
+      [
+        "APAC",
+        "Aurelle"
+      ],
+      [
+        "Cultural Fluency",
+        "Operational Value"
+      ],
+      [
+        "APAC President",
+        "Long-Service Recognition"
+      ],
+      [
+        "Aurelle",
+        "Aurelle Talent Accelerator"
+      ],
+      [
+        "Client-Facing Turnover",
+        "Philippines"
+      ],
+      [
+        "Aurelle Academy APAC",
+        "Specialist Certifications"
+      ],
+      [
+        "Aurelle Academy APAC",
+        "Watch Specialist"
+      ],
+      [
+        "Australia",
+        "Client-Facing Turnover"
+      ],
+      [
+        "Advanced Programs",
+        "Aurelle Academy APAC"
+      ],
+      [
+        "Aurelle Talent Accelerator",
+        "Stylists"
+      ],
+      [
+        "Personal Stylist / Client Advisor",
+        "Senior Stylist / VIC Relationship Manager"
+      ],
+      [
+        "Aurelle Academy APAC",
+        "Gemologist"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1779675932,
+    "update_time": 1779675932,
+    "_id": "doc-6521e6b2c93340980686b8661f7cf680"
+  }
+}

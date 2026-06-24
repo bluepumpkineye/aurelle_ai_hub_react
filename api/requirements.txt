@@ -1,0 +1,4 @@
+# API layer only — install alongside the existing engine requirements.
+# pip install -r api/requirements.txt
+fastapi==0.115.0
+uvicorn[standard]==0.30.6

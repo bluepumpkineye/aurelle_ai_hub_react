@@ -1,0 +1,20 @@
+boutique_id,boutique_name,market,city,mall_location,boutique_tier,size_sqm,has_private_salon,has_hj_gallery,has_csc,opening_year,last_renovation_year,total_sa_count,vic_client_count,annual_footfall,allocation_tier,csc_routing,distribution_hub,annual_rent_usd,revenue_per_sqm
+hk-1,Aurelle Landmark Prince's Hong Kong,Hong Kong,Hong Kong,Landmark Prince's,Flagship,563,True,True,True,2013,2021,18,214,356556,Tier 2,Direct,Singapore DC,578764,121136.77
+hk-2,Aurelle Peninsula Hong Kong,Hong Kong,Hong Kong,The Peninsula,Standard,255,True,False,False,2018,2020,12,129,142790,Tier 3,Hub,Singapore DC,211650,154901.96
+cn-1,Aurelle Plaza 66 Shanghai,China,Shanghai,Plaza 66,Flagship Maison,723,True,True,True,2021,2024,22,405,721981,Tier 1,Direct,Singapore DC,597921,116320.89
+cn-2,Aurelle Kerry Centre Shanghai,China,Shanghai,Jing An Kerry Centre,Standard,363,True,False,False,2012,2023,14,129,229974,Tier 3,Hub,Singapore DC,509289,126170.8
+cn-3,Aurelle SKP Beijing,China,Beijing,SKP Beijing,Flagship,471,True,True,True,2010,2025,20,303,351703,Tier 2,Direct,Singapore DC,580272,153927.81
+cn-4,Aurelle Taikoo Li Chengdu,China,Chengdu,Taikoo Li Chengdu,Standard,307,False,False,False,2015,2020,12,79,176443,Tier 3,Hub,Singapore DC,274458,105537.46
+cn-5,Aurelle MixC Shenzhen,China,Shenzhen,MixC Shenzhen,Standard,317,True,False,False,2013,2020,10,105,210165,Tier 3,Hub,Singapore DC,402590,88643.53
+jp-1,Aurelle Mansion Tokyo Ginza,Japan,Tokyo,Ginza Mansion,Flagship Maison,837,True,True,True,2007,2024,25,381,798461,Tier 1,Direct,Singapore DC,920700,93667.86
+jp-2,Aurelle Omotesando Tokyo,Japan,Tokyo,Omotesando,Standard,380,False,False,False,2007,2020,15,133,170407,Tier 3,Hub,Singapore DC,561260,95000.0
+jp-3,Aurelle Shinsaibashi Osaka,Japan,Osaka,Shinsaibashi,Standard,278,False,False,False,2008,2023,14,70,181024,Tier 3,Hub,Singapore DC,301352,112230.22
+kr-1,Aurelle Cheongdam Maison Seoul,South Korea,Seoul,Cheongdam Maison,Flagship,516,True,True,True,2010,2022,16,281,445638,Tier 2,Direct,Singapore DC,600108,94186.05
+kr-2,Aurelle Lotte Main Seoul,South Korea,Seoul,Lotte Main Store,Standard,273,False,False,False,2010,2024,12,69,279680,Tier 3,Hub,Singapore DC,286650,109157.51
+sg-1,Aurelle ION Orchard Singapore,Singapore,Singapore,ION Orchard,Flagship Maison,741,True,True,True,2013,2025,14,468,798943,Tier 1,Direct,Singapore DC,1015170,46153.85
+au-1,Aurelle Castlereagh St Sydney,Australia,Sydney,Castlereagh St,Standard,276,False,False,False,2006,2022,12,67,180043,Tier 3,Hub,Singapore DC,333960,96014.49
+au-2,Aurelle Collins St Melbourne,Australia,Melbourne,Collins St,Standard,288,True,False,False,2015,2021,10,87,268682,Tier 3,Hub,Singapore DC,423648,63194.44
+tw-1,Aurelle Taipei 101 Mall,Taiwan,Taipei,Taipei 101,Standard,347,False,False,False,2013,2021,12,118,157452,Tier 3,Hub,Singapore DC,365044,82708.93
+mo-1,Aurelle Wynn Palace Macau,Macau,Macau,Wynn Palace,Standard,363,False,False,False,2017,2022,10,134,232311,Tier 3,Hub,Singapore DC,371712,87878.79
+th-1,Aurelle Siam Paragon Bangkok,Thailand,Bangkok,Siam Paragon,Emerging,128,False,False,False,2007,2020,8,41,92343,Tier 4,Hub,Singapore DC,116736,167187.5
+in-1,Aurelle DLF Chanakya Delhi,India,Delhi,DLF Chanakya,Emerging,129,False,False,False,2018,2024,6,45,70484,Tier 4,Hub,Singapore DC,111585,114728.68

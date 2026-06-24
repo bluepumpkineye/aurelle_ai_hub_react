@@ -1,0 +1,358 @@
+{
+  "doc-35512f32ea45c1b275bccd44a565ae39": {
+    "status": "processed",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "content_summary": "Document ID: DOC-004\nTitle: Supply Chain & Allocation Policy APAC\nCategory: Supply Chain\nContent: APAC Supply Chain Management — Inventory & Boutique Allocation Policy\n\nNETWORK OVERVIEW\nAurelle APAC operates a dual-hub supply chain model designed to ...",
+    "content_length": 4555,
+    "created_at": "2026-05-25T02:19:18.894810+00:00",
+    "updated_at": "2026-05-25T02:19:47.597541+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675558,
+      "processing_end_time": 1779675587
+    }
+  },
+  "doc-16ec8e77a4e34699426d78e912f40ea4": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78",
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "content_summary": "Document ID: DOC-010\nTitle: Market Intelligence — Southeast Asia & India\nCategory: Market Intelligence\nContent: Southeast Asia & India Market Intelligence — APAC Coverage\n\nSINGAPORE\n\nMarket Role: Singapore is simultaneously an Aurelle market and the ...",
+    "content_length": 6243,
+    "created_at": "2026-05-25T02:19:18.894803+00:00",
+    "updated_at": "2026-05-25T02:20:25.064702+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675558,
+      "processing_end_time": 1779675625
+    }
+  },
+  "doc-a0504f98228375b771e952e83591e063": {
+    "status": "processed",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "content_summary": "Document ID: DOC-016\nTitle: After-Sales Service & Client Care Protocol APAC\nCategory: Operations\nContent: Aurelle After-Sales Service & Client Care — APAC Protocol\n\nSERVICE AS A RELATIONSHIP TOOL\nAfter-sales service in the luxury context is not a cos...",
+    "content_length": 2694,
+    "created_at": "2026-05-25T02:19:18.894720+00:00",
+    "updated_at": "2026-05-25T02:20:05.119145+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675587,
+      "processing_end_time": 1779675605
+    }
+  },
+  "doc-91e8488b417561214acd20253c441bb5": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "content_summary": "Document ID: DOC-019\nTitle: Aurelle APAC Brand Strategy & Competitive Positioning 2025\nCategory: Strategy\nContent: Aurelle APAC Brand Strategy & Competitive Positioning 2025\\n\\n\n  \n  ## Strategic Vision\\n\n  Aurelle's APAC brand strategy for 2025 oper...",
+    "content_length": 7442,
+    "created_at": "2026-05-25T02:19:18.894752+00:00",
+    "updated_at": "2026-05-25T02:21:02.047596+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675605,
+      "processing_end_time": 1779675662
+    }
+  },
+  "doc-f684d5d153a17d84f12bce3fb2f629a4": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-e887c12559193e3bccad1c5543198012",
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "content_summary": "Document ID: DOC-006\nTitle: Aurelle Product Universe — Jewellery Portfolio APAC\nCategory: Product Knowledge\nContent: Aurelle Jewellery Portfolio — APAC Sales & Product Knowledge Reference\n\nPORTFOLIO OVERVIEW\nAurelle's jewellery portfolio is the Maiso...",
+    "content_length": 8798,
+    "created_at": "2026-05-25T02:19:18.894768+00:00",
+    "updated_at": "2026-05-25T02:20:45.753523+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675625,
+      "processing_end_time": 1779675645
+    }
+  },
+  "doc-4d6756b7c5e945ba2ced8e47e37decbf": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d",
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "content_summary": "Document ID: DOC-008\nTitle: Market Intelligence — Greater China (Mainland China, Hong Kong, Macau)\nCategory: Market Intelligence\nContent: Greater China Market Intelligence Report — FY2025 Outlook\n\nMARKET OVERVIEW\nGreater China remains Aurelle's large...",
+    "content_length": 6447,
+    "created_at": "2026-05-25T02:19:18.894796+00:00",
+    "updated_at": "2026-05-25T02:21:23.189147+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675645,
+      "processing_end_time": 1779675683
+    }
+  },
+  "doc-eb4ce6331814fb5806addc773e0381ee": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922",
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "content_summary": "Document ID: DOC-005\nTitle: Aurelle Product Universe — Watches Portfolio APAC\nCategory: Product Knowledge\nContent: Aurelle Watches Portfolio — APAC Sales & Product Knowledge Reference\n\nPORTFOLIO OVERVIEW\nAurelle's watch collections represent 38% of A...",
+    "content_length": 8440,
+    "created_at": "2026-05-25T02:19:18.894764+00:00",
+    "updated_at": "2026-05-25T02:21:48.713418+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675662,
+      "processing_end_time": 1779675708
+    }
+  },
+  "doc-b976e76819640086ce01bd86e3543660": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c",
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "content_summary": "Document ID: DOC-015\nTitle: Event Strategy & Client Experience Programming APAC\nCategory: Operations\nContent: Aurelle APAC Event Strategy & Client Experience Programming FY2025\n\nSTRATEGIC ROLE OF EVENTS\nEvents are not marketing expenses — they are th...",
+    "content_length": 5982,
+    "created_at": "2026-05-25T02:19:18.894783+00:00",
+    "updated_at": "2026-05-25T02:22:09.540258+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675683,
+      "processing_end_time": 1779675729
+    }
+  },
+  "doc-64590e49cd91c616289dacaa2ec5cf8c": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5",
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "content_summary": "Document ID: DOC-009\nTitle: Market Intelligence — Northeast Asia (Japan, South Korea, Taiwan)\nCategory: Market Intelligence\nContent: Northeast Asia Market Intelligence — Japan, South Korea, Taiwan\n\nJAPAN\n\nMarket Overview:\nJapan is Aurelle's most matu...",
+    "content_length": 5999,
+    "created_at": "2026-05-25T02:19:18.894799+00:00",
+    "updated_at": "2026-05-25T02:22:44.433759+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675708,
+      "processing_end_time": 1779675764
+    }
+  },
+  "doc-c83e025c2c782473dc73566b3aab24a3": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-2ab57f33730277bda03644a62ff087b1",
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "content_summary": "Document ID: DOC-003\nTitle: Client Segmentation & CRM Guidelines\nCategory: CRM\nContent: Aurelle APAC Client Segmentation Framework — Full Guidelines\n\nSEGMENTATION PHILOSOPHY\nAt Aurelle, every client relationship is treated as a long-term investment, ...",
+    "content_length": 6870,
+    "created_at": "2026-05-25T02:19:18.894775+00:00",
+    "updated_at": "2026-05-25T02:22:34.503477+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675729,
+      "processing_end_time": 1779675754
+    }
+  },
+  "doc-0e75dfca0f1f44ada8f07acdc5f6ea8c": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "content_summary": "Document ID: DOC-001\nTitle: Aurelle APAC Sales Strategy 2025\nCategory: Strategy\nContent: Aurelle APAC Sales Strategy 2025 — Executive Summary\n\nSTRATEGIC CONTEXT\nThe APAC region represents Aurelle's single largest growth engine globally, targeting USD...",
+    "content_length": 4556,
+    "created_at": "2026-05-25T02:19:18.894755+00:00",
+    "updated_at": "2026-05-25T02:23:03.648818+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675754,
+      "processing_end_time": 1779675783
+    }
+  },
+  "doc-cd79de94c473ecdf58192f9b355015d7": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9",
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "content_summary": "Document ID: DOC-012\nTitle: Boutique Operations Standards & Client Experience Protocol\nCategory: Operations\nContent: Aurelle Boutique Operations Standards — APAC Client Experience Protocol\n\nTHE AURELLE CLIENT EXPERIENCE PHILOSOPHY\nEvery client who en...",
+    "content_length": 6517,
+    "created_at": "2026-05-25T02:19:18.894772+00:00",
+    "updated_at": "2026-05-25T02:23:07.361203+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675764,
+      "processing_end_time": 1779675787
+    }
+  },
+  "doc-ecb11b128e627b527f0da191faf5ac2f": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d",
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "content_summary": "Document ID: DOC-020\nTitle: APAC Learning & Development Framework — Client Advisor Excellence Program\nCategory: People & Training\nContent: Aurelle APAC — Learning & Development Framework: \n  Client Advisor Excellence Program (CAEP)\\n\\n\n  \n  ## Progra...",
+    "content_length": 9271,
+    "created_at": "2026-05-25T02:19:18.894747+00:00",
+    "updated_at": "2026-05-25T02:24:35.289166+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675783,
+      "processing_end_time": 1779675875
+    }
+  },
+  "doc-2d50239211f3b9ec90310d489fa0aa5f": {
+    "status": "processed",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "content_summary": "Document ID: DOC-007\nTitle: Aurelle Product Universe — Fragrance & Accessories Portfolio APAC\nCategory: Product Knowledge\nContent: Aurelle Fragrance & Accessories Portfolio — APAC Commercial Reference\n\nSTRATEGIC ROLE IN PORTFOLIO\nFragrance and access...",
+    "content_length": 3839,
+    "created_at": "2026-05-25T02:19:18.894759+00:00",
+    "updated_at": "2026-05-25T02:23:38.680367+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675787,
+      "processing_end_time": 1779675818
+    }
+  },
+  "doc-3adaeaedad71891ccde22e57fcc2c918": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c",
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "content_summary": "Document ID: DOC-017\nTitle: APAC After-Sales Service & Repair Operations Policy\nCategory: Supply Chain\nContent: Aurelle APAC — After-Sales Service (SAV) & Repair Operations Policy\\n\\n\n  \n  ## Strategic Role of After-Sales Service\\n\n  After-Sales Serv...",
+    "content_length": 5853,
+    "created_at": "2026-05-25T02:19:18.894736+00:00",
+    "updated_at": "2026-05-25T02:24:17.394203+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675818,
+      "processing_end_time": 1779675857
+    }
+  },
+  "doc-53c27c6465605b6c1dd221de3cdd71ea": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb",
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "content_summary": "Document ID: DOC-018\nTitle: APAC Budget Planning, Revenue Reporting & Financial Governance\nCategory: Finance & Pricing\nContent: Aurelle APAC — Budget Planning, Revenue Reporting & \n  Financial Governance Framework 2025\\n\\n\n  \n  ## Overview\\n\n  This d...",
+    "content_length": 8172,
+    "created_at": "2026-05-25T02:19:18.894741+00:00",
+    "updated_at": "2026-05-25T02:24:37.826605+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675857,
+      "processing_end_time": 1779675877
+    }
+  },
+  "doc-5ddd15151e7121a66b0b295c929e13d4": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c",
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "content_summary": "Document ID: DOC-002\nTitle: High Jewellery Launch Protocol — APAC\nCategory: Operations\nContent: High Jewellery Collections — APAC Launch & Client Engagement Protocol\n\nOVERVIEW\nHigh Jewellery (HJ) represents Aurelle's highest expression of savoir-fair...",
+    "content_length": 5609,
+    "created_at": "2026-05-25T02:19:18.894788+00:00",
+    "updated_at": "2026-05-25T02:25:11.343371+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675875,
+      "processing_end_time": 1779675911
+    }
+  },
+  "doc-b247997af40ea628c3c7b98ed0c14948": {
+    "status": "processed",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "content_summary": "Document ID: DOC-011\nTitle: Pricing Architecture & Financial Policy APAC\nCategory: Finance & Pricing\nContent: Aurelle APAC Pricing Architecture & Financial Policy\n\nPRICING GOVERNANCE\nAll Aurelle retail prices are set by European HQ (Paris/Geneva) and...",
+    "content_length": 4767,
+    "created_at": "2026-05-25T02:19:18.894807+00:00",
+    "updated_at": "2026-05-25T02:24:59.280935+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675877,
+      "processing_end_time": 1779675899
+    }
+  },
+  "doc-43ab8f89f1b0988c108c45956261edbc": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49",
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "content_summary": "Document ID: DOC-013\nTitle: Digital & CRM Technology Infrastructure\nCategory: CRM\nContent: Aurelle APAC Digital & CRM Technology Infrastructure\n\nTECHNOLOGY STACK OVERVIEW\nAurelle APAC operates a unified CRM and digital engagement stack that must bala...",
+    "content_length": 6844,
+    "created_at": "2026-05-25T02:19:18.894779+00:00",
+    "updated_at": "2026-05-25T02:25:26.124008+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675899,
+      "processing_end_time": 1779675926
+    }
+  },
+  "doc-6521e6b2c93340980686b8661f7cf680": {
+    "status": "processed",
+    "chunks_count": 2,
+    "chunks_list": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db",
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "content_summary": "Document ID: DOC-014\nTitle: Human Capital & Talent Strategy APAC\nCategory: People & Training\nContent: Aurelle APAC Human Capital & Talent Strategy\n\nWORKFORCE OVERVIEW\nAPAC total headcount: approximately 1,340 (FY2025 plan). Client-facing staff: 1,105...",
+    "content_length": 6060,
+    "created_at": "2026-05-25T02:19:18.894792+00:00",
+    "updated_at": "2026-05-25T02:25:32.054257+00:00",
+    "file_path": "unknown_source",
+    "track_id": "insert_20260525_101918_610ec8cc",
+    "metadata": {
+      "processing_start_time": 1779675911,
+      "processing_end_time": 1779675932
+    }
+  }
+}

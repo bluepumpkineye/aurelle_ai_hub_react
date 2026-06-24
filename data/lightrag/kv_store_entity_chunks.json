@@ -1,0 +1,4553 @@
+{
+  "Aurelle APAC": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39",
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c",
+      "chunk-865d7129bc86ace31cbe4375e94be48d",
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb",
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 5,
+    "update_time": 1779675924,
+    "_id": "Aurelle APAC"
+  },
+  "Singapore Distribution Centre (SDC)": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "count": 1,
+    "create_time": 1779675586,
+    "update_time": 1779675586,
+    "_id": "Singapore Distribution Centre (SDC)"
+  },
+  "Switzerland Direct (ZHD)": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "count": 1,
+    "create_time": 1779675586,
+    "update_time": 1779675586,
+    "_id": "Switzerland Direct (ZHD)"
+  },
+  "India Supply Corridor": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "count": 1,
+    "create_time": 1779675586,
+    "update_time": 1779675586,
+    "_id": "India Supply Corridor"
+  },
+  "Regional Supply Chain VP": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "count": 1,
+    "create_time": 1779675586,
+    "update_time": 1779675586,
+    "_id": "Regional Supply Chain VP"
+  },
+  "Aurelle Master Inventory System": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "count": 1,
+    "create_time": 1779675586,
+    "update_time": 1779675586,
+    "_id": "Aurelle Master Inventory System"
+  },
+  "Allocation Optimizer": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "count": 1,
+    "create_time": 1779675586,
+    "update_time": 1779675586,
+    "_id": "Allocation Optimizer"
+  },
+  "Emergency Stock Request (ESR)": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39"
+    ],
+    "count": 1,
+    "create_time": 1779675586,
+    "update_time": 1779675586,
+    "_id": "Emergency Stock Request (ESR)"
+  },
+  "CRM": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39",
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f",
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 3,
+    "update_time": 1779675856,
+    "_id": "CRM"
+  },
+  "Watches": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39",
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6",
+      "chunk-c4f5fe570c16349874515e195273ab1e",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 4,
+    "update_time": 1779675899,
+    "_id": "Watches"
+  },
+  "Classic Jewellery": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 2,
+    "update_time": 1779675899,
+    "_id": "Classic Jewellery"
+  },
+  "High Jewellery": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39",
+      "chunk-e887c12559193e3bccad1c5543198012",
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e",
+      "chunk-9e119cc5bbc9fa38c53e731906650006",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 8,
+    "update_time": 1779675904,
+    "_id": "High Jewellery"
+  },
+  "Fragrances & Accessories": {
+    "chunk_ids": [
+      "chunk-35512f32ea45c1b275bccd44a565ae39",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 2,
+    "update_time": 1779675899,
+    "_id": "Fragrances & Accessories"
+  },
+  "Aurelle": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063",
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78",
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-e887c12559193e3bccad1c5543198012",
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d",
+      "chunk-727ed2a5dcd62e44662faa62c9f70922",
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853",
+      "chunk-773da13c4ac946f97f5c614d22b9e04c",
+      "chunk-2ab57f33730277bda03644a62ff087b1",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-bf98a52bede5692b73d05396929eb1d9",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c",
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8",
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 17,
+    "update_time": 1779675931,
+    "_id": "Aurelle"
+  },
+  "After-Sales Service & Client Care Protocol APAC": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "After-Sales Service & Client Care Protocol APAC"
+  },
+  "Singapore Service Centre": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Singapore Service Centre"
+  },
+  "Tokyo Service Centre": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Tokyo Service Centre"
+  },
+  "Shanghai Service Centre": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Shanghai Service Centre"
+  },
+  "Seoul Workshop": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Seoul Workshop"
+  },
+  "Hong Kong Workshop": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Hong Kong Workshop"
+  },
+  "Certificate of Service": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Certificate of Service"
+  },
+  "Warranty": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Warranty"
+  },
+  "Aurelle Prestige Care": {
+    "chunk_ids": [
+      "chunk-a0504f98228375b771e952e83591e063"
+    ],
+    "count": 1,
+    "create_time": 1779675604,
+    "update_time": 1779675604,
+    "_id": "Aurelle Prestige Care"
+  },
+  "Changi Hub": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Changi Hub"
+  },
+  "Bangkok": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Bangkok"
+  },
+  "ICONSIAM Maison": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "ICONSIAM Maison"
+  },
+  "Siam Paragon": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Siam Paragon"
+  },
+  "Manila": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Manila"
+  },
+  "Greenbelt 5 Makati": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Greenbelt 5 Makati"
+  },
+  "BGC High Street": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "BGC High Street"
+  },
+  "Mumbai DLF Emporio": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Mumbai DLF Emporio"
+  },
+  "Delhi Select Citywalk": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Delhi Select Citywalk"
+  },
+  "Bangalore": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Bangalore"
+  },
+  "Hyderabad": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Hyderabad"
+  },
+  "Australian Market": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Australian Market"
+  },
+  "Pitt Street Maison": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Pitt Street Maison"
+  },
+  "Melbourne Collins Street": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Melbourne Collins Street"
+  },
+  "Brisbane": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Brisbane"
+  },
+  "Perth": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Perth"
+  },
+  "Australia": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6",
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78",
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e",
+      "chunk-fded559bb9aca0f811af2eda90f8e432",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 7,
+    "update_time": 1779675931,
+    "_id": "Australia"
+  },
+  "Aurelle APAC Portfolio": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Aurelle APAC Portfolio"
+  },
+  "CRM Investment": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "CRM Investment"
+  },
+  "VIC Program": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "VIC Program"
+  },
+  "Santos": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6",
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853",
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "count": 3,
+    "update_time": 1779675783,
+    "_id": "Santos"
+  },
+  "Ballon Bleu": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 2,
+    "update_time": 1779675783,
+    "_id": "Ballon Bleu"
+  },
+  "Bridal Opportunity": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Bridal Opportunity"
+  },
+  "Tiffany": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Tiffany"
+  },
+  "Aurelle's Solitaire Collection": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Aurelle's Solitaire Collection"
+  },
+  "24% Churn Rate": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "24% Churn Rate"
+  },
+  "Emotional Luxury Attachment": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Emotional Luxury Attachment"
+  },
+  "Price Sensitivity": {
+    "chunk_ids": [
+      "chunk-790cec48abbae1bcde2fc05c5a095bf6"
+    ],
+    "count": 1,
+    "create_time": 1779675624,
+    "update_time": 1779675624,
+    "_id": "Price Sensitivity"
+  },
+  "Singapore": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78",
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 5,
+    "update_time": 1779675904,
+    "_id": "Singapore"
+  },
+  "Thailand": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 2,
+    "update_time": 1779675898,
+    "_id": "Thailand"
+  },
+  "India": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78",
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e",
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 6,
+    "update_time": 1779675898,
+    "_id": "India"
+  },
+  "Philippines": {
+    "chunk_ids": [
+      "chunk-f8dd643e5232ae7dacd9dfb7a9e9dd78",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 3,
+    "update_time": 1779675931,
+    "_id": "Philippines"
+  },
+  "Aldo Cipullo": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 2,
+    "create_time": 1779675644,
+    "update_time": 1779675644,
+    "_id": "Aldo Cipullo"
+  },
+  "Juste un Clou Bracelet": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675644,
+    "update_time": 1779675644,
+    "_id": "Juste un Clou Bracelet"
+  },
+  "Juste un Clou Ring": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675644,
+    "update_time": 1779675644,
+    "_id": "Juste un Clou Ring"
+  },
+  "Juste un Clou Earrings": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675644,
+    "update_time": 1779675644,
+    "_id": "Juste un Clou Earrings"
+  },
+  "Panthère Motif Jewellery": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675644,
+    "update_time": 1779675644,
+    "_id": "Panthère Motif Jewellery"
+  },
+  "Jeanne Toussaint": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675644,
+    "update_time": 1779675644,
+    "_id": "Jeanne Toussaint"
+  },
+  "Panthère de Aurelle Ring": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675644,
+    "update_time": 1779675644,
+    "_id": "Panthère de Aurelle Ring"
+  },
+  "Panthère Pendant": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Panthère Pendant"
+  },
+  "Panthère Bracelet": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Panthère Bracelet"
+  },
+  "Bridal Offering": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Bridal Offering"
+  },
+  "Destinée Collection": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Destinée Collection"
+  },
+  "1895 Collection": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "1895 Collection"
+  },
+  "Fine Jewellery Collections": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Fine Jewellery Collections"
+  },
+  "Coloratura": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Coloratura"
+  },
+  "Étourdissant de Aurelle": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Étourdissant de Aurelle"
+  },
+  "Tokyo": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 2,
+    "update_time": 1779675904,
+    "_id": "Tokyo"
+  },
+  "Seoul": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 2,
+    "update_time": 1779675904,
+    "_id": "Seoul"
+  },
+  "Japan": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-fded559bb9aca0f811af2eda90f8e432",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 7,
+    "update_time": 1779675924,
+    "_id": "Japan"
+  },
+  "Hong Kong": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 4,
+    "update_time": 1779675904,
+    "_id": "Hong Kong"
+  },
+  "Taiwan": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597",
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e",
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 6,
+    "update_time": 1779675898,
+    "_id": "Taiwan"
+  },
+  "APAC Commercial Role": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "APAC Commercial Role"
+  },
+  "Market Notes": {
+    "chunk_ids": [
+      "chunk-c58909936f746ddc15c50e77ba922597"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Market Notes"
+  },
+  "Aurelle Product Universe": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012",
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 2,
+    "update_time": 1779675818,
+    "_id": "Aurelle Product Universe"
+  },
+  "LOVE Collection": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "LOVE Collection"
+  },
+  "Trinity Collection": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Trinity Collection"
+  },
+  "Juste un Clou": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Juste un Clou"
+  },
+  "APAC": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012",
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-727ed2a5dcd62e44662faa62c9f70922",
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853",
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f",
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a",
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 7,
+    "update_time": 1779675931,
+    "_id": "APAC"
+  },
+  "Elizabeth Taylor": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Elizabeth Taylor"
+  },
+  "Sophia Loren": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Sophia Loren"
+  },
+  "Chinese Valentine's Day": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Chinese Valentine's Day"
+  },
+  "Qixi Festival": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Qixi Festival"
+  },
+  "Diamants Légers": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Diamants Légers"
+  },
+  "Écrou de Aurelle": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Écrou de Aurelle"
+  },
+  "Bridal & Solitaires": {
+    "chunk_ids": [
+      "chunk-e887c12559193e3bccad1c5543198012"
+    ],
+    "count": 1,
+    "create_time": 1779675645,
+    "update_time": 1779675645,
+    "_id": "Bridal & Solitaires"
+  },
+  "Delhi": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675660,
+    "update_time": 1779675660,
+    "_id": "Delhi"
+  },
+  "Mumbai": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675660,
+    "update_time": 1779675660,
+    "_id": "Mumbai"
+  },
+  "Aurelle Complications": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675660,
+    "update_time": 1779675660,
+    "_id": "Aurelle Complications"
+  },
+  "VIC Concentration Strategy": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675660,
+    "update_time": 1779675660,
+    "_id": "VIC Concentration Strategy"
+  },
+  "Responsible Sourcing Charter": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Responsible Sourcing Charter"
+  },
+  "APAC Brand Expression Guidelines v3.2": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "APAC Brand Expression Guidelines v3.2"
+  },
+  "Bandra Kurla Complex": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Bandra Kurla Complex"
+  },
+  "Westfield Sydney": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Westfield Sydney"
+  },
+  "Collins Street": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Collins Street"
+  },
+  "Aurelle APAC Brand Strategy & Competitive Positioning 2025": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Aurelle APAC Brand Strategy & Competitive Positioning 2025"
+  },
+  "Timeless Modernity": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Timeless Modernity"
+  },
+  "Savoir-Faire Authenticity": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Savoir-Faire Authenticity"
+  },
+  "Aspirational Accessibility": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Aspirational Accessibility"
+  },
+  "Radical Exclusivity at the Top": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Radical Exclusivity at the Top"
+  },
+  "Tier 1 Rivals": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Tier 1 Rivals"
+  },
+  "Tier 2 Rivals": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Tier 2 Rivals"
+  },
+  "Chinese Domestic Luxury Brands": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Chinese Domestic Luxury Brands"
+  },
+  "Trinity-to-Haute-Joaillerie Continuum": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Trinity-to-Haute-Joaillerie Continuum"
+  },
+  "Greater China": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 2,
+    "update_time": 1779675782,
+    "_id": "Greater China"
+  },
+  "South Korea": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-fded559bb9aca0f811af2eda90f8e432",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-b247997af40ea628c3c7b98ed0c14948",
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 6,
+    "update_time": 1779675925,
+    "_id": "South Korea"
+  },
+  "Southeast Asia": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c",
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 3,
+    "update_time": 1779675925,
+    "_id": "Southeast Asia"
+  },
+  "VIC Cultivation": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "VIC Cultivation"
+  },
+  "LOVE Bracelet": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853",
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 4,
+    "update_time": 1779675763,
+    "_id": "LOVE Bracelet"
+  },
+  "Santos de Aurelle": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-727ed2a5dcd62e44662faa62c9f70922",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 3,
+    "update_time": 1779675783,
+    "_id": "Santos de Aurelle"
+  },
+  "2025 Priority Cities": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "2025 Priority Cities"
+  },
+  "Shanghai": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 2,
+    "update_time": 1779675904,
+    "_id": "Shanghai"
+  },
+  "Beijing": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 2,
+    "update_time": 1779675904,
+    "_id": "Beijing"
+  },
+  "Chengdu": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Chengdu"
+  },
+  "Shenzhen": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Shenzhen"
+  },
+  "Hangzhou": {
+    "chunk_ids": [
+      "chunk-7ec5de96956c14dd03345825280328af"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Hangzhou"
+  },
+  "ION Orchard Maison Mansion": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "ION Orchard Maison Mansion"
+  },
+  "Taipei 101": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Taipei 101"
+  },
+  "Sydney": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 2,
+    "update_time": 1779675904,
+    "_id": "Sydney"
+  },
+  "Brand Governance": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Brand Governance"
+  },
+  "Melbourne": {
+    "chunk_ids": [
+      "chunk-b12fa9595ab8a07be0f25b056e92a77e"
+    ],
+    "count": 1,
+    "create_time": 1779675661,
+    "update_time": 1779675661,
+    "_id": "Melbourne"
+  },
+  "Greater China Market Intelligence Report": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Greater China Market Intelligence Report"
+  },
+  "Mainland China": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d",
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 3,
+    "update_time": 1779675898,
+    "_id": "Mainland China"
+  },
+  "Macau": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 2,
+    "update_time": 1779675898,
+    "_id": "Macau"
+  },
+  "FY2025": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "FY2025"
+  },
+  "CNY Preparation": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "CNY Preparation"
+  },
+  "520 Day": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "520 Day"
+  },
+  "618 Shopping Festival": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "618 Shopping Festival"
+  },
+  "Golden Week": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Golden Week"
+  },
+  "Singles' Day": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Singles' Day"
+  },
+  "Christmas and New Year Gifting": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Christmas and New Year Gifting"
+  },
+  "Bulgari": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 2,
+    "update_time": 1779675783,
+    "_id": "Bulgari"
+  },
+  "Tiffany (LVMH)": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Tiffany (LVMH)"
+  },
+  "Van Cleef": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Van Cleef"
+  },
+  "Lao Feng Xiang": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Lao Feng Xiang"
+  },
+  "Chow Tai Fook": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Chow Tai Fook"
+  },
+  "WeChat": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "WeChat"
+  },
+  "RED (Xiaohongshu)": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d",
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 2,
+    "update_time": 1779675924,
+    "_id": "RED (Xiaohongshu)"
+  },
+  "Weibo": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Weibo"
+  },
+  "Douyin (TikTok China)": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Douyin (TikTok China)"
+  },
+  "KOL (Key Opinion Leader)": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "KOL (Key Opinion Leader)"
+  },
+  "KOC (Key Opinion Consumer)": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "KOC (Key Opinion Consumer)"
+  },
+  "Mainland VIPs": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Mainland VIPs"
+  },
+  "HNW Gifting": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "HNW Gifting"
+  },
+  "Luxury Sector": {
+    "chunk_ids": [
+      "chunk-dc5ee76b42d06177ec4c2c2e85e1273d"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Luxury Sector"
+  },
+  "Aurelle Macau": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Aurelle Macau"
+  },
+  "Wynn Palace": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Wynn Palace"
+  },
+  "Galaxy Macau": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Galaxy Macau"
+  },
+  "Very High Net Worth Individuals (VHNWIs)": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Very High Net Worth Individuals (VHNWIs)"
+  },
+  "Revenue Target FY2025": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Revenue Target FY2025"
+  },
+  "Client Profile": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Client Profile"
+  },
+  "CRM Capture Rate": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "CRM Capture Rate"
+  },
+  "High Complication Watches": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "High Complication Watches"
+  },
+  "VIP Program Integration": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "VIP Program Integration"
+  },
+  "Casino Resort Ecosystem": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Casino Resort Ecosystem"
+  },
+  "Cultural Nuance": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Cultural Nuance"
+  },
+  "Social Proof": {
+    "chunk_ids": [
+      "chunk-9e119cc5bbc9fa38c53e731906650006"
+    ],
+    "count": 1,
+    "create_time": 1779675682,
+    "update_time": 1779675682,
+    "_id": "Social Proof"
+  },
+  "Aurelle Watches Portfolio": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675704,
+    "update_time": 1779675704,
+    "_id": "Aurelle Watches Portfolio"
+  },
+  "Tank Must": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922",
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 2,
+    "update_time": 1779675783,
+    "_id": "Tank Must"
+  },
+  "Ballon Bleu de Aurelle": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675704,
+    "update_time": 1779675704,
+    "_id": "Ballon Bleu de Aurelle"
+  },
+  "La Panthère de Aurelle": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675704,
+    "update_time": 1779675704,
+    "_id": "La Panthère de Aurelle"
+  },
+  "Santos Medium Steel": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675704,
+    "update_time": 1779675704,
+    "_id": "Santos Medium Steel"
+  },
+  "Santos Large SSGP": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Santos Large SSGP"
+  },
+  "Santos de Aurelle Skeleton": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Santos de Aurelle Skeleton"
+  },
+  "Santos 100 Chronograph": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Santos 100 Chronograph"
+  },
+  "Tank Must Small Quartz": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Tank Must Small Quartz"
+  },
+  "Tank Must Large SolarBeat™": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Tank Must Large SolarBeat™"
+  },
+  "Tank Louis": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Tank Louis"
+  },
+  "Tank Cintrée": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Tank Cintrée"
+  },
+  "Ballon Bleu 33mm Steel": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Ballon Bleu 33mm Steel"
+  },
+  "Ballon Bleu 36mm Bicolor Diamond Bezel": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Ballon Bleu 36mm Bicolor Diamond Bezel"
+  },
+  "Ballon Bleu 42mm Full Gold": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Ballon Bleu 42mm Full Gold"
+  },
+  "Ballon Bleu Tourbillon": {
+    "chunk_ids": [
+      "chunk-727ed2a5dcd62e44662faa62c9f70922"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Ballon Bleu Tourbillon"
+  },
+  "Ballon Bleu 33mm": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 2,
+    "update_time": 1779675764,
+    "_id": "Ballon Bleu 33mm"
+  },
+  "Ballon Bleu 36mm": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Ballon Bleu 36mm"
+  },
+  "Trinity": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853",
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "count": 2,
+    "update_time": 1779675783,
+    "_id": "Trinity"
+  },
+  "Panthère de Aurelle": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Panthère de Aurelle"
+  },
+  "Panthère Small Steel": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Panthère Small Steel"
+  },
+  "Panthère Medium Full Gold Diamond Bracelet": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Panthère Medium Full Gold Diamond Bracelet"
+  },
+  "Panthère Tourbillon": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Panthère Tourbillon"
+  },
+  "Rotonde de Aurelle": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Rotonde de Aurelle"
+  },
+  "Rotonde Ultra-Thin Perpetual Calendar": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Rotonde Ultra-Thin Perpetual Calendar"
+  },
+  "Rotonde Tourbillon": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Rotonde Tourbillon"
+  },
+  "Rotonde Minute Repeater Flying Tourbillon": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Rotonde Minute Repeater Flying Tourbillon"
+  },
+  "Ulysse": {
+    "chunk_ids": [
+      "chunk-6f6b0093e976cf2a3869dc02b9a6e853"
+    ],
+    "count": 1,
+    "create_time": 1779675705,
+    "update_time": 1779675705,
+    "_id": "Ulysse"
+  },
+  "APAC Race Events": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "APAC Race Events"
+  },
+  "Singapore GP": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Singapore GP"
+  },
+  "Japanese GP": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Japanese GP"
+  },
+  "Australian GP": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Australian GP"
+  },
+  "Aurelle Santos": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Aurelle Santos"
+  },
+  "CRM System": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0",
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 2,
+    "update_time": 1779675753,
+    "_id": "CRM System"
+  },
+  "Market Director": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0",
+      "chunk-2ab57f33730277bda03644a62ff087b1",
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 3,
+    "update_time": 1779675753,
+    "_id": "Market Director"
+  },
+  "Boutique Director": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0",
+      "chunk-fded559bb9aca0f811af2eda90f8e432",
+      "chunk-141486b564589360e8df069f117681fa",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c",
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 5,
+    "update_time": 1779675931,
+    "_id": "Boutique Director"
+  },
+  "Personal Stylist": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 2,
+    "update_time": 1779675904,
+    "_id": "Personal Stylist"
+  },
+  "Event Invitation Protocol": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Event Invitation Protocol"
+  },
+  "Tier 1 Icon": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Tier 1 Icon"
+  },
+  "Tier 1 VIP": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Tier 1 VIP"
+  },
+  "Tier 2": {
+    "chunk_ids": [
+      "chunk-02eefa7f22ecbf190aa8b142a4701ff0"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Tier 2"
+  },
+  "World Athletics Championship": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "World Athletics Championship"
+  },
+  "APAC Event Strategy & Client Experience Programming FY2025": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "APAC Event Strategy & Client Experience Programming FY2025"
+  },
+  "Maison Private Event": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Maison Private Event"
+  },
+  "High Jewellery Private Viewings": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "High Jewellery Private Viewings"
+  },
+  "Watch Celebration Events": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Watch Celebration Events"
+  },
+  "Brand Experience & Heritage Events": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Brand Experience & Heritage Events"
+  },
+  "Watches & Wonders Geneva": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c",
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 2,
+    "update_time": 1779675753,
+    "_id": "Watches & Wonders Geneva"
+  },
+  "Paris High Jewellery Gala": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c",
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 2,
+    "update_time": 1779675753,
+    "_id": "Paris High Jewellery Gala"
+  },
+  "APAC Regional Maison Summit": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "APAC Regional Maison Summit"
+  },
+  "Four Seasons": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Four Seasons"
+  },
+  "Aman": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Aman"
+  },
+  "Raffles Hotels": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Raffles Hotels"
+  },
+  "Art Basel HK": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675728,
+    "update_time": 1779675728,
+    "_id": "Art Basel HK"
+  },
+  "Frieze Seoul": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "Frieze Seoul"
+  },
+  "Le Cordon Bleu Tokyo": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "Le Cordon Bleu Tokyo"
+  },
+  "Le Cordon Bleu Bangkok": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "Le Cordon Bleu Bangkok"
+  },
+  "Singapore Tourism Board": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "Singapore Tourism Board"
+  },
+  "Japan National Tourism Agency": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "Japan National Tourism Agency"
+  },
+  "Formula 1": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "Formula 1"
+  },
+  "USD 8.4M": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "USD 8.4M"
+  },
+  "78% Repeat Purchase Rate": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "78% Repeat Purchase Rate"
+  },
+  "54% Baseline": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "54% Baseline"
+  },
+  "2.3x Higher Transaction Value": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "2.3x Higher Transaction Value"
+  },
+  "67% Lower Churn Rate": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "67% Lower Churn Rate"
+  },
+  "41% RSVP Acceptance to Purchase Conversion": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "41% RSVP Acceptance to Purchase Conversion"
+  },
+  "28% RSVP Acceptance to Purchase Conversion": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "28% RSVP Acceptance to Purchase Conversion"
+  },
+  "19% RSVP Acceptance to Purchase Conversion": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "19% RSVP Acceptance to Purchase Conversion"
+  },
+  "Event Attendees": {
+    "chunk_ids": [
+      "chunk-773da13c4ac946f97f5c614d22b9e04c"
+    ],
+    "count": 1,
+    "create_time": 1779675729,
+    "update_time": 1779675729,
+    "_id": "Event Attendees"
+  },
+  "Aurelle APAC Client Segmentation Framework": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "Aurelle APAC Client Segmentation Framework"
+  },
+  "TIER 1 - MAISON VIP": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "TIER 1 - MAISON VIP"
+  },
+  "TIER 1A - MAISON ICON": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "TIER 1A - MAISON ICON"
+  },
+  "TIER 2 - PREMIUM": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "TIER 2 - PREMIUM"
+  },
+  "TIER 3 - ASPIRATIONAL": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "TIER 3 - ASPIRATIONAL"
+  },
+  "TIER 0 - PROSPECT": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "TIER 0 - PROSPECT"
+  },
+  "Gemologist": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1",
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c",
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 3,
+    "update_time": 1779675931,
+    "_id": "Gemologist"
+  },
+  "Watch Specialist": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1",
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 2,
+    "update_time": 1779675931,
+    "_id": "Watch Specialist"
+  },
+  "CLV": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "CLV"
+  },
+  "SIHH": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "SIHH"
+  },
+  "Aurelle Private Foundation": {
+    "chunk_ids": [
+      "chunk-2ab57f33730277bda03644a62ff087b1"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "Aurelle Private Foundation"
+  },
+  "CRM Director": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675753,
+    "update_time": 1779675753,
+    "_id": "CRM Director"
+  },
+  "China": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432",
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 2,
+    "update_time": 1779675924,
+    "_id": "China"
+  },
+  "Salesforce Luxury CRM": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "Salesforce Luxury CRM"
+  },
+  "WeChat Work": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432",
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 2,
+    "update_time": 1779675924,
+    "_id": "WeChat Work"
+  },
+  "Line Business": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "Line Business"
+  },
+  "KakaoTalk Business": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "KakaoTalk Business"
+  },
+  "Churn Context": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "Churn Context"
+  },
+  "High Risk": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "High Risk"
+  },
+  "Critical Risk": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "Critical Risk"
+  },
+  "Reactivation Pool": {
+    "chunk_ids": [
+      "chunk-fded559bb9aca0f811af2eda90f8e432"
+    ],
+    "count": 1,
+    "create_time": 1779675754,
+    "update_time": 1779675754,
+    "_id": "Reactivation Pool"
+  },
+  "Xinyi District": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Xinyi District"
+  },
+  "SOGO Zhongxiao": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 2,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "SOGO Zhongxiao"
+  },
+  "Trinity Ring": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f",
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 2,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Trinity Ring"
+  },
+  "Rotonde Complications": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Rotonde Complications"
+  },
+  "TSMC": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "TSMC"
+  },
+  "Semiconductor Industry": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Semiconductor Industry"
+  },
+  "High-Net-Worth Individuals (HNWI)": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "High-Net-Worth Individuals (HNWI)"
+  },
+  "Consumer Profile": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Consumer Profile"
+  },
+  "Understated Luxury": {
+    "chunk_ids": [
+      "chunk-92c4f747e6d7ccc5a653bbd427bff78f"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Understated Luxury"
+  },
+  "Document ID DOC-009": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Document ID DOC-009"
+  },
+  "Market Intelligence": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Market Intelligence"
+  },
+  "Ginza Maison": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Ginza Maison"
+  },
+  "Omotesando Boutique": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Omotesando Boutique"
+  },
+  "Osaka Shinsaibashi": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Osaka Shinsaibashi"
+  },
+  "Nagoya Mitsukoshi": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Nagoya Mitsukoshi"
+  },
+  "Fukuoka, Sapporo, Sendai": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Fukuoka, Sapporo, Sendai"
+  },
+  "Yen": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Yen"
+  },
+  "K-drama": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "K-drama"
+  },
+  "K-pop": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "K-pop"
+  },
+  "Hallyu": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675763,
+    "update_time": 1779675763,
+    "_id": "Hallyu"
+  },
+  "Cheongdam Maison": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Cheongdam Maison"
+  },
+  "Lotte World Tower": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Lotte World Tower"
+  },
+  "Galleria Hannam": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Galleria Hannam"
+  },
+  "Hyundai Seoul": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Hyundai Seoul"
+  },
+  "Busan": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Busan"
+  },
+  "Taipei 101 Maison": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Taipei 101 Maison"
+  },
+  "Breeze Center": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Breeze Center"
+  },
+  "Jibun-Uke": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Jibun-Uke"
+  },
+  "Trinity Necklace": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Trinity Necklace"
+  },
+  "Ochugen": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Ochugen"
+  },
+  "Oseibo": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "Oseibo"
+  },
+  "March Graduation Season": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "March Graduation Season"
+  },
+  "June Wedding Season": {
+    "chunk_ids": [
+      "chunk-8ba5743a4090d85a22197f44e8ded1a5"
+    ],
+    "count": 1,
+    "create_time": 1779675764,
+    "update_time": 1779675764,
+    "_id": "June Wedding Season"
+  },
+  "APAC Region": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675782,
+    "update_time": 1779675782,
+    "_id": "APAC Region"
+  },
+  "Watches Category": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Watches Category"
+  },
+  "Chengdu Taikoo Li": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Chengdu Taikoo Li"
+  },
+  "Shenzhen MixC": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Shenzhen MixC"
+  },
+  "Nanjing Deji": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Nanjing Deji"
+  },
+  "Maison Mansions": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Maison Mansions"
+  },
+  "Van Cleef & Arpels": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Van Cleef & Arpels"
+  },
+  "Rolex": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Rolex"
+  },
+  "Patek Philippe": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Patek Philippe"
+  },
+  "Tiffany & Co": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Tiffany & Co"
+  },
+  "USD 620M": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "USD 620M"
+  },
+  "USD 543M": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "USD 543M"
+  },
+  "14% YoY Growth": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "14% YoY Growth"
+  },
+  "34% of Global Aurelle Revenue": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "34% of Global Aurelle Revenue"
+  },
+  "38% of Global Aurelle Revenue": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "38% of Global Aurelle Revenue"
+  },
+  "2 Percentage Points": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "2 Percentage Points"
+  },
+  "VIC Salon Spaces": {
+    "chunk_ids": [
+      "chunk-0e75dfca0f1f44ada8f07acdc5f6ea8c"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "VIC Salon Spaces"
+  },
+  "Jewellery": {
+    "chunk_ids": [
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Jewellery"
+  },
+  "Accessories": {
+    "chunk_ids": [
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Accessories"
+  },
+  "Fragrance": {
+    "chunk_ids": [
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Fragrance"
+  },
+  "LOVE": {
+    "chunk_ids": [
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "LOVE"
+  },
+  "Panthère": {
+    "chunk_ids": [
+      "chunk-c4f5fe570c16349874515e195273ab1e"
+    ],
+    "count": 1,
+    "create_time": 1779675783,
+    "update_time": 1779675783,
+    "_id": "Panthère"
+  },
+  "Aurelle Boutique Operations Standards": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Aurelle Boutique Operations Standards"
+  },
+  "Maison Reality": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Maison Reality"
+  },
+  "La Panthère": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "La Panthère"
+  },
+  "Client Experience Protocol": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Client Experience Protocol"
+  },
+  "CRM Tablets": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "CRM Tablets"
+  },
+  "NPS Surveys": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "NPS Surveys"
+  },
+  "Mystery Shopping": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9",
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 2,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Mystery Shopping"
+  },
+  "Operations": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Operations"
+  },
+  "VIC Appointments": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "VIC Appointments"
+  },
+  "Performance Improvement Plan": {
+    "chunk_ids": [
+      "chunk-bf98a52bede5692b73d05396929eb1d9",
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 2,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Performance Improvement Plan"
+  },
+  "Mystery Shopping Scoring Dimensions": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Mystery Shopping Scoring Dimensions"
+  },
+  "NPS Target": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "NPS Target"
+  },
+  "Complaint & Escalation Protocol": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Complaint & Escalation Protocol"
+  },
+  "Level 1": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Level 1"
+  },
+  "Level 2": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Level 2"
+  },
+  "Level 3": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Level 3"
+  },
+  "Level 4": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Level 4"
+  },
+  "Boutique": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675786,
+    "update_time": 1779675786,
+    "_id": "Boutique"
+  },
+  "VIC Relationship": {
+    "chunk_ids": [
+      "chunk-f2d09e7ccd6006f073e3fa9c880cf01f"
+    ],
+    "count": 1,
+    "create_time": 1779675787,
+    "update_time": 1779675787,
+    "_id": "VIC Relationship"
+  },
+  "Fragrance & Accessories Portfolio": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "Fragrance & Accessories Portfolio"
+  },
+  "La Panthère EDP": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "La Panthère EDP"
+  },
+  "LES HEURES DE AURELLE": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "LES HEURES DE AURELLE"
+  },
+  "DÉCLARATION": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "DÉCLARATION"
+  },
+  "Écrou de Aurelle Collection": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "Écrou de Aurelle Collection"
+  },
+  "Watch Straps & Bracelets": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "Watch Straps & Bracelets"
+  },
+  "Sunglasses & Fine Accessories": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "Sunglasses & Fine Accessories"
+  },
+  "Gifting Calendar": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "Gifting Calendar"
+  },
+  "Client Acquisition": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "Client Acquisition"
+  },
+  "Gifting Completeness": {
+    "chunk_ids": [
+      "chunk-2d50239211f3b9ec90310d489fa0aa5f"
+    ],
+    "count": 1,
+    "create_time": 1779675818,
+    "update_time": 1779675818,
+    "_id": "Gifting Completeness"
+  },
+  "SAV Revenue & Commercial Policy": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a",
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 2,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "SAV Revenue & Commercial Policy"
+  },
+  "APAC SAV Tariff Grid v2025": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "APAC SAV Tariff Grid v2025"
+  },
+  "Regional COO": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a",
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 2,
+    "update_time": 1779675877,
+    "_id": "Regional COO"
+  },
+  "Regional Gemologist": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Regional Gemologist"
+  },
+  "Manufacture's Quality Team": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Manufacture's Quality Team"
+  },
+  "Client Experience Team": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Client Experience Team"
+  },
+  "NPS (Net Promoter Score)": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "NPS (Net Promoter Score)"
+  },
+  "CSC": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "CSC"
+  },
+  "Certified Service Centres": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Certified Service Centres"
+  },
+  "Shanghai CSC": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Shanghai CSC"
+  },
+  "Tokyo CSC": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Tokyo CSC"
+  },
+  "Hong Kong CSC": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Hong Kong CSC"
+  },
+  "Seoul CSC": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Seoul CSC"
+  },
+  "Singapore CSC": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Singapore CSC"
+  },
+  "Sydney CSC": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Sydney CSC"
+  },
+  "Delhi CSC": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Delhi CSC"
+  },
+  "VIC Engagement": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "VIC Engagement"
+  },
+  "SAV Protocol": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "SAV Protocol"
+  },
+  "Warranty Policy": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Warranty Policy"
+  },
+  "Spare Parts & Calibre Inventory": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Spare Parts & Calibre Inventory"
+  },
+  "APAC SAV Network Structure": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "APAC SAV Network Structure"
+  },
+  "Remote Market SAV Routing": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Remote Market SAV Routing"
+  },
+  "Service Level Standards": {
+    "chunk_ids": [
+      "chunk-bd66dc6d321e6ab40161890d1bc0bc2c"
+    ],
+    "count": 1,
+    "create_time": 1779675856,
+    "update_time": 1779675856,
+    "_id": "Service Level Standards"
+  },
+  "High Jewellery Restorations": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675857,
+    "update_time": 1779675857,
+    "_id": "High Jewellery Restorations"
+  },
+  "SAV Assessments": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675857,
+    "update_time": 1779675857,
+    "_id": "SAV Assessments"
+  },
+  "SAV Interactions": {
+    "chunk_ids": [
+      "chunk-b2d1211ad76f3b1a951d32924e1b287a"
+    ],
+    "count": 1,
+    "create_time": 1779675857,
+    "update_time": 1779675857,
+    "_id": "SAV Interactions"
+  },
+  "CRM Data": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "CRM Data"
+  },
+  "VIC Relationships": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "VIC Relationships"
+  },
+  "Module 3 - Watches Technical Excellence": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Module 3 - Watches Technical Excellence"
+  },
+  "Module 4 - Commercial Excellence": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Module 4 - Commercial Excellence"
+  },
+  "Track 3 - VIC Mastery": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Track 3 - VIC Mastery"
+  },
+  "Paris Maison Immersion": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Paris Maison Immersion"
+  },
+  "Bespoke & Personalisation Masterclass": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Bespoke & Personalisation Masterclass"
+  },
+  "Elite Hosting & Events Protocol": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Elite Hosting & Events Protocol"
+  },
+  "Digital Intimacy": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Digital Intimacy"
+  },
+  "Track 4 - Leadership & Boutique Commerce": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Track 4 - Leadership & Boutique Commerce"
+  },
+  "P&L Management for Retail Leaders": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "P&L Management for Retail Leaders"
+  },
+  "People Leadership in Luxury": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "People Leadership in Luxury"
+  },
+  "Strategic Client Portfolio Management": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Strategic Client Portfolio Management"
+  },
+  "Change Leadership": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Change Leadership"
+  },
+  "Learning Delivery Methods": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Learning Delivery Methods"
+  },
+  "Assessment & Certification Standards": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Assessment & Certification Standards"
+  },
+  "Performance Link - CAEP to Commercial KPIs": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Performance Link - CAEP to Commercial KPIs"
+  },
+  "Annual Talent & Commerce Review": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Annual Talent & Commerce Review"
+  },
+  "Average Transaction Value": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Average Transaction Value"
+  },
+  "Atelier Visits": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Atelier Visits"
+  },
+  "Gemstone Sourcing Presentation": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Gemstone Sourcing Presentation"
+  },
+  "Archive Collections Viewing": {
+    "chunk_ids": [
+      "chunk-9637a46df67c64e111f7076aefa81fd2"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Archive Collections Viewing"
+  },
+  "Client Advisor Excellence Program": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Client Advisor Excellence Program"
+  },
+  "APAC People Development Team": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "APAC People Development Team"
+  },
+  "Maison Academy": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Maison Academy"
+  },
+  "Retail Training Managers": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Retail Training Managers"
+  },
+  "Foundation Track": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Foundation Track"
+  },
+  "Advanced Client Track": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Advanced Client Track"
+  },
+  "Expert & Coaching Track": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Expert & Coaching Track"
+  },
+  "Leadership & Commerce": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Leadership & Commerce"
+  },
+  "Strategic Leadership": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675874,
+    "update_time": 1779675874,
+    "_id": "Strategic Leadership"
+  },
+  "VIC Mastery Track": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675875,
+    "update_time": 1779675875,
+    "_id": "VIC Mastery Track"
+  },
+  "SAV Excellence Track": {
+    "chunk_ids": [
+      "chunk-865d7129bc86ace31cbe4375e94be48d"
+    ],
+    "count": 1,
+    "create_time": 1779675875,
+    "update_time": 1779675875,
+    "_id": "SAV Excellence Track"
+  },
+  "Market Directors": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb",
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 2,
+    "update_time": 1779675898,
+    "_id": "Market Directors"
+  },
+  "Finance Business Partners": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675876,
+    "update_time": 1779675876,
+    "_id": "Finance Business Partners"
+  },
+  "Regional VP Finance": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675876,
+    "update_time": 1779675876,
+    "_id": "Regional VP Finance"
+  },
+  "Paris HQ": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675876,
+    "update_time": 1779675876,
+    "_id": "Paris HQ"
+  },
+  "Bain & Company Luxury Study": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675876,
+    "update_time": 1779675876,
+    "_id": "Bain & Company Luxury Study"
+  },
+  "McKinsey China Luxury Report": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675876,
+    "update_time": 1779675876,
+    "_id": "McKinsey China Luxury Report"
+  },
+  "Aurelle Planning Portal": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675876,
+    "update_time": 1779675876,
+    "_id": "Aurelle Planning Portal"
+  },
+  "Flash Sales": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Flash Sales"
+  },
+  "2025 Budget": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "2025 Budget"
+  },
+  "Revenue Breakdown by Category": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Revenue Breakdown by Category"
+  },
+  "Revenue Breakdown by Channel": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Revenue Breakdown by Channel"
+  },
+  "Revenue Breakdown by Market": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Revenue Breakdown by Market"
+  },
+  "2025 Budget Total": {
+    "chunk_ids": [
+      "chunk-9bf9f4d3ad12fec2767f4aa8c9646beb"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "2025 Budget Total"
+  },
+  "Aurelle Global": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Aurelle Global"
+  },
+  "APAC President": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518",
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 2,
+    "update_time": 1779675931,
+    "_id": "APAC President"
+  },
+  "Finance VP": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Finance VP"
+  },
+  "Paris CFO": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Paris CFO"
+  },
+  "Monthly P&L Structure": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Monthly P&L Structure"
+  },
+  "Capex Approval Thresholds": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Capex Approval Thresholds"
+  },
+  "Boutique Renovation & New Opening Capex Norms": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Boutique Renovation & New Opening Capex Norms"
+  },
+  "Staff Sales & Compliance": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Staff Sales & Compliance"
+  },
+  "Currency & FX Risk Management": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Currency & FX Risk Management"
+  },
+  "Audit & Financial Compliance": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Audit & Financial Compliance"
+  },
+  "Oracle Retail": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Oracle Retail"
+  },
+  "Daily Flash Reports": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Daily Flash Reports"
+  },
+  "Operations Review": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Operations Review"
+  },
+  "Aurelle Global Internal Audit": {
+    "chunk_ids": [
+      "chunk-d742998f9464283ae33c1258e1047518"
+    ],
+    "count": 1,
+    "create_time": 1779675877,
+    "update_time": 1779675877,
+    "_id": "Aurelle Global Internal Audit"
+  },
+  "European HQ": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675898,
+    "update_time": 1779675898,
+    "_id": "European HQ"
+  },
+  "APAC VP Finance": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675898,
+    "update_time": 1779675898,
+    "_id": "APAC VP Finance"
+  },
+  "Switzerland": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675898,
+    "update_time": 1779675898,
+    "_id": "Switzerland"
+  },
+  "United Kingdom": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675898,
+    "update_time": 1779675898,
+    "_id": "United Kingdom"
+  },
+  "Private Client Salon": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Private Client Salon"
+  },
+  "Revenue Recognition Policy": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Revenue Recognition Policy"
+  },
+  "Currency Risk Management": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Currency Risk Management"
+  },
+  "Tax Refunds": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Tax Refunds"
+  },
+  "Pricing Architecture & Financial Policy APAC": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Pricing Architecture & Financial Policy APAC"
+  },
+  "Pricing Governance": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Pricing Governance"
+  },
+  "Service Adjustment": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Service Adjustment"
+  },
+  "Market Pricing": {
+    "chunk_ids": [
+      "chunk-b247997af40ea628c3c7b98ed0c14948"
+    ],
+    "count": 1,
+    "create_time": 1779675899,
+    "update_time": 1779675899,
+    "_id": "Market Pricing"
+  },
+  "Boutique Credit": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675903,
+    "update_time": 1779675903,
+    "_id": "Boutique Credit"
+  },
+  "Tier 2 Extended Preview List": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675903,
+    "update_time": 1779675903,
+    "_id": "Tier 2 Extended Preview List"
+  },
+  "Regional Performance Debrief": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675903,
+    "update_time": 1779675903,
+    "_id": "Regional Performance Debrief"
+  },
+  "T+1 TO T+30": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675903,
+    "update_time": 1779675903,
+    "_id": "T+1 TO T+30"
+  },
+  "T+3": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675903,
+    "update_time": 1779675903,
+    "_id": "T+3"
+  },
+  "T+7": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675903,
+    "update_time": 1779675903,
+    "_id": "T+7"
+  },
+  "T+14": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675903,
+    "update_time": 1779675903,
+    "_id": "T+14"
+  },
+  "T+30": {
+    "chunk_ids": [
+      "chunk-141486b564589360e8df069f117681fa"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "T+30"
+  },
+  "High Jewellery Launch Protocol - APAC": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "High Jewellery Launch Protocol - APAC"
+  },
+  "High Jewellery Collections": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "High Jewellery Collections"
+  },
+  "Geneva Watches & Wonders": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "Geneva Watches & Wonders"
+  },
+  "Paris Gala": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "Paris Gala"
+  },
+  "Faune Sauvage": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "Faune Sauvage"
+  },
+  "CNY Gifting": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "CNY Gifting"
+  },
+  "APAC Market Directors": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "APAC Market Directors"
+  },
+  "Client Engagement Protocol": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "Client Engagement Protocol"
+  },
+  "Private Viewing Events": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "Private Viewing Events"
+  },
+  "Maison Mansion": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675904,
+    "update_time": 1779675904,
+    "_id": "Maison Mansion"
+  },
+  "Lumière Éternelle": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675911,
+    "update_time": 1779675911,
+    "_id": "Lumière Éternelle"
+  },
+  "Full Annual High Jewellery Collection": {
+    "chunk_ids": [
+      "chunk-54134887ae21d16b43d7cfa5f9280d3c"
+    ],
+    "count": 1,
+    "create_time": 1779675911,
+    "update_time": 1779675911,
+    "_id": "Full Annual High Jewellery Collection"
+  },
+  "Salesforce CRM": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675924,
+    "update_time": 1779675924,
+    "_id": "Salesforce CRM"
+  },
+  "WeChat Mini-Program": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675924,
+    "update_time": 1779675924,
+    "_id": "WeChat Mini-Program"
+  },
+  "Salesforce CN Instance": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675924,
+    "update_time": 1779675924,
+    "_id": "Salesforce CN Instance"
+  },
+  "LINE Official Account": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "LINE Official Account"
+  },
+  "KakaoTalk Business Channel": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "KakaoTalk Business Channel"
+  },
+  "WhatsApp Business": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "WhatsApp Business"
+  },
+  "Aurelle Client App": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Aurelle Client App"
+  },
+  "AI-Powered Personalization Tools": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "AI-Powered Personalization Tools"
+  },
+  "Client 360 Profile": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Client 360 Profile"
+  },
+  "Touchpoint Scheduler": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Touchpoint Scheduler"
+  },
+  "Allocation Link": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Allocation Link"
+  },
+  "Event Manager": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Event Manager"
+  },
+  "NPS Integration": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "NPS Integration"
+  },
+  "Great Firewall": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Great Firewall"
+  },
+  "Tencent Analytics": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Tencent Analytics"
+  },
+  "Alibaba Analytics": {
+    "chunk_ids": [
+      "chunk-75d42a367a62c88ae3e50dd63478fd49"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Alibaba Analytics"
+  },
+  "APAC CRM Team": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "APAC CRM Team"
+  },
+  "Recommendation Engine": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Recommendation Engine"
+  },
+  "Churn Prediction Model": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Churn Prediction Model"
+  },
+  "Sentiment Analysis": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Sentiment Analysis"
+  },
+  "Gen AI Drafting Tool": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Gen AI Drafting Tool"
+  },
+  "Mandarin Simplified": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Mandarin Simplified"
+  },
+  "Mandarin Traditional": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Mandarin Traditional"
+  },
+  "Japanese": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Japanese"
+  },
+  "Korean": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Korean"
+  },
+  "English": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "English"
+  },
+  "Thai": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "Thai"
+  },
+  "CRM Team Support": {
+    "chunk_ids": [
+      "chunk-d7e8ab61cd77b5a3486de7c43c6b35e8"
+    ],
+    "count": 1,
+    "create_time": 1779675925,
+    "update_time": 1779675925,
+    "_id": "CRM Team Support"
+  },
+  "Noah Carter": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Noah Carter"
+  },
+  "Human Capital & Talent Strategy": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Human Capital & Talent Strategy"
+  },
+  "Personal Stylist / Client Advisor": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Personal Stylist / Client Advisor"
+  },
+  "Senior Stylist / VIC Relationship Manager": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Senior Stylist / VIC Relationship Manager"
+  },
+  "Aurelle Academy APAC": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Aurelle Academy APAC"
+  },
+  "Foundation Program": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Foundation Program"
+  },
+  "Specialist Certifications": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Specialist Certifications"
+  },
+  "Advanced Programs": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Advanced Programs"
+  },
+  "Aurelle Talent Accelerator": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db",
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 2,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Aurelle Talent Accelerator"
+  },
+  "Aurelle Maison": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Aurelle Maison"
+  },
+  "Luxury Leadership Program": {
+    "chunk_ids": [
+      "chunk-e7e1544435cdd5a7998e4cd7e79120db"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Luxury Leadership Program"
+  },
+  "Cultural Fluency": {
+    "chunk_ids": [
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Cultural Fluency"
+  },
+  "Annual Maison Day": {
+    "chunk_ids": [
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Annual Maison Day"
+  },
+  "Client-Facing Turnover": {
+    "chunk_ids": [
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Client-Facing Turnover"
+  },
+  "Operational Value": {
+    "chunk_ids": [
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Operational Value"
+  },
+  "Stylists": {
+    "chunk_ids": [
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Stylists"
+  },
+  "Long-Service Recognition": {
+    "chunk_ids": [
+      "chunk-1319dd867d0f1546d04a8c6700917538"
+    ],
+    "count": 1,
+    "create_time": 1779675931,
+    "update_time": 1779675931,
+    "_id": "Long-Service Recognition"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "dataset": "clients",
+  "source_file": "C:\\Users\\User\\Documents\\4 - Ideas and Files\\cartier-ai-hub\\data\\crm_data.csv",
+  "rows_in": 2500,
+  "rows_out": 2500,
+  "rows_skipped": 0,
+  "mapped_fields": [
+    "client_id",
+    "name",
+    "tier",
+    "home_boutique",
+    "preferred_sa",
+    "notes",
+    "lifetime_spend_usd",
+    "preferred_categories",
+    "last_purchase_date"
+  ],
+  "mapped_pii": [],
+  "unmapped_columns": [
+    "avg_order_value",
+    "boutique_id",
+    "boutique_visits_ytd",
+    "churn_risk",
+    "days_since_purchase",
+    "digital_engagement",
+    "join_date",
+    "owns_jewellery",
+    "owns_watch",
+    "preferred_channel",
+    "satisfaction_score",
+    "total_transactions",
+    "vip_events_attended"
+  ],
+  "pii_leaks": {},
+  "residency_distribution": {
+    "HK-PDPO": 1862,
+    "CN-PIPL": 638
+  },
+  "date_parse_warnings": [],
+  "validation_errors": [],
+  "written_to": null
+}
