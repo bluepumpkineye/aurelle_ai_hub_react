@@ -66,6 +66,73 @@ function Matrix({ m }: { m: { labels: string[]; rows: number[][] } }) {
   );
 }
 
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="text-[13px]">
+      <span className="text-muted">{label}: </span>
+      <span className="text-ink font-medium tracking-tight">{value}</span>
+    </div>
+  );
+}
+
+// Per-category performance card with a sell-through-vs-target gauge.
+function CategoryCard({ c, onExplore }: { c: any; onExplore: (name: string) => void }) {
+  const sell = Math.max(0, Math.min(100, c.sell_through));
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => onExplore(c.name)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onExplore(c.name);
+        }
+      }}
+      className="cursor-pointer outline-none"
+    >
+      <Card className="shine group p-6 transition duration-300 hover:shadow-lift hover:-translate-y-[2px]">
+        <div className="absolute inset-x-0 top-0 h-[2px] w-0 bg-gold transition-all duration-500 group-hover:w-full" />
+        <div className="flex items-start justify-between gap-3">
+          <div className="font-display text-2xl font-light text-ink uppercase tracking-wide leading-tight">{c.name}</div>
+          <div className="label whitespace-nowrap mt-1">Sell-through vs target</div>
+        </div>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-2.5 mt-4">
+          <Metric label="Revenue" value={fmtUsd(c.revenue)} />
+          <Metric label="Units" value={fmtNum(c.units)} />
+          <Metric label="Avg Price" value={"$" + Math.round(c.avg_price).toLocaleString("en-US")} />
+          <Metric label="Margin" value={`${c.margin.toFixed(0)}%`} />
+        </div>
+        <div className="mt-3 -mb-1">
+          <ResponsiveContainer width="100%" height={96}>
+            <PieChart>
+              <Pie
+                data={[{ v: sell }, { v: 100 - sell }]}
+                dataKey="v"
+                startAngle={180}
+                endAngle={0}
+                cx="50%"
+                cy="100%"
+                innerRadius={48}
+                outerRadius={72}
+                stroke="none"
+                isAnimationActive={false}
+              >
+                <Cell fill={C.gold} />
+                <Cell fill="#2C2C2C" />
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="flex items-center justify-between">
+          <span className="text-[11px] text-muted">{sell}% achieved · target {c.target}%</span>
+          <span className="text-[11px] text-gold">Click to explore →</span>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
 export function ProductPerformance() {
   const [opts, setOpts] = useState<any>({ markets: [], channels: [], categories: [] });
   const [markets, setMarkets] = useState<string[]>([]);
@@ -130,29 +197,54 @@ export function ProductPerformance() {
         />
       </div>
 
+      {d.categories && d.categories.length > 0 && (
+        <div className="grid sm:grid-cols-2 gap-5 mt-8">
+          {d.categories.map((c: any) => (
+            <CategoryCard key={c.name} c={c} onExplore={(name) => setCategories([name])} />
+          ))}
+        </div>
+      )}
+
       <div className="grid lg:grid-cols-2 gap-5 mt-8">
         <Card className="p-6">
-          <Eyebrow>Revenue Split by Collection</Eyebrow>
-          <ResponsiveContainer width="100%" height={340}>
-            <PieChart>
-              <Pie
-                data={d.charts.by_product}
-                dataKey="value"
-                nameKey="name"
-                innerRadius={58}
-                outerRadius={96}
-                paddingAngle={1}
-                labelLine={{ stroke: "#D4C5A9" }}
-                label={({ name, percent }: any) => (percent > 0.03 ? name : "")}
-                style={{ fontSize: 10, fill: C.ink }}
-              >
-                {d.charts.by_product.map((_: any, i: number) => (
-                  <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
+          <Eyebrow>Revenue Split by Product Collection</Eyebrow>
+          <div className="flex items-center gap-4">
+            <div className="flex-1 min-w-0">
+              <ResponsiveContainer width="100%" height={340}>
+                <PieChart>
+                  <Pie
+                    data={d.charts.by_product}
+                    dataKey="value"
+                    nameKey="name"
+                    innerRadius={56}
+                    outerRadius={94}
+                    paddingAngle={1}
+                    labelLine={{ stroke: "#D4C5A9" }}
+                    label={({ percent }: any) => (percent > 0.025 ? `${(percent * 100).toFixed(1)}%` : "")}
+                    style={{ fontSize: 10, fill: C.ink }}
+                  >
+                    {d.charts.by_product.map((_: any, i: number) => (
+                      <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(v: any) => fmtUsd(v)} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="w-[180px] max-h-[320px] overflow-y-auto scroll-thin pr-1">
+              <ul className="space-y-1.5">
+                {d.charts.by_product.map((p: any, i: number) => (
+                  <li key={p.name} className="flex items-center gap-2 text-[11px] text-ink">
+                    <span
+                      className="w-2.5 h-2.5 rounded-[2px] shrink-0"
+                      style={{ background: CHART_COLORS[i % CHART_COLORS.length] }}
+                    />
+                    <span className="truncate" title={p.name}>{p.name}</span>
+                  </li>
                 ))}
-              </Pie>
-              <Tooltip formatter={(v: any) => fmtUsd(v)} />
-            </PieChart>
-          </ResponsiveContainer>
+              </ul>
+            </div>
+          </div>
         </Card>
 
         <Card className="p-6">

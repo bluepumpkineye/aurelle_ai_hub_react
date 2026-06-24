@@ -76,7 +76,7 @@ export function Shell({
             <span className="label">Governed session</span>
           </div>
         </header>
-        <main className="px-10 py-8 max-w-[1240px]">{children}</main>
+        <main className="px-10 py-8 w-full">{children}</main>
       </div>
     </div>
   );

@@ -515,6 +515,7 @@ export function Clienteling() {
   const [boutiques, setBoutiques] = useState<string[]>([]);
   const [data, setData] = useState<any>(null);
   const [err, setErr] = useState("");
+  const [tab, setTab] = useState<"crm" | "ai" | "rag">("crm");
 
   useEffect(() => {
     api.filters().then(setOpts).catch(() => {});
@@ -554,8 +555,30 @@ export function Clienteling() {
         </span>
       </div>
 
+      {/* Tabs */}
+      <div className="flex border-b border-line mt-8 mb-6 overflow-x-auto scroll-thin">
+        {[
+          { id: "crm", label: "CRM Database" },
+          { id: "ai", label: "AI Clienteling" },
+          { id: "rag", label: "Maison Strategy Assistant (RAG)" },
+        ].map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setTab(t.id as "crm" | "ai" | "rag")}
+            className={`py-3.5 px-6 text-xs font-semibold tracking-[0.12em] uppercase transition-all border-b-2 outline-none whitespace-nowrap ${
+              tab === t.id ? "border-gold text-gold font-bold" : "border-transparent text-muted hover:text-ink"
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ── CRM DATABASE ──────────────────────────────────────── */}
+      {tab === "crm" && (
+        <div>
       {/* Filters */}
-      <div className="flex flex-wrap gap-5 mt-8">
+      <div className="flex flex-wrap gap-5">
         <MultiSelect label="Markets" options={opts.markets} value={markets} onChange={setMarkets} />
         <MultiSelect label="Segments" options={opts.segments} value={segments} onChange={setSegments} />
         <MultiSelect label="Home boutique" options={opts.boutiques} value={boutiques} onChange={setBoutiques} />
@@ -672,24 +695,30 @@ export function Clienteling() {
           )}
         </Card>
       </div>
+        </div>
+      )}
 
-      {/* Co-pilot */}
-      <div className="mt-12">
-        <div className="label text-gold">AI Clienteling Co-Pilot</div>
-        <h2 className="font-display text-3xl font-light text-ink mt-1 mb-6">
-          Governed lookup → outreach, in one motion.
-        </h2>
-        <CoPilot roles={roles} pool={data.pool} />
-      </div>
+      {/* ── AI CLIENTELING ────────────────────────────────────── */}
+      {tab === "ai" && (
+        <div>
+          <div className="label text-gold">AI Clienteling Co-Pilot</div>
+          <h2 className="font-display text-3xl font-light text-ink mt-1 mb-6">
+            Governed lookup → outreach, in one motion.
+          </h2>
+          <CoPilot roles={roles} pool={data.pool} />
+        </div>
+      )}
 
-      {/* Maison Strategy Assistant (RAG) */}
-      <div className="mt-12">
-        <div className="label text-gold">Maison Strategy Assistant</div>
-        <h2 className="font-display text-3xl font-light text-ink mt-1 mb-6">
-          Query the Maison knowledge base.
-        </h2>
-        <RagAssistant />
-      </div>
+      {/* ── MAISON STRATEGY ASSISTANT (RAG) ───────────────────── */}
+      {tab === "rag" && (
+        <div>
+          <div className="label text-gold">Maison Strategy Assistant</div>
+          <h2 className="font-display text-3xl font-light text-ink mt-1 mb-6">
+            Query the Maison knowledge base.
+          </h2>
+          <RagAssistant />
+        </div>
+      )}
 
       <div className="h-16" />
     </motion.div>

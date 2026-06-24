@@ -6,6 +6,7 @@ import {
   Bar,
   BarChart,
   Cell,
+  Legend,
   Pie,
   PieChart,
   ResponsiveContainer,
@@ -112,28 +113,50 @@ export function ExecutiveDashboard() {
 
         <Card className="p-6">
           <Eyebrow>Revenue by Category</Eyebrow>
-          <ResponsiveContainer width="100%" height={230}>
+          <ResponsiveContainer width="100%" height={250}>
             <PieChart>
-              <Pie data={d.charts.by_category} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={2}>
+              <Pie
+                data={d.charts.by_category}
+                dataKey="value"
+                nameKey="name"
+                innerRadius={42}
+                outerRadius={70}
+                paddingAngle={2}
+                labelLine={false}
+                label={({ percent }: any) => (percent >= 0.05 ? `${(percent * 100).toFixed(0)}%` : "")}
+                style={{ fontSize: 10, fill: C.ink }}
+              >
                 {d.charts.by_category.map((_: any, i: number) => (
                   <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip formatter={(v: any) => fmtUsd(v)} />
+              <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 10 }} />
             </PieChart>
           </ResponsiveContainer>
         </Card>
 
         <Card className="p-6">
           <Eyebrow>Client Segment Mix</Eyebrow>
-          <ResponsiveContainer width="100%" height={230}>
+          <ResponsiveContainer width="100%" height={250}>
             <PieChart>
-              <Pie data={d.charts.segment_mix} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={2}>
+              <Pie
+                data={d.charts.segment_mix}
+                dataKey="value"
+                nameKey="name"
+                innerRadius={42}
+                outerRadius={70}
+                paddingAngle={2}
+                labelLine={false}
+                label={({ percent }: any) => (percent >= 0.05 ? `${(percent * 100).toFixed(0)}%` : "")}
+                style={{ fontSize: 10, fill: C.ink }}
+              >
                 {d.charts.segment_mix.map((_: any, i: number) => (
                   <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip formatter={(v: any) => fmtNum(v)} />
+              <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 10 }} />
             </PieChart>
           </ResponsiveContainer>
         </Card>

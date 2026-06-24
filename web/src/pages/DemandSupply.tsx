@@ -650,6 +650,31 @@ export function DemandSupply() {
             <div className="text-muted text-xs">Loading Model Stock Filters…</div>
           )}
 
+          {/* AI Model Stock Advisor — top CTA, directly after filters */}
+          <div className="mt-6">
+            <AiReport
+              title="AI Model Stock Advisor"
+              buttonLabel="◆ Consult AI Model Stock Advisor"
+              action="Prioritise addressing critical SKU gaps in flagship boutiques to prevent VIP waitlist abandonment."
+              stream={(onT, onD) =>
+                streamReport(
+                  "/api/supply/model-stock/report",
+                  {
+                    as_of_date: msAsOfDate,
+                    markets: msSelectedMarkets,
+                    boutiques: msSelectedBoutiques,
+                    category: msSelectedCategory,
+                    collections: msSelectedCollections,
+                    tier: msSelectedTier,
+                    show_only: msShowOnly,
+                  },
+                  onT,
+                  onD
+                )
+              }
+            />
+          </div>
+
           {msLoading ? (
             <div className="text-muted py-20 text-center font-display">Recalculating boutique stock achievements…</div>
           ) : msData ? (
@@ -992,31 +1017,6 @@ export function DemandSupply() {
                   )}
                 </Card>
               </div>
-
-              {/* Section E: AI Model Stock Report */}
-              <div className="mt-8">
-                <AiReport
-                  title="AI Model Stock Advisor"
-                  buttonLabel="◆ Consult AI Model Stock Advisor"
-                  action="Prioritise addressing critical SKU gaps in flagship boutiques to prevent VIP waitlist abandonment."
-                  stream={(onT, onD) =>
-                    streamReport(
-                      "/api/supply/model-stock/report",
-                      {
-                        as_of_date: msAsOfDate,
-                        markets: msSelectedMarkets,
-                        boutiques: msSelectedBoutiques,
-                        category: msSelectedCategory,
-                        collections: msSelectedCollections,
-                        tier: msSelectedTier,
-                        show_only: msShowOnly,
-                      },
-                      onT,
-                      onD
-                    )
-                  }
-                />
-              </div>
             </div>
           ) : (
             <div className="text-muted py-20 text-center font-display">Select an As-Of Date to calculate model stocks.</div>
@@ -1101,6 +1101,31 @@ export function DemandSupply() {
           ) : (
             <div className="text-muted text-xs">Loading Planning &amp; Forecast Filters…</div>
           )}
+
+          {/* AI Demand Planning Advisor — top CTA, directly after filters */}
+          <div className="mt-6">
+            <AiReport
+              title="AI Demand &amp; Supply Planning Advisor"
+              buttonLabel="◆ Consult AI Demand Planning Advisor"
+              action="Deploy recommended regional stock transfers and expedite inbound pipeline shipments to avoid critical stockouts."
+              stream={(onT, onD) =>
+                streamReport(
+                  "/api/supply/forecast/report",
+                  {
+                    market: fcMarket,
+                    category: fcCategory,
+                    collections: fcCollections,
+                    skus: fcSkus,
+                    horizon: fcHorizon,
+                    seasonality: fcSeasonality,
+                    include_inbound: fcIncludeInbound,
+                  },
+                  onT,
+                  onD
+                )
+              }
+            />
+          </div>
 
           {fcLoading ? (
             <div className="text-muted py-20 text-center font-display">Generating time-series demand projections…</div>
@@ -1442,31 +1467,6 @@ export function DemandSupply() {
                     )}
                   </Card>
                 </div>
-              </div>
-
-              {/* Section F: AI Planning Report */}
-              <div className="mt-8">
-                <AiReport
-                  title="AI Demand &amp; Supply Planning Advisor"
-                  buttonLabel="◆ Consult AI Demand Planning Advisor"
-                  action="Deploy recommended regional stock transfers and expedite inbound pipeline shipments to avoid critical stockouts."
-                  stream={(onT, onD) =>
-                    streamReport(
-                      "/api/supply/forecast/report",
-                      {
-                        market: fcMarket,
-                        category: fcCategory,
-                        collections: fcCollections,
-                        skus: fcSkus,
-                        horizon: fcHorizon,
-                        seasonality: fcSeasonality,
-                        include_inbound: fcIncludeInbound,
-                      },
-                      onT,
-                      onD
-                    )
-                  }
-                />
               </div>
             </div>
           ) : (

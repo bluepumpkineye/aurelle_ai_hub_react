@@ -1,6 +1,7 @@
 """Headless Boutique Analytics service (decoupled from boutique_analytics.py)."""
 from __future__ import annotations
 
+import hashlib
 import json
 from functools import lru_cache
 from pathlib import Path
@@ -52,6 +53,12 @@ def _short(name: str) -> str:
     return name.split("Aurelle ")[-1]
 
 
+def _synth(seed: str, lo: int, hi: int) -> int:
+    """Stable synthetic integer in [lo, hi] for demo KPIs absent from the dataset."""
+    n = int(hashlib.md5(seed.encode()).hexdigest(), 16)
+    return lo + n % (hi - lo + 1)
+
+
 def overview(markets=None, tiers=None) -> dict:
     df_bt, df_sa = _load()
     f = _apply(df_bt, markets or [], tiers or [])
@@ -93,6 +100,24 @@ def overview(markets=None, tiers=None) -> dict:
         "map": [
             {"name": _short(r["name"]), "lat": float(r["lat"]), "lng": float(r["lng"]),
              "tier": r["tier"], "revenue": float(r["annual_revenue_usd"])}
+            for _, r in f.iterrows()
+        ],
+        "geo": [
+            {
+                "id": r["id"],
+                "name": _short(r["name"]),
+                "full_name": r["name"],
+                "market": r["market"],
+                "tier": r["tier"],
+                "lat": float(r["lat"]),
+                "lng": float(r["lng"]),
+                "revenue": float(r["annual_revenue_usd"]),
+                "sas": int(r["sa_count"]),
+                "conversion": round(24 + _synth(str(r["id"]) + "c", 0, 170) / 10, 1),
+                "atv": _synth(str(r["id"]) + "a", 14000, 31000),
+                "traffic": _synth(str(r["id"]) + "t", 3500, 15500),
+                "yoy": round(_synth(str(r["id"]) + "y", -25, 130) / 10, 1),
+            }
             for _, r in f.iterrows()
         ],
         "sa_scatter": [

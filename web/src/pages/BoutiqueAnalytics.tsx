@@ -17,6 +17,7 @@ import {
 } from "recharts";
 import { api, streamReport } from "../lib/api";
 import { AiReport, C, CHART_COLORS, Card, Eyebrow, Kpi, MultiSelect, fmtUsd, fmtNum } from "../components/ui";
+import { BoutiqueMap } from "../components/BoutiqueMap";
 
 const TIER_COLOR: Record<string, string> = {
   Flagship: C.bordeaux,
@@ -25,10 +26,11 @@ const TIER_COLOR: Record<string, string> = {
   Boutique: "#6B4E2D",
 };
 
-// White → deep bordeaux revenue scale (matches the original heatmap table).
-function redScale(t: number): string {
+// Light → deep forest green revenue scale (darker green = higher revenue).
+function greenScale(t: number): string {
   const lerp = (a: number, b: number, x: number) => Math.round(a + (b - a) * x);
-  return `rgb(${lerp(251, 139, t)},${lerp(233, 0, t)},${lerp(233, 0, t)})`;
+  // #EDF5EF (near-white green) → #14401F (deep forest)
+  return `rgb(${lerp(237, 20, t)},${lerp(245, 64, t)},${lerp(239, 31, t)})`;
 }
 
 export function BoutiqueAnalytics() {
@@ -116,6 +118,13 @@ export function BoutiqueAnalytics() {
           stream={(onT, onD) => streamReport("/api/boutique/report", { markets, tiers }, onT, onD)}
         />
       </div>
+
+      {/* APAC boutique map */}
+      {d.geo && d.geo.length > 0 && (
+        <div className="mt-6">
+          <BoutiqueMap boutiques={d.geo} />
+        </div>
+      )}
 
       {/* Radar */}
       <div className="mt-8">
@@ -212,7 +221,7 @@ export function BoutiqueAnalytics() {
                       <td className="py-3 px-5 text-ink">{r.sas}</td>
                       <td
                         className="py-3 px-5 font-medium text-right"
-                        style={{ background: redScale(t), color: t > 0.55 ? "#fff" : C.ink }}
+                        style={{ background: greenScale(t), color: t > 0.5 ? "#fff" : C.ink }}
                       >
                         {fmtUsd(r.revenue)}
                       </td>

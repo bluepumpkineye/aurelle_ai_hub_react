@@ -1,6 +1,7 @@
 """Headless Product Performance service (decoupled from product_performance.py)."""
 from __future__ import annotations
 
+import hashlib
 from functools import lru_cache
 from pathlib import Path
 
@@ -11,6 +12,12 @@ DATA = ROOT / "data"
 
 _BANDS = [0, 1000, 5000, 20000, 50000, float("inf")]
 _BAND_LABELS = ["Entry (<$1K)", "Aspirational ($1K-$5K)", "Core Luxury ($5K-$20K)", "Prestige ($20K-$50K)", "High Jewellery (>$50K)"]
+
+
+def _sell_through(name: str) -> int:
+    """Deterministic synthetic sell-through % per category (demo data)."""
+    n = int(hashlib.md5(name.encode()).hexdigest(), 16)
+    return 70 + n % 24  # stable 70–93%
 
 
 @lru_cache(maxsize=1)
@@ -57,6 +64,14 @@ def overview(markets=None, channels=None, categories=None) -> dict:
     total_rev = float(f["revenue_usd"].sum())
     coll = _coll(f)
 
+    # per-category performance (Watches / Fine Jewellery / … cards)
+    cat = (
+        f.groupby("category")
+        .agg(revenue=("revenue_usd", "sum"), units=("units_sold", "sum"), margin=("gross_margin", "mean"))
+        .reset_index()
+        .sort_values("revenue", ascending=False)
+    )
+
     # price bands
     f = f.copy()
     f["price_band"] = pd.cut(f["revenue_usd"] / f["units_sold"], bins=_BANDS, labels=_BAND_LABELS)
@@ -84,6 +99,18 @@ def overview(markets=None, channels=None, categories=None) -> dict:
             "margin": float(f["gross_margin"].mean()),
             "top_product": f.groupby("product")["revenue_usd"].sum().idxmax(),
         },
+        "categories": [
+            {
+                "name": r["category"],
+                "revenue": float(r["revenue"]),
+                "units": int(r["units"]),
+                "avg_price": float(r["revenue"] / r["units"]) if r["units"] else 0.0,
+                "margin": float(r["margin"]),
+                "sell_through": _sell_through(r["category"]),
+                "target": 85,
+            }
+            for _, r in cat.iterrows()
+        ],
         "charts": {
             "by_product": [{"name": r["product"], "value": float(r["revenue"])} for _, r in coll.sort_values("revenue", ascending=False).iterrows()],
             "bands": [{"name": str(r["price_band"]), "transactions": int(r["transactions"]), "revenue": float(r["revenue"])} for _, r in band.iterrows()],
