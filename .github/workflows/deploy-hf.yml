@@ -1,0 +1,30 @@
+name: Deploy to Hugging Face Space
+
+# Mirrors this repo's main branch to the Hugging Face Space, which then
+# rebuilds the Docker image and redeploys. Runs on every push to main, or
+# manually from the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::error::HF_TOKEN secret is not set. Add it in repo Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          git push --force \
+            "https://bluepumpkineye:${HF_TOKEN}@huggingface.co/spaces/bluepumpkineye/aurelle_intelligence_hub_react" \
+            HEAD:main
