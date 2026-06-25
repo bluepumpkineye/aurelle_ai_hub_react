@@ -1,0 +1,22 @@
+# keep the build context (and image) small + free of secrets/build artifacts
+**/node_modules
+web/dist
+**/__pycache__
+**/*.pyc
+*.egg-info
+.git
+.gitignore
+.venv
+venv
+.claude
+
+# secrets — never bake into the image (use Space secrets / env at runtime)
+.env
+.env.*
+
+# local-only RAG artifacts (regenerated at runtime)
+data/faiss.index
+data/faiss_meta.json
+
+**/.DS_Store
+*.log

@@ -1,3 +1,13 @@
+---
+title: Aurelle APAC Intelligence Hub
+emoji: 💎
+colorFrom: yellow
+colorTo: red
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Aurelle — APAC Intelligence Hub (React)
 
 A modern **React + FastAPI** rebuild of the Aurelle APAC Intelligence Hub. The
@@ -68,5 +78,23 @@ fallback when no hash is set).
 - The governed lookup uses the Atelier governance core when installed, otherwise
   a local fallback that synthesizes the governance envelope so the app runs
   end-to-end without it.
+
+## Deploy — Hugging Face Spaces (Docker)
+
+This repo ships a `Dockerfile` that builds the React front-end and runs the
+FastAPI API serving **both** the UI and `/api` on one origin (port `7860`).
+
+1. Create a new **Space → Docker → Blank** on Hugging Face.
+2. Add it as a git remote and push:
+   ```bash
+   git remote add space https://huggingface.co/spaces/<user>/<space-name>
+   git push space main
+   ```
+3. In the Space **Settings → Secrets**, add your keys (same names as `.env`):
+   `OPENAI_API_KEY` (or `OPENROUTER_API_KEY` / `XAI_API_KEY`), `ADMIN_PASSWORD_HASH`,
+   and optionally `PRIMARY_MODEL` (e.g. `gpt-4o-mini`).
+
+The Space builds the image and serves the app at its URL. The front-end calls
+the API on the same origin, so no `VITE_API_URL` is needed.
 
 See `REBUILD_POC.md` for the migration background.

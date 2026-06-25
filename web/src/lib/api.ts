@@ -1,4 +1,7 @@
-const BASE = (import.meta as any).env?.VITE_API_URL || "http://localhost:8000";
+// Same-origin in production (the API serves the built app); localhost in dev.
+// An explicit VITE_API_URL always wins (e.g. a split frontend/backend deploy).
+const _env = (import.meta as any).env || {};
+const BASE = _env.VITE_API_URL ?? (_env.PROD ? "" : "http://localhost:8000");
 
 let token: string | null = localStorage.getItem("aurelle_token");
 
