@@ -966,8 +966,9 @@ _CHANNEL_SRC_MAP = {
     "Travel Retail": "Retail",
     "E-Commerce": "Digital",
 }
-# Relative sell-through tempo by channel (digital turns fastest, wholesale slowest).
-_CH_SELLTHRU_MOD = {"Wholesale": 0.80, "Retail": 1.0, "Digital": 1.20, "All": 1.0}
+# Target sell-through by channel (healthy luxury benchmarks: retail boutiques
+# clear best, digital strong, wholesale steadier). Per-SKU values vary around these.
+_CH_SELLTHRU_TARGET = {"Wholesale": 65.0, "Retail": 80.0, "Digital": 70.0}
 _PLANNING_GROWTH = 0.05      # Actual/Forecast forward annual growth
 _PLANNING_BP_GROWTH = 0.09   # Business Plan (budget) annual growth — the stretch target
 _PLANNING_WINDOW = 24        # S&OP grid spans 24 months
@@ -1152,8 +1153,12 @@ def planning_overview(filters: dict) -> dict:
     transit_by_sku = inb.groupby("reference_sku")["units_ordered"].sum().to_dict()
 
     sel_share = ch_share.get(channel, 1.0) if channel != "All" else 1.0
-    sellthru_mod = _CH_SELLTHRU_MOD.get(channel, 1.0)
     cur_season = _SEASON_FALLBACK.get(_PLANNING_ANCHOR.month, 1.0)
+    # Sell-through anchor for the active lens (share-weighted blend when "All").
+    if channel == "All":
+        ch_target = sum(_CH_SELLTHRU_TARGET[c] * ch_share.get(c, 0.0) for c in _PLANNING_CHANNELS) or 73.0
+    else:
+        ch_target = _CH_SELLTHRU_TARGET.get(channel, 73.0)
 
     channel_rows = []
     for g in grid:
@@ -1168,8 +1173,11 @@ def planning_overview(filters: dict) -> dict:
         forecast_8w = int(round(base * 2 * sel_share))
         weekly = max(base / 4.33, 0.1)
         wos = round((soh / weekly), 1) if weekly > 0 else 99.0
-        base_st = sales_mtd / (sales_mtd + max(soh, 1))
-        sell_through = round(min(max(base_st * sellthru_mod * 100, 3.0), 68.0), 1)
+        # Sell-through centred on the channel target, with a per-SKU spread and a mild
+        # velocity signal (faster movers / lower weeks-of-supply sell through more).
+        wos_full = (soh_total / weekly) if weekly > 0 else 99.0
+        vel_signal = max(-6.0, min(6.0, (8.0 - wos_full) / 8.0 * 12.0)) if wos_full < 99 else 0.0
+        sell_through = round(min(max(ch_target + (_hash_frac(sku, "st") - 0.5) * 14.0 + vel_signal, 10.0), 95.0), 1)
         aged_90 = int(round(soh * (0.05 + 0.18 * _hash_frac(sku, "aged"))))
         wholesale_qty = int(round(base * ch_share["Wholesale"] * (0.9 + 0.2 * _hash_frac(sku, "whq"))))
         inv_usd = round(soh * price, 0)
@@ -1193,7 +1201,6 @@ def planning_overview(filters: dict) -> dict:
     channel_rows.sort(key=lambda x: x["inventory_usd"], reverse=True)
 
     # ── Channel summary tiles (always all three, regardless of the active lens) ──
-    total_soh_all = sum(soh_by_sku.values())
     total_inv_all = sum(int(soh_by_sku.get(g["sku"], 0)) * g["wholesale_price"] for g in grid)
     monthly_units_all = total_vol / horizon if horizon else 0.0
     tiles = []
@@ -1201,10 +1208,8 @@ def planning_overview(filters: dict) -> dict:
         sh = ch_share.get(c, 0.0)
         c_mtd = int(round(monthly_units_all * cur_season * sh))
         c_inv = round(total_inv_all * sh, 0)
-        c_soh = total_soh_all * sh
-        c_sold = monthly_units_all * cur_season * sh
-        c_base_st = c_sold / (c_sold + max(c_soh, 1))
-        c_st = round(min(max(c_base_st * _CH_SELLTHRU_MOD[c] * 100, 3.0), 68.0), 1)
+        # Aggregate sell-through ≈ the channel target with a small scope-level wobble.
+        c_st = round(min(max(_CH_SELLTHRU_TARGET[c] + (_hash_frac(market, category, c, "st") - 0.5) * 4.0, 10.0), 95.0), 1)
         tiles.append({
             "channel": c,
             "share": round(sh * 100, 1),
