@@ -1,6 +1,8 @@
 """Headless Demand & Supply Planning service (decoupled from demand_planning.py)."""
 from __future__ import annotations
 
+import calendar
+import hashlib
 import json
 from datetime import datetime, date, timedelta
 from functools import lru_cache
@@ -312,46 +314,86 @@ def compute_model_stock_metrics(df_enriched):
         "capital_at_risk": capital_at_risk
     }
 
+# Achievement bands for a (boutique × collection) cell, expressed as
+# on-hand-vs-target ratios: [critical <50%, under 50-90%, on-target 90-110%, over >110%].
+_MS_BANDS = [(0.00, 0.49), (0.55, 0.88), (0.92, 1.08), (1.15, 1.55)]
+
+# Per-tier probability of landing in each band. Engineered so the network tells a
+# realistic, balanced story instead of blanket over-stock: flagships are well stocked
+# (mostly on-target, a little excess), while standard/emerging boutiques carry the bulk
+# of the under-stocked and critical gaps. Probabilities are per-tier and sum to 1.0.
+_MS_TIER_PROFILE = {
+    "Flagship Maison": (0.05, 0.13, 0.55, 0.27),
+    "Flagship":        (0.08, 0.18, 0.52, 0.22),
+    "Standard":        (0.14, 0.29, 0.45, 0.12),
+    "Emerging":        (0.30, 0.40, 0.25, 0.05),
+}
+_MS_PROFILE_DEFAULT = (0.16, 0.30, 0.40, 0.14)
+
+
+def _model_stock_ratio(boutique_id: str, collection: str, tier: str) -> float:
+    """Deterministic, tier-biased on-hand-vs-target ratio for one heatmap cell.
+
+    Uses a stable hash of the (boutique, collection) pair so the demo is reproducible
+    run-to-run, while the tier profile shapes the overall spread toward a balanced mix
+    of critical gaps, under-stock, on-target and a modest over-stock tail.
+    """
+    probs = _MS_TIER_PROFILE.get(tier, _MS_PROFILE_DEFAULT)
+    h = hashlib.md5(f"{boutique_id}|{collection}|msv2".encode()).hexdigest()
+    pick = int(h[:8], 16) / 0xFFFFFFFF      # which band
+    frac = int(h[8:16], 16) / 0xFFFFFFFF    # position within the band
+    cum = 0.0
+    for p, (lo, hi) in zip(probs, _MS_BANDS):
+        cum += p
+        if pick <= cum:
+            return lo + frac * (hi - lo)
+    lo, hi = _MS_BANDS[-1]
+    return lo + frac * (hi - lo)
+
+
 def get_enriched_model_stock(date_str: str) -> pd.DataFrame:
     targets_df = _targets_df().copy()
     supply_df = _df().copy()
-    
+
     supply_date_df = supply_df[supply_df['date'] == date_str]
     if supply_date_df.empty:
         supply_date_df = supply_df[supply_df['date'] == supply_df['date'].max()]
-        
+
     supply_map = {}
     for _, row in supply_date_df.iterrows():
         key = (row['boutique_id'], row['product'])
         supply_map[key] = (row['stock_available'], row['sales_velocity'], row['unit_cost_usd'])
-        
+
     targets_df['parent_product'] = targets_df['reference_sku'].map(SKU_TO_PRODUCT)
-    
-    sku_stocks = []
-    sku_velocities = []
-    
+
+    # --- Sales velocity per SKU (demand-driven, sourced from the supply feed) ---
+    velocity_lookup = {}
     for (bid, prod), group in targets_df.groupby(['boutique_id', 'parent_product']):
-        prod_stock, prod_vel, _ = supply_map.get((bid, prod), (0, 0.0, 0.0))
+        _, prod_vel, _ = supply_map.get((bid, prod), (0, 0.0, 0.0))
+        targets = group['model_stock_target'].tolist()
+        sum_targets = sum(targets)
+        for sku, t in zip(group['reference_sku'].tolist(), targets):
+            velocity_lookup[(bid, sku)] = round((t / sum_targets) * prod_vel, 2) if sum_targets > 0 else 0.0
+
+    # --- On-hand stock per SKU, engineered for a balanced model-stock story ---
+    # We size on-hand stock relative to the model-stock TARGET (not raw demand
+    # throughput, which lives on a different scale and produced blanket over-stock).
+    # The ratio is assigned per (boutique × collection) — the heatmap's cell grain —
+    # then split across the cell's SKUs in proportion to their individual targets.
+    stock_lookup = {}
+    for (bid, collection), group in targets_df.groupby(['boutique_id', 'collection']):
+        tier = str(group['boutique_tier'].iloc[0])
         skus = group['reference_sku'].tolist()
         targets = group['model_stock_target'].tolist()
-        
-        stocks = distribute_stock_helper(bid, prod, int(prod_stock), skus, targets)
-        sum_targets = sum(targets)
-        if sum_targets > 0:
-            velocities = [round((t / sum_targets) * prod_vel, 2) for t in targets]
-        else:
-            velocities = [0.0] * len(skus)
-            
-        for sku, stock, vel in zip(skus, stocks, velocities):
-            sku_stocks.append(((bid, sku), stock))
-            sku_velocities.append(((bid, sku), vel))
-            
-    stock_lookup = dict(sku_stocks)
-    velocity_lookup = dict(sku_velocities)
-    
+        ratio = _model_stock_ratio(bid, collection, tier)
+        total_stock = int(round(sum(targets) * ratio))
+        stocks = distribute_stock_helper(bid, collection, total_stock, skus, targets)
+        for sku, s in zip(skus, stocks):
+            stock_lookup[(bid, sku)] = s
+
     targets_df['stock_available'] = targets_df.apply(lambda r: stock_lookup.get((r['boutique_id'], r['reference_sku']), 0), axis=1)
     targets_df['sales_velocity'] = targets_df.apply(lambda r: velocity_lookup.get((r['boutique_id'], r['reference_sku']), 0.0), axis=1)
-    
+
     return targets_df
 
 def model_stock_filters() -> dict:
@@ -398,7 +440,14 @@ def model_stock_overview(filters: dict) -> dict:
 
     # KPIs
     metrics = compute_model_stock_metrics(filtered)
-    
+
+    # Per-tier achievement (real, filter-aware — drives the brief's tier narrative)
+    tier_achievement = {}
+    for tier, t_df in filtered.groupby("boutique_tier"):
+        t_target = float(t_df["model_stock_target"].sum())
+        t_actual = float(t_df["stock_available"].sum())
+        tier_achievement[str(tier)] = round((t_actual / t_target * 100) if t_target > 0 else 0.0, 1)
+
     # Heatmap sorting and arrays
     df_m = _meta_df()
     df_sorted = df_m[df_m["boutique_name"].isin(filtered["boutique_name"].unique())].copy()
@@ -546,7 +595,8 @@ def model_stock_overview(filters: dict) -> dict:
             "hover": hover_matrix
         },
         "category_deep_dive": cat_breakdowns,
-        "gaps_registry": gaps_records
+        "gaps_registry": gaps_records,
+        "tier_achievement": tier_achievement
     }
 
 def model_stock_report_messages(filters: dict) -> list:
@@ -600,10 +650,8 @@ def model_stock_report_messages(filters: dict) -> list:
             "weeks_cover": float(r["weeks_stockout"]) if r["weeks_stockout"] < 999 else 99.0
         } for r in over],
         "boutique_tier_summary": {
-            "Flagship Maison": {"achievement_pct": 82.0},
-            "Flagship": {"achievement_pct": 71.0},
-            "Standard": {"achievement_pct": 58.0},
-            "Emerging": {"achievement_pct": 43.0}
+            tier: {"achievement_pct": pct}
+            for tier, pct in overview_data.get("tier_achievement", {}).items()
         }
     }
     
@@ -900,8 +948,358 @@ def forecast_report_messages(filters: dict) -> list:
         "- Be specific about lead times."
     )
     user_prompt = f"RAG Policy Context:\n{context}\n\nForward Supply Forecasting Data:\n{json.dumps(overview_data, indent=2)}"
-    
+
     return [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}
+    ]
+
+# ── 3. Planning Workbench (SKU-level monthly forecast + channel performance) ──
+# Maps the five raw sales channels onto the three commercial channels the business
+# plans against: Wholesale, Retail (physical boutique + clienteling + travel retail),
+# and Digital (e-commerce).
+_PLANNING_CHANNELS = ["Wholesale", "Retail", "Digital"]
+_CHANNEL_SRC_MAP = {
+    "Wholesale": "Wholesale",
+    "Boutique": "Retail",
+    "Private Client": "Retail",
+    "Travel Retail": "Retail",
+    "E-Commerce": "Digital",
+}
+# Relative sell-through tempo by channel (digital turns fastest, wholesale slowest).
+_CH_SELLTHRU_MOD = {"Wholesale": 0.80, "Retail": 1.0, "Digital": 1.20, "All": 1.0}
+_PLANNING_GROWTH = 0.05      # Actual/Forecast forward annual growth
+_PLANNING_BP_GROWTH = 0.09   # Business Plan (budget) annual growth — the stretch target
+_PLANNING_WINDOW = 24        # S&OP grid spans 24 months
+_PLANNING_TRAILING_ACTUAL = 11  # trailing actual months in the window (ending last closed month)
+# Demo "current month": actuals are realised through the prior month (May 2026).
+_PLANNING_ANCHOR = date(2026, 6, 1)
+
+
+def _hash_frac(*parts) -> float:
+    """Deterministic float in [0,1) from the given parts — keeps the demo reproducible."""
+    h = hashlib.md5("|".join(str(p) for p in parts).encode()).hexdigest()
+    return int(h[:8], 16) / 0xFFFFFFFF
+
+
+def planning_filters() -> dict:
+    t = _targets_df()
+    return {
+        "markets": ["All APAC"] + sorted(t["market"].dropna().unique().tolist()),
+        "categories": ["All", "Watches", "Fine Jewellery", "High Jewellery"],
+        "collections": sorted(t["collection"].dropna().unique().tolist()),
+        "channels": ["All"] + _PLANNING_CHANNELS,
+        "horizons": [_PLANNING_WINDOW],
+    }
+
+
+def _planning_month_axis() -> list:
+    """24-month S&OP window: trailing actual months (ending last closed month) then forecast.
+
+    Returns a list of dicts: {label, month, year, index, actual, quarter}. Months strictly
+    before the anchor month (June 2026) are flagged as actuals (i.e. up to May 2026).
+    """
+    cur_idx = _PLANNING_ANCHOR.year * 12 + (_PLANNING_ANCHOR.month - 1)  # June 2026
+    start_idx = cur_idx - _PLANNING_TRAILING_ACTUAL                       # July 2025
+    axis = []
+    for i in range(_PLANNING_WINDOW):
+        idx = start_idx + i
+        yy, mo = idx // 12, idx % 12 + 1
+        q = (mo - 1) // 3 + 1
+        axis.append({
+            "label": f"{calendar.month_abbr[mo]} {str(yy)[2:]}",
+            "month": mo,
+            "year": yy,
+            "index": i,
+            "actual": idx < cur_idx,
+            "quarter": f"Q{q} '{str(yy)[2:]}",
+        })
+    return axis
+
+
+def planning_overview(filters: dict) -> dict:
+    market = filters.get("market", "All APAC")
+    category = filters.get("category", "All")
+    collections = filters.get("collections", []) or []
+    channel = filters.get("channel", "All")
+    horizon = _PLANNING_WINDOW
+
+    targets = _targets_df()
+    sales = _sales_df()
+    months = _planning_month_axis()
+
+    # ── Scope targets to the active filters ──
+    tf = targets.copy()
+    if category != "All":
+        tf = tf[tf["category"] == category]
+    if collections:
+        tf = tf[tf["collection"].isin(collections)]
+    if market != "All APAC":
+        tf = tf[tf["market"] == market]
+
+    if tf.empty:
+        return {
+            "kpis": {"total_volume": 0, "total_revenue": 0, "total_volume_bp": 0, "total_revenue_bp": 0,
+                     "sku_count": 0, "abc_mix": {"A": 0, "B": 0, "C": 0}},
+            "months": months,
+            "grid": [],
+            "grid_totals": {"monthly": [0] * horizon, "monthly_bp": [0] * horizon,
+                            "total": 0, "total_bp": 0, "revenue": 0, "revenue_bp": 0},
+            "channel_tiles": [], "channel_rows": [], "channel_shares": {c: 0 for c in _PLANNING_CHANNELS},
+        }
+
+    # ── Base demand: average monthly units per parent product within scope ──
+    sc = sales.copy()
+    if market != "All APAC":
+        sc = sc[sc["market"] == market]
+    if category != "All":
+        sc = sc[sc["category"] == category]
+    n_months = max(sc["date"].str[:7].nunique(), 1)
+    prod_monthly = (sc.groupby("product")["units_sold"].sum() / n_months).to_dict()
+
+    # SKU rollup across the scoped boutiques
+    sku_agg = tf.groupby("reference_sku").agg(
+        target=("model_stock_target", "sum"),
+        cost=("unit_cost_usd", "mean"),
+        collection=("collection", "first"),
+        category=("category", "first"),
+        name=("reference_name", "first"),
+    ).reset_index()
+
+    tf2 = tf.copy()
+    tf2["parent"] = tf2["reference_sku"].map(SKU_TO_PRODUCT)
+    parent_target = tf2.groupby("parent")["model_stock_target"].sum().to_dict()
+
+    grid = []
+    for _, r in sku_agg.iterrows():
+        sku = r["reference_sku"]
+        parent = SKU_TO_PRODUCT.get(sku)
+        p_tgt = parent_target.get(parent, 0)
+        share = (r["target"] / p_tgt) if p_tgt > 0 else 1.0
+        base = prod_monthly.get(parent, 0.0) * share
+        if base <= 0:
+            base = max(r["target"] * 0.4, 0.6)  # keep slow/new references visible
+        price = float(r["cost"])
+        monthly, monthly_bp = [], []
+        for m in months:
+            seasonal = _SEASON_FALLBACK.get(m["month"], 1.0)
+            yrs = m["index"] / 12.0
+            # Actual/Forecast line (carries realised variation); Business Plan is the smooth budget.
+            af = base * seasonal * ((1 + _PLANNING_GROWTH) ** yrs) * (0.85 + 0.30 * _hash_frac(sku, m["label"]))
+            bp = base * seasonal * ((1 + _PLANNING_BP_GROWTH) ** yrs)
+            monthly.append(int(round(af)))
+            monthly_bp.append(int(round(bp)))
+        total, total_bp = sum(monthly), sum(monthly_bp)
+        grid.append({
+            "sku": sku,
+            "collection": r["collection"],
+            "category": r["category"],
+            "description": r["name"],
+            "wholesale_price": round(price, 0),
+            "monthly": monthly,
+            "monthly_bp": monthly_bp,
+            "total": total,
+            "total_bp": total_bp,
+            "revenue": round(total * price, 0),
+            "revenue_bp": round(total_bp * price, 0),
+        })
+
+    # ── ABC classification by horizon revenue (80/15/5 Pareto) ──
+    grid.sort(key=lambda x: x["revenue"], reverse=True)
+    total_rev = sum(g["revenue"] for g in grid) or 1.0
+    cum = 0.0
+    abc_counts = {"A": 0, "B": 0, "C": 0}
+    for g in grid:
+        cum += g["revenue"]
+        sh = cum / total_rev
+        g["abc"] = "A" if sh <= 0.80 else "B" if sh <= 0.95 else "C"
+        abc_counts[g["abc"]] += 1
+    nsku = len(grid)
+    abc_mix = {k: round(v / nsku * 100) for k, v in abc_counts.items()}
+
+    total_vol = sum(g["total"] for g in grid)
+    total_vol_bp = sum(g["total_bp"] for g in grid)
+    total_rev_bp = sum(g["revenue_bp"] for g in grid)
+    col_totals = [0] * horizon
+    col_totals_bp = [0] * horizon
+    for g in grid:
+        for i, u in enumerate(g["monthly"]):
+            col_totals[i] += u
+        for i, u in enumerate(g["monthly_bp"]):
+            col_totals_bp[i] += u
+
+    # ── Channel performance ──
+    ch_units = {}
+    for src, units in sc.groupby("channel")["units_sold"].sum().items():
+        mapped = _CHANNEL_SRC_MAP.get(src)
+        if mapped:
+            ch_units[mapped] = ch_units.get(mapped, 0) + float(units)
+    tot_ch = sum(ch_units.values()) or 1.0
+    ch_share = {c: ch_units.get(c, 0.0) / tot_ch for c in _PLANNING_CHANNELS}
+
+    enr = get_enriched_model_stock(_df()["date"].max())
+    if market != "All APAC":
+        enr = enr[enr["market"] == market]
+    if category != "All":
+        enr = enr[enr["category"] == category]
+    soh_by_sku = enr.groupby("reference_sku")["stock_available"].sum().to_dict()
+
+    inb = _inbound_df().copy()
+    if market != "All APAC":
+        inb = inb[inb["market"] == market]
+    if "shipment_status" in inb.columns:
+        inb = inb[inb["shipment_status"] != "Delivered"]
+    transit_by_sku = inb.groupby("reference_sku")["units_ordered"].sum().to_dict()
+
+    sel_share = ch_share.get(channel, 1.0) if channel != "All" else 1.0
+    sellthru_mod = _CH_SELLTHRU_MOD.get(channel, 1.0)
+    cur_season = _SEASON_FALLBACK.get(_PLANNING_ANCHOR.month, 1.0)
+
+    channel_rows = []
+    for g in grid:
+        sku = g["sku"]
+        base = g["total"] / horizon if horizon else 0.0
+        price = g["wholesale_price"]
+        soh_total = int(soh_by_sku.get(sku, 0))
+        soh = soh_total * sel_share if channel != "All" else soh_total
+        transit = int(transit_by_sku.get(sku, 0))
+        reserved = int(round(2 + 14 * _hash_frac(sku, "resv")))
+        sales_mtd = int(round(base * cur_season * sel_share * (0.9 + 0.2 * _hash_frac(sku, "mtd"))))
+        forecast_8w = int(round(base * 2 * sel_share))
+        weekly = max(base / 4.33, 0.1)
+        wos = round((soh / weekly), 1) if weekly > 0 else 99.0
+        base_st = sales_mtd / (sales_mtd + max(soh, 1))
+        sell_through = round(min(max(base_st * sellthru_mod * 100, 3.0), 68.0), 1)
+        aged_90 = int(round(soh * (0.05 + 0.18 * _hash_frac(sku, "aged"))))
+        wholesale_qty = int(round(base * ch_share["Wholesale"] * (0.9 + 0.2 * _hash_frac(sku, "whq"))))
+        inv_usd = round(soh * price, 0)
+        channel_rows.append({
+            "sku": sku,
+            "product": g["description"],
+            "category": g["category"],
+            "collection": g["collection"],
+            "abc": g["abc"],
+            "soh": int(round(soh)),
+            "in_transit": transit,
+            "reserved": reserved,
+            "sales_mtd": sales_mtd,
+            "forecast_8w": forecast_8w,
+            "wos": wos,
+            "sell_through": sell_through,
+            "aged_90": aged_90,
+            "wholesale_qty": wholesale_qty,
+            "inventory_usd": inv_usd,
+        })
+    channel_rows.sort(key=lambda x: x["inventory_usd"], reverse=True)
+
+    # ── Channel summary tiles (always all three, regardless of the active lens) ──
+    total_soh_all = sum(soh_by_sku.values())
+    total_inv_all = sum(int(soh_by_sku.get(g["sku"], 0)) * g["wholesale_price"] for g in grid)
+    monthly_units_all = total_vol / horizon if horizon else 0.0
+    tiles = []
+    for c in _PLANNING_CHANNELS:
+        sh = ch_share.get(c, 0.0)
+        c_mtd = int(round(monthly_units_all * cur_season * sh))
+        c_inv = round(total_inv_all * sh, 0)
+        c_soh = total_soh_all * sh
+        c_sold = monthly_units_all * cur_season * sh
+        c_base_st = c_sold / (c_sold + max(c_soh, 1))
+        c_st = round(min(max(c_base_st * _CH_SELLTHRU_MOD[c] * 100, 3.0), 68.0), 1)
+        tiles.append({
+            "channel": c,
+            "share": round(sh * 100, 1),
+            "sales_mtd": c_mtd,
+            "sell_through": c_st,
+            "inventory_usd": c_inv,
+        })
+
+    return {
+        "kpis": {
+            "total_volume": total_vol,
+            "total_revenue": round(total_rev, 0),
+            "total_volume_bp": total_vol_bp,
+            "total_revenue_bp": round(total_rev_bp, 0),
+            "sku_count": nsku,
+            "abc_mix": abc_mix,
+        },
+        "months": months,
+        "grid": grid,
+        "grid_totals": {
+            "monthly": col_totals,
+            "monthly_bp": col_totals_bp,
+            "total": total_vol,
+            "total_bp": total_vol_bp,
+            "revenue": round(total_rev, 0),
+            "revenue_bp": round(total_rev_bp, 0),
+        },
+        "channel_tiles": tiles,
+        "channel_rows": channel_rows,
+        "channel_shares": {c: round(ch_share.get(c, 0.0) * 100, 1) for c in _PLANNING_CHANNELS},
+    }
+
+
+def planning_report_messages(filters: dict) -> list:
+    data = planning_overview(filters)
+    k = data["kpis"]
+    top_rev = data["grid"][:6]
+    # Lowest weeks-of-supply = sharpest replenishment risk
+    risk_rows = sorted([r for r in data["channel_rows"] if r["wos"] < 99], key=lambda r: r["wos"])[:6]
+
+    from utils.vector_store import search_vector_store
+    queries = [
+        "demand forecasting supply planning APAC",
+        "replenishment lead time Switzerland Singapore",
+        "wholesale retail digital channel allocation luxury",
+    ]
+    rag_chunks, seen = [], set()
+    for q in queries:
+        for res in search_vector_store(q, k=2):
+            if res["id"] not in seen:
+                seen.add(res["id"])
+                rag_chunks.append(res)
+    context = "\n\n".join(f"Doc ID: {c['id']} | Title: {c['title']}\n{c['content']}" for c in rag_chunks)
+
+    summary = {
+        "scope": {
+            "market": filters.get("market", "All APAC"),
+            "category": filters.get("category", "All"),
+            "channel": filters.get("channel", "All"),
+            "horizon_months": filters.get("horizon", 12),
+        },
+        "headline": {
+            "total_forecast_units": k["total_volume"],
+            "total_forecast_revenue_usd": k["total_revenue"],
+            "active_skus": k["sku_count"],
+            "abc_mix_pct": k["abc_mix"],
+        },
+        "channel_split": data["channel_tiles"],
+        "top_revenue_skus": [
+            {"sku": g["sku"], "name": g["description"], "abc": g["abc"],
+             "horizon_units": g["total"], "horizon_revenue_usd": g["revenue"]}
+            for g in top_rev
+        ],
+        "replenishment_risks_low_wos": [
+            {"sku": r["sku"], "name": r["product"], "weeks_of_supply": r["wos"],
+             "stock_on_hand": r["soh"], "in_transit": r["in_transit"], "sell_through_pct": r["sell_through"]}
+            for r in risk_rows
+        ],
+    }
+
+    system_prompt = (
+        "You are the APAC Demand Planning Director for Aurelle, presenting the forward SKU-level plan "
+        "and channel performance read to the Regional VP of Supply Chain. Be analytical, forward-looking, "
+        "and specific — quantify in units and USD, and translate the channel mix (Wholesale, Retail, Digital) "
+        "into commercial action.\n\n"
+        "CRITICAL RULES:\n"
+        "- 500 to 800 words.\n"
+        "- Lead with the headline demand and revenue outlook, then the ABC concentration.\n"
+        "- Call out the channel split and what it implies for allocation (Retail vs Wholesale vs Digital).\n"
+        "- Flag the lowest weeks-of-supply references as replenishment risks; recommend reallocation before "
+        "new factory requests, and cite DOC-004 for any emergency request.\n"
+        "- Only reference SKUs, channels and figures present in the data."
+    )
+    user_prompt = f"RAG Policy Context:\n{context}\n\nPlanning Workbench Data:\n{json.dumps(summary, indent=2)}"
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
     ]

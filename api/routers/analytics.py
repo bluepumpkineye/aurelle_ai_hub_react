@@ -185,6 +185,30 @@ def supply_forecast_report(f: ForecastFilters, _=Depends(require_auth)):
     return _stream(sup_svc.forecast_report_messages(f.dict()), temperature=0.35)
 
 
+# ── Planning Workbench (SKU forecast grid + channel performance) ──
+class PlanningFilters(BaseModel):
+    market: str = "All APAC"
+    category: str = "All"
+    collections: list[str] = []
+    channel: str = "All"
+    horizon: int = 12
+
+
+@router.get("/api/supply/planning/filters")
+def supply_planning_filters(_=Depends(require_auth)):
+    return sup_svc.planning_filters()
+
+
+@router.post("/api/supply/planning/overview")
+def supply_planning_overview(f: PlanningFilters, _=Depends(require_auth)):
+    return sup_svc.planning_overview(f.dict())
+
+
+@router.post("/api/supply/planning/report")
+def supply_planning_report(f: PlanningFilters, _=Depends(require_auth)):
+    return _stream(sup_svc.planning_report_messages(f.dict()), temperature=0.35)
+
+
 
 # ── Marketing Intelligence ─────────────────────────────────────
 class MarketingFilters(BaseModel):

@@ -227,6 +227,151 @@ export function DemandSupply() {
   const [simLoading, setSimLoading] = useState(false);
   const [simError, setSimError] = useState("");
 
+  // ────────────────────────────────────────────────────────
+  // TAB 4 (REVAMPED): PLANNING WORKBENCH STATES
+  //   View 1 — SKU monthly forecast grid; View 2 — channel performance;
+  //   View 3 — Supply Operations (legacy inbound pipeline + reallocation sim)
+  // ────────────────────────────────────────────────────────
+  const [plFilters, setPlFilters] = useState<any>(null);
+  const [plData, setPlData] = useState<any>(null);
+  const [plLoading, setPlLoading] = useState(false);
+  const [plView, setPlView] = useState("grid"); // grid | channel | ops
+  const [plMarket, setPlMarket] = useState("All APAC");
+  const [plCategory, setPlCategory] = useState("All");
+  const [plCollections, setPlCollections] = useState<string[]>([]);
+  const [plChannel, setPlChannel] = useState("All");
+  const [plHorizon] = useState(24); // S&OP window is fixed at 24 months
+  const [plSearch, setPlSearch] = useState("");
+  const [plGrain, setPlGrain] = useState<"monthly" | "quarterly">("monthly");
+  const [plScenAF, setPlScenAF] = useState(true); // Actual/Forecast scenario
+  const [plScenBP, setPlScenBP] = useState(false); // Business Plan scenario
+  const [plChSort, setPlChSort] = useState<{ key: string; dir: "asc" | "desc" }>({ key: "inventory_usd", dir: "desc" });
+
+  const toggleCollection = (c: string) =>
+    setPlCollections((prev) => (prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]));
+  const toggleScenario = (which: "af" | "bp") => {
+    if (which === "af") {
+      if (plScenAF && !plScenBP) return; // keep at least one active
+      setPlScenAF((v) => !v);
+    } else {
+      if (plScenBP && !plScenAF) return;
+      setPlScenBP((v) => !v);
+    }
+  };
+
+  // Load planning filters on first access
+  useEffect(() => {
+    if (activeTab === "forecast" && !plFilters) {
+      api.get("/api/supply/planning/filters").then(setPlFilters);
+    }
+  }, [activeTab, plFilters]);
+
+  // Fetch planning overview whenever scope changes (channel only re-fetches the channel lens)
+  useEffect(() => {
+    if (activeTab !== "forecast") return;
+    setPlLoading(true);
+    api
+      .post("/api/supply/planning/overview", {
+        market: plMarket,
+        category: plCategory,
+        collections: plCollections,
+        channel: plChannel,
+        horizon: plHorizon,
+      })
+      .then((res) => {
+        setPlData(res);
+        setPlLoading(false);
+      })
+      .catch(() => setPlLoading(false));
+  }, [activeTab, plMarket, plCategory, plCollections, plChannel, plHorizon]);
+
+  const plFilteredGrid = useMemo(() => {
+    if (!plData?.grid) return [];
+    if (!plSearch) return plData.grid;
+    const q = plSearch.toLowerCase();
+    return plData.grid.filter(
+      (r: any) =>
+        r.sku?.toLowerCase().includes(q) ||
+        r.description?.toLowerCase().includes(q) ||
+        r.collection?.toLowerCase().includes(q)
+    );
+  }, [plData?.grid, plSearch]);
+
+  const plFilteredChannel = useMemo(() => {
+    if (!plData?.channel_rows) return [];
+    if (!plSearch) return plData.channel_rows;
+    const q = plSearch.toLowerCase();
+    return plData.channel_rows.filter(
+      (r: any) =>
+        r.sku?.toLowerCase().includes(q) ||
+        r.product?.toLowerCase().includes(q) ||
+        r.collection?.toLowerCase().includes(q)
+    );
+  }, [plData?.channel_rows, plSearch]);
+
+  // Build the grid columns + per-row cells for the active grain (monthly | quarterly),
+  // carrying both scenarios (Actual/Forecast + Business Plan) and the actual/forecast flag.
+  const plDisplay = useMemo(() => {
+    const months: any[] = plData?.months || [];
+    if (months.length === 0) return { columns: [], rows: [], totals: { cells: [], af: 0, bp: 0, revAf: 0, revBp: 0 } };
+
+    let columns: { label: string; actual: boolean }[];
+    let groups: number[][]; // source month indices feeding each display column
+    if (plGrain === "monthly") {
+      columns = months.map((m) => ({ label: m.label, actual: m.actual }));
+      groups = months.map((_, i) => [i]);
+    } else {
+      const order: string[] = [];
+      const map: Record<string, number[]> = {};
+      months.forEach((m, i) => {
+        if (!(m.quarter in map)) {
+          map[m.quarter] = [];
+          order.push(m.quarter);
+        }
+        map[m.quarter].push(i);
+      });
+      columns = order.map((q) => ({ label: q, actual: map[q].every((i) => months[i].actual) }));
+      groups = order.map((q) => map[q]);
+    }
+
+    const rows = plFilteredGrid.map((r: any) => ({
+      ...r,
+      cells: groups.map((idxs) => ({
+        af: idxs.reduce((s, i) => s + r.monthly[i], 0),
+        bp: idxs.reduce((s, i) => s + (r.monthly_bp?.[i] ?? 0), 0),
+      })),
+    }));
+
+    const totCells = columns.map(() => ({ af: 0, bp: 0 }));
+    let af = 0, bp = 0, revAf = 0, revBp = 0;
+    rows.forEach((r: any) => {
+      r.cells.forEach((c: any, i: number) => {
+        totCells[i].af += c.af;
+        totCells[i].bp += c.bp;
+      });
+      af += r.total;
+      bp += r.total_bp ?? 0;
+      revAf += r.revenue;
+      revBp += r.revenue_bp ?? 0;
+    });
+    return { columns, rows, totals: { cells: totCells, af, bp, revAf, revBp } };
+  }, [plData?.months, plFilteredGrid, plGrain]);
+
+  const plSortedChannel = useMemo(() => {
+    const rows = [...plFilteredChannel];
+    const { key, dir } = plChSort;
+    rows.sort((a: any, b: any) => {
+      const av = a[key];
+      const bv = b[key];
+      const cmp = typeof av === "string" ? String(av).localeCompare(String(bv)) : (av ?? 0) - (bv ?? 0);
+      return dir === "asc" ? cmp : -cmp;
+    });
+    return rows;
+  }, [plFilteredChannel, plChSort]);
+
+  const sortChannel = (key: string) =>
+    setPlChSort((prev) => (prev.key === key ? { key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key, dir: "desc" }));
+
   // Load Planning & Forecast Filters on first access of Tab 4
   useEffect(() => {
     if (activeTab === "forecast" && !fcFilters) {
@@ -1029,6 +1174,437 @@ export function DemandSupply() {
           ──────────────────────────────────────────────────────── */}
       {activeTab === "forecast" && (
         <div>
+          {/* ── Shared planning filters ── */}
+          {plFilters ? (
+            <div className="flex flex-wrap gap-5 items-end bg-cream/10 p-5 border border-line/60 rounded">
+              <div>
+                <div className="label mb-2">Market</div>
+                <select
+                  value={plMarket}
+                  onChange={(e) => setPlMarket(e.target.value)}
+                  className="bg-card border border-line px-3 py-2 text-sm text-ink focus:border-gold outline-none min-w-[150px]"
+                >
+                  {plFilters.markets.map((m: string) => (
+                    <option key={m}>{m}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <div className="label mb-2">Category</div>
+                <select
+                  value={plCategory}
+                  onChange={(e) => setPlCategory(e.target.value)}
+                  className="bg-card border border-line px-3 py-2 text-sm text-ink focus:border-gold outline-none min-w-[140px]"
+                >
+                  {plFilters.categories.map((c: string) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex-1 min-w-[200px]">
+                <div className="label mb-2">Search Material / Description</div>
+                <input
+                  value={plSearch}
+                  onChange={(e) => setPlSearch(e.target.value)}
+                  placeholder="Search material or description…"
+                  className="w-full bg-card border border-line px-3 py-2 text-sm text-ink focus:border-gold outline-none"
+                />
+              </div>
+              <div className="self-center text-[11px] text-muted border border-line bg-card px-3 py-1.5 rounded">
+                North Asia &amp; APAC · <span className="text-ink font-semibold">24-month</span> S&amp;OP horizon
+              </div>
+            </div>
+          ) : (
+            <div className="text-muted text-xs">Loading planning workbench…</div>
+          )}
+
+          {/* ── KPI strip ── */}
+          {plData && (
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <Kpi
+                label="Total Volume"
+                amount={plData.kpis.total_volume}
+                format={fmtNum}
+                sub={`${plData.months.filter((m: any) => m.actual).length}M actual + ${plData.months.filter((m: any) => !m.actual).length}M forecast · BP ${fmtNum(plData.kpis.total_volume_bp)}`}
+              />
+              <Kpi
+                label="Total Revenue"
+                amount={plData.kpis.total_revenue}
+                format={fmtUsd}
+                sub={`Wholesale value · vs BP ${fmtUsd(plData.kpis.total_revenue_bp)} (${plData.kpis.total_revenue_bp ? (((plData.kpis.total_revenue - plData.kpis.total_revenue_bp) / plData.kpis.total_revenue_bp) * 100).toFixed(1) : "0"}%)`}
+              />
+              <Kpi label="Active SKUs" amount={plData.kpis.sku_count} format={fmtNum} sub="References in scope" />
+              <Card className="shine group p-6">
+                <div className="label">ABC Revenue Mix</div>
+                <div className="flex items-end gap-5 mt-4">
+                  <div>
+                    <span className="font-display text-3xl font-light text-forest">{plData.kpis.abc_mix.A}%</span>
+                    <div className="text-[10px] text-muted uppercase tracking-wider mt-1">A · Core</div>
+                  </div>
+                  <div>
+                    <span className="font-display text-3xl font-light text-gold">{plData.kpis.abc_mix.B}%</span>
+                    <div className="text-[10px] text-muted uppercase tracking-wider mt-1">B · Mid</div>
+                  </div>
+                  <div>
+                    <span className="font-display text-3xl font-light text-bordeaux">{plData.kpis.abc_mix.C}%</span>
+                    <div className="text-[10px] text-muted uppercase tracking-wider mt-1">C · Tail</div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          )}
+
+          {/* ── AI advisor ── */}
+          <div className="mt-6">
+            <AiReport
+              title="AI Planning &amp; Channel Advisor"
+              buttonLabel="◆ Consult AI Planning Advisor"
+              action="Rebalance channel allocation and pre-position stock on low weeks-of-supply references ahead of the seasonal peak."
+              stream={(onT, onD) =>
+                streamReport(
+                  "/api/supply/planning/report",
+                  { market: plMarket, category: plCategory, collections: plCollections, channel: plChannel, horizon: plHorizon },
+                  onT,
+                  onD
+                )
+              }
+            />
+          </div>
+
+          {/* ── Inner view tabs ── */}
+          <div className="flex gap-2 mt-8 mb-2 flex-wrap">
+            {[
+              { id: "grid", label: "SKU Forecast Grid" },
+              { id: "channel", label: "Channel Performance" },
+              { id: "ops", label: "Supply Operations" },
+            ].map((v) => (
+              <button
+                key={v.id}
+                onClick={() => setPlView(v.id)}
+                className={`px-5 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase rounded transition border ${
+                  plView === v.id
+                    ? "bg-sidebar text-cream border-sidebar"
+                    : "bg-card text-muted border-line hover:border-gold hover:text-ink"
+                }`}
+              >
+                {v.label}
+              </button>
+            ))}
+          </div>
+
+          {/* ── Collection quick-filter chips (apply to both Forecast Grid & Channel views) ── */}
+          {plFilters && plView !== "ops" && (
+            <div className="flex flex-wrap gap-2 items-center mt-1 mb-2">
+              <span className="label mr-1">Collection</span>
+              <button
+                onClick={() => setPlCollections([])}
+                className={`px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full border transition ${
+                  plCollections.length === 0 ? "bg-gold text-cream border-gold" : "bg-card text-muted border-line hover:border-gold hover:text-ink"
+                }`}
+              >
+                All
+              </button>
+              {plFilters.collections.map((c: string) => (
+                <button
+                  key={c}
+                  onClick={() => toggleCollection(c)}
+                  className={`px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full border transition ${
+                    plCollections.includes(c) ? "bg-gold text-cream border-gold" : "bg-card text-muted border-line hover:border-gold hover:text-ink"
+                  }`}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {plLoading && <div className="text-muted py-12 text-center font-display">Recalculating planning workbench…</div>}
+
+          {/* ════════ VIEW 1 · SKU MONTHLY FORECAST GRID ════════ */}
+          {plView === "grid" && plData && !plLoading && (() => {
+            const nActual = plDisplay.columns.filter((c) => c.actual).length;
+            const nFcst = plDisplay.columns.length - nActual;
+            const showAF = plScenAF;
+            const showBP = plScenBP;
+            const both = showAF && showBP;
+            const cellVal = (c: { af: number; bp: number }) =>
+              both ? (
+                <>
+                  <div className="text-ink tabular-nums">{c.af.toLocaleString()}</div>
+                  <div className="text-[9px] text-gold tabular-nums">{c.bp.toLocaleString()}</div>
+                </>
+              ) : (
+                <span className="tabular-nums">{(showAF ? c.af : c.bp).toLocaleString()}</span>
+              );
+            return (
+            <Card className="p-5 mt-2 overflow-hidden">
+              <div className="flex items-center justify-between mb-3 flex-wrap gap-3">
+                <Eyebrow>{plGrain === "monthly" ? "Month-by-Month" : "Quarter-by-Quarter"} Supply Forecast · SKU Level</Eyebrow>
+                <div className="flex items-center gap-4 flex-wrap">
+                  {/* View grain toggle */}
+                  <div className="flex items-center gap-1 bg-cream/30 p-0.5 rounded border border-line">
+                    {(["monthly", "quarterly"] as const).map((gr) => (
+                      <button
+                        key={gr}
+                        onClick={() => setPlGrain(gr)}
+                        className={`px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded transition ${
+                          plGrain === gr ? "bg-sidebar text-cream" : "text-muted hover:text-ink"
+                        }`}
+                      >
+                        {gr}
+                      </button>
+                    ))}
+                  </div>
+                  {/* Scenario toggle */}
+                  <div className="flex items-center gap-1.5">
+                    <span className="label">Scenario</span>
+                    <button
+                      onClick={() => toggleScenario("af")}
+                      className={`px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded border transition ${
+                        showAF ? "bg-ink text-cream border-ink" : "bg-card text-muted border-line hover:border-gold"
+                      }`}
+                    >
+                      Actual / Forecast
+                    </button>
+                    <button
+                      onClick={() => toggleScenario("bp")}
+                      className={`px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded border transition ${
+                        showBP ? "bg-gold text-cream border-gold" : "bg-card text-muted border-line hover:border-gold"
+                      }`}
+                    >
+                      BP
+                    </button>
+                  </div>
+                  <button
+                    onClick={() =>
+                      exportToCSV(
+                        plDisplay.rows.map((r: any) => {
+                          const o: any = { SKU: r.sku, ABC: r.abc, Collection: r.collection, Category: r.category, Description: r.description, WHLSE_USD: r.wholesale_price };
+                          plDisplay.columns.forEach((col, i) => {
+                            if (showAF) o[col.label] = r.cells[i].af;
+                            if (showBP) o[`${col.label} (BP)`] = r.cells[i].bp;
+                          });
+                          o.Total = showAF ? r.total : r.total_bp;
+                          o.Revenue_USD = showAF ? r.revenue : r.revenue_bp;
+                          return o;
+                        }),
+                        `sku_supply_forecast_${plGrain}.csv`
+                      )
+                    }
+                    className="bg-[#B8965A] text-cream text-[10px] font-semibold uppercase tracking-wider px-4 py-2 hover:bg-[#8B1A2B] transition rounded"
+                  >
+                    Export CSV
+                  </button>
+                </div>
+              </div>
+
+              {/* Legend */}
+              <div className="flex items-center gap-5 mb-2 text-[10px] text-muted flex-wrap">
+                <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-[#8A857B]/15 border border-line" /> Actuals ({nActual}M · to May 26)</span>
+                <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-card border border-gold/50" /> Forecast ({nFcst}M)</span>
+                {both && <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-gold/30" /> BP figure shown below A/F</span>}
+              </div>
+
+              <div className="overflow-x-auto scroll-thin">
+                <table className="text-[11px] text-left border-collapse min-w-[1100px]">
+                  <thead>
+                    {/* Group header: Actuals vs Forecast */}
+                    <tr className="text-[9px] uppercase tracking-[0.15em]">
+                      <th className="sticky left-0 bg-card z-10" colSpan={5} />
+                      <th colSpan={nActual} className="py-1.5 px-2 text-center text-muted bg-[#8A857B]/10 border-b border-line">◀ Actuals</th>
+                      <th colSpan={nFcst} className="py-1.5 px-2 text-center text-gold bg-gold/5 border-b border-gold/30">Forecast ▶</th>
+                      <th colSpan={2} />
+                    </tr>
+                    <tr className="border-b border-line bg-cream/10 text-muted uppercase tracking-wider text-[10px]">
+                      <th className="py-2.5 px-3 sticky left-0 bg-[#F4F0E8] z-10">Material</th>
+                      <th className="py-2.5 px-2 text-center">ABC</th>
+                      <th className="py-2.5 px-3">Collection</th>
+                      <th className="py-2.5 px-3">Description</th>
+                      <th className="py-2.5 px-3 text-right">WHLSE</th>
+                      {plDisplay.columns.map((col, i) => (
+                        <th key={i} className={`py-2.5 px-2 text-right whitespace-nowrap ${col.actual ? "bg-[#8A857B]/10 text-muted" : "text-ink font-semibold"}`}>{col.label}</th>
+                      ))}
+                      <th className="py-2.5 px-3 text-right bg-cream/30">Total</th>
+                      <th className="py-2.5 px-3 text-right bg-cream/30">Revenue</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {plDisplay.rows.map((r: any, idx: number) => {
+                      const abcCls =
+                        r.abc === "A"
+                          ? "bg-[#2D5A3D]/12 text-[#2D5A3D]"
+                          : r.abc === "B"
+                          ? "bg-[#B8965A]/18 text-[#8B6A2A]"
+                          : "bg-[#8B1A2B]/10 text-[#8B1A2B]";
+                      return (
+                        <tr key={idx} className="border-b border-line/40 hover:bg-cream/20">
+                          <td className="py-2 px-3 font-mono font-semibold text-ink sticky left-0 bg-card z-10">{r.sku}</td>
+                          <td className="py-2 px-2 text-center">
+                            <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${abcCls}`}>{r.abc}</span>
+                          </td>
+                          <td className="py-2 px-3 text-ink whitespace-nowrap">{r.collection}</td>
+                          <td className="py-2 px-3 text-muted max-w-[220px] truncate" title={r.description}>{r.description}</td>
+                          <td className="py-2 px-3 text-right text-muted font-mono whitespace-nowrap">{fmtUsd(r.wholesale_price)}</td>
+                          {r.cells.map((c: any, i: number) => (
+                            <td key={i} className={`py-2 px-2 text-right ${plDisplay.columns[i].actual ? "bg-[#8A857B]/[0.06] text-ink" : "text-ink"}`}>{cellVal(c)}</td>
+                          ))}
+                          <td className="py-2 px-3 text-right font-semibold text-ink bg-cream/10 tabular-nums">
+                            {(showAF ? r.total : r.total_bp).toLocaleString()}
+                            {both && <div className="text-[9px] text-gold tabular-nums font-normal">{r.total_bp.toLocaleString()}</div>}
+                          </td>
+                          <td className="py-2 px-3 text-right font-semibold text-ink bg-cream/10 tabular-nums whitespace-nowrap">
+                            {fmtUsd(showAF ? r.revenue : r.revenue_bp)}
+                            {both && <div className="text-[9px] text-gold tabular-nums font-normal">{fmtUsd(r.revenue_bp)}</div>}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                  <tfoot>
+                    <tr className="border-t-2 border-line bg-cream/30 font-bold text-ink text-[11px]">
+                      <td className="py-2.5 px-3 sticky left-0 bg-[#F0EBE0] z-10 whitespace-nowrap" colSpan={5}>
+                        Column Totals · {plDisplay.rows.length} SKUs
+                      </td>
+                      {plDisplay.totals.cells.map((t: any, i: number) => (
+                        <td key={i} className="py-2.5 px-2 text-right tabular-nums">
+                          {(showAF ? t.af : t.bp).toLocaleString()}
+                          {both && <div className="text-[9px] text-gold tabular-nums font-normal">{t.bp.toLocaleString()}</div>}
+                        </td>
+                      ))}
+                      <td className="py-2.5 px-3 text-right tabular-nums">{(showAF ? plDisplay.totals.af : plDisplay.totals.bp).toLocaleString()}</td>
+                      <td className="py-2.5 px-3 text-right tabular-nums whitespace-nowrap">{fmtUsd(showAF ? plDisplay.totals.revAf : plDisplay.totals.revBp)}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              {plDisplay.rows.length === 0 && <div className="text-muted text-center py-8 text-sm">No SKUs match the current filters.</div>}
+            </Card>
+            );
+          })()}
+
+          {/* ════════ VIEW 2 · PRODUCT PERFORMANCE BY CHANNEL ════════ */}
+          {plView === "channel" && plData && !plLoading && (
+            <div className="space-y-6 mt-4">
+              {/* Channel summary tiles */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {plData.channel_tiles.map((t: any) => (
+                  <Card key={t.channel} className="p-5">
+                    <div className="flex items-center justify-between">
+                      <div className="label text-ink">{t.channel}</div>
+                      <span className="text-[10px] font-semibold text-gold bg-gold/10 px-2 py-0.5 rounded">{t.share}% of units</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 mt-4 text-center">
+                      <div>
+                        <div className="font-display text-2xl font-light text-ink">{fmtNum(t.sales_mtd)}</div>
+                        <div className="text-[9px] text-muted uppercase tracking-wider mt-1">Sales MTD</div>
+                      </div>
+                      <div>
+                        <div className="font-display text-2xl font-light text-forest">{t.sell_through}%</div>
+                        <div className="text-[9px] text-muted uppercase tracking-wider mt-1">Sell-through</div>
+                      </div>
+                      <div>
+                        <div className="font-display text-2xl font-light text-ink">{fmtUsd(t.inventory_usd)}</div>
+                        <div className="text-[9px] text-muted uppercase tracking-wider mt-1">Inventory</div>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Channel lens selector */}
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <span className="label mr-1">Channel lens</span>
+                {plFilters?.channels.map((c: string) => (
+                  <button
+                    key={c}
+                    onClick={() => setPlChannel(c)}
+                    className={`px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded border transition ${
+                      plChannel === c ? "bg-sidebar text-cream border-sidebar" : "bg-card text-muted border-line hover:border-gold hover:text-ink"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+                <span className="text-[11px] text-muted ml-1 italic">Inventory &amp; sell-through scaled to the selected channel’s share of demand.</span>
+              </div>
+
+              {/* SKU performance table */}
+              <Card className="p-5 overflow-hidden">
+                <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+                  <Eyebrow>Product Performance · {plChannel === "All" ? "All Channels" : plChannel} · SKU Level</Eyebrow>
+                  <button
+                    onClick={() => exportToCSV(plSortedChannel, `channel_performance_${plChannel}.csv`)}
+                    className="bg-[#B8965A] text-cream text-[10px] font-semibold uppercase tracking-wider px-4 py-2 hover:bg-[#8B1A2B] transition rounded"
+                  >
+                    Export CSV
+                  </button>
+                </div>
+                <div className="text-[10px] text-muted mb-2 italic">Click any column header to sort.</div>
+                <div className="overflow-x-auto scroll-thin">
+                  <table className="w-full text-[11px] text-left border-collapse min-w-[1050px]">
+                    <thead>
+                      <tr className="border-b border-line bg-cream/10 text-muted uppercase tracking-wider text-[10px] select-none">
+                        {[
+                          { k: "sku", l: "SKU", a: "left" },
+                          { k: "product", l: "Product", a: "left" },
+                          { k: "collection", l: "Collection", a: "left" },
+                          { k: "soh", l: "SoH", a: "right" },
+                          { k: "in_transit", l: "In-Transit", a: "right" },
+                          { k: "reserved", l: "Reserved", a: "right" },
+                          { k: "sales_mtd", l: "Sales MTD", a: "right" },
+                          { k: "forecast_8w", l: "Forecast 8w", a: "right" },
+                          { k: "wos", l: "WOS", a: "right" },
+                          { k: "sell_through", l: "Sell-thru", a: "right" },
+                          { k: "aged_90", l: "Aged >90d", a: "right" },
+                          { k: "wholesale_qty", l: "WHLS Qty", a: "right" },
+                          { k: "inventory_usd", l: "Inventory USD", a: "right" },
+                        ].map((h) => (
+                          <th
+                            key={h.k}
+                            onClick={() => sortChannel(h.k)}
+                            className={`py-2.5 px-2 cursor-pointer hover:text-ink transition ${h.a === "right" ? "text-right" : "text-left px-3"} ${
+                              plChSort.key === h.k ? "text-ink font-bold" : ""
+                            }`}
+                          >
+                            {h.l}
+                            <span className="text-gold">{plChSort.key === h.k ? (plChSort.dir === "asc" ? " ▲" : " ▼") : ""}</span>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {plSortedChannel.map((r: any, idx: number) => {
+                        const wosCls = r.wos < 4 ? "text-[#8B1A2B] font-bold" : r.wos < 8 ? "text-[#8B6A2A] font-medium" : "text-ink";
+                        const stCls = r.sell_through >= 40 ? "text-forest font-semibold" : r.sell_through >= 20 ? "text-ink" : "text-muted";
+                        return (
+                          <tr key={idx} className="border-b border-line/40 hover:bg-cream/20">
+                            <td className="py-2 px-3 font-mono font-semibold text-ink">{r.sku}</td>
+                            <td className="py-2 px-3 text-ink max-w-[200px] truncate" title={r.product}>{r.product}</td>
+                            <td className="py-2 px-3 text-muted whitespace-nowrap">{r.collection}</td>
+                            <td className="py-2 px-2 text-right text-ink tabular-nums">{r.soh}</td>
+                            <td className="py-2 px-2 text-right text-muted tabular-nums">{r.in_transit}</td>
+                            <td className="py-2 px-2 text-right text-muted tabular-nums">{r.reserved}</td>
+                            <td className="py-2 px-2 text-right text-ink tabular-nums">{r.sales_mtd}</td>
+                            <td className="py-2 px-2 text-right text-ink tabular-nums">{r.forecast_8w}</td>
+                            <td className={`py-2 px-2 text-right tabular-nums ${wosCls}`}>{r.wos}</td>
+                            <td className={`py-2 px-2 text-right tabular-nums ${stCls}`}>{r.sell_through}%</td>
+                            <td className="py-2 px-2 text-right text-muted tabular-nums">{r.aged_90}</td>
+                            <td className="py-2 px-2 text-right text-muted tabular-nums">{r.wholesale_qty}</td>
+                            <td className="py-2 px-3 text-right text-ink font-medium tabular-nums whitespace-nowrap">{fmtUsd(r.inventory_usd)}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                {plSortedChannel.length === 0 && <div className="text-muted text-center py-8 text-sm">No SKUs match the current filters.</div>}
+              </Card>
+            </div>
+          )}
+
+          {/* ════════ VIEW 3 · SUPPLY OPERATIONS (inbound pipeline + reallocation) ════════ */}
+          {plView === "ops" && (
+          <div className="mt-4">
           {/* Filters Bar */}
           {fcFilters ? (
             <div className="flex flex-wrap gap-5 items-end bg-cream/10 p-5 border border-line/60 rounded">
@@ -1102,30 +1678,7 @@ export function DemandSupply() {
             <div className="text-muted text-xs">Loading Planning &amp; Forecast Filters…</div>
           )}
 
-          {/* AI Demand Planning Advisor — top CTA, directly after filters */}
-          <div className="mt-6">
-            <AiReport
-              title="AI Demand &amp; Supply Planning Advisor"
-              buttonLabel="◆ Consult AI Demand Planning Advisor"
-              action="Deploy recommended regional stock transfers and expedite inbound pipeline shipments to avoid critical stockouts."
-              stream={(onT, onD) =>
-                streamReport(
-                  "/api/supply/forecast/report",
-                  {
-                    market: fcMarket,
-                    category: fcCategory,
-                    collections: fcCollections,
-                    skus: fcSkus,
-                    horizon: fcHorizon,
-                    seasonality: fcSeasonality,
-                    include_inbound: fcIncludeInbound,
-                  },
-                  onT,
-                  onD
-                )
-              }
-            />
-          </div>
+          <div className="label text-gold uppercase tracking-[0.1em] mt-8 mb-1">Operational supply view · inbound pipeline &amp; reallocation</div>
 
           {fcLoading ? (
             <div className="text-muted py-20 text-center font-display">Generating time-series demand projections…</div>
@@ -1471,6 +2024,8 @@ export function DemandSupply() {
             </div>
           ) : (
             <div className="text-muted py-20 text-center font-display">Configure filters above to project inventories.</div>
+          )}
+          </div>
           )}
         </div>
       )}
