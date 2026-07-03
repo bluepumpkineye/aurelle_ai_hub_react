@@ -6,6 +6,7 @@ const NAV = [
   { key: "product", label: "Product Performance", soon: false },
   { key: "boutique", label: "Boutique Analytics", soon: false },
   { key: "demand", label: "Demand & Supply", soon: false },
+  { key: "vm", label: "Visual Merchandiser 3D", soon: false },
   { key: "marketing", label: "Marketing Intelligence", soon: false },
   { key: "llmops", label: "LLMOps & Prompt Lab", soon: false },
 ];
