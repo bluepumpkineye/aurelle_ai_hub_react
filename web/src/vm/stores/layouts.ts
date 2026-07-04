@@ -70,49 +70,93 @@ const ZONE_COLORS: Record<ZoneKind, string> = {
 // Fixtures are brand-standard network-wide; the shell is local to each maison.
 
 const THEMES: Record<string, BoutiqueTheme> = {
-  // Prince's Building: the network reference — cool white marble, deep
-  // charcoal/navy shadow-anchor walls (the original Aurelle color script).
+  // Prince's Building HK — warm champagne: swirled cream marble, smooth
+  // pebbled upper walls with champagne-gold quilted wainscot, an organic
+  // oval ceiling cove with a suspended gold flock, coral-panther feature art.
   hk: {
     id: "hk",
-    marble: { field: "#ebe9e4", cloud: "#cecac2", vein: "#968f84", goldVein: "#bba680" },
-    wallField: "#39352f",
-    wainscotA: "#22222a",
-    wainscotB: "#1d2434",
-    columnColor: "#2a2620",
-    rugColor: "#39304a",
+    marble: { field: "#ece7dd", cloud: "#dccfba", vein: "#b19a76", goldVein: "#c6a468" },
+    wallField: "#e2dac9",
+    wallStyle: "smooth",
+    wainscotA: "#c8a96c",
+    wainscotB: "#c2a366",
+    wainscotStyle: "quilted",
+    columnColor: "#d9c79f",
+    rugColor: "#d2c6b0",
+    floorStyle: "swirl-marble",
+    floorWood: "#b98d54",
+    ceilingStyle: "organic-oval",
+    ceilingGlow: "#ffcf94",
+    chandelier: "gold-petal",
+    muralMotif: "panther",
+    muralPalette: ["#efe6d6", "#c9784f", "#9aa0a6", "#c6a468"],
+    accentUpholstery: ["#b5613a", "#c98a3a", "#6d7b52"],
   },
-  // Beijing: imperial warmth — cream marble with walnut clouds, deep
-  // walnut/bordeaux panels, bordeaux VIP rug.
+  // Beijing — imperial opulence: gold woven dome ceiling with a gold-petal
+  // chandelier, cream diamond-quilted walls, cherry-blossom mural, jewel-tone
+  // velvet lounge furniture, warm herringbone + gold marble floor.
   bj: {
     id: "bj",
-    marble: { field: "#ece4d4", cloud: "#d6c7ab", vein: "#a78f72", goldVein: "#b28c58" },
-    wallField: "#3b3129",
-    wainscotA: "#2c2320",
-    wainscotB: "#33231f",
-    columnColor: "#33281e",
-    rugColor: "#4a2a30",
+    marble: { field: "#ece3d0", cloud: "#d8c6a0", vein: "#b0946a", goldVein: "#c39a52" },
+    wallField: "#e6dcc6",
+    wallStyle: "smooth",
+    wainscotA: "#d8cbb0",
+    wainscotB: "#d2c3a4",
+    wainscotStyle: "quilted",
+    columnColor: "#cbb488",
+    rugColor: "#cbb78c",
+    floorStyle: "herringbone-oak",
+    floorWood: "#bd9256",
+    ceilingStyle: "gold-dome",
+    ceilingGlow: "#ffbf6e",
+    chandelier: "gold-petal",
+    muralMotif: "cherry-blossom",
+    muralPalette: ["#efe7d5", "#d98aa0", "#7a5240", "#c39a52"],
+    accentUpholstery: ["#c9a13a", "#b5533a", "#5f7350", "#7a2f38"],
   },
-  // Seoul: contemporary dark — honed travertine, deep emerald and
-  // smoked-steel panels, forest rug. Moody gallery lighting reads stronger.
+  // Seoul — warm classic: cream travertine walls, oak herringbone floor,
+  // crystal chandeliers over a warm cove, marquetry-sunburst feature art,
+  // navy/cognac lounge accents. The most restrained, traditional maison.
   seoul: {
     id: "seoul",
-    marble: { field: "#e3d9c6", cloud: "#cdbfa4", vein: "#9c8a6c", goldVein: "#ad9060" },
-    wallField: "#232f29",
-    wainscotA: "#18241f",
-    wainscotB: "#202730",
-    columnColor: "#1e2822",
-    rugColor: "#2c3a32",
+    marble: { field: "#e7ddc8", cloud: "#d2c2a2", vein: "#a88f6a", goldVein: "#b6975f" },
+    wallField: "#e4dac4",
+    wallStyle: "travertine",
+    wainscotA: "#d8ccb2",
+    wainscotB: "#d0c3a6",
+    wainscotStyle: "travertine",
+    columnColor: "#d7c8a8",
+    rugColor: "#bab4a6",
+    floorStyle: "herringbone-oak",
+    floorWood: "#b98a50",
+    ceilingStyle: "organic-oval",
+    ceilingGlow: "#ffd6a0",
+    chandelier: "crystal-cascade",
+    muralMotif: "marquetry-sunburst",
+    muralPalette: ["#c39a5e", "#a9793f", "#8a5c2c", "#d8b878"],
+    accentUpholstery: ["#2f3d5c", "#7a5236", "#5c5f52"],
   },
-  // Tokyo Ginza: light minimalism — pale silver-grey stone, greige upper
-  // walls, navy-grey wainscot accents, navy rug. Narrow-deep Ginza plot.
+  // Tokyo Ginza — pale organic minimalism: pale cream marble, fluted upper
+  // walls, natural reed columns, an amorphous illuminated ceiling cove, sage
+  // bamboo feature art, coral/celadon accents. The lightest, airiest maison.
   tokyo: {
     id: "tokyo",
-    marble: { field: "#eceef0", cloud: "#d5d9de", vein: "#a9b0ba", goldVein: "#b8b09a" },
-    wallField: "#8d877b",
-    wainscotA: "#3a3f4c",
-    wainscotB: "#4a453c",
-    columnColor: "#7b7568",
-    rugColor: "#222a3a",
+    marble: { field: "#edeae2", cloud: "#dcd6c8", vein: "#bcb4a2", goldVein: "#c6b48c" },
+    wallField: "#e7e0d2",
+    wallStyle: "fluted",
+    wainscotA: "#dfd7c6",
+    wainscotB: "#d8cfba",
+    wainscotStyle: "fluted",
+    columnColor: "#cba874",
+    rugColor: "#bfbca4",
+    floorStyle: "pale-marble",
+    floorWood: "#7a5230",
+    ceilingStyle: "amorphous",
+    ceilingGlow: "#ffe0b4",
+    chandelier: "none",
+    muralMotif: "bamboo",
+    muralPalette: ["#5f7a5a", "#8fa585", "#e7ecdf", "#c6a468"],
+    accentUpholstery: ["#b5613a", "#6f7d55", "#8a8f7a"],
   },
 };
 

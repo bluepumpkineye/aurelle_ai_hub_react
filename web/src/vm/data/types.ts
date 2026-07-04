@@ -184,21 +184,53 @@ export interface MarblePalette {
   goldVein: string;
 }
 
+/** Surface treatment for a wall plane — drives the procedural normal/color. */
+export type WallStyle = "quilted" | "fluted" | "woven" | "travertine" | "smooth";
+/** Statement ceiling over the hero zone. */
+export type CeilingStyle = "organic-oval" | "gold-dome" | "marquetry-disc" | "amorphous";
+/** Suspended lighting sculpture under the ceiling feature. */
+export type ChandelierStyle = "gold-petal" | "crystal-cascade" | "none";
+/** Floor treatment. */
+export type FloorStyle = "swirl-marble" | "herringbone-oak" | "pale-marble" | "plank-walnut";
+/** Feature-wall art motif. */
+export type MuralMotif =
+  | "panther"
+  | "cherry-blossom"
+  | "chinoiserie"
+  | "bamboo"
+  | "marquetry-sunburst"
+  | "kintsugi";
+
 /**
  * Per-boutique architecture identity. Fixtures stay brand-standard across the
- * network; the shell (stone, walls, wainscot, rug, columns) is local.
+ * network; the shell — stone, walls, wainscot, ceiling, chandelier, feature
+ * art, floor, rugs and lounge upholstery — is local to each maison.
  */
 export interface BoutiqueTheme {
   /** Stable key for material caches. */
   id: string;
   marble: MarblePalette;
-  /** Upper wall fabric field color. */
+  /** Upper wall field color. */
   wallField: string;
+  wallStyle: WallStyle;
   /** Wainscot panel colors (alternating by wall orientation). */
   wainscotA: string;
   wainscotB: string;
+  wainscotStyle: WallStyle;
   columnColor: string;
   rugColor: string;
+  floorStyle: FloorStyle;
+  /** Warm wood tone for herringbone/plank floors. */
+  floorWood: string;
+  ceilingStyle: CeilingStyle;
+  /** Emissive glow color of the cove / dome. */
+  ceilingGlow: string;
+  chandelier: ChandelierStyle;
+  muralMotif: MuralMotif;
+  /** Motif colors: [ground, primary, secondary, accent]. */
+  muralPalette: [string, string, string, string];
+  /** Jewel-tone velvet options for lounge/VIP seating. */
+  accentUpholstery: string[];
 }
 
 // ───────────────────────────── Layout ─────────────────────────────

@@ -123,10 +123,10 @@ export function buildFloorPlate(
     );
   };
 
-  // ── Floor slab (boutique-local stone from the architecture theme) ──
+  // ── Floor (boutique-local: swirl marble, pale marble, herringbone or plank) ──
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(width, depth),
-    kit.marbleThemed(theme.marble, theme.id),
+    kit.floorThemed(theme.floorStyle, theme.marble, theme.floorWood, theme.id),
   );
   floor.rotation.x = -Math.PI / 2;
   floor.receiveShadow = true;
@@ -159,7 +159,10 @@ export function buildFloorPlate(
   }
 
   // ── Walls with apertures ──
-  const wallMat = kit.fabricWallPanel(theme.wallField);
+  // Upper wall field: travertine/smooth reads as the plaster-above-wainscot in
+  // the references; quilted/fluted/woven treatments belong on the wainscot.
+  const upperStyle = theme.wallStyle === "travertine" ? "travertine" : "smooth";
+  const wallMat = kit.wallPanel(theme.wallField, upperStyle);
   const wainscotColors = [theme.wainscotA, theme.wainscotB];
   const specs = wallSpecs(width, depth);
   const goldBrushed = kit.metalFor("champagne-gold", false);
@@ -225,8 +228,9 @@ export function buildFloorPlate(
     const panelH = 2.1;
     const panelW = 1.18;
     const panelGap = 0.03;
-    const wainscotMat = kit.fabricWallPanel(
+    const wainscotMat = kit.wallPanel(
       wainscotColors[spec.name === "east" || spec.name === "west" ? 1 : 0],
+      theme.wainscotStyle,
     );
     let along = 0.25;
     while (along + panelW < spec.length - 0.25) {
@@ -247,35 +251,55 @@ export function buildFloorPlate(
     bucket.add(new THREE.BoxGeometry(spec.length, 0.05, 0.05), goldBrushed, railC.x, railC.y, railC.z, { ry: rotY });
   }
 
-  // ── Artwork frames (north + west walls) ──
-  const artSpots: Array<{ wall: Aperture["wall"]; along: number; y: number }> = [
-    { wall: "north", along: width * 0.28, y: 2.6 },
-    { wall: "north", along: width * 0.72, y: 2.6 },
-    { wall: "west", along: depth * 0.5, y: 2.7 },
-  ];
-  for (const spot of artSpots) {
-    const spec = specs.find((s) => s.name === spot.wall);
-    if (!spec) continue;
+  // ── Feature mural: the maison's signature art wall, full-height, centred on
+  //    the north wall (the entrance sightline anchor — Pillar D/E). ──
+  const northSpec = specs.find((s) => s.name === "north");
+  if (northSpec) {
+    const clearAlong = (a: number) =>
+      !apertures.some((ap) => ap.wall === "north" && a > ap.offset - 1.6 && a < ap.offset + ap.width + 1.6);
+    const muralAlong = width * 0.5;
+    if (clearAlong(muralAlong)) {
+      const muralW = Math.min(width * 0.32, 3.4);
+      const muralH = 2.6;
+      const muralY = 0.4 + muralH / 2;
+      // Recessed champagne frame.
+      const fc = placeAlong(northSpec, muralAlong, muralY, WALL_T / 2 + 0.02);
+      bucket.add(new THREE.BoxGeometry(muralW + 0.14, muralH + 0.14, 0.05), goldPolished, fc.x, fc.y, fc.z, {
+        ry: 0,
+      });
+      const mural = new THREE.Mesh(new THREE.PlaneGeometry(muralW, muralH), kit.mural(theme.muralMotif, theme.muralPalette));
+      mural.position.copy(placeAlong(northSpec, muralAlong, muralY, WALL_T / 2 + 0.05));
+      mural.lookAt(mural.position.clone().add(northSpec.inward));
+      mural.receiveShadow = true;
+      group.add(mural);
+    }
+  }
+
+  // ── Secondary framed artwork on the west wall ──
+  const westSpec = specs.find((s) => s.name === "west");
+  if (westSpec) {
+    const along = depth * 0.5;
     const blocked = apertures.some(
-      (a) => a.wall === spot.wall && spot.along > a.offset - 0.8 && spot.along < a.offset + a.width + 0.8,
+      (a) => a.wall === "west" && along > a.offset - 0.9 && along < a.offset + a.width + 0.9,
     );
-    if (blocked) continue;
-    const artW = 1.1;
-    const artH = 1.4;
-    const fc = placeAlong(spec, spot.along, spot.y, WALL_T / 2 + 0.03);
-    bucket.add(new THREE.BoxGeometry(artW + 0.12, artH + 0.12, 0.06), goldPolished, fc.x, fc.y, fc.z, {
-      ry: wallYRotation(spec),
-    });
-    const art = new THREE.Mesh(
-      new THREE.PlaneGeometry(artW, artH),
-      new THREE.MeshStandardMaterial({
-        map: makeArtworkTexture(rng.child(`art-${spot.wall}-${spot.along}`)),
-        roughness: 0.85,
-      }),
-    );
-    art.position.copy(placeAlong(spec, spot.along, spot.y, WALL_T / 2 + 0.062));
-    art.lookAt(art.position.clone().add(spec.inward));
-    group.add(art);
+    if (!blocked) {
+      const artW = 1.1;
+      const artH = 1.4;
+      const fc = placeAlong(westSpec, along, 2.7, WALL_T / 2 + 0.03);
+      bucket.add(new THREE.BoxGeometry(artW + 0.12, artH + 0.12, 0.06), goldPolished, fc.x, fc.y, fc.z, {
+        ry: wallYRotation(westSpec),
+      });
+      const art = new THREE.Mesh(
+        new THREE.PlaneGeometry(artW, artH),
+        new THREE.MeshStandardMaterial({
+          map: makeArtworkTexture(rng.child("art-west")),
+          roughness: 0.85,
+        }),
+      );
+      art.position.copy(placeAlong(westSpec, along, 2.7, WALL_T / 2 + 0.062));
+      art.lookAt(art.position.clone().add(westSpec.inward));
+      group.add(art);
+    }
   }
 
   // ── Interior signage above the entrance (south wall, inside) ──
@@ -302,7 +326,7 @@ export function buildFloorPlate(
   }
 
   // ── Columns with base & capital ──
-  const columnMat = kit.fabricWallPanel(theme.columnColor);
+  const columnMat = kit.wallPanel(theme.columnColor, "smooth");
   for (const col of columns) {
     bucket.add(new THREE.BoxGeometry(col.size, H - 0.5, col.size), columnMat, col.x, (H - 0.5) / 2 + 0.25, col.z);
     bucket.add(new THREE.BoxGeometry(col.size + 0.12, 0.25, col.size + 0.12), goldBrushed, col.x, 0.125, col.z);

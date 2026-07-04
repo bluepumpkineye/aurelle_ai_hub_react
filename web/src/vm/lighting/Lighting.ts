@@ -54,11 +54,12 @@ export class LightingEngine {
   ) {
     this.group.name = "lighting";
 
-    // Cool ambient fill — deep shadows keep a warm undertone via ground color.
+    // Warm interior fill — the reference boutiques glow warm-champagne; a gentle
+    // cool remains in the sky term so daylight from the shopfront reads cooler.
     this.skyFill = new THREE.HemisphereLight(
-      new THREE.Color("#c9d4e6"),
-      new THREE.Color("#2c2620"),
-      0.5,
+      new THREE.Color("#f2e6cf"),
+      new THREE.Color("#33291c"),
+      0.72,
     );
     this.group.add(this.skyFill);
 

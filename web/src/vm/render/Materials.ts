@@ -7,14 +7,20 @@
 
 import * as THREE from "three";
 import { Rng } from "../core/Seed";
+import type { FloorStyle, MuralMotif, WallStyle } from "../data/types";
 import {
   generateBrushedMaps,
   generateCarpetMaps,
   generateFabricPanelMaps,
+  generateGoldWeaveMaps,
   generateMarbleMaps,
+  generateMuralTexture,
   generatePlasterMaps,
   generateShadowBlob,
   generateVelvetMaps,
+  generateWallPanelMaps,
+  generateWoodFloorMaps,
+  type WallPanelStyle,
 } from "./Textures";
 
 export function jitterColor(hex: string, rng: Rng, hueDeg: number, valueJitter: number): THREE.Color {
@@ -44,6 +50,10 @@ export class MaterialKit {
   private fabricWall = new Map<string, THREE.MeshStandardMaterial>();
   private carpetCache = new Map<string, THREE.MeshStandardMaterial>();
   private marbleCache = new Map<string, THREE.MeshPhysicalMaterial>();
+  private wallPanelCache = new Map<string, THREE.MeshStandardMaterial>();
+  private woodFloorCache = new Map<string, THREE.MeshStandardMaterial>();
+  private muralCache = new Map<string, THREE.MeshStandardMaterial>();
+  private goldWeave: THREE.MeshStandardMaterial | null = null;
   private readonly rng: Rng;
   private disposables: Array<{ dispose(): void }> = [];
   readonly transmissionEnabled: boolean;
@@ -224,6 +234,94 @@ export class MaterialKit {
   }
 
   /**
+   * Styled wall panel (quilted / fluted / woven / travertine / smooth) — the
+   * treatment that gives each maison its wall character. Cached per style+color.
+   */
+  wallPanel(color: string, style: WallStyle): THREE.MeshStandardMaterial {
+    const key = `${style}:${color}`;
+    const cached = this.wallPanelCache.get(key);
+    if (cached) return cached;
+    const maps = generateWallPanelMaps(this.rng.child(`wall-${key}`), color, style as WallPanelStyle);
+    const ns = style === "quilted" ? 1.1 : style === "fluted" || style === "woven" ? 0.9 : 0.5;
+    const m = new THREE.MeshStandardMaterial({
+      map: maps.map,
+      roughnessMap: maps.roughnessMap,
+      normalMap: maps.normalMap,
+      normalScale: new THREE.Vector2(ns, ns),
+      roughness: 1,
+      metalness: 0,
+    });
+    this.wallPanelCache.set(key, m);
+    this.disposables.push(maps.map, maps.roughnessMap, maps.normalMap, m);
+    return m;
+  }
+
+  /** Themed floor: warm swirl marble, pale marble, herringbone oak, or walnut plank. */
+  floorThemed(
+    style: FloorStyle,
+    marbleTints: { field: string; cloud: string; vein: string; goldVein: string },
+    woodColor: string,
+    id: string,
+  ): THREE.MeshStandardMaterial | THREE.MeshPhysicalMaterial {
+    if (style === "swirl-marble" || style === "pale-marble") {
+      return this.marbleThemed(marbleTints, `${id}-${style}`);
+    }
+    const key = `${id}-${style}`;
+    const cached = this.woodFloorCache.get(key);
+    if (cached) return cached;
+    const maps = generateWoodFloorMaps(this.rng.child(`floor-${key}`), woodColor, style === "herringbone-oak");
+    const m = new THREE.MeshStandardMaterial({
+      map: maps.map,
+      roughnessMap: maps.roughnessMap,
+      normalMap: maps.normalMap,
+      normalScale: new THREE.Vector2(0.5, 0.5),
+      roughness: 1,
+      metalness: 0,
+      envMapIntensity: 0.7,
+    });
+    this.woodFloorCache.set(key, m);
+    this.disposables.push(maps.map, maps.roughnessMap, maps.normalMap, m);
+    return m;
+  }
+
+  /** Emissive gold-woven ceiling panel (Beijing / HK statement ceilings). */
+  goldWeaveCeiling(): THREE.MeshStandardMaterial {
+    if (this.goldWeave) return this.goldWeave;
+    const maps = generateGoldWeaveMaps(this.rng.child("goldweave"));
+    const m = new THREE.MeshStandardMaterial({
+      map: maps.map,
+      roughnessMap: maps.roughnessMap,
+      normalMap: maps.normalMap,
+      normalScale: new THREE.Vector2(0.6, 0.6),
+      metalness: 0.85,
+      roughness: 0.45,
+      emissive: new THREE.Color("#7a5a24"),
+      emissiveMap: maps.map,
+      emissiveIntensity: 0.5,
+      envMapIntensity: 1.1,
+    });
+    this.goldWeave = m;
+    this.disposables.push(maps.map, maps.roughnessMap, maps.normalMap, m);
+    return m;
+  }
+
+  /** Feature-wall mural (panther / cherry-blossom / chinoiserie / bamboo / etc.). */
+  mural(motif: MuralMotif, palette: [string, string, string, string]): THREE.MeshStandardMaterial {
+    const key = `${motif}:${palette.join(",")}`;
+    const cached = this.muralCache.get(key);
+    if (cached) return cached;
+    const tex = generateMuralTexture(this.rng.child(`mural-${key}`), motif, palette);
+    const m = new THREE.MeshStandardMaterial({
+      map: tex,
+      roughness: 0.72,
+      metalness: motif === "marquetry-sunburst" || motif === "kintsugi" ? 0.35 : 0.05,
+    });
+    this.muralCache.set(key, m);
+    this.disposables.push(tex, m);
+    return m;
+  }
+
+  /**
    * Velvet with per-instance variation (PRD §4 per-instance law): the same
    * zone palette, jittered per fixture seed. Cached per resolved color.
    */
@@ -296,5 +394,9 @@ export class MaterialKit {
     this.fabricWall.clear();
     this.carpetCache.clear();
     this.marbleCache.clear();
+    this.wallPanelCache.clear();
+    this.woodFloorCache.clear();
+    this.muralCache.clear();
+    this.goldWeave = null;
   }
 }

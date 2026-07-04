@@ -15,6 +15,7 @@ import { parseSlotKey, slotKey } from "../data/types";
 import { templateOf } from "../fixtures/FixtureCatalog";
 import { FixtureFactory, type BuiltFixture } from "../fixtures/FixtureBuilder";
 import { buildFloorPlate } from "../boutique/FloorPlate";
+import { buildCeilingFeature, buildZoneRugs } from "../boutique/Ambience";
 import { LightingEngine, type LightingStats, makeInteriorEnvironment } from "../lighting/Lighting";
 import { MaterialKit } from "../render/Materials";
 import { ProductFactory } from "../products/ProductBuilder";
@@ -50,6 +51,7 @@ export class BoutiqueScene {
   private fixtureFactory: FixtureFactory;
   private fixturesGroup = new THREE.Group();
   private floorGroup: THREE.Group | null = null;
+  private ambienceGroup: THREE.Group | null = null;
   private nodes = new Map<string, FixtureNode>();
   private productTemplates = new Map<string, THREE.Group>();
   private raycaster = new THREE.Raycaster();
@@ -76,8 +78,8 @@ export class BoutiqueScene {
 
     this.envTexture = makeInteriorEnvironment();
     scene.environment = this.envTexture;
-    scene.environmentIntensity = 0.55;
-    scene.background = new THREE.Color("#0d0c0a");
+    scene.environmentIntensity = 0.85;
+    scene.background = new THREE.Color("#17130d");
 
     // ── Reactive wiring: store → 3D in one pass ──
     this.unsubscribers.push(
@@ -108,18 +110,31 @@ export class BoutiqueScene {
 
   /** Full (re)build for a layout. */
   build(layout: BoutiqueLayout): void {
-    // Clear previous fixture nodes + floor.
+    // Clear previous fixture nodes + floor + ambience.
     for (const id of [...this.nodes.keys()]) this.removeFixtureNode(id);
     if (this.floorGroup) {
       this.root.remove(this.floorGroup);
       this.disposeSubtree(this.floorGroup);
       this.floorGroup = null;
     }
+    if (this.ambienceGroup) {
+      this.root.remove(this.ambienceGroup);
+      this.disposeSubtree(this.ambienceGroup);
+      this.ambienceGroup = null;
+    }
 
     const rng = new Rng(hashString(`${layout.id}-plate`));
     const plate = buildFloorPlate(layout, this.kit, rng);
     this.floorGroup = plate.group;
     this.root.add(plate.group);
+
+    // Statement ceiling + chandelier + zone rugs (the maison's luxury signature).
+    const ambience = new THREE.Group();
+    ambience.name = "ambience";
+    ambience.add(buildCeilingFeature(layout, this.kit, layout.theme, rng.child("ceiling")));
+    ambience.add(buildZoneRugs(layout, this.kit, layout.theme));
+    this.ambienceGroup = ambience;
+    this.root.add(ambience);
 
     for (const f of layout.fixtures) this.addFixtureNode(f.id);
 
@@ -136,7 +151,7 @@ export class BoutiqueScene {
     if (!instance) return;
     const template = templateOf(instance.templateId);
     const zone = this.store.layout.zones.find((z) => z.id === instance.zoneId);
-    const built = this.fixtureFactory.build(instance, template, zone);
+    const built = this.fixtureFactory.build(instance, template, zone, this.store.layout.theme.accentUpholstery);
 
     const isCeiling = template.kind.startsWith("light-");
     built.group.position.set(

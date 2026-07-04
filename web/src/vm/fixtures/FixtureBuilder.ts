@@ -34,6 +34,7 @@ export class FixtureFactory {
     instance: FixtureInstance,
     template: FixtureTemplate,
     zone: ZoneConfig | undefined,
+    accentUpholstery?: string[],
   ): BuiltFixture {
     const rng = new Rng(instance.variationSeed);
     const group = new THREE.Group();
@@ -48,6 +49,13 @@ export class FixtureFactory {
       zone?.velvet.hueJitterDeg ?? 4,
       zone?.velvet.valueJitter ?? 0.06,
     );
+    // Lounge/salon seating is jewel-toned per maison (mustard/coral/olive…);
+    // tray velvet stays the brand zone color. Chosen deterministically.
+    const seatColor =
+      accentUpholstery && accentUpholstery.length
+        ? accentUpholstery[rng.int(0, accentUpholstery.length - 1)]
+        : velvetBase;
+    const seatVelvet = this.kit.velvet(seatColor, rng.child("seat"), 3, 0.05);
     const framePolished = this.kit.metalFor(instance.finish, true);
     const frameBrushed = this.kit.metalFor(instance.finish, false);
     const body = rng.chance(0.5) ? this.kit.lacquerDark : this.kit.lacquerNavy;
@@ -283,19 +291,21 @@ export class FixtureFactory {
         break;
       }
 
-      // ───────── seating ─────────
+      // ───────── seating (jewel-tone accent upholstery per maison) ─────────
       case "seating-chair": {
         const seatH = 0.44;
-        box(W * 0.92, 0.12, D * 0.92, velvet, 0, seatH, 0);
-        box(W * 0.88, 0.5, 0.1, velvet, 0, seatH + 0.28, -D / 2 + 0.07);
+        // Rounded tub-chair read: seat pad + wrapping back shell.
+        box(W * 0.92, 0.14, D * 0.92, seatVelvet, 0, seatH, 0);
+        box(W * 0.9, 0.42, 0.12, seatVelvet, 0, seatH + 0.24, -D / 2 + 0.08);
+        for (const sx of [-1, 1])
+          box(0.1, 0.34, D * 0.7, seatVelvet, sx * (W / 2 - 0.06), seatH + 0.18, 0.02); // arms
         for (const sx of [-1, 1])
           for (const sz of [-1, 1])
-            box(0.035, seatH - 0.06, 0.035, frameBrushed, sx * (W / 2 - 0.05), (seatH - 0.06) / 2, sz * (D / 2 - 0.05));
-        box(W * 0.92, 0.03, D * 0.92, frameBrushed, 0, seatH - 0.075, 0);
+            cyl(0.02, 0.026, seatH - 0.08, frameBrushed, sx * (W / 2 - 0.08), (seatH - 0.08) / 2, sz * (D / 2 - 0.08), 10, { rx: 0.06 * sz });
         break;
       }
       case "seating-ottoman": {
-        box(W, H * 0.55, D, velvet, 0, H * 0.45, 0);
+        box(W, H * 0.55, D, seatVelvet, 0, H * 0.45, 0);
         box(W * 0.96, 0.05, D * 0.96, frameBrushed, 0, H * 0.14, 0);
         for (const sx of [-1, 1])
           for (const sz of [-1, 1])

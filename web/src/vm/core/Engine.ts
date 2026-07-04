@@ -88,7 +88,7 @@ export class Engine {
     this.renderer = renderer;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.quality.pixelRatio));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 1.32;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     // Shadow maps render on demand per light (LightingEngine.requestShadowUpdate)
