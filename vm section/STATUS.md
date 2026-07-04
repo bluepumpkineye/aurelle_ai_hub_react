@@ -51,7 +51,7 @@ What exists and passes:
 · Phase 4 ✓ — slot map, planogram engine, diff engine (added/removed/changed/moved, 3D markers), slot editor UI, save/load named planograms, template planograms, bulk update pipeline (target→op→preview diff→confirm→undo), undo depth 32. Round-trip EXACT ✓; full-floor bulk 24.7 ms ✓.
 · Phase 5 ✓ — inventory signal store, one-pass reactive propagation (17.1 ms ✓), low-stock amber / critical red pulses, campaign rings, gap detection + floating alert cards, mock pulse generator (4 s default) + manual input.
 · Phase 6 MOSTLY ✓ — heat map (brand ramp, opacity slider), traffic Bézier arcs, dwell rings, adjacency rules + warning arcs, sortable dashboard w/ click-to-navigate, zone boundaries/labels, all co-visible without z-fighting (screen-size billboard labels). GI probes deferred.
-· Boutiques: Prince's Building Hong Kong (320 m², 34 fixtures) + Beijing Flagship (297 m², 35 fixtures), deterministic merchandising, ?store= deep link.
+· Boutiques (4): Prince's Building Hong Kong (320 m² · cool white marble / charcoal-navy — the network reference), Beijing Flagship (297 m² · warm cream marble / walnut-bordeaux), Seoul Flagship (308 m², 22×14 wide-gallery plan with central court + east/west wings · travertine / deep emerald), Tokyo Ginza (247 m², 13×19 narrow-deep Ginza plot, vertical emphasis, no cash-wrap · pale silver-grey stone / greige + navy). Architecture varies per BoutiqueTheme (marble palette, wall field, wainscot pair, columns, rug — data/types.ts); the 20-template fixture library is brand-standard everywhere. All four validate 0 aisle/bounds violations. Deterministic merchandising, ?store= deep link.
 · Cameras: orbit + first-person walk (V, WASD, fixture collision), 6 authored bookmarks (keys 1–6, 0.8 s eased), photo-mode DoF pending (D-9).
 · Quality presets: high/balanced/igpu auto-detected from adapter (?quality= override) — spots/shadows/transmission/pixelRatio/bloom scale.
 
@@ -225,6 +225,12 @@ Session 2026-07-03 (first build) — new entries:
 · Vite static-replaces import.meta.env.DEV — indirection through a cast object silently breaks it in dev.
 · Planogram round-trip exactness requires per-SKU (not per-slot) stock levels at merchandising time: projectPlanogram re-reads live inventory, so two slots of one SKU with different seeded stock can never round-trip.
 · mergeGeometries(box/cylinder primitives) is safe (same attribute sets, indexed); bucket per (material, castShadow) to keep glass/LED lenses out of the shadow pass.
+
+Session 2026-07-04 (Seoul + Tokyo boutiques) — new entries:
+· Floor-plate bounds check must be PER-AXIS half extents, not max-extent radius — the radius version rejects every wall-hugging fixture ("extends beyond floor plate") and would block users dragging fixtures to walls. Fixed in VMStore.validatePlacement.
+· Authored layouts are never validated at load — run `for (f of layout.fixtures) validatePlacement(f, f.id)` as a battery step after ANY layout edit or clearance-rule change. Raising wall clearance 0.05→0.3 mid-build silently invalidated 4 HK/Beijing placements; the battery caught them only when run explicitly.
+· HMR leaves the previewed React tree stale relative to window.__aurelleVM — a "controlled select didn't update" symptom after HMR edits is usually a stale tree, not a bug. Always re-verify UI-sync issues on a fresh full reload before chasing them.
+· Per-boutique architecture = BoutiqueTheme on the layout (marble tints/wall field/wainscot pair/column/rug); MaterialKit caches themed marble by theme id so boutique switching pays texture generation once per theme per session.
 Inherited wholesale from LAAS STATUS — all entries remain valid (WebGPU secure context traps, TSL expression-vs-Fn stack rules, RenderPipeline quad-camera uniform hazard, TRAA camera-update order contract, depth convention, pointer-lock traps, measurement methodology for M1 Max thermal drift, etc.). Re-read the full LAAS gotchas list before starting any new system. The following are Aurelle-specific additions:
 
 "Cartier" string audit: run grep -ri "cartier" src/ ui/ tools/ before every commit. Zero permitted. The brand is Aurelle. Internal adapter classes (e.g. CartierAPIStoreAdapter) live in docs/EXTENSION.md as documentation only — never compiled into the app.

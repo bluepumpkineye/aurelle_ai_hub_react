@@ -174,6 +174,33 @@ export interface FixtureInstance {
   variationSeed: number;
 }
 
+// ───────────────────────────── Architecture theme ─────────────────────────────
+
+/** Procedural marble tint set — field, tonal clouds, primary + warm veins. */
+export interface MarblePalette {
+  field: string;
+  cloud: string;
+  vein: string;
+  goldVein: string;
+}
+
+/**
+ * Per-boutique architecture identity. Fixtures stay brand-standard across the
+ * network; the shell (stone, walls, wainscot, rug, columns) is local.
+ */
+export interface BoutiqueTheme {
+  /** Stable key for material caches. */
+  id: string;
+  marble: MarblePalette;
+  /** Upper wall fabric field color. */
+  wallField: string;
+  /** Wainscot panel colors (alternating by wall orientation). */
+  wainscotA: string;
+  wainscotB: string;
+  columnColor: string;
+  rugColor: string;
+}
+
 // ───────────────────────────── Layout ─────────────────────────────
 
 export interface BoutiqueLayout {
@@ -181,6 +208,7 @@ export interface BoutiqueLayout {
   name: string;
   market: string;
   tier: "tier1" | "tier2";
+  theme: BoutiqueTheme;
   floor: FloorSpec;
   zones: ZoneConfig[];
   fixtures: FixtureInstance[];

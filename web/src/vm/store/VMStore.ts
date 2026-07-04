@@ -263,13 +263,14 @@ export class VMStore {
     const quarterTurns = Math.round(instance.rotationY / (Math.PI / 2)) % 2 !== 0;
     const halfW = (quarterTurns ? instance.dims.depth : instance.dims.width) / 2;
     const halfD = (quarterTurns ? instance.dims.width : instance.dims.depth) / 2;
-    const r = Math.max(halfW, halfD);
-
+    // Per-axis bounds (wall fixtures legitimately hug the wall line, so the
+    // margin is a small tolerance, not an aisle).
+    const margin = 0.02;
     if (
-      instance.x - r < -floor.width / 2 + 0.05 ||
-      instance.x + r > floor.width / 2 - 0.05 ||
-      instance.z - r < -floor.depth / 2 + 0.05 ||
-      instance.z + r > floor.depth / 2 - 0.05
+      instance.x - halfW < -floor.width / 2 - margin ||
+      instance.x + halfW > floor.width / 2 + margin ||
+      instance.z - halfD < -floor.depth / 2 - margin ||
+      instance.z + halfD > floor.depth / 2 + margin
     ) {
       return "Placement rejected: fixture would extend beyond the floor plate.";
     }

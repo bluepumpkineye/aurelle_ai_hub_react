@@ -131,7 +131,27 @@ function hexToRgb(hex: string): [number, number, number] {
 
 // ───────────────────────────── marble (3-frequency veining) ─────────────────────────────
 
-export function generateMarbleMaps(rng: Rng, size = 1024, repeat = 4): GeneratedMaps {
+export interface MarbleTints {
+  field: string;
+  cloud: string;
+  vein: string;
+  goldVein: string;
+}
+
+/** Aurelle default: cool white field, grey-taupe macro clouds, fine warm veins. */
+const DEFAULT_MARBLE: MarbleTints = {
+  field: "#ebe9e4",
+  cloud: "#cecac2",
+  vein: "#968f84",
+  goldVein: "#bba680",
+};
+
+export function generateMarbleMaps(
+  rng: Rng,
+  size = 1024,
+  repeat = 4,
+  tints: MarbleTints = DEFAULT_MARBLE,
+): GeneratedMaps {
   const noise = new Noise2D(rng.child("marble"));
   const warp = new Noise2D(rng.child("marble-warp"));
   const [colorCanvas, colorCtx] = makeCanvas(size);
@@ -140,11 +160,10 @@ export function generateMarbleMaps(rng: Rng, size = 1024, repeat = 4): Generated
   const roughImg = roughCtx.createImageData(size, size);
   const height = new Float32Array(size * size);
 
-  // Aurelle marble: cool white field, grey-taupe macro clouds, fine warm veins.
-  const field: [number, number, number] = [235, 233, 228];
-  const cloud: [number, number, number] = [206, 202, 194];
-  const vein: [number, number, number] = [150, 143, 132];
-  const goldVein: [number, number, number] = [187, 166, 128];
+  const field = hexToRgb(tints.field);
+  const cloud = hexToRgb(tints.cloud);
+  const vein = hexToRgb(tints.vein);
+  const goldVein = hexToRgb(tints.goldVein);
 
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {

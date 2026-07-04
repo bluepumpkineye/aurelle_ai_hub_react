@@ -12,6 +12,7 @@ import { Rng, hashString } from "../core/Seed";
 import { skusForCategory } from "../data/catalog";
 import type {
   BoutiqueLayout,
+  BoutiqueTheme,
   FixtureInstance,
   Planogram,
   ProductCategory,
@@ -63,6 +64,56 @@ const ZONE_COLORS: Record<ZoneKind, string> = {
   accessories: "#2d5a3d",
   vip: "#6b4a8a",
   service: "#8a6a3a",
+};
+
+// ───────────────────────────── Architecture themes ─────────────────────────────
+// Fixtures are brand-standard network-wide; the shell is local to each maison.
+
+const THEMES: Record<string, BoutiqueTheme> = {
+  // Prince's Building: the network reference — cool white marble, deep
+  // charcoal/navy shadow-anchor walls (the original Aurelle color script).
+  hk: {
+    id: "hk",
+    marble: { field: "#ebe9e4", cloud: "#cecac2", vein: "#968f84", goldVein: "#bba680" },
+    wallField: "#39352f",
+    wainscotA: "#22222a",
+    wainscotB: "#1d2434",
+    columnColor: "#2a2620",
+    rugColor: "#39304a",
+  },
+  // Beijing: imperial warmth — cream marble with walnut clouds, deep
+  // walnut/bordeaux panels, bordeaux VIP rug.
+  bj: {
+    id: "bj",
+    marble: { field: "#ece4d4", cloud: "#d6c7ab", vein: "#a78f72", goldVein: "#b28c58" },
+    wallField: "#3b3129",
+    wainscotA: "#2c2320",
+    wainscotB: "#33231f",
+    columnColor: "#33281e",
+    rugColor: "#4a2a30",
+  },
+  // Seoul: contemporary dark — honed travertine, deep emerald and
+  // smoked-steel panels, forest rug. Moody gallery lighting reads stronger.
+  seoul: {
+    id: "seoul",
+    marble: { field: "#e3d9c6", cloud: "#cdbfa4", vein: "#9c8a6c", goldVein: "#ad9060" },
+    wallField: "#232f29",
+    wainscotA: "#18241f",
+    wainscotB: "#202730",
+    columnColor: "#1e2822",
+    rugColor: "#2c3a32",
+  },
+  // Tokyo Ginza: light minimalism — pale silver-grey stone, greige upper
+  // walls, navy-grey wainscot accents, navy rug. Narrow-deep Ginza plot.
+  tokyo: {
+    id: "tokyo",
+    marble: { field: "#eceef0", cloud: "#d5d9de", vein: "#a9b0ba", goldVein: "#b8b09a" },
+    wallField: "#8d877b",
+    wainscotA: "#3a3f4c",
+    wainscotB: "#4a453c",
+    columnColor: "#7b7568",
+    rugColor: "#222a3a",
+  },
 };
 
 // Which categories each zone kind prefers when auto-merchandising.
@@ -194,8 +245,8 @@ function princesBuildingHK(): BoutiqueLayout {
     fx(rng, "light-track", 6.2, 1.2, 90, "hk-watches"),
 
     // Accessories Gallery — west wall systems
-    fx(rng, "wall-shelving", -9.7, 2.0, 90, "hk-accessories"),
-    fx(rng, "wall-shelving", -9.7, 0.0, 90, "hk-accessories"),
+    fx(rng, "wall-shelving", -9.7, 2.1, 90, "hk-accessories"),
+    fx(rng, "wall-shelving", -9.7, -0.1, 90, "hk-accessories"),
     fx(rng, "wall-bracket", -9.75, -2.1, 90, "hk-accessories"),
     fx(rng, "display-table-rect", -6.5, 2.8, 0, "hk-accessories"),
     fx(rng, "display-table-round", -6.5, -0.5, 0, "hk-accessories"),
@@ -212,8 +263,8 @@ function princesBuildingHK(): BoutiqueLayout {
     // Client Services
     fx(rng, "counter-service", 3.5, -6.5, 180, "hk-service"),
     fx(rng, "counter-cashwrap", 7.5, -6.5, 180, "hk-service"),
-    fx(rng, "seating-chair", 3.0, -4.7, 0, "hk-service"),
-    fx(rng, "seating-chair", 4.5, -4.7, 0, "hk-service"),
+    fx(rng, "seating-chair", 3.2, -4.9, 0, "hk-service"),
+    fx(rng, "seating-chair", 4.7, -4.9, 0, "hk-service"),
     fx(rng, "wall-paneling", 5.2, -7.93, 0, "hk-service"),
     fx(rng, "light-recessed", 5.0, -5.0, 0, "hk-service"),
   ];
@@ -223,6 +274,7 @@ function princesBuildingHK(): BoutiqueLayout {
     name: "Prince's Building, Hong Kong",
     market: "Hong Kong SAR",
     tier: "tier1",
+    theme: THEMES.hk,
     floor: {
       width: W,
       depth: D,
@@ -351,7 +403,7 @@ function beijingFlagship(): BoutiqueLayout {
     fx(rng, "showcase-wall-watch", -8.7, -0.8, 90, "bj-watches"),
     fx(rng, "showcase-island-120", -5.2, 2.4, 90, "bj-watches"),
     fx(rng, "showcase-low-90", -5.2, -0.9, 0, "bj-watches"),
-    fx(rng, "showcase-tower", -3.3, 3.6, 0, "bj-watches"),
+    fx(rng, "showcase-tower", -3.2, 3.7, 0, "bj-watches"),
     fx(rng, "light-track", -5.4, 1.2, 90, "bj-watches"),
 
     // High Jewelry Court — center stage
@@ -362,8 +414,8 @@ function beijingFlagship(): BoutiqueLayout {
     fx(rng, "light-track", 0.6, 0.8, 0, "bj-high-jewelry"),
 
     // Maison Accessories — east wall
-    fx(rng, "wall-shelving", 8.7, 2.6, -90, "bj-accessories"),
-    fx(rng, "wall-shelving", 8.7, 0.6, -90, "bj-accessories"),
+    fx(rng, "wall-shelving", 8.7, 2.7, -90, "bj-accessories"),
+    fx(rng, "wall-shelving", 8.7, 0.5, -90, "bj-accessories"),
     fx(rng, "wall-bracket", 8.75, -1.5, -90, "bj-accessories"),
     fx(rng, "display-table-rect", 5.9, 3.4, 90, "bj-accessories"),
     fx(rng, "display-table-round", 5.9, 0.2, 0, "bj-accessories"),
@@ -391,6 +443,7 @@ function beijingFlagship(): BoutiqueLayout {
     name: "Beijing Flagship",
     market: "Chinese Mainland",
     tier: "tier1",
+    theme: THEMES.bj,
     floor: {
       width: W,
       depth: D,
@@ -403,6 +456,346 @@ function beijingFlagship(): BoutiqueLayout {
       columns: [
         { x: -2.5, z: -0.2, size: 0.55 },
         { x: 4, z: -0.2, size: 0.55 },
+      ],
+    },
+    zones,
+    fixtures,
+  };
+}
+
+// ───────────────────────────── Seoul Flagship ─────────────────────────────
+// Wide, shallow plate with a central entrance court flanked by east/west
+// wings — a gallery promenade rather than the HK/Beijing deep-hall plans.
+
+function seoulFlagship(): BoutiqueLayout {
+  const rng = new Rng(hashString("aurelle-seoul-flagship"));
+  const W = 22;
+  const D = 14;
+
+  const zones: ZoneConfig[] = [
+    {
+      id: "se-entrance",
+      name: "Entrance Court",
+      kind: "entrance",
+      polygon: [
+        [-4, 3],
+        [4, 3],
+        [4, 7],
+        [-4, 7],
+      ],
+      color: ZONE_COLORS.entrance,
+      velvet: VELVET.ivory,
+      expectedAssortment: { necklaces: 2, rings: 1 },
+    },
+    {
+      id: "se-accessories",
+      name: "Accessories Promenade",
+      kind: "accessories",
+      polygon: [
+        [-11, 0],
+        [-4, 0],
+        [-4, 7],
+        [-11, 7],
+      ],
+      color: ZONE_COLORS.accessories,
+      velvet: VELVET.charcoal,
+      expectedAssortment: { "leather-goods": 10, fragrance: 6 },
+    },
+    {
+      id: "se-watches",
+      name: "Watch Gallery",
+      kind: "watches",
+      polygon: [
+        [4, 0],
+        [11, 0],
+        [11, 7],
+        [4, 7],
+      ],
+      color: ZONE_COLORS.watches,
+      velvet: VELVET.navy,
+      expectedAssortment: { "watches-dress": 8, "watches-sport": 6 },
+    },
+    {
+      id: "se-high-jewelry",
+      name: "High Jewelry Salon",
+      kind: "high-jewelry",
+      polygon: [
+        [-4, -7],
+        [4, -7],
+        [4, 3],
+        [-4, 3],
+      ],
+      color: ZONE_COLORS["high-jewelry"],
+      velvet: VELVET.cream,
+      expectedAssortment: { rings: 6, necklaces: 4, earrings: 3, bracelets: 2, brooches: 2 },
+    },
+    {
+      id: "se-service",
+      name: "Client Services",
+      kind: "service",
+      polygon: [
+        [-11, -7],
+        [-4, -7],
+        [-4, 0],
+        [-11, 0],
+      ],
+      color: ZONE_COLORS.service,
+      velvet: VELVET.charcoal,
+      expectedAssortment: { "leather-goods": 2 },
+    },
+    {
+      id: "se-vip",
+      name: "Salon Privé (VIP)",
+      kind: "vip",
+      polygon: [
+        [4, -7],
+        [11, -7],
+        [11, 0],
+        [4, 0],
+      ],
+      color: ZONE_COLORS.vip,
+      velvet: VELVET.cream,
+      expectedAssortment: { rings: 2, necklaces: 1 },
+    },
+  ];
+
+  const fixtures: FixtureInstance[] = [
+    // Entrance court — twin towers framing a hero duo pedestal
+    fx(rng, "pedestal-duo", 0, 5.4, 0, "se-entrance"),
+    fx(rng, "showcase-tower", -2.8, 4.6, 0, "se-entrance"),
+    fx(rng, "showcase-tower", 2.8, 4.6, 0, "se-entrance"),
+    fx(rng, "light-track", 0, 5.0, 0, "se-entrance"),
+
+    // Accessories promenade — west wing
+    fx(rng, "wall-shelving", -10.7, 5.6, 90, "se-accessories"),
+    fx(rng, "wall-shelving", -10.7, 3.4, 90, "se-accessories"),
+    fx(rng, "wall-bracket", -10.75, 1.2, 90, "se-accessories"),
+    fx(rng, "display-table-rect", -7.5, 5.5, 0, "se-accessories"),
+    fx(rng, "display-table-round", -7.5, 2.5, 0, "se-accessories"),
+    fx(rng, "pedestal-solo", -5.2, 0.8, 0, "se-accessories"),
+    fx(rng, "light-recessed", -8, 4, 0, "se-accessories"),
+
+    // Watch gallery — east wing
+    fx(rng, "showcase-wall-watch", 10.7, 5.6, -90, "se-watches"),
+    fx(rng, "showcase-wall-watch", 10.7, 3.6, -90, "se-watches"),
+    fx(rng, "showcase-wall-watch", 10.7, 1.6, -90, "se-watches"),
+    fx(rng, "showcase-island-120", 7, 4.5, 0, "se-watches"),
+    fx(rng, "showcase-low-90", 7, 1.5, 0, "se-watches"),
+    fx(rng, "showcase-tower", 4.8, 3, 0, "se-watches"),
+    fx(rng, "light-track", 7.5, 3.5, 90, "se-watches"),
+
+    // High jewelry salon — central spine to the back wall
+    fx(rng, "showcase-island-180", 0, 0.8, 0, "se-high-jewelry"),
+    fx(rng, "showcase-island-120", 0, -2.6, 0, "se-high-jewelry"),
+    fx(rng, "pedestal-solo", -2.9, -0.9, 0, "se-high-jewelry"),
+    fx(rng, "pedestal-solo", 2.9, -0.9, 0, "se-high-jewelry"),
+    fx(rng, "showcase-low-90", 0, -5.2, 0, "se-high-jewelry"),
+    fx(rng, "light-track", 0, -1, 0, "se-high-jewelry"),
+    fx(rng, "light-accent", 0.4, 0.8, 0, "se-high-jewelry"),
+
+    // Client services — west-rear
+    fx(rng, "counter-service", -8.5, -5, 180, "se-service"),
+    fx(rng, "counter-cashwrap", -5.5, -5.8, 180, "se-service"),
+    fx(rng, "seating-chair", -8.8, -3.2, 0, "se-service"),
+    fx(rng, "seating-chair", -7.3, -3.2, 0, "se-service"),
+    fx(rng, "wall-paneling", -7.5, -6.93, 0, "se-service"),
+    fx(rng, "light-recessed", -7.5, -4, 0, "se-service"),
+
+    // Salon Privé — east-rear
+    fx(rng, "showcase-low-90", 9.5, -4.5, -90, "se-vip"),
+    fx(rng, "seating-ottoman", 6.2, -5.4, 0, "se-vip"),
+    fx(rng, "seating-chair", 5, -3, 180, "se-vip"),
+    fx(rng, "pedestal-solo", 8.2, -2, 0, "se-vip"),
+    fx(rng, "wall-paneling", 10.93, -2.5, -90, "se-vip"),
+    fx(rng, "light-accent", 8.2, -1.8, 0, "se-vip"),
+  ];
+
+  return {
+    id: "seoul-flagship",
+    name: "Seoul Flagship",
+    market: "South Korea",
+    tier: "tier1",
+    theme: THEMES.seoul,
+    floor: {
+      width: W,
+      depth: D,
+      ceilingHeight: 4.0,
+      apertures: [
+        { wall: "south", offset: 9.6, width: 2.8, height: 3.0, sill: 0, kind: "door" },
+        { wall: "south", offset: 1.5, width: 6.5, height: 3.2, sill: 0.3, kind: "shopfront" },
+        { wall: "south", offset: 14.0, width: 6.5, height: 3.2, sill: 0.3, kind: "shopfront" },
+        { wall: "west", offset: 9.0, width: 3.0, height: 2.4, sill: 0.9, kind: "window" },
+      ],
+      columns: [
+        { x: -4, z: 0.5, size: 0.5 },
+        { x: 4, z: 0.5, size: 0.5 },
+      ],
+    },
+    zones,
+    fixtures,
+  };
+}
+
+// ───────────────────────────── Tokyo Ginza ─────────────────────────────
+// Narrow, deep Ginza plot: a vertical promenade — zones stack front to back,
+// vertical emphasis (towers, wall systems), lighter minimal shell.
+
+function tokyoGinza(): BoutiqueLayout {
+  const rng = new Rng(hashString("aurelle-tokyo-ginza"));
+  const W = 13;
+  const D = 19;
+
+  const zones: ZoneConfig[] = [
+    {
+      id: "tk-entrance",
+      name: "Entrance Gallery",
+      kind: "entrance",
+      polygon: [
+        [-6.5, 6],
+        [6.5, 6],
+        [6.5, 9.5],
+        [-6.5, 9.5],
+      ],
+      color: ZONE_COLORS.entrance,
+      velvet: VELVET.ivory,
+      expectedAssortment: { necklaces: 1, rings: 1, fragrance: 1 },
+    },
+    {
+      id: "tk-watches",
+      name: "Watch Salon",
+      kind: "watches",
+      polygon: [
+        [-6.5, 0],
+        [0, 0],
+        [0, 6],
+        [-6.5, 6],
+      ],
+      color: ZONE_COLORS.watches,
+      velvet: VELVET.navy,
+      expectedAssortment: { "watches-dress": 6, "watches-sport": 5 },
+    },
+    {
+      id: "tk-accessories",
+      name: "Maison Accessories",
+      kind: "accessories",
+      polygon: [
+        [0, 0],
+        [6.5, 0],
+        [6.5, 6],
+        [0, 6],
+      ],
+      color: ZONE_COLORS.accessories,
+      velvet: VELVET.charcoal,
+      expectedAssortment: { "leather-goods": 9, fragrance: 5 },
+    },
+    {
+      id: "tk-high-jewelry",
+      name: "High Jewelry Atelier",
+      kind: "high-jewelry",
+      polygon: [
+        [-6.5, -5],
+        [6.5, -5],
+        [6.5, 0],
+        [-6.5, 0],
+      ],
+      color: ZONE_COLORS["high-jewelry"],
+      velvet: VELVET.cream,
+      expectedAssortment: { rings: 5, necklaces: 3, earrings: 2, brooches: 2 },
+    },
+    {
+      id: "tk-service",
+      name: "Client Services",
+      kind: "service",
+      polygon: [
+        [-6.5, -9.5],
+        [0, -9.5],
+        [0, -5],
+        [-6.5, -5],
+      ],
+      color: ZONE_COLORS.service,
+      velvet: VELVET.charcoal,
+      expectedAssortment: { "leather-goods": 1 },
+    },
+    {
+      id: "tk-vip",
+      name: "Salon Ginza (VIP)",
+      kind: "vip",
+      polygon: [
+        [0, -9.5],
+        [6.5, -9.5],
+        [6.5, -5],
+        [0, -5],
+      ],
+      color: ZONE_COLORS.vip,
+      velvet: VELVET.cream,
+      expectedAssortment: { rings: 2, necklaces: 1 },
+    },
+  ];
+
+  const fixtures: FixtureInstance[] = [
+    // Entrance gallery — vertical statement pieces
+    fx(rng, "pedestal-solo", 0, 7.6, 0, "tk-entrance"),
+    fx(rng, "showcase-tower", -3.5, 7.8, 0, "tk-entrance"),
+    fx(rng, "showcase-tower", 3.5, 7.8, 0, "tk-entrance"),
+    fx(rng, "light-track", 0, 7.0, 0, "tk-entrance"),
+    fx(rng, "light-accent", 0.4, 7.6, 0, "tk-entrance"),
+
+    // Watch salon — west side
+    fx(rng, "showcase-wall-watch", -6.2, 4.4, 90, "tk-watches"),
+    fx(rng, "showcase-wall-watch", -6.2, 2.2, 90, "tk-watches"),
+    fx(rng, "showcase-island-120", -3, 4.2, 90, "tk-watches"),
+    fx(rng, "showcase-low-90", -3, 1.2, 0, "tk-watches"),
+    fx(rng, "light-track", -3, 2.8, 90, "tk-watches"),
+
+    // Maison accessories — east side
+    fx(rng, "wall-shelving", 6.2, 4.6, -90, "tk-accessories"),
+    fx(rng, "wall-bracket", 6.25, 2.4, -90, "tk-accessories"),
+    fx(rng, "display-table-round", 3, 4.6, 0, "tk-accessories"),
+    fx(rng, "display-table-rect", 3, 1.4, 90, "tk-accessories"),
+    fx(rng, "light-recessed", 3.5, 3, 0, "tk-accessories"),
+
+    // High jewelry atelier — full-width band mid-store
+    fx(rng, "showcase-island-180", 0, -2.4, 0, "tk-high-jewelry"),
+    fx(rng, "showcase-tower", -4.4, -2.4, 0, "tk-high-jewelry"),
+    fx(rng, "showcase-tower", 4.4, -2.4, 0, "tk-high-jewelry"),
+    fx(rng, "pedestal-duo", 0, -0.4, 0, "tk-high-jewelry"),
+    fx(rng, "light-track", 0, -2.4, 90, "tk-high-jewelry"),
+
+    // Client services — rear-west (no cash-wrap: the Ginza service counter
+    // handles transactions — furniture mix differs from the other maisons)
+    fx(rng, "counter-service", -3.5, -7.6, 180, "tk-service"),
+    fx(rng, "seating-chair", -4.2, -5.9, 0, "tk-service"),
+    fx(rng, "seating-chair", -2.8, -5.9, 0, "tk-service"),
+    fx(rng, "wall-paneling", -3.5, -9.43, 0, "tk-service"),
+    fx(rng, "light-recessed", -3.5, -6.5, 0, "tk-service"),
+
+    // Salon Ginza — rear-east
+    fx(rng, "showcase-low-90", 5.2, -7.5, -90, "tk-vip"),
+    fx(rng, "seating-ottoman", 2.2, -8.2, 0, "tk-vip"),
+    fx(rng, "seating-chair", 1.6, -5.9, 180, "tk-vip"),
+    fx(rng, "wall-paneling", 6.43, -6.5, -90, "tk-vip"),
+    fx(rng, "light-accent", 5.2, -7.2, 0, "tk-vip"),
+  ];
+
+  return {
+    id: "tokyo-ginza",
+    name: "Tokyo Ginza",
+    market: "Japan",
+    tier: "tier1",
+    theme: THEMES.tokyo,
+    floor: {
+      width: W,
+      depth: D,
+      ceilingHeight: 3.8,
+      apertures: [
+        { wall: "south", offset: 5.1, width: 2.8, height: 3.0, sill: 0, kind: "door" },
+        { wall: "south", offset: 0.8, width: 3.6, height: 3.2, sill: 0.25, kind: "shopfront" },
+        { wall: "south", offset: 8.6, width: 3.6, height: 3.2, sill: 0.25, kind: "shopfront" },
+        { wall: "east", offset: 15.0, width: 2.4, height: 2.2, sill: 0.8, kind: "window" },
+      ],
+      columns: [
+        { x: -3.2, z: -0.5, size: 0.45 },
+        { x: 3.2, z: -0.5, size: 0.45 },
       ],
     },
     zones,
@@ -533,7 +926,12 @@ export function buildTemplatePlanograms(): Planogram[] {
   return out;
 }
 
-export const LAYOUTS: BoutiqueLayout[] = [princesBuildingHK(), beijingFlagship()];
+export const LAYOUTS: BoutiqueLayout[] = [
+  princesBuildingHK(),
+  beijingFlagship(),
+  seoulFlagship(),
+  tokyoGinza(),
+];
 
 export function layoutById(id: string | null): BoutiqueLayout {
   const found = LAYOUTS.find((l) => l.id === id);

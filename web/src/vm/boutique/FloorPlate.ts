@@ -108,6 +108,7 @@ export function buildFloorPlate(
   group.name = "floor-plate";
   const colliders: THREE.Box3[] = [];
   const { width, depth, ceilingHeight: H, apertures, columns } = layout.floor;
+  const theme = layout.theme;
   const bucket = new GeometryBucket();
 
   /** Axis-aligned collider from a wall-space box. */
@@ -122,8 +123,11 @@ export function buildFloorPlate(
     );
   };
 
-  // ── Floor slab ──
-  const floor = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), kit.marbleFloor);
+  // ── Floor slab (boutique-local stone from the architecture theme) ──
+  const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(width, depth),
+    kit.marbleThemed(theme.marble, theme.id),
+  );
   floor.rotation.x = -Math.PI / 2;
   floor.receiveShadow = true;
   floor.name = "floor";
@@ -155,8 +159,8 @@ export function buildFloorPlate(
   }
 
   // ── Walls with apertures ──
-  const wallMat = kit.fabricWallPanel("#39352f");
-  const wainscotColors = ["#22222a", "#1d2434"];
+  const wallMat = kit.fabricWallPanel(theme.wallField);
+  const wainscotColors = [theme.wainscotA, theme.wainscotB];
   const specs = wallSpecs(width, depth);
   const goldBrushed = kit.metalFor("champagne-gold", false);
   const goldPolished = kit.metalFor("champagne-gold", true);
@@ -298,7 +302,7 @@ export function buildFloorPlate(
   }
 
   // ── Columns with base & capital ──
-  const columnMat = kit.fabricWallPanel("#2a2620");
+  const columnMat = kit.fabricWallPanel(theme.columnColor);
   for (const col of columns) {
     bucket.add(new THREE.BoxGeometry(col.size, H - 0.5, col.size), columnMat, col.x, (H - 0.5) / 2 + 0.25, col.z);
     bucket.add(new THREE.BoxGeometry(col.size + 0.12, 0.25, col.size + 0.12), goldBrushed, col.x, 0.125, col.z);
@@ -328,7 +332,7 @@ export function buildFloorPlate(
     const rugD = Math.max(2, maxZ - minZ - 2.4);
     const cx = (minX + maxX) / 2;
     const cz = (minZ + maxZ) / 2;
-    const rug = new THREE.Mesh(new THREE.PlaneGeometry(rugW, rugD), kit.carpet("#39304a"));
+    const rug = new THREE.Mesh(new THREE.PlaneGeometry(rugW, rugD), kit.carpet(theme.rugColor));
     rug.rotation.x = -Math.PI / 2;
     rug.position.set(cx, 0.012, cz);
     rug.receiveShadow = true;

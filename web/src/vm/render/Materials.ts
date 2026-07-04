@@ -43,6 +43,7 @@ export class MaterialKit {
   private velvetCache = new Map<string, THREE.MeshPhysicalMaterial>();
   private fabricWall = new Map<string, THREE.MeshStandardMaterial>();
   private carpetCache = new Map<string, THREE.MeshStandardMaterial>();
+  private marbleCache = new Map<string, THREE.MeshPhysicalMaterial>();
   private readonly rng: Rng;
   private disposables: Array<{ dispose(): void }> = [];
   readonly transmissionEnabled: boolean;
@@ -195,6 +196,34 @@ export class MaterialKit {
   }
 
   /**
+   * Boutique-local floor stone: same veining algorithm, per-boutique tint set
+   * (BoutiqueTheme.marble). Cached by theme key across boutique switches.
+   * Counter tops keep the default `marbleFloor` — brand-standard stone.
+   */
+  marbleThemed(
+    tints: { field: string; cloud: string; vein: string; goldVein: string },
+    key: string,
+  ): THREE.MeshPhysicalMaterial {
+    const cached = this.marbleCache.get(key);
+    if (cached) return cached;
+    const maps = generateMarbleMaps(this.rng.child(`floor-${key}`), 1024, 4, tints);
+    const m = new THREE.MeshPhysicalMaterial({
+      map: maps.map,
+      roughnessMap: maps.roughnessMap,
+      normalMap: maps.normalMap,
+      normalScale: new THREE.Vector2(0.35, 0.35),
+      roughness: 1,
+      metalness: 0,
+      clearcoat: 0.55,
+      clearcoatRoughness: 0.22,
+      envMapIntensity: 0.9,
+    });
+    this.marbleCache.set(key, m);
+    this.disposables.push(maps.map, maps.roughnessMap, maps.normalMap, m);
+    return m;
+  }
+
+  /**
    * Velvet with per-instance variation (PRD §4 per-instance law): the same
    * zone palette, jittered per fixture seed. Cached per resolved color.
    */
@@ -266,5 +295,6 @@ export class MaterialKit {
     this.velvetCache.clear();
     this.fabricWall.clear();
     this.carpetCache.clear();
+    this.marbleCache.clear();
   }
 }
