@@ -25,18 +25,30 @@ export function makeBookmarks(layout: BoutiqueLayout): CameraBookmark[] {
   const doorX = door ? door.offset + door.width / 2 - W / 2 : 0;
   const out: CameraBookmark[] = [];
 
-  // 1 — entrance wide: dark frame edges, lit floor beyond.
+  // Bookmarks follow the playbook's six authored viewpoints (keys 1–6).
+
+  // 1 — Entry view: standing at the door, looking into the boutique. The
+  //     eyeline lands on the Fine Jewellery hero island (Rule 1).
   out.push({
-    name: "Entrance",
+    name: "Entry",
     position: new THREE.Vector3(doorX, 1.62, D / 2 - 0.5),
-    target: new THREE.Vector3(doorX * 0.3, 1.15, -D * 0.25),
+    target: new THREE.Vector3(doorX * 0.3, 1.1, -D * 0.25),
   });
 
-  const zoneShot = (kind: string, name: string, dist: number, height: number, lookH: number) => {
-    const zone = layout.zones.find((z) => z.kind === kind);
+  const zoneShot = (
+    kind: string,
+    name: string,
+    dist: number,
+    height: number,
+    lookH: number,
+    fallbackKind?: string,
+  ) => {
+    const zone =
+      layout.zones.find((z) => z.kind === kind) ??
+      (fallbackKind ? layout.zones.find((z) => z.kind === fallbackKind) : undefined);
     if (!zone) return;
     const [cx, cz] = polygonCentroid(zone.polygon);
-    // Approach from the entrance side.
+    // Approach from the entrance (south) side so we look the way a client walks.
     const dir = new THREE.Vector3(cx, 0, cz).sub(new THREE.Vector3(doorX, 0, D / 2)).normalize();
     out.push({
       name,
@@ -45,16 +57,31 @@ export function makeBookmarks(layout: BoutiqueLayout): CameraBookmark[] {
     });
   };
 
-  zoneShot("high-jewelry", "High Jewelry", 2.6, 1.5, 0.95); // 2 — case close-up
-  zoneShot("watches", "Watch Atelier", 3.0, 1.55, 1.1); // 3
-  zoneShot("vip", "VIP Salon", 2.8, 1.5, 0.7); // 4
-  zoneShot("service", "Client Services", 3.0, 1.55, 0.95); // 5
+  // 2 — Fine Jewellery: facing the hero island.
+  zoneShot("fine-jewelry", "Fine Jewellery", 3.2, 1.55, 1.0);
 
-  // 6 — overhead floor overview from a ceiling corner.
+  // 3 — Watch wall: close-up facing the right (east) wall.
+  const watches = layout.zones.find((z) => z.kind === "watches");
+  if (watches) {
+    const [wcx, wcz] = polygonCentroid(watches.polygon);
+    out.push({
+      name: "Watch Wall",
+      position: new THREE.Vector3(wcx - 1.6, 1.5, wcz),
+      target: new THREE.Vector3(W / 2, 1.3, wcz),
+    });
+  }
+
+  // 4 — High Jewellery Gallery: standing at the gallery entry, looking in.
+  zoneShot("high-jewelry", "HJ Gallery", 3.4, 1.55, 1.0);
+
+  // 5 — Private Salon / consultation interior.
+  zoneShot("vip", "Private Salon", 2.6, 1.5, 0.8, "consultation");
+
+  // 6 — Overview orbit, ~45° from a ceiling corner.
   out.push({
-    name: "Floor Overview",
-    position: new THREE.Vector3(W * 0.3, H - 0.3, D * 0.42),
-    target: new THREE.Vector3(0, 0.2, -D * 0.08),
+    name: "Overview",
+    position: new THREE.Vector3(W * 0.32, H - 0.25, D * 0.44),
+    target: new THREE.Vector3(0, 0.2, -D * 0.05),
   });
 
   return out;

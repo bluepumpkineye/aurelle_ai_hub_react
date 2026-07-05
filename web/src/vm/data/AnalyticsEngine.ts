@@ -48,24 +48,40 @@ const ADJACENCY_RULES: Array<{
     rule: "VIP salon must not open directly onto the entrance sightline.",
     severity: "warn",
   },
+  {
+    a: "entrance",
+    b: "high-jewelry",
+    rule: "High Jewellery must not be visible from the entry — it requires depth (walk ≥60% in).",
+    severity: "flag",
+  },
+  {
+    a: "watches",
+    b: "entrance",
+    rule: "Fragrance at the entry competes with the watch focus — keep a category between them.",
+    severity: "warn",
+  },
 ];
 
 const TRAFFIC_WEIGHT: Record<ZoneConfig["kind"], number> = {
   entrance: 1.0,
+  "fine-jewelry": 0.84,
   watches: 0.72,
   accessories: 0.66,
-  "high-jewelry": 0.48,
+  consultation: 0.3,
+  "high-jewelry": 0.42,
   service: 0.38,
-  vip: 0.18,
+  vip: 0.16,
 };
 
 const DWELL_BASE: Record<ZoneConfig["kind"], number> = {
   entrance: 35,
+  "fine-jewelry": 130,
   watches: 160,
   accessories: 110,
-  "high-jewelry": 240,
+  consultation: 420,
+  "high-jewelry": 260,
   service: 300,
-  vip: 540,
+  vip: 560,
 };
 
 function zonesAdjacent(a: ZoneConfig, b: ZoneConfig): boolean {

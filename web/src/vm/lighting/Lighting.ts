@@ -104,11 +104,17 @@ export class LightingEngine {
       priority: number;
     }> = [];
 
+    // Per-zone colour temperature (playbook): 2900 K arrival → 3000 K fine
+    // jewellery → 4000 K watches (technical) → 2700 K high jewellery (warm).
+    const zoneCct = new Map(layout.zones.map((z) => [z.id, z.cct]));
+
     for (const fixture of layout.fixtures) {
       const template = templateOf(fixture.templateId);
       const rot = new THREE.Matrix4().makeRotationY(fixture.rotationY);
       const isCeilingRig = template.kind.startsWith("light-");
       const baseY = isCeilingRig ? H - 0.06 : 0;
+      // The zone drives the spot temperature; the template intensity/cone stay.
+      const cct = zoneCct.get(fixture.zoneId) ?? 2900;
 
       for (const att of template.lighting) {
         const local = new THREE.Vector3(att.offset[0], att.offset[1], att.offset[2]).applyMatrix4(rot);
@@ -122,16 +128,16 @@ export class LightingEngine {
           pos,
           target,
           coneDeg: att.coneDeg,
-          cct: att.cct,
+          cct,
           intensity: att.intensity,
           priority: isCeilingRig ? att.intensity * 1.4 : att.intensity,
         });
       }
 
-      // Display-case interior fill: warm point inside every showcase volume.
-      // (iGPU preset relies on the emissive LED baffles instead.)
+      // Display-case interior fill: warm point inside every showcase volume,
+      // tinted toward the zone temperature. (iGPU preset uses emissive baffles.)
       if (this.enableCaseFills && template.kind.startsWith("showcase-")) {
-        const fill = new THREE.PointLight(cctToColor(3000), 0.55, 1.6, 1.8);
+        const fill = new THREE.PointLight(cctToColor(Math.min(cct, 3200)), 0.55, 1.6, 1.8);
         const fillY =
           template.kind === "showcase-wall"
             ? fixture.dims.height * 0.62

@@ -150,7 +150,8 @@ function Toolbar({
           ))}
         </select>
         <span className="text-[10px] text-[#6f6b63]">
-          {Math.round(layout.floor.width * layout.floor.depth)} m² · Tier 1
+          {Math.round(layout.floor.width * layout.floor.depth)} m² ·{" "}
+          {layout.tier === "tier1" ? "Flagship Maison" : "Flagship"}
         </span>
       </div>
 

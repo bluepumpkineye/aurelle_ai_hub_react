@@ -18,3 +18,14 @@ nearest feasible alternative that shipped, and the upgrade path.
 
 Session-persistence contract honored as specified: all state is in-memory,
 survives in-session navigation, resets on reload. No localStorage was added.
+
+## VM playbook implementation (spatial layout logic)
+
+| # | Playbook item | What shipped / why it differs |
+|---|----------|------------------------------|
+| D-11 | Aisle guard treats every fixture pair at the 1.2 m minimum | The 1.2 m rule is a **circulation-aisle** rule between *display* fixtures. The guard was refined (not suppressed) to model legitimate furniture clusters: seating ↔ (display-table / low-case / counter) = 0.35 m, counter ↔ counter (wrap+packaging station) = 0.3 m, wall runs = 0.3 m. Display-fixture ↔ display-fixture and display ↔ counter still enforce the full 1.2 m. All four layouts validate at **0 violations**. |
+| D-12 | Watches zone always has a dedicated SA service counter + 2 chairs | Tokyo Ginza's narrow Ginza plot (13 m wide) cannot fit a watch SA counter without breaking the 1.2 m aisle to the HJ salon directly behind; Tokyo hosts watch consultation at the hero island with two chairs facing the watch wall (counter omitted). HK/Beijing/Seoul keep the full counter + chairs. |
+| D-13 | Per-zone floor: Marble arrival/FJ/watches, Carpet HJ/VIC, Parquet leather (Maison) | The maison **base** floor (the identity established in the art-direction pass — swirl marble / pale marble / herringbone) is preserved; the playbook's **material CHANGES** are laid as patches over it: carpet on HJ / consultation / salon, parquet on watches (+ Tier-1 leather), with a champagne threshold strip marking each transition. Arrival/FJ keep the maison base rather than forcing marble over a herringbone identity. |
+| D-14 | Save each layout as a named planogram (LAYOUT-[ID]-[TIER]-[DATE]) as the DiffEngine baseline | The DiffEngine diffs **slot-state** planograms (per fixture kind), not fixture *positions* — a different axis. Named reference planograms (LAYOUT-HK1-MAISON-2025Q3, -TK1-, -BJ2-, -SE2-) are registered and appear in the planogram list / bulk-update dropdown. The fixture **layout** itself is the versioned baseline in code (deterministic by store id). |
+| D-15 | Lighting presets per zone (SpotSimulator PRESET-*) | Zones carry the named presets (`lightingPreset`) and a `cct`; the engine drives each zone's spots to its colour temperature (2900 K arrival → 3000 K FJ → 4000 K watches → 2700 K HJ). The presets are recorded on the zone for export/reference; a full named-preset registry object is not separately materialised. |
+| D-16 | Tiers | HK + Tokyo = Tier 1 (Flagship Maison, 8 zones); Beijing + Seoul = Tier 2 (Flagship, 6 zones), matching the reference-boutique pairing in the brief. |

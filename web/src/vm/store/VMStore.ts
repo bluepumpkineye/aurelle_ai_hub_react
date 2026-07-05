@@ -286,13 +286,18 @@ export class VMStore {
       const otherSeat = ot.kind.startsWith("seating-");
       const otherCounter = ot.kind.startsWith("counter-");
       const isCounter = t.kind.startsWith("counter-");
-      // The 1.2 m minimum protects circulation aisles between display fixtures.
-      // Wall-mounted runs sit flush; seating groups and client chairs at
-      // counters are furnishing clusters, not aisles.
+      // A "consultation surface" is what seating legitimately clusters around —
+      // a display table, low-profile case, or service counter (playbook: chairs
+      // are always paired with a surface; that is a furniture cluster, not a
+      // circulation aisle). The 1.2 m minimum still governs every real aisle
+      // between display fixtures.
+      const isSurface = (k: string) =>
+        k === "display-table" || k === "showcase-low" || k.startsWith("counter-");
       let clearance = AISLE_MIN;
       if (isWall || otherWall) clearance = 0.3;
       if (isSeat && otherSeat) clearance = 0.1;
-      else if ((isSeat && otherCounter) || (isCounter && otherSeat)) clearance = 0.4;
+      else if ((isSeat && isSurface(ot.kind)) || (otherSeat && isSurface(t.kind))) clearance = 0.35;
+      else if (isCounter && otherCounter) clearance = 0.3; // wrap + packaging station
       const otherTurns = Math.round(other.rotationY / (Math.PI / 2)) % 2 !== 0;
       const otherHalfW = (otherTurns ? other.dims.depth : other.dims.width) / 2;
       const otherHalfD = (otherTurns ? other.dims.width : other.dims.depth) / 2;

@@ -39,9 +39,14 @@ function zoneBox(poly: Array<[number, number]>): ZoneBox {
   return { cx: (minX + maxX) / 2, cz: (minZ + maxZ) / 2, halfX: (maxX - minX) / 2, halfZ: (maxZ - minZ) / 2 };
 }
 
-/** The zone the statement ceiling hangs over: prefer High Jewelry, else entrance. */
+/**
+ * The zone the statement ceiling hangs over: the Fine Jewellery hero island
+ * (central destination visible from the entry, per Rule 1). Falls back to HJ,
+ * then entrance.
+ */
 function heroZone(layout: BoutiqueLayout) {
   return (
+    layout.zones.find((z) => z.kind === "fine-jewelry") ??
     layout.zones.find((z) => z.kind === "high-jewelry") ??
     layout.zones.find((z) => z.kind === "entrance") ??
     layout.zones[0]
@@ -273,8 +278,9 @@ export function buildZoneRugs(layout: BoutiqueLayout, kit: MaterialKit, theme: B
   };
 
   for (const zone of layout.zones) {
-    // Aisles/counters stay bare; VIP already has its bordered rug from FloorPlate.
-    if (zone.kind === "entrance" || zone.kind === "service" || zone.kind === "vip") continue;
+    // Only the Fine Jewellery hero zone floats its islands on a rug; carpet
+    // zones (HJ, consultation, salon) get full carpet from the floor-patch pass.
+    if (zone.kind !== "fine-jewelry") continue;
     const box = zoneBox(zone.polygon);
     const w = Math.min(box.halfX * 2 - 1.0, 6.5);
     const d = Math.min(box.halfZ * 2 - 1.0, 6.5);

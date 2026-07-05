@@ -66,13 +66,24 @@ export interface FloorSpec {
   columns: ColumnSpec[];
 }
 
+/**
+ * Zone identities per the Aurelle VM playbook. Fine Jewellery (islands, high
+ * volume, front) is deliberately distinct from High Jewellery (pedestals only,
+ * back gallery). `consultation` is the mid-tier VIC lounge; `vip` is the
+ * enclosed HJ private salon; `service` is the cash-wrap.
+ */
 export type ZoneKind =
   | "entrance"
+  | "fine-jewelry"
   | "high-jewelry"
   | "watches"
   | "accessories"
+  | "consultation"
   | "vip"
   | "service";
+
+/** Zone flooring — a material change is how the playbook separates territories. */
+export type ZoneFloor = "marble" | "carpet" | "parquet";
 
 export interface VelvetPalette {
   /** Base velvet color as hex; per-fixture jitter is applied from the store seed. */
@@ -92,6 +103,12 @@ export interface ZoneConfig {
   velvet: VelvetPalette;
   /** Expected assortment spec: minimum SKU count per category (gap detection). */
   expectedAssortment: Partial<Record<ProductCategory, number>>;
+  /** Floor treatment for this territory (marble base / carpet / parquet). */
+  floorMaterial: ZoneFloor;
+  /** Spot color temperature in Kelvin (2900 arrival → 4000 watches → 2700 HJ). */
+  cct: number;
+  /** Named lighting preset (SpotSimulator convention), for reference/export. */
+  lightingPreset: string;
 }
 
 // ───────────────────────────── Fixtures ─────────────────────────────

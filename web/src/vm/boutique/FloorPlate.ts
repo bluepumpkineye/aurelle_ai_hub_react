@@ -339,38 +339,44 @@ export function buildFloorPlate(
     );
   }
 
-  // ── VIP rug with border edge geometry ──
-  const vip = layout.zones.find((z) => z.kind === "vip");
-  if (vip) {
+  // ── Per-zone floor material change (playbook: a material edge marks every
+  //    zone boundary). Carpet (HJ / consultation / salon) and parquet (watches
+  //    / Tier-1 leather) are laid over the maison base floor as polygon patches.
+  const carpetMat = kit.carpet(theme.rugColor);
+  const parquetMat = kit.floorThemed("plank-walnut", theme.marble, "#5a4632", `${theme.id}-parquet`);
+  for (const zone of layout.zones) {
+    if (zone.floorMaterial === "marble") continue; // base floor shows through
+    const shape = new THREE.Shape();
+    zone.polygon.forEach(([x, z], i) => {
+      if (i === 0) shape.moveTo(x, -z);
+      else shape.lineTo(x, -z);
+    });
+    shape.closePath();
+    const patch = new THREE.Mesh(
+      new THREE.ShapeGeometry(shape),
+      zone.floorMaterial === "carpet" ? carpetMat : parquetMat,
+    );
+    patch.rotation.x = -Math.PI / 2;
+    patch.position.y = 0.006;
+    patch.receiveShadow = true;
+    group.add(patch);
+    // A thin champagne threshold strip on the entry-facing (south) edge of the
+    // patch reads as the material transition line.
     let minX = Infinity,
       maxX = -Infinity,
-      minZ = Infinity,
       maxZ = -Infinity;
-    for (const [x, z] of vip.polygon) {
+    for (const [x, z] of zone.polygon) {
       minX = Math.min(minX, x);
       maxX = Math.max(maxX, x);
-      minZ = Math.min(minZ, z);
       maxZ = Math.max(maxZ, z);
     }
-    const rugW = Math.max(2, maxX - minX - 2.4);
-    const rugD = Math.max(2, maxZ - minZ - 2.4);
-    const cx = (minX + maxX) / 2;
-    const cz = (minZ + maxZ) / 2;
-    const rug = new THREE.Mesh(new THREE.PlaneGeometry(rugW, rugD), kit.carpet(theme.rugColor));
-    rug.rotation.x = -Math.PI / 2;
-    rug.position.set(cx, 0.012, cz);
-    rug.receiveShadow = true;
-    group.add(rug);
-    const bw = 0.05;
-    const edges: Array<[number, number, number, number]> = [
-      [cx, cz - rugD / 2, rugW, bw],
-      [cx, cz + rugD / 2, rugW, bw],
-      [cx - rugW / 2, cz, bw, rugD],
-      [cx + rugW / 2, cz, bw, rugD],
-    ];
-    for (const [ex, ez, lx, lz] of edges) {
-      bucket.add(new THREE.BoxGeometry(lx, 0.014, lz), goldBrushed, ex, 0.014, ez);
-    }
+    bucket.add(
+      new THREE.BoxGeometry(maxX - minX, 0.012, 0.04),
+      goldBrushed,
+      (minX + maxX) / 2,
+      0.012,
+      maxZ,
+    );
   }
 
   bucket.emit(group);
