@@ -312,6 +312,39 @@ export class FixtureFactory {
             cyl(0.024, 0.03, H * 0.12, frameBrushed, sx * (W / 2 - 0.08), H * 0.06, sz * (D / 2 - 0.08), 12);
         break;
       }
+      case "seating-sofa": {
+        // Kidney-curved salon sofa (reference VIP lounges): cream velvet body
+        // wrapping a coffee-table setting, jewel-tone accent pillows, gold feet.
+        // The concave seating side opens toward +z (into the room).
+        const seatH = 0.42;
+        const N = 7;
+        const halfArc = 1.15;
+        const Rb = W * 0.56; // backrest arc radius
+        const Rs = Rb - 0.42; // seat arc radius
+        const cz = Rb - D / 2; // centre of curvature (in front of the sofa)
+        for (let i = 0; i < N; i++) {
+          const t = i / (N - 1);
+          const a = (t - 0.5) * 2 * halfArc;
+          const sinA = Math.sin(a);
+          const cosA = Math.cos(a);
+          // seat cushion
+          box(0.44, 0.16, 0.52, velvet, sinA * Rs, seatH, cz - cosA * Rs, { ry: a });
+          // backrest (taller, along the outer arc)
+          box(0.46, 0.52, 0.18, velvet, sinA * Rb, seatH + 0.26, cz - cosA * Rb, { ry: a });
+          // jewel accent pillows on alternating seats
+          if (i % 2 === 1) {
+            box(0.34, 0.26, 0.16, seatVelvet, sinA * (Rs - 0.06), seatH + 0.2, cz - cosA * (Rs - 0.06), {
+              ry: a,
+              rz: 0.12,
+            });
+          }
+        }
+        // Base rail + gold feet at the two ends and centre.
+        for (const a of [-halfArc, 0, halfArc]) {
+          cyl(0.03, 0.04, seatH - 0.14, frameBrushed, Math.sin(a) * Rs, (seatH - 0.14) / 2, cz - Math.cos(a) * Rs, 10);
+        }
+        break;
+      }
 
       // ───────── wall systems ─────────
       case "wall-paneling": {

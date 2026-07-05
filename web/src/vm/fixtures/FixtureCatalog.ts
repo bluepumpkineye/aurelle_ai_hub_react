@@ -226,6 +226,21 @@ export const FIXTURE_TEMPLATES: FixtureTemplate[] = [
     description: "Low velvet ottoman for VIP salon and fitting moments.",
   },
   {
+    id: "seating-sofa-curved",
+    name: "Salon Curved Sofa",
+    kind: "seating-sofa",
+    categoryLabel: "Seating",
+    dims: {
+      min: { width: 1.8, depth: 0.9, height: 0.78 },
+      max: { width: 2.6, depth: 1.1, height: 0.85 },
+      default: { width: 2.2, depth: 1.0, height: 0.8 },
+    },
+    finish: "champagne-gold",
+    slotGrid: null,
+    lighting: [],
+    description: "Kidney-curved velvet salon sofa for the private VIP lounge.",
+  },
+  {
     id: "wall-paneling",
     name: "Wall Panel Run",
     kind: "wall-paneling",

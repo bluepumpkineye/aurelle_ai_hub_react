@@ -277,8 +277,21 @@ export class VMStore {
 
     if (isCeiling) return null; // Lighting rigs live on the ceiling plane — no aisle impact.
 
+    // Private salons (consultation / VIP) are enclosed by partition walls, so a
+    // fixture inside one is wall-separated from fixtures in any other zone —
+    // the 1.2 m circulation aisle does not apply across the partition.
+    const privateZones = new Set(
+      this.layout.zones.filter((z) => z.kind === "consultation" || z.kind === "vip").map((z) => z.id),
+    );
+
     for (const other of this.layout.fixtures) {
       if (other.id === instance.id || other.id === ignoreId) continue;
+      if (
+        other.zoneId !== instance.zoneId &&
+        (privateZones.has(instance.zoneId) || privateZones.has(other.zoneId))
+      ) {
+        continue;
+      }
       const ot = templateOf(other.templateId);
       if (ot.kind.startsWith("light-")) continue;
       const otherWall = ot.kind.startsWith("wall-") || ot.kind === "showcase-wall";

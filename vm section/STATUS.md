@@ -226,6 +226,13 @@ Session 2026-07-03 (first build) — new entries:
 · Planogram round-trip exactness requires per-SKU (not per-slot) stock levels at merchandising time: projectPlanogram re-reads live inventory, so two slots of one SKU with different seeded stock can never round-trip.
 · mergeGeometries(box/cylinder primitives) is safe (same attribute sets, indexed); bucket per (material, castShadow) to keep glass/LED lenses out of the shadow pass.
 
+Session 2026-07-05b (private salons — semi-enclosed VIP rooms + curved sofa) — new entries:
+· New fixture "Salon Curved Sofa" (kind seating-sofa; adding a FixtureKind means updating the FixtureBuilder switch + guard startsWith checks — no Record<FixtureKind> exists so it's safe). Kidney-curved arc of seat/back segments, cream velvet body + jewel pillows.
+· New src/vm/boutique/PrivateSalon.ts builds semi-enclosed rooms for consultation + vip zones: partition walls (2.8 m, doorway on the approach edge), green-celadon walls + gold kintsugi feature panel + warm gold cove + brass floating shelves + bronze coffee table + green rug. Called from BoutiqueScene ambience; returns partition colliders that VMController feeds to the rig (walk-mode collision).
+· GOTCHA: green wall LINING on an exterior building wall is hidden behind the existing FloorPlate wainscot (panels at ~0.12 m inward). Line the salon walls at inset ≥0.17 m to sit IN FRONT of the wainscot, or the room won't read green.
+· Aisle-guard: private salons are partition-enclosed, so a fixture inside a consultation/vip zone is wall-separated from other zones — the guard now SKIPS cross-zone pairs when either zone is consultation/vip. Fixes the false positive where a salon sofa "collides" with an HJ pedestal across the partition. All 4 boutiques still validate 0 violations.
+· Tier-1 (HK, Tokyo) have dedicated consultation + vip rooms → full green salons with the curved-sofa lounge. Tier-2 (Beijing, Seoul) have no separate salon (per playbook) → the HJ consultation nook gets the curved sofa + a wall-paneling privacy screen instead.
+
 Session 2026-07-05 (VM playbook — choreographed spatial layout logic) — new entries:
 · Zone system split Fine Jewellery (islands, front) from High Jewellery (pedestals only, back gallery) — added ZoneKind "fine-jewelry" + "consultation"; every Record<ZoneKind> map must be updated together (ZONE_COLORS/ZONE_PREFS in layouts.ts, TRAFFIC_WEIGHT/DWELL_BASE + adjacency in AnalyticsEngine.ts) or tsc breaks.
 · ZoneConfig gained floorMaterial (marble|carpet|parquet), cct, lightingPreset. FloorPlate lays carpet/parquet patches per zone over the maison base floor with a champagne threshold strip; Lighting drives per-zone spot CCT; Ambience hero ceiling now hangs over fine-jewelry (central destination).

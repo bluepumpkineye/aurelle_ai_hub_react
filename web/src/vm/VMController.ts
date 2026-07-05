@@ -101,6 +101,8 @@ export class VMController {
     this.store.loadLayout(layout, slots);
     this.scene.build(this.store.layout);
     this.rig.configureForLayout(this.store.layout);
+    // Partition walls of the private salons block walk-mode movement too.
+    this.rig.addBlockers(this.scene.partitionColliders);
     this.scene.lighting.requestShadowUpdate();
   }
 

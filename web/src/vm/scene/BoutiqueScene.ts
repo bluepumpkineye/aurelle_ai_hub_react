@@ -16,6 +16,7 @@ import { templateOf } from "../fixtures/FixtureCatalog";
 import { FixtureFactory, type BuiltFixture } from "../fixtures/FixtureBuilder";
 import { buildFloorPlate } from "../boutique/FloorPlate";
 import { buildCeilingFeature, buildZoneRugs } from "../boutique/Ambience";
+import { buildPrivateSalons } from "../boutique/PrivateSalon";
 import { LightingEngine, type LightingStats, makeInteriorEnvironment } from "../lighting/Lighting";
 import { MaterialKit } from "../render/Materials";
 import { ProductFactory } from "../products/ProductBuilder";
@@ -45,6 +46,8 @@ export class BoutiqueScene {
   readonly overlays: Overlays3D;
   readonly lighting: LightingEngine;
   lightingStats: LightingStats = { spots: 0, shadowCasters: 0, caseFills: 0 };
+  /** Partition-wall colliders (private salons) for walk-mode collision. */
+  partitionColliders: THREE.Box3[] = [];
 
   private kit: MaterialKit;
   private products: ProductFactory;
@@ -133,6 +136,10 @@ export class BoutiqueScene {
     ambience.name = "ambience";
     ambience.add(buildCeilingFeature(layout, this.kit, layout.theme, rng.child("ceiling")));
     ambience.add(buildZoneRugs(layout, this.kit, layout.theme));
+    // Semi-enclosed private salons (partitions + green-gold interior).
+    const salons = buildPrivateSalons(layout, this.kit, rng.child("salons"));
+    ambience.add(salons.group);
+    this.partitionColliders = salons.colliders;
     this.ambienceGroup = ambience;
     this.root.add(ambience);
 

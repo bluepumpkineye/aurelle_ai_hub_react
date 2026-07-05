@@ -197,6 +197,18 @@ export class CameraRig {
     this.orbit.update();
   }
 
+  /** Add partition-wall colliders (private salons) to the walk blockers. */
+  addBlockers(boxes: THREE.Box3[]): void {
+    for (const box of boxes) {
+      this.blockers.push({
+        x: (box.min.x + box.max.x) / 2,
+        z: (box.min.z + box.max.z) / 2,
+        hw: (box.max.x - box.min.x) / 2 + 0.22,
+        hd: (box.max.z - box.min.z) / 2 + 0.22,
+      });
+    }
+  }
+
   setMode(mode: CameraMode): void {
     if (mode === this.mode) return;
     this.mode = mode;

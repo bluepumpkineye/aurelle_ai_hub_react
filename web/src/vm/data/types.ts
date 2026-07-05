@@ -124,6 +124,7 @@ export type FixtureKind =
   | "counter-cashwrap"
   | "seating-chair"
   | "seating-ottoman"
+  | "seating-sofa"
   | "wall-paneling"
   | "wall-shelving"
   | "wall-bracket"

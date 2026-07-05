@@ -256,15 +256,14 @@ function princesBuildingHK(): BoutiqueLayout {
     fx(rng, "counter-cashwrap", -9.4, -1.8, 90, "hk-cashwrap"),
     fx(rng, "light-recessed", -8.4, -1.8, 0, "hk-cashwrap"),
 
-    // ── VIC Consultation Lounge — carpet, table + 4 chairs, SA counter ──
-    fx(rng, "display-table-rect", -6.5, -6.0, 0, "hk-consult"),
-    fx(rng, "seating-chair", -7.4, -7.1, 0, "hk-consult"),
-    fx(rng, "seating-chair", -5.6, -7.1, 0, "hk-consult"),
-    fx(rng, "seating-chair", -7.4, -4.9, 180, "hk-consult"),
-    fx(rng, "seating-chair", -5.6, -4.9, 180, "hk-consult"),
+    // ── VIC Consultation Lounge — semi-private room: curved sofa + jewel
+    //    armchairs around a bronze coffee table, appointment case, SA counter ──
+    fx(rng, "seating-sofa-curved", -6.2, -7.0, 0, "hk-consult"),
+    fx(rng, "seating-chair", -7.6, -4.3, 155, "hk-consult"),
+    fx(rng, "seating-chair", -5.2, -4.3, 205, "hk-consult"),
     fx(rng, "showcase-low-90", -9.3, -4.2, 90, "hk-consult"),
     fx(rng, "counter-service", -9.0, -7.0, 90, "hk-consult"),
-    fx(rng, "light-recessed", -6.5, -6.0, 0, "hk-consult"),
+    fx(rng, "light-recessed", -6.6, -5.7, 0, "hk-consult"),
 
     // ── High Jewellery Gallery — pedestals only, no islands, rear-wall vitrines ──
     fx(rng, "showcase-wall-160", -2.4, -7.6, 0, "hk-hj"),
@@ -277,14 +276,13 @@ function princesBuildingHK(): BoutiqueLayout {
     fx(rng, "light-accent", 0.4, -4.6, 0, "hk-hj"),
     fx(rng, "light-accent", 2.6, -5.4, 0, "hk-hj"),
 
-    // ── HJ Private Salon — enclosed, presentation table + hero pedestal ──
-    fx(rng, "display-table-rect", 6.2, -5.4, 0, "hk-salon"),
-    fx(rng, "seating-chair", 6.3, -6.6, 0, "hk-salon"),
-    fx(rng, "seating-chair", 7.5, -6.6, 0, "hk-salon"),
-    fx(rng, "pedestal-solo", 9.0, -4.0, 0, "hk-salon"),
+    // ── HJ Private Salon — enclosed jewel box: curved sofa lounge + hero pedestal ──
+    fx(rng, "seating-sofa-curved", 6.6, -7.0, 0, "hk-salon"),
+    fx(rng, "seating-chair", 5.6, -4.3, 155, "hk-salon"),
+    fx(rng, "seating-chair", 7.4, -4.3, 205, "hk-salon"),
+    fx(rng, "pedestal-solo", 9.3, -3.6, 0, "hk-salon"),
     fx(rng, "counter-service", 9.3, -6.8, 90, "hk-salon"),
-    fx(rng, "wall-paneling", 9.9, -4.0, -90, "hk-salon"),
-    fx(rng, "light-accent", 6.2, -5.4, 0, "hk-salon"),
+    fx(rng, "light-accent", 6.9, -5.7, 0, "hk-salon"),
   ];
 
   return {
@@ -367,15 +365,13 @@ function tokyoGinza(): BoutiqueLayout {
     fx(rng, "counter-cashwrap", -5.9, -2.0, 90, "tk-cashwrap"),
     fx(rng, "light-recessed", -4.8, -2.0, 0, "tk-cashwrap"),
 
-    // VIC Consultation — carpet, table + 4 chairs, SA counter
-    fx(rng, "display-table-rect", -3.2, -6.4, 0, "tk-consult"),
-    fx(rng, "seating-chair", -4.1, -7.5, 0, "tk-consult"),
-    fx(rng, "seating-chair", -2.3, -7.5, 0, "tk-consult"),
-    fx(rng, "seating-chair", -4.1, -5.3, 180, "tk-consult"),
-    fx(rng, "seating-chair", -2.3, -5.3, 180, "tk-consult"),
+    // VIC Consultation — semi-private room: curved sofa + jewel armchairs
+    fx(rng, "seating-sofa-curved", -3.75, -7.8, 0, "tk-consult"),
+    fx(rng, "seating-chair", -4.9, -5.2, 150, "tk-consult"),
+    fx(rng, "seating-chair", -2.6, -5.2, 210, "tk-consult"),
     fx(rng, "showcase-low-90", -6.0, -8.6, 0, "tk-consult"),
-    fx(rng, "counter-service", -6.0, -4.6, 90, "tk-consult"),
-    fx(rng, "light-recessed", -3.2, -6.4, 0, "tk-consult"),
+    fx(rng, "counter-service", -6.0, -4.4, 90, "tk-consult"),
+    fx(rng, "light-recessed", -3.75, -6.45, 0, "tk-consult"),
 
     // High Jewellery Gallery — deepest, pedestals only, rear-wall vitrines
     fx(rng, "showcase-wall-160", 0.6, -9.15, 0, "tk-hj"),
@@ -387,13 +383,12 @@ function tokyoGinza(): BoutiqueLayout {
     fx(rng, "light-accent", 3.0, -7.2, 0, "tk-hj"),
     fx(rng, "light-accent", 5.2, -6.8, 0, "tk-hj"),
 
-    // HJ Private Salon — presentation table + hero pedestal
-    fx(rng, "display-table-rect", 2.6, -4.6, 90, "tk-salon"),
-    fx(rng, "seating-chair", 1.3, -4.6, -90, "tk-salon"),
-    fx(rng, "seating-chair", 3.9, -4.6, 90, "tk-salon"),
-    fx(rng, "pedestal-solo", -0.5, -4.6, 0, "tk-salon"),
-    fx(rng, "wall-paneling", 6.25, -4.6, -90, "tk-salon"),
-    fx(rng, "light-accent", 2.6, -4.6, 0, "tk-salon"),
+    // HJ Private Salon — jewel box: curved sofa lounge + hero pedestal
+    fx(rng, "seating-sofa-curved", 2.6, -5.4, 0, "tk-salon"),
+    fx(rng, "seating-chair", 1.2, -3.8, 180, "tk-salon"),
+    fx(rng, "seating-chair", 4.0, -3.8, 180, "tk-salon"),
+    fx(rng, "pedestal-solo", 5.9, -4.2, 0, "tk-salon"),
+    fx(rng, "light-accent", 2.75, -4.7, 0, "tk-salon"),
   ];
 
   return {
@@ -472,12 +467,15 @@ function beijingFlagship(): BoutiqueLayout {
     fx(rng, "pedestal-solo", 5.5, -5.4, 0, "bj-hj"),
     fx(rng, "pedestal-solo", 7.5, -5.6, 0, "bj-hj"),
     fx(rng, "pedestal-duo", 3.2, -5.4, 0, "bj-hj"),
-    fx(rng, "showcase-low-90", -3.0, -4.2, 0, "bj-hj"),
-    fx(rng, "display-table-rect", -1.4, -6.4, 0, "bj-hj"),
-    fx(rng, "seating-chair", -2.3, -5.3, 180, "bj-hj"),
-    fx(rng, "seating-chair", -0.5, -5.3, 180, "bj-hj"),
+    // Consultation nook (semi-private): curved sofa + jewel chairs, screened
+    // from the gallery by a partition run (Tier 2 has no separate salon).
+    fx(rng, "showcase-low-90", -3.2, -4.0, 0, "bj-hj"),
+    fx(rng, "seating-sofa-curved", -1.5, -7.4, 0, "bj-hj"),
+    fx(rng, "seating-chair", -2.6, -5.2, 150, "bj-hj"),
+    fx(rng, "seating-chair", -0.4, -5.2, 210, "bj-hj"),
+    fx(rng, "wall-paneling", 1.0, -6.2, 90, "bj-hj"),
     fx(rng, "light-accent", 5.5, -5.4, 0, "bj-hj"),
-    fx(rng, "light-accent", 7.5, -5.6, 0, "bj-hj"),
+    fx(rng, "light-accent", -1.5, -6.4, 0, "bj-hj"),
 
     // Cash-Wrap & Service — left, mid-to-rear, doubles as packaging station
     fx(rng, "counter-cashwrap", -8.4, -3.0, 90, "bj-cashwrap"),
@@ -563,11 +561,14 @@ function seoulFlagship(): BoutiqueLayout {
     fx(rng, "pedestal-solo", 3.2, -4.2, 0, "se-hj"),
     fx(rng, "pedestal-solo", 5.0, -5.0, 0, "se-hj"),
     fx(rng, "pedestal-duo", 9.5, -4.4, 0, "se-hj"),
-    fx(rng, "display-table-rect", -1.5, -5.0, 0, "se-hj"),
-    fx(rng, "seating-chair", -2.4, -3.9, 180, "se-hj"),
-    fx(rng, "seating-chair", -0.6, -3.9, 180, "se-hj"),
+    // Consultation nook (semi-private): curved sofa + jewel chairs + round
+    // coffee table, screened from the gallery (Tier 2 has no separate salon).
+    fx(rng, "seating-sofa-curved", -1.6, -6.0, 0, "se-hj"),
+    fx(rng, "display-table-round", -1.6, -4.5, 0, "se-hj"),
+    fx(rng, "seating-chair", -2.9, -3.7, 150, "se-hj"),
+    fx(rng, "seating-chair", -0.3, -3.7, 210, "se-hj"),
+    fx(rng, "wall-paneling", 1.2, -5.0, 90, "se-hj"),
     fx(rng, "light-accent", 3.2, -4.2, 0, "se-hj"),
-    fx(rng, "light-accent", 5.0, -5.0, 0, "se-hj"),
     fx(rng, "light-accent", 9.5, -4.4, 0, "se-hj"),
 
     // Cash-Wrap & Service — left rear
