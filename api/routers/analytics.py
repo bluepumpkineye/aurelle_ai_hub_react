@@ -4,6 +4,8 @@ from pydantic import BaseModel
 
 from api.security_tokens import require_auth
 from api.llm_stream import stream_chat
+from api.services import report_cache
+from utils.llm_client import PRIMARY_MODEL
 from api.services import executive as exec_svc
 from api.services import product as prod_svc
 from api.services import boutique as bt_svc
@@ -14,11 +16,47 @@ from api.services import llmops as ops_svc
 router = APIRouter(tags=["analytics"])
 
 
-def _stream(messages, max_tokens=900, temperature=0.35):
+# Replaying a cached report in one chunk feels like a paste; slicing it keeps the
+# UI's token-by-token "generating…" experience without spending any tokens.
+_REPLAY_CHUNK = 24
+
+
+def _stream(messages, max_tokens=900, temperature=0.35, cache=True):
+    """Stream an AI report. When ``cache`` is set (default for module reports),
+    identical (messages, temperature, max_tokens, model) requests are served from
+    a disk-backed cache — no LLM call, no tokens — and fresh generations are
+    persisted once they finish successfully."""
+    key = None
+    if cache:
+        key = report_cache.make_key(messages, temperature, max_tokens, PRIMARY_MODEL)
+        hit = report_cache.cache_get(key)
+        if hit is not None:
+            def replay():
+                for i in range(0, len(hit), _REPLAY_CHUNK):
+                    yield hit[i:i + _REPLAY_CHUNK]
+            return StreamingResponse(
+                replay(),
+                media_type="text/plain; charset=utf-8",
+                headers={"X-Cache": "HIT"},
+            )
+
     def gen():
+        parts: list[str] = []
+        errored = False
         for tok in stream_chat(messages, temperature=temperature, max_tokens=max_tokens):
+            # The engine's failure sentinel starts with this marker — never cache it.
+            if "⚠️ AI engine temporarily unavailable" in tok:
+                errored = True
+            parts.append(tok)
             yield tok
-    return StreamingResponse(gen(), media_type="text/plain; charset=utf-8")
+        if key and not errored:
+            report_cache.cache_store(key, "".join(parts))
+
+    return StreamingResponse(
+        gen(),
+        media_type="text/plain; charset=utf-8",
+        headers={"X-Cache": "MISS"} if cache else None,
+    )
 
 
 # ── Executive Dashboard ────────────────────────────────────────
@@ -256,7 +294,8 @@ def llmops_run(r: PromptRun, _=Depends(require_auth)):
         {"role": "system", "content": r.system or "You are a helpful Aurelle assistant."},
         {"role": "user", "content": r.user or "Please execute the above instructions."},
     ]
-    return _stream(messages, max_tokens=r.max_tokens, temperature=r.temperature)
+    # Prompt Lab is for live experimentation — always re-run, never cache.
+    return _stream(messages, max_tokens=r.max_tokens, temperature=r.temperature, cache=False)
 
 
 # ── Module System Prompts (view / customise / test) ────────────
@@ -337,4 +376,11 @@ def llmops_prompts_test(r: PromptTest, _=Depends(require_auth)):
         {"role": "system", "content": r.text},
         {"role": "user", "content": r.sample or "Provide a brief example response that demonstrates this system prompt in action."},
     ]
-    return _stream(messages, max_tokens=400, temperature=0.4)
+    return _stream(messages, max_tokens=400, temperature=0.4, cache=False)
+
+
+@router.post("/api/llmops/reports/clear-cache")
+def llmops_clear_report_cache(_=Depends(require_auth)):
+    """Drop all cached module reports so the next generation is fresh."""
+    removed = report_cache.cache_clear()
+    return {"ok": True, "removed": removed}

@@ -24,6 +24,7 @@ data/mock_users.json
 data/New Knowledge Base/
 data/raw/
 data/customer/
+data/report_cache.json
 
 # ── Logs ─────────────────────────────────────────────────
 logs/
