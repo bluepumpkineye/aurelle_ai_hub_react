@@ -385,7 +385,6 @@ function tokyoGinza(): BoutiqueLayout {
     fx(rng, "light-accent", 5.2, -6.8, 0, "tk-hj"),
 
     // HJ Private Salon — jewel box: curved sofa lounge + hero pedestal
-    fx(rng, "seating-sofa-curved", 2.6, -5.4, 0, "tk-salon"),
     fx(rng, "seating-chair", 1.2, -3.8, 180, "tk-salon"),
     fx(rng, "seating-chair", 4.0, -3.8, 180, "tk-salon"),
     fx(rng, "pedestal-solo", 5.9, -4.2, 0, "tk-salon"),

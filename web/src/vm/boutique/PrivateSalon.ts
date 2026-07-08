@@ -219,18 +219,7 @@ export function buildPrivateSalons(
       }
     }
 
-    // Brass floating shelves on a side wall (not the back, not the approach).
-    const sideWall = edges.find((e) => e !== approach && e !== back);
-    if (sideWall) {
-      const off = sideWall.inward * ((sideWall.exterior ? 0.05 : PARTITION_T / 2) + 0.16);
-      const smid = (sideWall.from + sideWall.to) / 2;
-      const shelfLen = Math.min((sideWall.to - sideWall.from) * 0.6, 1.6);
-      for (let s = 0; s < 3; s++) {
-        const y = 1.1 + s * 0.42;
-        if (isHorizontal(sideWall)) bucket.add(new THREE.BoxGeometry(shelfLen, 0.03, 0.24), goldBrushed, smid, y, sideWall.at + off);
-        else bucket.add(new THREE.BoxGeometry(0.24, 0.03, shelfLen), goldBrushed, sideWall.at + off, y, smid);
-      }
-    }
+
 
     // Bronze round coffee table at the room centre (nesting pair).
     const tableGeo = new THREE.CylinderGeometry(0.34, 0.34, 0.03, 28);
