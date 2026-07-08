@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { api, setToken } from "../lib/api";
+import { ThreeDScroll } from "./ThreeDScroll";
 
 export function Login({ onAuthed }: { onAuthed: () => void }) {
   const [email, setEmail] = useState("admin@aurelle.com");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
+  const [recede, setRecede] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -27,19 +29,13 @@ export function Login({ onAuthed }: { onAuthed: () => void }) {
     }
   }
 
-  return (
+    return (
     <div className="min-h-screen grid lg:grid-cols-2">
       {/* Brand panel */}
       <div className="relative hidden lg:flex flex-col justify-between bg-sidebar p-14 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            background:
-              "radial-gradient(circle at 30% 20%, rgba(184,150,90,0.16), transparent 45%)",
-          }}
-        />
-        <div className="relative label text-gold">Asia Pacific</div>
-        <div className="relative">
+        <ThreeDScroll recede={recede} />
+        <div className="relative z-10 label text-gold">Asia Pacific</div>
+        <div className="relative z-10">
           <div className="font-display text-6xl font-light tracking-[0.2em] text-cream">
             AURELLE
           </div>
@@ -51,7 +47,7 @@ export function Login({ onAuthed }: { onAuthed: () => void }) {
             Executive intelligence for luxury Maisons in APAC — governed end to end.
           </div>
         </div>
-        <div className="relative label text-[#6b675f]">
+        <div className="relative z-10 label text-[#6b675f]">
           RBAC · PII · Residency · Audit
         </div>
       </div>
@@ -77,6 +73,7 @@ export function Login({ onAuthed }: { onAuthed: () => void }) {
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onFocus={() => setRecede(true)}
             className="w-full bg-card border border-line px-4 py-3 text-sm text-ink outline-none focus:border-gold transition mb-5"
             autoComplete="username"
           />
@@ -86,6 +83,7 @@ export function Login({ onAuthed }: { onAuthed: () => void }) {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onFocus={() => setRecede(true)}
             className="w-full bg-card border border-line px-4 py-3 text-sm text-ink outline-none focus:border-gold transition mb-2"
             autoComplete="current-password"
           />

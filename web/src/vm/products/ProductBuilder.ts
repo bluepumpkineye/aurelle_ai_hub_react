@@ -361,7 +361,12 @@ export class ProductFactory {
     // Case on top of the cuff, dial facing up/out
     const caseY = 0.052 + 0.004;
     b.add(new THREE.CylinderGeometry(caseR, caseR * 0.94, 0.009, 28), metal, mat4(0, caseY, 0));
+    // Beveled outer watch bezel
+    b.add(new THREE.CylinderGeometry(caseR * 0.92, caseR, 0.003, 28), metal, mat4(0, caseY + 0.003, 0));
+    // Dial face with canvas details
     b.add(new THREE.CylinderGeometry(caseR * 0.86, caseR * 0.86, 0.0092, 28), this.dial(rng, sport), mat4(0, caseY + 0.0004, 0));
+    // Realistic transparent glass crystal cover
+    b.add(new THREE.CylinderGeometry(caseR * 0.88, caseR * 0.88, 0.0016, 28), this.bottleGlass, mat4(0, caseY + 0.005, 0));
     // Crown + lugs
     b.add(new THREE.CylinderGeometry(0.0022, 0.0022, 0.003, 10), metal, mat4(caseR + 0.0015, caseY, 0, 0, 0, Math.PI / 2));
     for (const sz of [-1, 1]) {
@@ -432,21 +437,52 @@ export class ProductFactory {
     const b = new Bucket();
     const leather = this.leather(LEATHER_COLORS[rng.int(0, LEATHER_COLORS.length - 1)]);
     const gold = this.metal("yellow");
+    
     if (rng.chance(0.5)) {
-      // Structured mini handbag
+      // Structured mini handbag (tapered, chamfered corners, custom strap)
       const w = rng.range(0.11, 0.15);
       const h = rng.range(0.08, 0.11);
       const d = rng.range(0.045, 0.06);
-      b.add(new THREE.BoxGeometry(w, h, d), leather, mat4(0, h / 2, 0));
-      b.add(new THREE.BoxGeometry(w, h * 0.4, d + 0.002), leather, mat4(0, h * 0.78, 0));
-      b.add(new THREE.TorusGeometry(w * 0.3, 0.0035, 8, 24, Math.PI), gold, mat4(0, h + 0.001, 0));
-      b.add(new THREE.BoxGeometry(0.016, 0.012, 0.004), gold, mat4(0, h * 0.58, d / 2 + 0.003));
+
+      // Tapered bag body geometry
+      const scaleX = w / Math.sqrt(2);
+      const scaleZ = d / Math.sqrt(2);
+      const geom = new THREE.CylinderGeometry(0.84, 1.0, h, 4);
+      geom.rotateY(Math.PI / 4);
+      geom.scale(scaleX, 1.0, scaleZ);
+      b.add(geom, leather, mat4(0, h / 2, 0));
+
+      // Overlapping top/front flap
+      b.add(new THREE.BoxGeometry(w * 0.88, 0.006, d * 0.86), leather, mat4(0, h - 0.003, 0.002));
+      b.add(new THREE.BoxGeometry(w * 0.88, h * 0.45, 0.005), leather, mat4(0, h * 0.75, d * 0.46));
+
+      // Curved leather handle with gold end connectors
+      const handleR = w * 0.28;
+      b.add(new THREE.TorusGeometry(handleR, 0.0045, 8, 24, Math.PI), leather, mat4(0, h, 0));
+      b.add(new THREE.BoxGeometry(0.007, 0.007, 0.007), gold, mat4(-handleR, h - 0.001, 0));
+      b.add(new THREE.BoxGeometry(0.007, 0.007, 0.007), gold, mat4(handleR, h - 0.001, 0));
+
+      // Classy gold double-ring lock buckle
+      b.add(new THREE.TorusGeometry(0.007, 0.0016, 6, 16), gold, mat4(-0.005, h * 0.52, d / 2 + 0.003));
+      b.add(new THREE.TorusGeometry(0.007, 0.0016, 6, 16), gold, mat4(0.005, h * 0.52, d / 2 + 0.003));
     } else {
-      // Wallet / card holder stack
-      const w = rng.range(0.09, 0.115);
-      const d = rng.range(0.065, 0.08);
-      b.add(new THREE.BoxGeometry(w, 0.018, d), leather, mat4(0, 0.009, 0, 0, rng.range(-0.2, 0.2), 0));
-      b.add(new THREE.BoxGeometry(0.012, 0.006, 0.01), gold, mat4(w * 0.32, 0.021, 0));
+      // Folded designer wallet / envelope clutch
+      const w = rng.range(0.095, 0.115);
+      const h = 0.024;
+      const d = rng.range(0.065, 0.080);
+      
+      const ry = rng.range(-0.15, 0.15);
+      const rot = { ry };
+
+      // Base fold
+      b.add(new THREE.BoxGeometry(w, 0.008, d), leather, mat4(0, 0.004, 0, 0, ry, 0));
+      // Overlapping fold flap
+      b.add(new THREE.BoxGeometry(w * 0.98, 0.006, d * 0.92), leather, mat4(0, 0.011, 0.002, 0.04, ry, 0));
+      b.add(new THREE.BoxGeometry(w * 0.98, 0.006, d * 0.45), leather, mat4(0, 0.008, d * 0.22, -0.15, ry, 0));
+
+      // Gold logo medallion clasp
+      const claspM = mat4(w * 0.28, 0.015, d * 0.22, 0, ry, 0);
+      b.add(new THREE.CylinderGeometry(0.0045, 0.0045, 0.002, 12), gold, claspM);
     }
     return b.build(name);
   }

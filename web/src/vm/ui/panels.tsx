@@ -20,6 +20,71 @@ const chipCls =
 const btnCls =
   "px-2.5 py-1.5 rounded text-xs border border-[rgba(184,150,90,0.4)] text-[#e9cf9c] hover:bg-[rgba(184,150,90,0.15)] transition disabled:opacity-40 disabled:cursor-not-allowed";
 
+export const CATEGORY_IMAGES: Record<ProductCategory, string> = {
+  rings: "/assets/luxury_ring.png",
+  bracelets: "/assets/luxury_bracelet.png",
+  necklaces: "/assets/luxury_necklace.png",
+  "watches-dress": "/assets/luxury_watch_dress.png",
+  "watches-sport": "/assets/luxury_watch_sport.png",
+  earrings: "/assets/luxury_earrings.png",
+  brooches: "/assets/luxury_brooch.png",
+  "leather-goods": "/assets/luxury_leather_goods.png",
+  fragrance: "/assets/luxury_fragrance.png",
+};
+
+export function getProductImage(sku: { name: string; category: ProductCategory }): string {
+  const name = sku.name.toLowerCase().trim();
+  
+  // Specific Ring mappings
+  if (name.includes("lumière i") || name.includes("lumiere i")) return "/assets/ring_lumiere_1.png";
+  if (name.includes("éclat solitaire ii") || name.includes("eclat solitaire ii")) return "/assets/ring_eclat_solitaire_2.png";
+  if (name.includes("rive nacre iii")) return "/assets/ring_rive_nacre_3.png";
+  if (name.includes("lumière iv") || name.includes("lumiere iv")) return "/assets/ring_lumiere_4.png";
+  if (name.includes("éclat solitaire v") || name.includes("eclat solitaire v")) return "/assets/ring_eclat_solitaire_5.png";
+  
+  // Specific Watches Sport mappings
+  if (name.includes("régate i") || name.includes("regate i")) return "/assets/watch_sport_regate_1.png";
+  if (name.includes("altitude ii")) return "/assets/watch_sport_altitude_2.png";
+  if (name.includes("régate iii") || name.includes("regate iii") || name.includes("régate ii") || name.includes("regate ii")) return "/assets/watch_sport_regate_3.png";
+  if (name.includes("altitude iv")) return "/assets/watch_sport_altitude_4.png";
+  if (name.includes("régate v") || name.includes("regate v")) return "/assets/watch_sport_regate_5.png";
+  
+  // Specific Watches Dress mappings
+  if (name.includes("heure céleste i") || name.includes("heure celeste i")) return "/assets/watch_dress_celeste_1.png";
+  if (name.includes("minuit ii")) return "/assets/watch_dress_minuit_2.png";
+  if (name.includes("heure céleste iii") || name.includes("heure celeste iii") || name.includes("heure céleste ii") || name.includes("heure celeste ii")) return "/assets/watch_dress_celeste_3.png";
+  if (name.includes("minuit iv")) return "/assets/watch_dress_minuit_4.png";
+  if (name.includes("heure céleste v") || name.includes("heure celeste v") || name.includes("heure céleste iv") || name.includes("heure celeste iv")) return "/assets/watch_dress_celeste_5.png";
+
+  // Specific Bracelets mappings
+  if (name.includes("ruban viii")) return "/assets/bracelet_ruban_8.png";
+  if (name.includes("astre i")) return "/assets/bracelet_astre_1.png";
+  if (name.includes("maillon d'or ii") || name.includes("maillon dor ii") || name.includes("maillon d’or ii")) return "/assets/bracelet_maillon_dor_2.png";
+  if (name.includes("ruban iii")) return "/assets/bracelet_ruban_3.png";
+  if (name.includes("astre iv")) return "/assets/bracelet_astre_4.png";
+  if (name.includes("maillon d'or v") || name.includes("maillon dor v") || name.includes("maillon d’or v")) return "/assets/bracelet_maillon_dor_5.png";
+  if (name.includes("ruban iv")) return "/assets/bracelet_ruban_4.png";
+
+  // Specific Necklaces mappings
+  if (name.includes("perle noire viii")) return "/assets/necklace_perle_noire_8.png";
+  if (name.includes("méridien i") || name.includes("meridien i")) return "/assets/necklace_meridien_1.png";
+  if (name.includes("cascade ii")) return "/assets/necklace_cascade_2.png";
+  if (name.includes("perle noire iii")) return "/assets/necklace_perle_noire_3.png";
+  if (name.includes("méridien iv") || name.includes("meridien iv")) return "/assets/necklace_meridien_4.png";
+  if (name.includes("cascade v")) return "/assets/necklace_cascade_5.png";
+  if (name.includes("perle noire vi")) return "/assets/necklace_perle_noire_6.png";
+
+  // Specific Brooches mappings
+  if (name.includes("camélia d'hiver viii") || name.includes("camelia d'hiver viii") || name.includes("camélia d’hiver viii") || name.includes("camelia d’hiver viii") || name.includes("camelia dhiver viii")) return "/assets/brooch_camelia_dhiver_8.png";
+  if (name.includes("volière i") || name.includes("voliere i")) return "/assets/brooch_voliere_1.png";
+  if (name.includes("camélia d'hiver ii") || name.includes("camelia d'hiver ii") || name.includes("camélia d’hiver ii") || name.includes("camelia d’hiver ii") || name.includes("camelia dhiver ii")) return "/assets/brooch_camelia_dhiver_2.png";
+  if (name.includes("volière iii") || name.includes("voliere iii")) return "/assets/brooch_voliere_3.png";
+  if (name.includes("camélia d'hiver iv") || name.includes("camelia d'hiver iv") || name.includes("camélia d’hiver iv") || name.includes("camelia d’hiver iv") || name.includes("camelia dhiver iv")) return "/assets/brooch_camelia_dhiver_4.png";
+  if (name.includes("volière v") || name.includes("voliere v")) return "/assets/brooch_voliere_5.png";
+  
+  return CATEGORY_IMAGES[sku.category];
+}
+
 // ───────────────────────────── Fixture library ─────────────────────────────
 
 export function FixtureLibraryPanel({ vm }: { vm: VMController }) {
@@ -106,6 +171,8 @@ export function PropertiesPanel({ vm }: { vm: VMController }) {
     "planograms-changed",
     "inventory-changed",
     "fixtures-changed",
+    "moving-changed",
+    "fixtures-moved",
   ]);
   const sel = vm.store.selection;
 
@@ -118,7 +185,9 @@ export function PropertiesPanel({ vm }: { vm: VMController }) {
           <div>· Click a showcase to open its planogram</div>
           <div>· Click a product/slot for SKU & stock detail</div>
           <div>· V toggles walk mode · keys 1–6 fly to views</div>
-          <div>· R rotates · Del removes · Ctrl+Z undo</div>
+          <div>· R / Shift+R rotates 90° · Del removes · Ctrl+Z undo</div>
+          <div>· Arrow keys / WASD nudges selected fixture</div>
+          <div>· Q / E pivots selected fixture (Shift for fine)</div>
         </div>
       </div>
     );
@@ -160,6 +229,22 @@ function SlotPanel({ vm, slot }: { vm: VMController; slot: SlotAddress }) {
       <div className="p-4 space-y-3 overflow-y-auto scroll-thin text-xs">
         {sku && state ? (
           <>
+            <div
+              className="relative aspect-square w-full rounded-lg overflow-hidden border border-[rgba(184,150,90,0.2)] bg-[#12100e] flex items-center justify-center group cursor-pointer"
+              onClick={() => vm.store.events.emit("selection-changed", { kind: "slot", slot })}
+              title="Click to view full detail"
+            >
+              <img
+                src={getProductImage(sku)}
+                alt={sku.name}
+                className="object-cover w-full h-full transition duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <span className="text-[10px] uppercase tracking-wider text-[#e9cf9c] font-display border border-[#c9a45e] px-2 py-1 bg-[#12100e]/85 rounded">
+                  View Detail
+                </span>
+              </div>
+            </div>
             <div>
               <div className="text-[#f2e9d5] text-sm font-medium">{sku.name}</div>
               <div className="text-[#8a857b]">
@@ -290,6 +375,8 @@ function FixturePanel({ vm, fixtureId }: { vm: VMController; fixtureId: string }
     setPreviewing(false);
   };
 
+  const displayDeg = Math.round((((fixture.rotationY * 180) / Math.PI) % 360 + 360) % 360);
+
   return (
     <div className={`${panelCls} w-72 max-h-full flex flex-col`}>
       <div className="px-4 pt-3 pb-2 border-b border-[rgba(184,150,90,0.2)]">
@@ -309,6 +396,140 @@ function FixturePanel({ vm, fixtureId }: { vm: VMController; fixtureId: string }
           <button className={btnCls} onClick={() => vm.store.removeFixture(fixtureId)}>
             Remove (Del)
           </button>
+        </div>
+      </div>
+
+      <div className="px-4 py-3 border-b border-[rgba(184,150,90,0.2)] space-y-3">
+        <div className="text-[11px] uppercase tracking-[0.14em] text-[#c9a45e]">Spatial Placement</div>
+        
+        <div>
+          <button
+            onClick={() => {
+              if (vm.store.movingFixtureId === fixtureId) {
+                vm.store.setMovingFixtureId(null);
+              } else {
+                vm.store.setMovingFixtureId(fixtureId);
+                vm.setPlacingTemplate(null);
+              }
+            }}
+            className={`w-full py-1.5 rounded text-xs border transition ${
+              vm.store.movingFixtureId === fixtureId
+                ? "border-[#c9a45e] bg-[rgba(184,150,90,0.18)] text-[#f2e9d5]"
+                : "border-[rgba(184,150,90,0.4)] text-[#e9cf9c] hover:bg-[rgba(184,150,90,0.15)]"
+            }`}
+          >
+            {vm.store.movingFixtureId === fixtureId
+              ? "Click floor to place... (Esc to cancel)"
+              : "Reposition (Click on Floor)"}
+          </button>
+        </div>
+
+        <div className="space-y-1">
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="text-[#8a857b]">Position X (East-West)</span>
+            <span className="text-[#f2e9d5] font-mono">{fixture.x.toFixed(2)} m</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <input
+              type="range"
+              min={-vm.store.layout.floor.width / 2}
+              max={vm.store.layout.floor.width / 2}
+              step={0.05}
+              value={fixture.x}
+              onChange={(e) => {
+                const val = parseFloat(e.target.value);
+                vm.store.moveFixtureInteractive(fixtureId, val, fixture.z, fixture.rotationY);
+              }}
+              onMouseUp={() => vm.store.commitFixtureMove(fixtureId)}
+              onTouchEnd={() => vm.store.commitFixtureMove(fixtureId)}
+              className="flex-1 accent-[#c9a45e]"
+            />
+            <input
+              type="number"
+              step={0.1}
+              value={Number(fixture.x.toFixed(2))}
+              onChange={(e) => {
+                const val = parseFloat(e.target.value);
+                if (!isNaN(val)) {
+                  vm.store.moveFixture(fixtureId, val, fixture.z, fixture.rotationY);
+                }
+              }}
+              className="w-16 bg-[#12100e] border border-[rgba(184,150,90,0.25)] rounded px-1.5 py-0.5 text-right text-xs font-mono text-[#f2e9d5]"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-1">
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="text-[#8a857b]">Position Z (North-South)</span>
+            <span className="text-[#f2e9d5] font-mono">{fixture.z.toFixed(2)} m</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <input
+              type="range"
+              min={-vm.store.layout.floor.depth / 2}
+              max={vm.store.layout.floor.depth / 2}
+              step={0.05}
+              value={fixture.z}
+              onChange={(e) => {
+                const val = parseFloat(e.target.value);
+                vm.store.moveFixtureInteractive(fixtureId, fixture.x, val, fixture.rotationY);
+              }}
+              onMouseUp={() => vm.store.commitFixtureMove(fixtureId)}
+              onTouchEnd={() => vm.store.commitFixtureMove(fixtureId)}
+              className="flex-1 accent-[#c9a45e]"
+            />
+            <input
+              type="number"
+              step={0.1}
+              value={Number(fixture.z.toFixed(2))}
+              onChange={(e) => {
+                const val = parseFloat(e.target.value);
+                if (!isNaN(val)) {
+                  vm.store.moveFixture(fixtureId, fixture.x, val, fixture.rotationY);
+                }
+              }}
+              className="w-16 bg-[#12100e] border border-[rgba(184,150,90,0.25)] rounded px-1.5 py-0.5 text-right text-xs font-mono text-[#f2e9d5]"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-1">
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="text-[#8a857b]">Pivot / Rotation</span>
+            <span className="text-[#f2e9d5] font-mono">{displayDeg}°</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <input
+              type="range"
+              min={0}
+              max={360}
+              step={5}
+              value={displayDeg}
+              onChange={(e) => {
+                const deg = parseFloat(e.target.value);
+                const rad = (deg * Math.PI) / 180;
+                vm.store.moveFixtureInteractive(fixtureId, fixture.x, fixture.z, rad);
+              }}
+              onMouseUp={() => vm.store.commitFixtureMove(fixtureId)}
+              onTouchEnd={() => vm.store.commitFixtureMove(fixtureId)}
+              className="flex-1 accent-[#c9a45e]"
+            />
+            <input
+              type="number"
+              min={0}
+              max={360}
+              value={displayDeg}
+              onChange={(e) => {
+                const deg = parseFloat(e.target.value);
+                if (!isNaN(deg)) {
+                  const rad = (deg * Math.PI) / 180;
+                  vm.store.moveFixture(fixtureId, fixture.x, fixture.z, rad);
+                }
+              }}
+              className="w-16 bg-[#12100e] border border-[rgba(184,150,90,0.25)] rounded px-1.5 py-0.5 text-right text-xs font-mono text-[#f2e9d5]"
+            />
+          </div>
         </div>
       </div>
 

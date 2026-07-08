@@ -65,9 +65,11 @@ export interface VMEvents extends Record<string, unknown> {
   "layout-loaded": BoutiqueLayout;
   "slots-changed": SlotKey[];
   "fixtures-changed": string[];
+  "fixtures-moved": string[];
   "inventory-changed": string[];
   "planograms-changed": undefined;
   "selection-changed": VMSelection;
+  "moving-changed": string | null;
   "overlays-changed": OverlayState;
   "diff-preview": PlanogramDiff[] | null;
   "undo-changed": { depth: number; redoDepth: number };
@@ -90,6 +92,8 @@ export class VMStore {
   private campaigns = new Set<string>();
   private replenishment = new Map<string, string>();
   private selectionState: VMSelection = { kind: "none" };
+  private movingFixtureIdState: string | null = null;
+  private interactiveStartPos: { x: number; z: number; rotationY: number; zoneId: string } | null = null;
   private overlayState: OverlayState = { ...DEFAULT_OVERLAYS };
   private analyticsCache: AnalyticsResult | null = null;
   private planogramCounter = 1;
@@ -277,6 +281,18 @@ export class VMStore {
 
     if (isCeiling) return null; // Lighting rigs live on the ceiling plane — no aisle impact.
 
+    // Column collision check
+    for (const col of floor.columns) {
+      const colHalf = col.size / 2;
+      const dx = Math.abs(instance.x - col.x);
+      const dz = Math.abs(instance.z - col.z);
+      const minX = halfW + colHalf;
+      const minZ = halfD + colHalf;
+      if (dx < minX && dz < minZ) {
+        return "Placement rejected: fixture would collide with a structural pillar.";
+      }
+    }
+
     // Private salons (consultation / VIP) are enclosed by partition walls, so a
     // fixture inside one is wall-separated from fixtures in any other zone —
     // the 1.2 m circulation aisle does not apply across the partition.
@@ -357,6 +373,61 @@ export class VMStore {
     write(x, z, candidate.rotationY, nextZone);
     this.emitUndo();
     return true;
+  }
+
+  moveFixtureInteractive(fixtureId: string, x: number, z: number, rotationY?: number): void {
+    const f = this.fixture(fixtureId);
+    if (!f) return;
+    if (!this.interactiveStartPos) {
+      this.interactiveStartPos = { x: f.x, z: f.z, rotationY: f.rotationY, zoneId: f.zoneId };
+    }
+    f.x = x;
+    f.z = z;
+    if (rotationY !== undefined) f.rotationY = rotationY;
+    f.zoneId = this.zoneAt(x, z) ?? f.zoneId;
+    this.events.emit("fixtures-moved", [fixtureId]);
+  }
+
+  commitFixtureMove(fixtureId: string): void {
+    const f = this.fixture(fixtureId);
+    const start = this.interactiveStartPos;
+    this.interactiveStartPos = null;
+    if (!f || !start) return;
+
+    if (f.x === start.x && f.z === start.z && f.rotationY === start.rotationY) return;
+
+    const rejection = this.validatePlacement(f, fixtureId);
+    if (rejection) {
+      this.toast(rejection, "warn");
+      f.x = start.x;
+      f.z = start.z;
+      f.rotationY = start.rotationY;
+      f.zoneId = start.zoneId;
+      this.events.emit("fixtures-changed", [fixtureId]);
+      this.refreshAnalytics();
+      return;
+    }
+
+    const prev = { x: start.x, z: start.z, rotationY: start.rotationY, zoneId: start.zoneId };
+    const next = { x: f.x, z: f.z, rotationY: f.rotationY, zoneId: f.zoneId };
+    const write = (px: number, pz: number, rot: number, zone: string) => {
+      f.x = px;
+      f.z = pz;
+      f.rotationY = rot;
+      f.zoneId = zone;
+      this.events.emit("fixtures-changed", [fixtureId]);
+      this.refreshAnalytics();
+    };
+
+    this.undoStack.push({
+      label: "Move fixture",
+      undo: () => write(prev.x, prev.z, prev.rotationY, prev.zoneId),
+      redo: () => write(next.x, next.z, next.rotationY, next.zoneId),
+    });
+
+    this.events.emit("fixtures-changed", [fixtureId]);
+    this.refreshAnalytics();
+    this.emitUndo();
   }
 
   addFixture(templateId: string, x: number, z: number): FixtureInstance | null {
@@ -673,7 +744,19 @@ export class VMStore {
     return this.selectionState;
   }
 
+  get movingFixtureId(): string | null {
+    return this.movingFixtureIdState;
+  }
+
+  setMovingFixtureId(id: string | null): void {
+    if (this.movingFixtureIdState === id) return;
+    this.movingFixtureIdState = id;
+    this.events.emit("moving-changed", id);
+  }
+
   select(sel: VMSelection): void {
+    this.movingFixtureIdState = null;
+    this.events.emit("moving-changed", null);
     this.selectionState = sel;
     this.events.emit("selection-changed", sel);
   }

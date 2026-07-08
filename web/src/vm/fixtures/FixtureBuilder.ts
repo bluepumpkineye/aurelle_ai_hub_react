@@ -155,15 +155,108 @@ export class FixtureFactory {
     switch (template.kind) {
       // ───────── showcases ─────────
       case "showcase-island": {
-        const plinthH = H * 0.56;
-        box(W, plinthH, D, body, 0, plinthH / 2, 0);
-        box(W + 0.05, 0.045, D + 0.05, frameBrushed, 0, 0.0225, 0);
-        const deckY = plinthH + 0.02;
-        box(W - 0.06, 0.04, D - 0.06, velvet, 0, deckY, 0);
-        glassCase(W, D, plinthH, H);
-        ledBaffle(W, D, H - 0.035);
-        const grid = template.slotGrid;
-        if (grid) dressDeck(grid.rows, grid.cols, W, D, deckY + 0.02);
+        if (template.id === "showcase-island-circular") {
+          const plinthH = H * 0.56;
+          // Plinth base (segmented with ivory panels and gold vertical dividers)
+          const numBaseDivs = 6;
+          const R_base = W / 2 - 0.02;
+          const gapAngle = 0.05; // radians
+          const baseSegH = plinthH - 0.12;
+          const baseSegY = 0.08 + baseSegH / 2;
+
+          cyl(W / 2, W / 2, 0.08, frameBrushed, 0, 0.04, 0, 32);
+          cyl(W / 2, W / 2, 0.04, frameBrushed, 0, plinthH - 0.02, 0, 32);
+
+          for (let i = 0; i < numBaseDivs; i++) {
+            const angle = (i / numBaseDivs) * 2 * Math.PI;
+            
+            // Curved ivory panel wedge segment
+            const thetaStart = angle + gapAngle / 2;
+            const thetaLength = (2 * Math.PI) / numBaseDivs - gapAngle;
+            bucket.add(
+              new THREE.CylinderGeometry(R_base, R_base, baseSegH, 12, 1, false, thetaStart, thetaLength),
+              cardIvory,
+              0,
+              baseSegY,
+              0
+            );
+
+            // Vertical gold divider pillar at segment boundary
+            const px = (W / 2 - 0.015) * Math.cos(angle);
+            const pz = (W / 2 - 0.015) * Math.sin(angle);
+            cyl(0.022, 0.022, baseSegH, frameBrushed, px, baseSegY, pz, 12);
+          }
+
+          // Glass Casing
+          const glassH = H - plinthH;
+          const glassMid = plinthH + glassH / 2;
+          bucket.add(new THREE.CylinderGeometry(W / 2, W / 2, glassH, 32, 1, true), this.kit.glass, 0, glassMid, 0, undefined, false);
+          bucket.add(new THREE.CylinderGeometry(W / 2, W / 2, 0.008, 32), this.kit.glass, 0, H - 0.004, 0, undefined, false);
+          bucket.add(new THREE.CylinderGeometry(W / 2 + 0.01, W / 2 + 0.01, 0.02, 32, 1, true), framePolished, 0, H - 0.01, 0);
+          bucket.add(new THREE.CylinderGeometry(W / 2 + 0.01, W / 2 + 0.01, 0.02, 32, 1, true), framePolished, 0, plinthH + 0.01, 0);
+
+          // Inner deck
+          const deckY = plinthH + 0.015;
+          cyl(W / 2 - 0.05, W / 2 - 0.05, 0.03, velvet, 0, deckY, 0, 32);
+
+          // Central decorative element
+          cyl(W * 0.18, W * 0.18, glassH * 0.6, frameBrushed, 0, plinthH + (glassH * 0.6) / 2, 0, 24);
+
+          // Segment partitions (6 dividers)
+          const numDivs = 6;
+          const divLength = W / 2 - W * 0.18;
+          const divMidR = (W / 2 + W * 0.18) / 2;
+          for (let i = 0; i < numDivs; i++) {
+            const theta = (i / numDivs) * 2 * Math.PI;
+            const px = divMidR * Math.cos(theta);
+            const pz = divMidR * Math.sin(theta);
+            // Draw gold partition frame
+            box(divLength, glassH, 0.012, frameBrushed, px, plinthH + glassH / 2, pz, { ry: -theta });
+          }
+
+          // Circular Slots placement
+          const grid = template.slotGrid;
+          if (grid) {
+            const R1 = W * 0.28; // Inner circle
+            const R2 = W * 0.38; // Outer circle
+            const cols = grid.cols;
+            
+            for (let row = 0; row < grid.rows; row++) {
+              const R = row === 0 ? R1 : R2;
+              for (let col = 0; col < cols; col++) {
+                const theta = ((col + 0.5) / cols) * 2 * Math.PI;
+                const x = R * Math.cos(theta);
+                const z = R * Math.sin(theta);
+                
+                const ry = -theta - Math.PI / 2;
+                const rot = { ry };
+
+                // Draw velvet trays
+                box(0.18, 0.016, 0.18, velvet, x, deckY + 0.018, z, rot);
+                box(0.08, 0.012, 0.08, velvet, x, deckY + 0.03, z, rot);
+
+                // Price card
+                const cardDist = 0.065;
+                const cardX = x + cardDist * Math.cos(theta);
+                const cardZ = z + cardDist * Math.sin(theta);
+                box(0.018, 0.002, 0.012, frameBrushed, cardX, deckY + 0.025, cardZ, { ry: ry });
+                box(0.02, 0.014, 0.0016, cardIvory, cardX, deckY + 0.033, cardZ, { rx: -0.35, ry: ry });
+
+                anchors.set(`${row},${col},0`, new THREE.Vector3(x, deckY + 0.036, z));
+              }
+            }
+          }
+        } else {
+          const plinthH = H * 0.56;
+          box(W, plinthH, D, body, 0, plinthH / 2, 0);
+          box(W + 0.05, 0.045, D + 0.05, frameBrushed, 0, 0.0225, 0);
+          const deckY = plinthH + 0.02;
+          box(W - 0.06, 0.04, D - 0.06, velvet, 0, deckY, 0);
+          glassCase(W, D, plinthH, H);
+          ledBaffle(W, D, H - 0.035);
+          const grid = template.slotGrid;
+          if (grid) dressDeck(grid.rows, grid.cols, W, D, deckY + 0.02);
+        }
         break;
       }
       case "showcase-wall": {

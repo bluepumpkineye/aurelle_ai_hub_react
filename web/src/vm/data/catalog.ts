@@ -64,18 +64,31 @@ function tierFor(rng: Rng): ExclusivityTier {
   return "standard";
 }
 
+const CATEGORY_PREFIXES: Record<ProductCategory, string> = {
+  rings: "RI",
+  bracelets: "BR",
+  necklaces: "NE",
+  "watches-dress": "WD",
+  "watches-sport": "WS",
+  earrings: "EA",
+  brooches: "BO",
+  "leather-goods": "LE",
+  fragrance: "FR",
+};
+
 function buildCatalog(): SKU[] {
   const rng = new Rng(0xa07e11e);
   const out: SKU[] = [];
   for (const category of CATEGORY_ORDER) {
     const collections = COLLECTIONS[category];
     const [lo, hi] = PRICE_BANDS[category];
+    const prefix = CATEGORY_PREFIXES[category];
     for (let i = 0; i < PER_CATEGORY; i++) {
       const collection = collections[i % collections.length];
       const tier = tierFor(rng);
       const priceScale = tier === "exceptional" ? 1 : tier === "high" ? 0.45 : 0.18;
       const price = Math.round((lo + (hi - lo) * priceScale * rng.range(0.5, 1.4)) / 10) * 10;
-      const code = `AU-${category.slice(0, 2).toUpperCase()}${String(i + 1).padStart(3, "0")}`;
+      const code = `AU-${prefix}${String(i + 1).padStart(3, "0")}`;
       out.push({
         id: code,
         name: `${collection} ${["I", "II", "III", "IV", "V", "VI", "VII", "VIII"][i % 8]}`,

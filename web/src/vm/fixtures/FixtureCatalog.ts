@@ -334,6 +334,26 @@ export const FIXTURE_TEMPLATES: FixtureTemplate[] = [
     lighting: [{ offset: [0, -0.1, 0], coneDeg: 18, cct: 2900, intensity: 8 }],
     description: "Narrow-beam accent spot for hero pedestals and artwork.",
   },
+  {
+    id: "showcase-island-circular",
+    name: "Circular Island Showcase",
+    kind: "showcase-island",
+    categoryLabel: "Showcases",
+    dims: {
+      min: { width: 2.2, depth: 2.2, height: 0.95 },
+      max: { width: 2.6, depth: 2.6, height: 1.05 },
+      default: { width: 2.4, depth: 2.4, height: 1.0 },
+    },
+    finish: "champagne-gold",
+    slotGrid: { rows: 2, cols: 18, layers: 1, accepts: ALL },
+    lighting: [
+      { offset: [-0.6, 0.92, -0.6], coneDeg: 32, cct: 2900, intensity: 4 },
+      { offset: [0.6, 0.92, -0.6], coneDeg: 32, cct: 2900, intensity: 4 },
+      { offset: [-0.6, 0.92, 0.6], coneDeg: 32, cct: 2900, intensity: 4 },
+      { offset: [0.6, 0.92, 0.6], coneDeg: 32, cct: 2900, intensity: 4 },
+    ],
+    description: "Grand circular island case anchoring the center of the showroom.",
+  },
 ];
 
 export const TEMPLATE_BY_ID: Map<string, FixtureTemplate> = new Map(

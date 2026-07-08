@@ -8,13 +8,13 @@
 import { useEffect, useRef, useState } from "react";
 import { WebGPUInitError, type EngineStats } from "../core/Engine";
 import { SKU_BY_ID } from "../data/catalog";
-import type { SlotKey } from "../data/types";
+import { slotKey, type SlotKey, type SKU } from "../data/types";
 import { VMController, type HoverInfo } from "../VMController";
 import { BulkUpdateModal } from "./BulkUpdateModal";
 import { CommandPalette } from "./CommandPalette";
 import { Dashboard } from "./Dashboard";
 import { EngineFailScreen } from "./GateScreens";
-import { FixtureLibraryPanel, PropertiesPanel } from "./panels";
+import { FixtureLibraryPanel, PropertiesPanel, getProductImage } from "./panels";
 import { useStoreEvents, useToasts } from "./hooks";
 
 const tbBtn =
@@ -31,11 +31,13 @@ export function VMApp() {
   const [showDash, setShowDash] = useState(false);
   const [showPalette, setShowPalette] = useState(false);
   const [cameraMode, setCameraMode] = useState<"orbit" | "walk">("orbit");
+  const [popupProduct, setPopupProduct] = useState<SKU | null>(null);
 
   useEffect(() => {
     const vm = new VMController();
     vmRef.current = vm;
     let cancelled = false;
+    let unsubSelection: (() => void) | null = null;
     (async () => {
       if (!containerRef.current) return;
       try {
@@ -43,6 +45,17 @@ export function VMApp() {
         if (cancelled) return;
         vm.onHover = setHover;
         vm.onCameraMode = setCameraMode;
+
+        unsubSelection = vm.store.events.on("selection-changed", (sel) => {
+          if (sel.kind === "slot") {
+            const state = vm.store.slot(slotKey(sel.slot));
+            const sku = state?.sku ? SKU_BY_ID.get(state.sku) : null;
+            setPopupProduct(sku || null);
+          } else {
+            setPopupProduct(null);
+          }
+        });
+
         setReady(true);
       } catch (e) {
         if (e instanceof WebGPUInitError) setFail({ message: e.message, diagnostics: e.diagnostics });
@@ -59,6 +72,7 @@ export function VMApp() {
     return () => {
       cancelled = true;
       window.removeEventListener("keydown", onKey);
+      if (unsubSelection) unsubSelection();
       vm.dispose();
       vmRef.current = null;
     };
@@ -104,6 +118,7 @@ export function VMApp() {
           {showBulk && <BulkUpdateModal vm={vm} onClose={() => setShowBulk(false)} />}
           {showDash && <Dashboard vm={vm} onClose={() => setShowDash(false)} />}
           {showPalette && <CommandPalette vm={vm} onClose={() => setShowPalette(false)} />}
+          {popupProduct && <ProductPopupModal sku={popupProduct} onClose={() => setPopupProduct(null)} />}
         </>
       )}
     </div>
@@ -347,6 +362,117 @@ function Toasts({ vm }: { vm: VMController }) {
           {t.message}
         </div>
       ))}
+    </div>
+  );
+}
+
+// ───────────────────────────── Product Details Popup ─────────────────────────────
+
+import { CATEGORY_LABELS } from "../data/catalog";
+
+function getProductDescription(category: string, collection: string): string {
+  switch (category) {
+    case "rings":
+      return `An exquisite solitaire band from the ${collection} collection, showcasing a brilliant-cut center diamond. Meticulously set in hand-polished 18-karat white gold, this piece embodies timeless elegance and unparalleled light dispersion.`;
+    case "bracelets":
+      return `This majestic piece from the ${collection} collection wraps the wrist in fluid rows of brilliant pavé diamonds. Crafted in solid champagne-gold, its delicate silhouette blends modern structure with classic French jewelry heritage.`;
+    case "necklaces":
+      return `A magnificent high-jewelry necklace from the ${collection} collection. A teardrop sapphire pendant sits at the heart of delicate gold branches encrusted with fine diamonds, catching the light with every movement.`;
+    case "watches-dress":
+      return `Part of the coveted ${collection} series, this dress watch features a pristine white guilloché dial, a diamond-set outer bezel, and a hand-stitched brown alligator strap. A mechanical masterpiece of luxury and precision.`;
+    case "watches-sport":
+      return `Engineered for performance and flagships, this sport chronograph from the ${collection} collection combines a robust champagne-gold case with a brushed link bracelet and a deep black ceramic tachymeter bezel.`;
+    case "earrings":
+      return `These drop earrings from the ${collection} collection feature delicate cascading pearls suspended from diamond-encrusted gold mounts. Perfect balance, designed to sway gracefully and capture warm ambient glows.`;
+    case "brooches":
+      return `An organic, floral design from the ${collection} collection, this masterfully sculpted brooch features white-gold petals encrusted with micro-pavé diamonds and a central emerald cluster.`;
+    case "leather-goods":
+      return `A stunning evening accessory from the ${collection} collection, crafted in fine textured French calfskin. Featuring clean hand-rolled edges, luxurious lining, and a signature double-ring gold clasp.`;
+    case "fragrance":
+      return `Aurelle's signature olfactory masterpiece from the ${collection} collection. Housed in a hand-polished faceted glass bottle with a heavy brass cap, it opens with soft rose petals transitioning into a deep, warm oud.`;
+    default:
+      return `A masterpiece of design from the ${collection} collection, reflecting the ultimate brand standards of craftsmanship, detail, and material excellence.`;
+  }
+}
+
+function ProductPopupModal({ sku, onClose }: { sku: SKU; onClose: () => void }) {
+  const imageUrl = getProductImage(sku);
+  const desc = getProductDescription(sku.category, sku.collection);
+
+  // Close on Esc keypress
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-[#1b1916]/95 border border-[rgba(184,150,90,0.35)] rounded-xl w-[580px] overflow-hidden shadow-2xl flex flex-col md:flex-row relative transition-transform duration-300 scale-100"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-[#8a857b] hover:text-[#e9cf9c] text-xl transition z-10 w-6 h-6 flex items-center justify-center rounded-full hover:bg-[rgba(184,150,90,0.15)]"
+        >
+          &times;
+        </button>
+
+        {/* Product Image Column */}
+        <div className="w-full md:w-[260px] aspect-square md:aspect-auto md:h-[320px] bg-[#0d0c0a] border-b md:border-b-0 md:border-r border-[rgba(184,150,90,0.2)] flex items-center justify-center overflow-hidden p-4">
+          <div className="border border-[rgba(184,150,90,0.25)] p-1 w-full h-full rounded-lg bg-[#12100e]">
+            <img
+              src={imageUrl}
+              alt={sku.name}
+              className="w-full h-full object-cover rounded shadow-lg"
+            />
+          </div>
+        </div>
+
+        {/* Product Details Column */}
+        <div className="flex-1 p-6 flex flex-col justify-between text-xs text-[#d9d2c2]">
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-[#c9a45e] font-display mb-1">
+              {CATEGORY_LABELS[sku.category]}
+            </div>
+            <h2 className="text-[#f2e9d5] text-lg font-semibold tracking-wide leading-tight mb-2">
+              {sku.name}
+            </h2>
+            <div className="flex gap-1.5 flex-wrap mb-4">
+              <span className="px-2 py-0.5 rounded text-[9px] uppercase tracking-wider border border-[rgba(184,150,90,0.35)] text-[#c9a45e] bg-[rgba(184,150,90,0.1)] font-mono">
+                {sku.id}
+              </span>
+              <span className="px-2 py-0.5 rounded text-[9px] uppercase tracking-wider border border-[rgba(184,150,90,0.35)] text-[#c9a45e] bg-[rgba(184,150,90,0.1)]">
+                {sku.tier} tier
+              </span>
+              <span className="px-2 py-0.5 rounded text-[9px] uppercase tracking-wider border border-[rgba(184,150,90,0.35)] text-[#c9a45e] bg-[rgba(184,150,90,0.1)]">
+                €{sku.price.toLocaleString()}
+              </span>
+            </div>
+            <p className="text-[#8a857b] leading-relaxed mb-4 italic">
+              &ldquo;{sku.collection} Collection&rdquo;
+            </p>
+            <p className="text-[#b9b3a7] leading-relaxed mb-4 text-[11px] font-light">
+              {desc}
+            </p>
+          </div>
+          <div className="flex justify-end pt-4 border-t border-[rgba(184,150,90,0.15)]">
+            <button
+              onClick={onClose}
+              className="px-4 py-1.5 rounded border border-[rgba(184,150,90,0.4)] text-[#e9cf9c] hover:bg-[rgba(184,150,90,0.15)] transition text-[11px] tracking-wider uppercase font-semibold"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

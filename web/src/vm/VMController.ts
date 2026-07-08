@@ -134,6 +134,19 @@ export class VMController {
       if (moved > 6) return; // drag — camera gesture, not a click
 
       const [nx, ny] = ndc(e);
+      if (this.store.movingFixtureId) {
+        const p = this.scene.pickFloor(nx, ny, this.engine.camera);
+        if (p) {
+          const success = this.store.moveFixture(
+            this.store.movingFixtureId,
+            Math.round(p.x * 10) / 10,
+            Math.round(p.z * 10) / 10,
+          );
+          if (success) this.store.setMovingFixtureId(null);
+        }
+        return;
+      }
+
       if (this.placingTemplateId) {
         const p = this.scene.pickFloor(nx, ny, this.engine.camera);
         if (p) {
@@ -196,6 +209,7 @@ export class VMController {
         this.store.redo();
       } else if (e.code === "Escape") {
         this.setPlacingTemplate(null);
+        this.store.setMovingFixtureId(null);
         this.store.select({ kind: "none" });
       } else if (e.code === "Delete" || e.code === "Backspace") {
         const sel = this.store.selection;
@@ -204,7 +218,58 @@ export class VMController {
         const sel = this.store.selection;
         if (sel.kind === "fixture") {
           const f = this.store.fixture(sel.fixtureId);
-          if (f) this.store.moveFixture(f.id, f.x, f.z, f.rotationY + Math.PI / 2);
+          if (f) {
+            const rot = e.shiftKey ? f.rotationY - Math.PI / 2 : f.rotationY + Math.PI / 2;
+            this.store.moveFixture(f.id, f.x, f.z, rot);
+          }
+        }
+      } else if (e.code === "ArrowUp" || e.code === "KeyW") {
+        const sel = this.store.selection;
+        if (sel.kind === "fixture" && this.rig.mode === "orbit") {
+          e.preventDefault();
+          const f = this.store.fixture(sel.fixtureId);
+          const step = e.shiftKey ? 0.02 : 0.1;
+          if (f) this.store.moveFixture(f.id, f.x, f.z - step, f.rotationY);
+        }
+      } else if (e.code === "ArrowDown" || e.code === "KeyS") {
+        const sel = this.store.selection;
+        if (sel.kind === "fixture" && this.rig.mode === "orbit") {
+          e.preventDefault();
+          const f = this.store.fixture(sel.fixtureId);
+          const step = e.shiftKey ? 0.02 : 0.1;
+          if (f) this.store.moveFixture(f.id, f.x, f.z + step, f.rotationY);
+        }
+      } else if (e.code === "ArrowLeft" || e.code === "KeyA") {
+        const sel = this.store.selection;
+        if (sel.kind === "fixture" && this.rig.mode === "orbit") {
+          e.preventDefault();
+          const f = this.store.fixture(sel.fixtureId);
+          const step = e.shiftKey ? 0.02 : 0.1;
+          if (f) this.store.moveFixture(f.id, f.x - step, f.z, f.rotationY);
+        }
+      } else if (e.code === "ArrowRight" || e.code === "KeyD") {
+        const sel = this.store.selection;
+        if (sel.kind === "fixture" && this.rig.mode === "orbit") {
+          e.preventDefault();
+          const f = this.store.fixture(sel.fixtureId);
+          const step = e.shiftKey ? 0.02 : 0.1;
+          if (f) this.store.moveFixture(f.id, f.x + step, f.z, f.rotationY);
+        }
+      } else if (e.code === "KeyQ") {
+        const sel = this.store.selection;
+        if (sel.kind === "fixture" && this.rig.mode === "orbit") {
+          e.preventDefault();
+          const f = this.store.fixture(sel.fixtureId);
+          const rotStep = e.shiftKey ? (1 * Math.PI) / 180 : (5 * Math.PI) / 180;
+          if (f) this.store.moveFixture(f.id, f.x, f.z, f.rotationY - rotStep);
+        }
+      } else if (e.code === "KeyE") {
+        const sel = this.store.selection;
+        if (sel.kind === "fixture" && this.rig.mode === "orbit") {
+          e.preventDefault();
+          const f = this.store.fixture(sel.fixtureId);
+          const rotStep = e.shiftKey ? (1 * Math.PI) / 180 : (5 * Math.PI) / 180;
+          if (f) this.store.moveFixture(f.id, f.x, f.z, f.rotationY + rotStep);
         }
       }
     };

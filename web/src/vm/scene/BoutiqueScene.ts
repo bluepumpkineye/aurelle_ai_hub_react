@@ -97,10 +97,18 @@ export class BoutiqueScene {
         this.overlays.rebuildAnalytics(store.analytics);
         this.overlays.rebuildStockSignals((k) => this.slotAnchorWorld(k));
       }),
+      store.events.on("fixtures-moved", (ids) => {
+        for (const id of ids) this.syncFixture(id);
+        this.lighting.requestShadowUpdate();
+      }),
       store.events.on("analytics-changed", (analytics) => {
         this.overlays.rebuildAnalytics(analytics);
       }),
-      store.events.on("overlays-changed", (state) => this.overlays.applyVisibility(state)),
+      store.events.on("overlays-changed", (state) => {
+        this.overlays.applyVisibility(state);
+        this.overlays.rebuildAnalytics(store.analytics);
+        this.overlays.rebuildStockSignals((k) => this.slotAnchorWorld(k));
+      }),
       store.events.on("diff-preview", (diffs) => {
         this.overlays.showDiff(diffs, (k) => this.slotAnchorWorld(k));
       }),
@@ -236,7 +244,13 @@ export class BoutiqueScene {
       product.position.copy(anchor);
       // Stable presentation rotation per slot.
       const addr = parseSlotKey(key);
-      product.rotation.y = new Rng(hashString(key)).range(-0.35, 0.35) + (addr.col % 2) * 0.15;
+      const fixture = this.store.fixture(fixtureId);
+      if (fixture?.templateId === "showcase-island-circular") {
+        const theta = ((addr.col + 0.5) / 18) * 2 * Math.PI;
+        product.rotation.y = -theta - Math.PI / 2 + new Rng(hashString(key)).range(-0.1, 0.1);
+      } else {
+        product.rotation.y = new Rng(hashString(key)).range(-0.35, 0.35) + (addr.col % 2) * 0.15;
+      }
       product.userData.slotKey = key;
       product.userData.fixtureId = fixtureId;
       product.traverse((o) => {
