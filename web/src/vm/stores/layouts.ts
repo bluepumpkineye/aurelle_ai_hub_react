@@ -738,12 +738,51 @@ export function buildTemplatePlanograms(): Planogram[] {
   return out;
 }
 
+// ───────────────────────────── Column-avoidance pass ─────────────────────────────
+// Checks every non-ceiling fixture in the layout and nudges it away from any
+// structural column it overlaps with.  Called once at layout-build time so that
+// authored positions never clip through a pillar.
+
+const COLUMN_CLEARANCE = 0.15; // extra gap (m) beyond the exact AABB touch
+
+function nudgeFixturesOffColumns(layout: BoutiqueLayout): BoutiqueLayout {
+  for (const f of layout.fixtures) {
+    const t = templateOf(f.templateId);
+    if (t.kind.startsWith("light-")) continue; // ceiling rigs don't intersect columns
+
+    const turns = Math.round(f.rotationY / (Math.PI / 2)) % 2 !== 0;
+    const halfW = ((turns ? t.dims.default.depth : t.dims.default.width) / 2);
+    const halfD = ((turns ? t.dims.default.width : t.dims.default.depth) / 2);
+
+    for (const col of layout.floor.columns) {
+      const colHalf = col.size / 2;
+      const dx = f.x - col.x;
+      const dz = f.z - col.z;
+      const overlapX = (halfW + colHalf) - Math.abs(dx);
+      const overlapZ = (halfD + colHalf) - Math.abs(dz);
+
+      if (overlapX > 0 && overlapZ > 0) {
+        // Nudge along the axis with the smaller overlap (least-disruptive).
+        if (overlapX <= overlapZ) {
+          f.x += (dx >= 0 ? 1 : -1) * (overlapX + COLUMN_CLEARANCE);
+        } else {
+          f.z += (dz >= 0 ? 1 : -1) * (overlapZ + COLUMN_CLEARANCE);
+        }
+        // Snap back to the 0.1 m grid the store uses.
+        f.x = Math.round(f.x * 10) / 10;
+        f.z = Math.round(f.z * 10) / 10;
+      }
+    }
+  }
+  return layout;
+}
+
 export const LAYOUTS: BoutiqueLayout[] = [
   princesBuildingHK(),
   tokyoGinza(),
   beijingFlagship(),
   seoulFlagship(),
-];
+].map(nudgeFixturesOffColumns);
 
 export function layoutById(id: string | null): BoutiqueLayout {
   const found = LAYOUTS.find((l) => l.id === id);
