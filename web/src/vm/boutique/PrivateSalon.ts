@@ -160,19 +160,24 @@ export function buildPrivateSalons(
         addWallSegment(e, e.from + 0.02, e.to - 0.02, 0.05, 0.17);
         continue;
       }
-      // Interior partition; leave a centred doorway on the approach edge.
-      if (approach && e === approach) {
-        const c = (e.from + e.to) / 2;
-        addWallSegment(e, e.from, c - DOOR_W / 2, PARTITION_T);
-        addWallSegment(e, c + DOOR_W / 2, e.to, PARTITION_T);
-        // Champagne door reveal on the jambs.
-        for (const s of [-1, 1]) {
-          const jx = c + s * DOOR_W / 2;
-          if (isHorizontal(e)) bucket.add(new THREE.BoxGeometry(0.08, PARTITION_H, PARTITION_T + 0.06), gold, jx, PARTITION_H / 2, e.at + e.inward * PARTITION_T / 2);
-          else bucket.add(new THREE.BoxGeometry(PARTITION_T + 0.06, PARTITION_H, 0.08), gold, e.at + e.inward * PARTITION_T / 2, PARTITION_H / 2, jx);
-        }
-      } else {
-        addWallSegment(e, e.from, e.to, PARTITION_T);
+      // Interior partition: every interior edge gets a centred doorway.
+      // The approach edge uses the zone's partitionGap (or DOOR_W default);
+      // secondary interior edges use the standard DOOR_W opening so the
+      // salon remains semi-enclosed but accessible from adjacent zones.
+      const gap = (approach && e === approach)
+        ? (zone.partitionGap ?? DOOR_W)
+        : DOOR_W;
+      const edgeLen = e.to - e.from;
+      // If the gap would consume the entire edge, skip the partition entirely.
+      if (gap >= edgeLen - 0.2) continue;
+      const c = (e.from + e.to) / 2;
+      addWallSegment(e, e.from, c - gap / 2, PARTITION_T);
+      addWallSegment(e, c + gap / 2, e.to, PARTITION_T);
+      // Champagne door reveal on the jambs.
+      for (const s of [-1, 1]) {
+        const jx = c + s * gap / 2;
+        if (isHorizontal(e)) bucket.add(new THREE.BoxGeometry(0.08, PARTITION_H, PARTITION_T + 0.06), gold, jx, PARTITION_H / 2, e.at + e.inward * PARTITION_T / 2);
+        else bucket.add(new THREE.BoxGeometry(PARTITION_T + 0.06, PARTITION_H, 0.08), gold, e.at + e.inward * PARTITION_T / 2, PARTITION_H / 2, jx);
       }
     }
 

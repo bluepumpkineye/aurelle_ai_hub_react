@@ -92,7 +92,7 @@ function zone(
   polygon: Array<[number, number]>,
   velvet: VelvetPalette,
   expectedAssortment: Partial<Record<ProductCategory, number>>,
-  overrides?: Partial<Pick<ZoneConfig, "floorMaterial" | "cct" | "color">>,
+  overrides?: Partial<Pick<ZoneConfig, "floorMaterial" | "cct" | "color" | "partitionGap">>,
 ): ZoneConfig {
   const d = ZONE_DEFAULTS[kind];
   return {
@@ -106,6 +106,7 @@ function zone(
     floorMaterial: overrides?.floorMaterial ?? d.floor,
     cct: overrides?.cct ?? d.cct,
     lightingPreset: d.preset,
+    partitionGap: overrides?.partitionGap,
   };
 }
 
@@ -328,7 +329,7 @@ function tokyoGinza(): BoutiqueLayout {
     zone("tk-cashwrap", "Cash-Wrap", "service", [[-6.5, -3.4], [-2.5, -3.4], [-2.5, -0.6], [-6.5, -0.6]], VELVET.charcoal, {}),
     zone("tk-consult", "VIC Consultation Lounge", "consultation", [[-6.5, -9.5], [-1, -9.5], [-1, -3.4], [-6.5, -3.4]], VELVET.cream, { rings: 2, necklaces: 1 }),
     zone("tk-hj", "High Jewellery Gallery", "high-jewelry", [[-1, -9.5], [6.5, -9.5], [6.5, -6], [-1, -6]], VELVET.cream, { necklaces: 3, rings: 3, earrings: 2, brooches: 2 }),
-    zone("tk-salon", "HJ Private Salon", "vip", [[-1, -6], [6.5, -6], [6.5, -3.4], [-1, -3.4]], VELVET.cream, { rings: 2, necklaces: 2 }),
+    zone("tk-salon", "HJ Private Salon", "vip", [[-1, -6], [6.5, -6], [6.5, -3.4], [-1, -3.4]], VELVET.cream, { rings: 2, necklaces: 2 }, { partitionGap: 3.5 }),
   ];
 
   const fixtures: FixtureInstance[] = [

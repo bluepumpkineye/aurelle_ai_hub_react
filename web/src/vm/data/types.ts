@@ -109,6 +109,8 @@ export interface ZoneConfig {
   cct: number;
   /** Named lighting preset (SpotSimulator convention), for reference/export. */
   lightingPreset: string;
+  /** Override the default partition doorway width (metres) for salon zones. */
+  partitionGap?: number;
 }
 
 // ───────────────────────────── Fixtures ─────────────────────────────
