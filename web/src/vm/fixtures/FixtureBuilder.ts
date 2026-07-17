@@ -406,35 +406,79 @@ export class FixtureFactory {
         break;
       }
       case "seating-sofa": {
-        // Kidney-curved salon sofa (reference VIP lounges): cream velvet body
-        // wrapping a coffee-table setting, jewel-tone accent pillows, gold feet.
-        // The concave seating side opens toward +z (into the room).
-        const seatH = 0.42;
-        const N = 7;
-        const halfArc = 1.15;
-        const Rb = W * 0.56; // backrest arc radius
-        const Rs = Rb - 0.42; // seat arc radius
-        const cz = Rb - D / 2; // centre of curvature (in front of the sofa)
+        // Curved salon settee (conversation banquette): ONE continuous
+        // upholstered curve, not a row of blocks. The base, seat and backrest
+        // are each built from many heavily-overlapping velvet segments placed
+        // around a common arc; a rounded bolster crowns the back and rolled
+        // arms close the two ends. The concave seating side opens toward +z
+        // (into the room), facing the coffee table at the centre of curvature.
+        //
+        // Orientation note: each segment is yawed by ry = -a so its edge sits
+        // along the arc's true tangent (ry = +a would splay it, which is what
+        // made earlier versions read as a fence / bowtie). With that alignment
+        // and ~1.4x width overlap the facets vanish into a smooth surface.
+        const seatH = 0.42; // seat surface height
+        const cushionH = 0.16; // seat cushion thickness
+        const backH = 0.5; // backrest height above the seat
+        const halfArc = 1.0; // ±57° → 114° sweep
+        const Ro = W / (2 * Math.sin(halfArc)); // outer radius sized to the width
+        const cz = -D / 2 + Ro; // centre of curvature (forward, +z)
+        const Rback = Ro - 0.1; // backrest centreline radius
+        const Rseat = Ro - 0.3; // seat / base centreline radius
+        const seatDepth = 0.62;
+
+        const N = 30;
+        const dA = (2 * halfArc) / (N - 1);
+        const segW = (r: number) => 2 * r * Math.sin(dA / 2) * 1.4; // overlap → no gaps
+
         for (let i = 0; i < N; i++) {
-          const t = i / (N - 1);
-          const a = (t - 0.5) * 2 * halfArc;
-          const sinA = Math.sin(a);
-          const cosA = Math.cos(a);
+          const a = -halfArc + i * dA;
+          const s = Math.sin(a);
+          const c = Math.cos(a);
+          // base plinth (floor → seat underside)
+          box(segW(Rseat), seatH - cushionH, seatDepth, velvet, s * Rseat, (seatH - cushionH) / 2, cz - c * Rseat, {
+            ry: -a,
+          });
           // seat cushion
-          box(0.44, 0.16, 0.52, velvet, sinA * Rs, seatH, cz - cosA * Rs, { ry: a });
-          // backrest (taller, along the outer arc)
-          box(0.46, 0.52, 0.18, velvet, sinA * Rb, seatH + 0.26, cz - cosA * Rb, { ry: a });
-          // jewel accent pillows on alternating seats
-          if (i % 2 === 1) {
-            box(0.34, 0.26, 0.16, seatVelvet, sinA * (Rs - 0.06), seatH + 0.2, cz - cosA * (Rs - 0.06), {
-              ry: a,
-              rz: 0.12,
-            });
-          }
+          box(segW(Rseat), cushionH, seatDepth, velvet, s * Rseat, seatH - cushionH / 2 + 0.02, cz - c * Rseat, {
+            ry: -a,
+          });
+          // backrest wall
+          box(segW(Rback), backH, 0.18, velvet, s * Rback, seatH + backH / 2, cz - c * Rback, { ry: -a });
+          // rounded bolster crown — round tube reads smooth even when segmented
+          cyl(0.09, 0.09, segW(Rback) * 1.1, velvet, s * Rback, seatH + backH, cz - c * Rback, 12, {
+            rz: Math.PI / 2,
+            ry: -a,
+          });
         }
-        // Base rail + gold feet at the two ends and centre.
+
+        // Rolled arms closing each end (block + rounded top roll).
+        for (const end of [-1, 1]) {
+          const a = end * (halfArc + dA * 0.6);
+          const s = Math.sin(a);
+          const c = Math.cos(a);
+          const armH = seatH + 0.22;
+          box(0.22, armH, seatDepth * 0.92, velvet, s * Rseat, armH / 2, cz - c * Rseat, { ry: -a });
+          cyl(0.11, 0.11, seatDepth * 0.92, velvet, s * Rseat, armH, cz - c * Rseat, 12, {
+            rz: Math.PI / 2,
+            ry: -(a + Math.PI / 2),
+          });
+        }
+
+        // Jewel-tone accent pillows, one either side of centre.
+        for (const end of [-1, 1]) {
+          const a = end * halfArc * 0.4;
+          const s = Math.sin(a);
+          const c = Math.cos(a);
+          box(0.36, 0.28, 0.16, seatVelvet, s * (Rback - 0.02), seatH + 0.2, cz - c * (Rback - 0.02), {
+            ry: -a,
+            rz: end * 0.1,
+          });
+        }
+
+        // Gold feet at the two ends and centre.
         for (const a of [-halfArc, 0, halfArc]) {
-          cyl(0.03, 0.04, seatH - 0.14, frameBrushed, Math.sin(a) * Rs, (seatH - 0.14) / 2, cz - Math.cos(a) * Rs, 10);
+          cyl(0.03, 0.04, 0.1, frameBrushed, Math.sin(a) * Rseat, 0.05, cz - Math.cos(a) * Rseat, 10);
         }
         break;
       }
@@ -510,6 +554,80 @@ export class FixtureFactory {
         cyl(0.012, 0.012, H, this.kit.lacquerDark, 0, -H / 2, 0, 10);
         cyl(0.03, 0.04, 0.1, framePolished, 0, -H - 0.04, 0, 16, { rx: 0.3 });
         bucket.add(new THREE.CylinderGeometry(0.024, 0.024, 0.005, 16), led, 0, -H - 0.095, 0.028, { rx: 0.3 }, false);
+        break;
+      }
+
+      // ───────── décor (living luxury: florals & greenery) ─────────
+      case "decor-floral": {
+        // Footed metal urn brimming with stylised blooms — the single biggest
+        // "luxury boutique" cue. Height scales with H (tall lobby urn ↔ lower
+        // posy). Blooms share four cached materials so they merge per colour.
+        const vaseMat = framePolished;
+        const stemMat = new THREE.MeshStandardMaterial({ color: new THREE.Color("#5f7350"), roughness: 0.85 });
+        const leafMat = new THREE.MeshStandardMaterial({ color: new THREE.Color("#4f6a44"), roughness: 0.85 });
+        const bloomMats = ["#e7a9ba", "#f3ecdd", "#d98aa0", "#e6b39a"].map(
+          (c) => new THREE.MeshStandardMaterial({ color: new THREE.Color(c), roughness: 0.7 }),
+        );
+        const vaseH = H * 0.42;
+        cyl(0.06, 0.1, vaseH * 0.16, vaseMat, 0, vaseH * 0.08, 0, 20); // foot
+        cyl(0.16, 0.08, vaseH * 0.52, vaseMat, 0, vaseH * 0.42, 0, 24); // body
+        cyl(0.15, 0.17, vaseH * 0.34, vaseMat, 0, vaseH * 0.82, 0, 24); // flared neck
+        const rimY = vaseH;
+        const clusterR = W * 0.5;
+        const bloomBaseY = rimY + H * 0.05;
+        for (let i = 0; i < 30; i++) {
+          const a = rng.range(0, Math.PI * 2);
+          const rr = Math.sqrt(rng.next());
+          const px = Math.cos(a) * rr * clusterR;
+          const pz = Math.sin(a) * rr * clusterR;
+          const py = bloomBaseY + (1 - rr) * H * 0.26 + rng.range(-0.03, 0.06);
+          cyl(0.007, 0.007, Math.max(0.05, py - rimY + 0.1), stemMat, px * 0.5, (rimY + py) / 2, pz * 0.5, 6);
+          bucket.add(
+            new THREE.IcosahedronGeometry(rng.range(0.05, 0.085), 0),
+            bloomMats[rng.int(0, bloomMats.length - 1)],
+            px,
+            py,
+            pz,
+            { rx: rng.range(0, Math.PI), ry: rng.range(0, Math.PI) },
+          );
+          if (i % 3 === 0) {
+            box(0.04, 0.008, 0.13, leafMat, px * 0.7, rimY + rng.range(0.03, 0.14), pz * 0.7, { ry: -a, rx: 0.5 });
+          }
+        }
+        break;
+      }
+      case "decor-plant": {
+        // Tall foliage plant in a bronze planter — fronds radiate up and out
+        // from the planter rim; fronds share three cached greens (merge per hue).
+        const planterMat = this.kit.lacquerDark;
+        const soilMat = new THREE.MeshStandardMaterial({ color: new THREE.Color("#241d15"), roughness: 1 });
+        const frondMats = ["#3f6a3a", "#557a48", "#456b40"].map(
+          (c) => new THREE.MeshStandardMaterial({ color: new THREE.Color(c), roughness: 0.82 }),
+        );
+        const stemMat = new THREE.MeshStandardMaterial({ color: new THREE.Color("#4a5a38"), roughness: 0.85 });
+        const potH = H * 0.26;
+        const potR = W * 0.28;
+        cyl(potR, potR * 0.82, potH, planterMat, 0, potH / 2, 0, 24);
+        cyl(potR + 0.015, potR + 0.015, 0.03, framePolished, 0, potH, 0, 24); // gold rim
+        cyl(potR * 0.9, potR * 0.9, 0.02, soilMat, 0, potH - 0.01, 0, 20);
+        const baseY = potH;
+        const fronds = 16;
+        for (let i = 0; i < fronds; i++) {
+          const a = (i / fronds) * Math.PI * 2 + rng.range(-0.18, 0.18);
+          const len = rng.range(H * 0.42, H * 0.66);
+          const tilt = rng.range(0.55, 1.05); // angle from vertical (larger = more horizontal)
+          const rMid = Math.sin(tilt) * len * 0.5;
+          const yMid = baseY + Math.cos(tilt) * len * 0.5 + 0.05;
+          box(0.11, 0.02, len, frondMats[i % frondMats.length], Math.cos(a) * rMid, yMid, Math.sin(a) * rMid, {
+            ry: Math.PI / 2 - a,
+            rx: -(Math.PI / 2 - tilt),
+          });
+        }
+        for (let i = 0; i < 5; i++) {
+          cyl(0.012, 0.02, H * 0.4, stemMat, rng.range(-0.05, 0.05), baseY + H * 0.2, rng.range(-0.05, 0.05), 6, {
+            rx: rng.range(-0.12, 0.12),
+          });
+        }
         break;
       }
     }

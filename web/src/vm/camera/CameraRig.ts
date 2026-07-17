@@ -169,7 +169,7 @@ export class CameraRig {
     });
   }
 
-  configureForLayout(layout: BoutiqueLayout): void {
+  configureForLayout(layout: BoutiqueLayout, resetCamera = true): void {
     this.bookmarks = makeBookmarks(layout);
     this.bounds = { hw: layout.floor.width / 2 - 0.35, hd: layout.floor.depth / 2 - 0.35 };
     this.blockers = layout.fixtures
@@ -186,15 +186,18 @@ export class CameraRig {
     for (const col of layout.floor.columns) {
       this.blockers.push({ x: col.x, z: col.z, hw: col.size / 2 + 0.22, hd: col.size / 2 + 0.22 });
     }
-    // Boot inside the boutique: elevated three-quarter view from the entrance
-    // corner, whole floor readable (Pillar D).
-    this.camera.position.set(
-      layout.floor.width * 0.18,
-      layout.floor.ceilingHeight * 0.72,
-      layout.floor.depth / 2 - 1.2,
-    );
-    this.orbit.target.set(0, 0.7, -layout.floor.depth * 0.12);
-    this.orbit.update();
+    
+    if (resetCamera) {
+      // Boot inside the boutique: elevated three-quarter view from the entrance
+      // corner, whole floor readable (Pillar D).
+      this.camera.position.set(
+        layout.floor.width * 0.18,
+        layout.floor.ceilingHeight * 0.72,
+        layout.floor.depth / 2 - 1.2,
+      );
+      this.orbit.target.set(0, 0.7, -layout.floor.depth * 0.12);
+      this.orbit.update();
+    }
   }
 
   /** Add partition-wall colliders (private salons) to the walk blockers. */

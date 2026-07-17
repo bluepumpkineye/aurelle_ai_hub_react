@@ -31,6 +31,24 @@ const STONE_COLORS: Record<StoneName, string> = {
 
 const LEATHER_COLORS = ["#7a4a28", "#221f1e", "#6d1622", "#2a3040", "#c8b9a2"];
 
+// Presentation scale per category — products are modelled at near-life size
+// (a ring band ~1.3 cm), which reads as a dot from browsing distance. These
+// multipliers enlarge each piece so it's clearly legible on the fixture while
+// staying inside the glass. The tiniest, hardest-to-see items (rings, earrings,
+// watches) get the biggest boost; the necklace's tall velvet bust is kept
+// gentler so it never clips the low-profile case (~27 cm interior).
+const PRODUCT_SCALE: Record<SKU["category"], number> = {
+  rings: 2.6,
+  earrings: 2.4,
+  bracelets: 2.3,
+  brooches: 2.3,
+  necklaces: 1.6,
+  "watches-dress": 2.4,
+  "watches-sport": 2.4,
+  "leather-goods": 2.1,
+  fragrance: 2.0,
+};
+
 class Bucket {
   private parts = new Map<THREE.Material, THREE.BufferGeometry[]>();
 
@@ -246,6 +264,13 @@ export class ProductFactory {
 
   /** Build a product mesh for a SKU. Origin at base centre, +y up. */
   build(sku: SKU): THREE.Group {
+    const group = this.buildMesh(sku);
+    // Enlarge for on-fixture legibility (grows upward from the base anchor).
+    group.scale.setScalar(PRODUCT_SCALE[sku.category]);
+    return group;
+  }
+
+  private buildMesh(sku: SKU): THREE.Group {
     const rng = new Rng(sku.meshSeed);
     switch (sku.category) {
       case "rings":

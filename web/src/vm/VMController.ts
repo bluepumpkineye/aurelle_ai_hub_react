@@ -9,13 +9,31 @@
 import { Engine } from "./core/Engine";
 import { parseParams, type VMParams } from "./core/Params";
 import { detectQuality, type QualityConfig } from "./core/QualityPresets";
+import { hashString } from "./core/Seed";
 import { InMemoryStoreAdapter } from "./data/InMemoryStoreAdapter";
-import type { SlotKey } from "./data/types";
+import type { BoutiqueTheme, SlotKey } from "./data/types";
 import { parseSlotKey } from "./data/types";
+import { templateOf } from "./fixtures/FixtureCatalog";
 import { CameraRig, type CameraMode } from "./camera/CameraRig";
 import { BoutiqueScene } from "./scene/BoutiqueScene";
 import { VMStore } from "./store/VMStore";
-import { LAYOUTS, buildTemplatePlanograms, generateInitialSlots, layoutById } from "./stores/layouts";
+import {
+  LAYOUTS,
+  buildTemplatePlanograms,
+  generateInitialSlots,
+  layoutById,
+  sanitizeScenarioLayout,
+} from "./stores/layouts";
+import { SCENARIO_PRESETS, type ScenarioPreset } from "./data/ScenarioPresets";
+
+/** Merge a scenario preset's theme overrides onto a base boutique theme. */
+function mergedScenarioTheme(base: BoutiqueTheme, preset: ScenarioPreset): BoutiqueTheme {
+  const theme: BoutiqueTheme = { ...base, ...preset.themeOverrides, id: `${base.id}-${preset.id}` };
+  if (preset.themeOverrides.marble) theme.marble = { ...base.marble, ...preset.themeOverrides.marble };
+  if (preset.themeOverrides.muralPalette) theme.muralPalette = preset.themeOverrides.muralPalette;
+  if (preset.themeOverrides.accentUpholstery) theme.accentUpholstery = preset.themeOverrides.accentUpholstery;
+  return theme;
+}
 
 export interface HoverInfo {
   slotKey: SlotKey;
@@ -33,6 +51,10 @@ export class VMController {
 
   /** Fixture template armed for click-to-place from the library panel. */
   placingTemplateId: string | null = null;
+  /** Tracks which boutique is loaded so we can reset after scenario presets. */
+  baseBoutiqueId: string | null = null;
+  /** Currently active preset (null = default layout). */
+  activePresetId: string | null = null;
   onPlacingChange: ((templateId: string | null) => void) | null = null;
   onHover: ((info: HoverInfo | null) => void) | null = null;
   onCameraMode: ((mode: CameraMode) => void) | null = null;
@@ -104,6 +126,91 @@ export class VMController {
     // Partition walls of the private salons block walk-mode movement too.
     this.rig.addBlockers(this.scene.partitionColliders);
     this.scene.lighting.requestShadowUpdate();
+    this.baseBoutiqueId = id;
+    this.activePresetId = null;
+
+    // Warm the caches for every scenario of this boutique during idle time, so
+    // that applying a scenario in a demo is instant rather than a 2–3 s cold build.
+    this.scene.prewarm(SCENARIO_PRESETS.map((p) => mergedScenarioTheme(this.store.layout.theme, p)));
+  }
+
+  /**
+   * Applies a scenario preset on top of the current boutique's base layout.
+   * Deep-clones the original layout, merges theme overrides, adds/removes
+   * fixtures, adjusts lighting, then fully rebuilds the 3D scene.
+   */
+  async applyScenarioPreset(preset: ScenarioPreset): Promise<void> {
+    const baseId = this.baseBoutiqueId ?? LAYOUTS[0].id;
+    const layout = structuredClone(layoutById(baseId));
+
+    // 1. Merge theme overrides
+    layout.theme = mergedScenarioTheme(layout.theme, preset);
+
+    // 2. Replace fixtures completely (look up by boutique ID)
+    const fixtureSpecs = preset.fixtures[baseId] ?? Object.values(preset.fixtures)[0] ?? [];
+    layout.fixtures = fixtureSpecs.map((f) => {
+      const t = templateOf(f.templateId);
+      return {
+        id: f.id,
+        templateId: f.templateId,
+        zoneId: f.zoneId,
+        x: f.x,
+        z: f.z,
+        rotationY: f.rotationY,
+        dims: f.dims ?? { ...t.dims.default },
+        finish: f.finish ?? t.finish,
+        variationSeed: hashString(f.id),
+      };
+    });
+
+    // 3. Sanitise: scenario fixtures are placed straight from preset data, so
+    // (unlike the base layouts) they must be nudged off structural columns and
+    // separated from one another before the scene is built.
+    sanitizeScenarioLayout(layout);
+
+    // Show immediate feedback, then yield one paint so the toast/cursor render
+    // before the (mostly cached, occasionally cold) synchronous scene build.
+    this.store.toast(`Applying “${preset.name}”…`, "info");
+    await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+
+    // 4. Rebuild scene with the modified layout
+    const slots = generateInitialSlots(layout);
+    this.store.loadLayout(layout, slots);
+    this.scene.build(this.store.layout);
+    this.rig.configureForLayout(this.store.layout, false);
+    this.rig.addBlockers(this.scene.partitionColliders);
+
+    // 5. Apply lighting mood
+    this.engine.scene.environmentIntensity = preset.lighting.environmentIntensity;
+    if (preset.lighting.backgroundTint) {
+      const { Color } = await import("three");
+      this.engine.scene.background = new Color(preset.lighting.backgroundTint);
+    }
+    if (preset.lighting.timeOfDay !== undefined) {
+      this.setTimeOfDay(preset.lighting.timeOfDay);
+    } else {
+      this.scene.lighting.requestShadowUpdate();
+    }
+
+    this.activePresetId = preset.id;
+    this.store.toast(`Scenario "${preset.name}" applied`, "info");
+  }
+
+  /** Resets the 3D scene back to the original default boutique layout. */
+  async resetToDefaultLayout(): Promise<void> {
+    const baseId = this.baseBoutiqueId ?? LAYOUTS[0].id;
+    const layout = structuredClone(layoutById(baseId));
+    const slots = generateInitialSlots(layout);
+    this.store.loadLayout(layout, slots);
+    this.scene.build(this.store.layout);
+    this.rig.configureForLayout(this.store.layout, false);
+    this.rig.addBlockers(this.scene.partitionColliders);
+    this.engine.scene.environmentIntensity = 0.85;
+    const { Color } = await import("three");
+    this.engine.scene.background = new Color("#17130d");
+    this.scene.lighting.requestShadowUpdate();
+    this.activePresetId = null;
+    this.store.toast("Restored default boutique layout", "info");
   }
 
   setTimeOfDay(hour: number): void {

@@ -745,7 +745,7 @@ export function buildTemplatePlanograms(): Planogram[] {
 
 const COLUMN_CLEARANCE = 0.15; // extra gap (m) beyond the exact AABB touch
 
-function nudgeFixturesOffColumns(layout: BoutiqueLayout): BoutiqueLayout {
+export function nudgeFixturesOffColumns(layout: BoutiqueLayout): BoutiqueLayout {
   for (const f of layout.fixtures) {
     const t = templateOf(f.templateId);
     if (t.kind.startsWith("light-")) continue; // ceiling rigs don't intersect columns
@@ -774,6 +774,96 @@ function nudgeFixturesOffColumns(layout: BoutiqueLayout): BoutiqueLayout {
       }
     }
   }
+  return layout;
+}
+
+// ─────────────────────── Fixture-overlap separation ───────────────────────
+// General guard: pushes any two intersecting free-standing fixtures apart until
+// their footprints clear. Wall-mounted units (vitrines, shelving, paneling) and
+// ceiling rigs are anchored and never move; when a free unit overlaps an
+// anchored one, only the free unit moves. A short relaxation loop resolves
+// chains. Together with nudgeFixturesOffColumns this keeps any assembled layout
+// — authored base OR generated scenario — free of clipping fixtures.
+
+const WALL_ANCHORED = new Set(["showcase-wall", "wall-shelving", "wall-paneling", "wall-bracket"]);
+const OVERLAP_PENETRATION = 0.03; // ignore ≤3 cm touches (chairs pulled to a table, etc.)
+const OVERLAP_GAP = 0.05; // clearance left between footprints after separating
+
+function footprintHalf(f: FixtureInstance): { hx: number; hz: number } {
+  const t = templateOf(f.templateId);
+  const turns = Math.round(f.rotationY / (Math.PI / 2)) % 2 !== 0;
+  return {
+    hx: (turns ? t.dims.default.depth : t.dims.default.width) / 2,
+    hz: (turns ? t.dims.default.width : t.dims.default.depth) / 2,
+  };
+}
+
+export function separateOverlappingFixtures(layout: BoutiqueLayout): BoutiqueLayout {
+  const items = layout.fixtures.filter((f) => !templateOf(f.templateId).kind.startsWith("light-"));
+  const half = new Map<FixtureInstance, { hx: number; hz: number }>();
+  const anchored = new Map<FixtureInstance, boolean>();
+  for (const f of items) {
+    half.set(f, footprintHalf(f));
+    anchored.set(f, WALL_ANCHORED.has(templateOf(f.templateId).kind));
+  }
+
+  for (let iter = 0; iter < 8; iter++) {
+    let moved = false;
+    for (let i = 0; i < items.length; i++) {
+      for (let j = i + 1; j < items.length; j++) {
+        const a = items[i];
+        const b = items[j];
+        const ah = half.get(a)!;
+        const bh = half.get(b)!;
+        const penX = ah.hx + bh.hx - Math.abs(b.x - a.x);
+        const penZ = ah.hz + bh.hz - Math.abs(b.z - a.z);
+        // Genuine intersection only (both axes penetrate beyond the tolerance).
+        if (penX <= OVERLAP_PENETRATION || penZ <= OVERLAP_PENETRATION) continue;
+        const aAnch = anchored.get(a)!;
+        const bAnch = anchored.get(b)!;
+        if (aAnch && bAnch) continue;
+
+        // Separate along the axis of least penetration (least-disruptive).
+        if (penX <= penZ) {
+          const shift = ((b.x - a.x >= 0 ? 1 : -1) * (penX + OVERLAP_GAP));
+          if (aAnch) b.x += shift;
+          else if (bAnch) a.x -= shift;
+          else {
+            a.x -= shift / 2;
+            b.x += shift / 2;
+          }
+        } else {
+          const shift = ((b.z - a.z >= 0 ? 1 : -1) * (penZ + OVERLAP_GAP));
+          if (aAnch) b.z += shift;
+          else if (bAnch) a.z -= shift;
+          else {
+            a.z -= shift / 2;
+            b.z += shift / 2;
+          }
+        }
+        moved = true;
+      }
+    }
+    if (!moved) break;
+  }
+
+  for (const f of items) {
+    f.x = Math.round(f.x * 10) / 10;
+    f.z = Math.round(f.z * 10) / 10;
+  }
+  return layout;
+}
+
+/**
+ * Full collision sanitation for a freshly-assembled layout. The scenario
+ * planner places fixtures straight from preset data and would otherwise clip
+ * columns and each other, so it runs this. Columns take final priority:
+ * separate first, then clear columns last.
+ */
+export function sanitizeScenarioLayout(layout: BoutiqueLayout): BoutiqueLayout {
+  nudgeFixturesOffColumns(layout);
+  separateOverlappingFixtures(layout);
+  nudgeFixturesOffColumns(layout);
   return layout;
 }
 

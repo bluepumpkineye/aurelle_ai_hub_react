@@ -74,6 +74,8 @@ export interface VMEvents extends Record<string, unknown> {
   "diff-preview": PlanogramDiff[] | null;
   "undo-changed": { depth: number; redoDepth: number };
   "analytics-changed": AnalyticsResult;
+  "active-scenario-changed": string | null;
+  "diff-highlights-changed": { added: string[]; removed: string[]; moved: string[]; replaced: string[] } | null;
   toast: { message: string; tone: "info" | "warn" | "error" };
 }
 
@@ -99,6 +101,8 @@ export class VMStore {
   private planogramCounter = 1;
   private pulseTimer: number | null = null;
   private pulseRng = new Rng(0x51677a1);
+  private activeScenarioIdState: string | null = null;
+  private diffHighlightsState: { added: string[]; removed: string[]; moved: string[]; replaced: string[] } | null = null;
 
   constructor(readonly adapter: StoreAdapter) {}
 
@@ -344,6 +348,10 @@ export class VMStore {
   moveFixture(fixtureId: string, x: number, z: number, rotationY?: number): boolean {
     const f = this.fixture(fixtureId);
     if (!f) return false;
+    if (f.locked) {
+      this.toast("This fixture is locked in this scenario.", "warn");
+      return false;
+    }
     const candidate: FixtureInstance = {
       ...f,
       x,
@@ -377,7 +385,7 @@ export class VMStore {
 
   moveFixtureInteractive(fixtureId: string, x: number, z: number, rotationY?: number): void {
     const f = this.fixture(fixtureId);
-    if (!f) return;
+    if (!f || f.locked) return;
     if (!this.interactiveStartPos) {
       this.interactiveStartPos = { x: f.x, z: f.z, rotationY: f.rotationY, zoneId: f.zoneId };
     }
@@ -392,7 +400,7 @@ export class VMStore {
     const f = this.fixture(fixtureId);
     const start = this.interactiveStartPos;
     this.interactiveStartPos = null;
-    if (!f || !start) return;
+    if (!f || !start || f.locked) return;
 
     if (f.x === start.x && f.z === start.z && f.rotationY === start.rotationY) return;
 
@@ -470,6 +478,10 @@ export class VMStore {
     const idx = this.layout.fixtures.findIndex((f) => f.id === fixtureId);
     if (idx < 0) return;
     const instance = this.layout.fixtures[idx];
+    if (instance.locked) {
+      this.toast("This fixture is locked in this scenario.", "warn");
+      return;
+    }
     const removedSlots = new Map<SlotKey, SlotState>();
     for (const k of this.slotKeysForFixture(fixtureId)) {
       const s = this.slots.get(k);
@@ -811,8 +823,193 @@ export class VMStore {
     this.events.emit("toast", { message, tone });
   }
 
+  // ── Scenarios & What-If ──
+
+  get activeScenarioId(): string | null {
+    return this.activeScenarioIdState;
+  }
+
+  setActiveScenarioId(id: string | null): void {
+    if (this.activeScenarioIdState === id) return;
+    this.activeScenarioIdState = id;
+    this.events.emit("active-scenario-changed", id);
+  }
+
+  get diffHighlights(): { added: string[]; removed: string[]; moved: string[]; replaced: string[] } | null {
+    return this.diffHighlightsState;
+  }
+
+  setDiffHighlights(diffs: { added: string[]; removed: string[]; moved: string[]; replaced: string[] } | null): void {
+    this.diffHighlightsState = diffs;
+    this.events.emit("diff-highlights-changed", diffs);
+  }
+
+  toggleFixtureLock(fixtureId: string): void {
+    const f = this.fixture(fixtureId);
+    if (!f) return;
+    const prevLocked = !!f.locked;
+    const write = (locked: boolean) => {
+      f.locked = locked;
+      this.events.emit("fixtures-changed", [fixtureId]);
+      this.refreshAnalytics();
+    };
+    this.undoStack.push({
+      label: prevLocked ? "Unlock fixture" : "Lock fixture",
+      undo: () => write(prevLocked),
+      redo: () => write(!prevLocked),
+    });
+    write(!prevLocked);
+    this.emitUndo();
+    this.toast(f.locked ? "Fixture locked" : "Fixture unlocked", "info");
+  }
+
+  replaceFixtureType(fixtureId: string, templateId: string): void {
+    const f = this.fixture(fixtureId);
+    if (!f) return;
+    if (f.locked) {
+      this.toast("This fixture is locked in this scenario.", "warn");
+      return;
+    }
+    const prevTemplate = f.templateId;
+    const prevSlots = new Map<SlotKey, SlotState>();
+    for (const k of this.slotKeysForFixture(fixtureId)) {
+      const s = this.slots.get(k);
+      if (s) prevSlots.set(k, s);
+    }
+
+    const write = (tId: string, restoreSlots?: Map<SlotKey, SlotState>) => {
+      f.templateId = tId;
+      // Re-initialize slot grid or clear slots
+      const newKeys = this.slotKeysForFixture(fixtureId);
+      for (const k of this.slotKeysForFixture(fixtureId)) {
+        this.slots.delete(k);
+      }
+      if (restoreSlots) {
+        for (const [k, s] of restoreSlots) {
+          if (newKeys.includes(k)) this.slots.set(k, s);
+        }
+      }
+      this.events.emit("fixtures-changed", [fixtureId]);
+      this.events.emit("slots-changed", newKeys);
+      this.refreshAnalytics();
+    };
+
+    this.undoStack.push({
+      label: "Replace fixture type",
+      undo: () => write(prevTemplate, prevSlots),
+      redo: () => write(templateId),
+    });
+    write(templateId);
+    this.emitUndo();
+    this.toast("Fixture template replaced", "info");
+  }
+
+  calculateScore(weights: Record<string, number>): number {
+    const fixtures = this.layout.fixtures;
+    const phyFixtures = fixtures.filter((f) => !templateOf(f.templateId).kind.startsWith("light-"));
+    const area = Math.max(this.layout.floor.width * this.layout.floor.depth, 1);
+    
+    // 1. Space efficiency
+    const density = phyFixtures.length / area;
+    const densityDiff = Math.abs(density - 0.21);
+    const spaceEff = Math.max(0, 100 - densityDiff * 400);
+
+    // 2. Zone balance
+    const zoneCounts: Record<string, number> = {};
+    for (const f of phyFixtures) {
+      zoneCounts[f.zoneId] = (zoneCounts[f.zoneId] || 0) + 1;
+    }
+    const zones = this.layout.zones;
+    let zoneBal = 100;
+    if (zones.length > 1) {
+      const avg = phyFixtures.length / zones.length;
+      let varianceSum = 0;
+      for (const z of zones) {
+        varianceSum += Math.pow((zoneCounts[z.id] || 0) - avg, 2);
+      }
+      const stdDev = Math.sqrt(varianceSum / zones.length);
+      zoneBal = Math.max(0, 100 - stdDev * 18);
+    }
+
+    // 3. Adjacency conflicts
+    const conflicts = this.analytics.zones.reduce((acc, z) => acc + z.adjacencyFlags, 0) / 2;
+    const adjScore = Math.max(0, 100 - conflicts * 25);
+
+    // 4. Traffic exposure
+    const trafficWeights: Record<string, number> = {
+      entrance: 1.0, "fine-jewelry": 0.84, watches: 0.72, accessories: 0.66,
+      consultation: 0.3, "high-jewelry": 0.42, service: 0.38, vip: 0.16
+    };
+    let exposureSum = 0;
+    let totalSlots = 0;
+    const zoneById = new Map(zones.map((z) => [z.id, z]));
+    for (const [skey, sstate] of this.slots.entries()) {
+      if (!sstate.sku) continue;
+      const fid = skey.split("#")[0];
+      const f = fixtures.find((fx) => fx.id === fid);
+      if (f) {
+        totalSlots++;
+        const z = zoneById.get(f.zoneId);
+        if (z) {
+          const tw = trafficWeights[z.kind] || 0.5;
+          const exclMult = sstate.exclusivityTier === "exceptional" ? 1.5 : sstate.exclusivityTier === "high" ? 1.2 : 1.0;
+          exposureSum += tw * exclMult;
+        }
+      }
+    }
+    let trafficScore = totalSlots > 0 ? (exposureSum / totalSlots) * 100 : 100;
+    trafficScore = Math.min(100, Math.max(0, trafficScore * 1.1));
+
+    // 5. Dwell potential
+    const seatingCount = fixtures.filter((f) => templateOf(f.templateId).kind.startsWith("seating-")).length;
+    let privateSalonSeating = 0;
+    for (const f of fixtures) {
+      if (templateOf(f.templateId).kind.startsWith("seating-")) {
+        const z = zoneById.get(f.zoneId);
+        if (z && (z.kind === "vip" || z.kind === "consultation")) {
+          privateSalonSeating++;
+        }
+      }
+    }
+    const dwellScore = Math.min(100, seatingCount * 8 + privateSalonSeating * 15);
+
+    // 6. Stock coverage risk
+    let lowStock = 0;
+    let filled = 0;
+    for (const sstate of this.slots.values()) {
+      if (sstate.sku) {
+        filled++;
+        if (sstate.stockLevel < 20) lowStock++;
+      }
+    }
+    const stockRisk = filled > 0 ? 100 * (1 - lowStock / filled) : 100;
+
+    // 7. Category visibility
+    const islandVisibility = fixtures.filter((f) => f.templateId.includes("island")).length * 25;
+    const tableVisibility = fixtures.filter((f) => f.templateId.includes("table")).length * 20;
+    const visibilityScore = Math.min(100, islandVisibility + tableVisibility + 30);
+
+    const sumWeights = (weights.revenue || 0) + (weights.traffic || 0) + (weights.dwell || 0) + 
+                       (weights.stockRisk || 0) + (weights.adjacency || 0) + (weights.density || 0) + 
+                       (weights.visibility || 0);
+    
+    if (sumWeights === 0) return 0;
+
+    const weightedSum = 
+      (spaceEff * (weights.density || 0)) +
+      (zoneBal * (weights.density || 0)) +
+      (adjScore * (weights.adjacency || 0)) +
+      (trafficScore * (weights.traffic || 0)) +
+      (dwellScore * (weights.dwell || 0)) +
+      (stockRisk * (weights.stockRisk || 0)) +
+      (visibilityScore * (weights.visibility || 0));
+
+    return weightedSum / sumWeights;
+  }
+
   dispose(): void {
     this.stopSignalPulse();
     this.events.clear();
+    this.disposed = true;
   }
 }

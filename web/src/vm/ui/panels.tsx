@@ -389,13 +389,26 @@ function FixturePanel({ vm, fixtureId }: { vm: VMController; fixtureId: string }
         <div className="flex gap-2 mt-2">
           <button
             className={btnCls}
+            disabled={!!fixture.locked}
             onClick={() => vm.store.moveFixture(fixtureId, fixture.x, fixture.z, fixture.rotationY + Math.PI / 2)}
           >
             Rotate 90° (R)
           </button>
-          <button className={btnCls} onClick={() => vm.store.removeFixture(fixtureId)}>
+          <button className={btnCls} disabled={!!fixture.locked} onClick={() => vm.store.removeFixture(fixtureId)}>
             Remove (Del)
           </button>
+        </div>
+        <div className="flex items-center gap-2 mt-2 border-t border-[rgba(184,150,90,0.1)] pt-2">
+          <input
+            type="checkbox"
+            id="fixture-lock"
+            checked={!!fixture.locked}
+            onChange={() => vm.store.toggleFixtureLock(fixtureId)}
+            className="accent-[#c9a45e] h-3.5 w-3.5 cursor-pointer"
+          />
+          <label htmlFor="fixture-lock" className="text-[11px] text-[#e8e2d4] cursor-pointer">
+            Lock position & prevent changes
+          </label>
         </div>
       </div>
 
@@ -529,6 +542,27 @@ function FixturePanel({ vm, fixtureId }: { vm: VMController; fixtureId: string }
               }}
               className="w-16 bg-[#12100e] border border-[rgba(184,150,90,0.25)] rounded px-1.5 py-0.5 text-right text-xs font-mono text-[#f2e9d5]"
             />
+          </div>
+        </div>
+      </div>
+
+      <div className="px-4 py-3 border-b border-[rgba(184,150,90,0.2)] space-y-2">
+        <div className="text-[11px] uppercase tracking-[0.14em] text-[#c9a45e]">Replace Fixture Template</div>
+        <div>
+          <select
+            value={fixture.templateId}
+            onChange={(e) => vm.store.replaceFixtureType(fixtureId, e.target.value)}
+            disabled={!!fixture.locked}
+            className="w-full bg-[#12100e] border border-[rgba(184,150,90,0.3)] rounded px-2.5 py-1.5 text-xs text-[#e8e2d4] disabled:opacity-40"
+          >
+            {FIXTURE_TEMPLATES.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.name} ({t.dims.default.width}x{t.dims.default.depth}m)
+              </option>
+            ))}
+          </select>
+          <div className="text-[10px] text-[#8a857b] mt-1">
+            Swaps the fixture model in-place. Preserves compatible slot items, resets others.
           </div>
         </div>
       </div>

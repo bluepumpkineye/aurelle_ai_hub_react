@@ -9,8 +9,8 @@
 
 import * as THREE from "three";
 import { Rng, hashString } from "../core/Seed";
-import { SKU_BY_ID } from "../data/catalog";
-import type { BoutiqueLayout, SlotKey } from "../data/types";
+import { SKU_BY_ID, SKU_CATALOG } from "../data/catalog";
+import type { BoutiqueLayout, BoutiqueTheme, SlotKey } from "../data/types";
 import { parseSlotKey, slotKey } from "../data/types";
 import { templateOf } from "../fixtures/FixtureCatalog";
 import { FixtureFactory, type BuiltFixture } from "../fixtures/FixtureBuilder";
@@ -111,6 +111,9 @@ export class BoutiqueScene {
       }),
       store.events.on("diff-preview", (diffs) => {
         this.overlays.showDiff(diffs, (k) => this.slotAnchorWorld(k));
+      }),
+      store.events.on("diff-highlights-changed", (diffs) => {
+        this.rebuildDiffHighlights(diffs);
       }),
       store.events.on("selection-changed", (sel) => {
         this.highlightFixture(sel.kind === "fixture" ? sel.fixtureId : null);
@@ -377,6 +380,165 @@ export class BoutiqueScene {
     });
   }
 
+  private diffHighlightMeshes: THREE.Object3D[] = [];
+
+  rebuildDiffHighlights(diffs: { added: string[]; removed: any[]; moved: string[]; replaced: string[] } | null): void {
+    // 1. Clear existing highlights
+    for (const h of this.diffHighlightMeshes) {
+      h.parent?.remove(h);
+      if (h instanceof THREE.Mesh || h instanceof THREE.LineSegments) {
+        h.geometry.dispose();
+        if (Array.isArray(h.material)) {
+          h.material.forEach((m) => m.dispose());
+        } else {
+          h.material.dispose();
+        }
+      }
+    }
+    this.diffHighlightMeshes = [];
+
+    if (!diffs) return;
+
+    const createOutline = (size: THREE.Vector3, color: string) => {
+      const geo = new THREE.BoxGeometry(size.x, size.y, size.z);
+      const edges = new THREE.EdgesGeometry(geo);
+      const mat = new THREE.LineBasicMaterial({ color, linewidth: 3, depthTest: false });
+      const line = new THREE.LineSegments(edges, mat);
+      line.renderOrder = 30;
+      return line;
+    };
+
+    // Added = Green (#3f9c5c)
+    for (const id of diffs.added) {
+      const node = this.nodes.get(id);
+      if (node) {
+        const box = new THREE.Box3().setFromObject(node.built.group);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const outline = createOutline(size, "#3f9c5c");
+        outline.position.y = 0.05; // slightly above base
+        node.built.group.add(outline);
+        this.diffHighlightMeshes.push(outline);
+      }
+    }
+
+    // Moved = Blue (#1e90ff)
+    for (const id of diffs.moved) {
+      const node = this.nodes.get(id);
+      if (node) {
+        const box = new THREE.Box3().setFromObject(node.built.group);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const outline = createOutline(size, "#1e90ff");
+        outline.position.y = 0.05;
+        node.built.group.add(outline);
+        this.diffHighlightMeshes.push(outline);
+      }
+    }
+
+    // Replaced = Orange (#e2a13c)
+    for (const id of diffs.replaced) {
+      const node = this.nodes.get(id);
+      if (node) {
+        const box = new THREE.Box3().setFromObject(node.built.group);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const outline = createOutline(size, "#e2a13c");
+        outline.position.y = 0.05;
+        node.built.group.add(outline);
+        this.diffHighlightMeshes.push(outline);
+      }
+    }
+
+    // Removed = Ghost Red (#d13a3a)
+    for (const f of diffs.removed) {
+      const temp = templateOf(f.templateId);
+      const w = f.dims?.width ?? temp.dims.default.width;
+      const h = f.dims?.height ?? temp.dims.default.height;
+      const d = f.dims?.depth ?? temp.dims.default.depth;
+      const geo = new THREE.BoxGeometry(w, h, d);
+      const mat = new THREE.MeshStandardMaterial({
+        color: "#d13a3a",
+        transparent: true,
+        opacity: 0.35,
+        wireframe: false,
+        depthWrite: false,
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(f.x, h / 2, f.z);
+      mesh.rotation.y = f.rotationY;
+      
+      const edges = new THREE.EdgesGeometry(geo);
+      const edgeMat = new THREE.LineBasicMaterial({ color: "#d13a3a", linewidth: 2 });
+      const outline = new THREE.LineSegments(edges, edgeMat);
+      mesh.add(outline);
+
+      this.fixturesGroup.add(mesh);
+      this.diffHighlightMeshes.push(mesh);
+    }
+  }
+
+  // ── Background pre-warming ───────────────────────────────────────────────
+  // The first time a scenario is applied its floor/wall/mural textures and all
+  // product meshes are generated procedurally (~2–3 s); every later apply of the
+  // same look is instant (~80 ms) because those results are cached. To keep the
+  // demo snappy we generate them ahead of time during idle frames right after
+  // the boutique loads — building each asset off-screen and discarding the
+  // geometry, which leaves the shared (cached) materials warm.
+  private productsPrewarmed = false;
+  private prewarmHandle: number | null = null;
+  private disposed = false;
+
+  prewarm(themes: BoutiqueTheme[]): void {
+    if (this.disposed) return;
+    const tasks: Array<() => void> = [];
+    // Scenario floor/wall/mural textures first — they're the recurring per-apply
+    // cost the presenter hits when switching looks.
+    for (const theme of themes) tasks.push(() => this.prewarmTheme(theme));
+    // Product meshes are scenario-independent, so warm them once, after.
+    if (!this.productsPrewarmed) {
+      this.productsPrewarmed = true;
+      for (const sku of SKU_CATALOG) tasks.push(() => void this.productClone(sku.id));
+    }
+    this.runIdleTasks(tasks);
+  }
+
+  /** Generate one scenario's floor/wall/mural textures, then drop the geometry. */
+  private prewarmTheme(theme: BoutiqueTheme): void {
+    if (this.disposed) return;
+    const layout = { ...this.store.layout, theme };
+    const plate = buildFloorPlate(layout, this.kit, new Rng(hashString(`${layout.id}-prewarm`)));
+    this.disposeSubtree(plate.group); // frees geometry; cached materials stay warm
+  }
+
+  private runIdleTasks(tasks: Array<() => void>): void {
+    if (this.prewarmHandle != null) {
+      cancelAnimationFrame(this.prewarmHandle);
+      this.prewarmHandle = null;
+    }
+    // Drive the queue off requestAnimationFrame: background setTimeout is throttled
+    // (≥1 s) in a non-foreground pane and would never drain the heavy texture tasks,
+    // whereas rAF keeps firing as long as the scene renders. Batch cheap tasks under
+    // a 6 ms budget; a heavy texture task takes a frame to itself, spaced by the
+    // render loop so warm-up degrades to brief stutters rather than a hard freeze.
+    let i = 0;
+    const step = () => {
+      this.prewarmHandle = null;
+      if (this.disposed || i >= tasks.length) return;
+      const start = performance.now();
+      do {
+        try {
+          tasks[i]();
+        } catch {
+          /* pre-warming is best-effort — a failure just means that asset builds on demand */
+        }
+        i++;
+      } while (i < tasks.length && performance.now() - start < 6);
+      this.prewarmHandle = requestAnimationFrame(step);
+    };
+    this.prewarmHandle = requestAnimationFrame(step);
+  }
+
   private disposeSubtree(root: THREE.Object3D): void {
     root.traverse((o) => {
       // Product clones share cached template geometry; pick spheres share one
@@ -389,10 +551,21 @@ export class BoutiqueScene {
   }
 
   dispose(): void {
+    this.disposed = true;
+    if (this.prewarmHandle != null) {
+      cancelAnimationFrame(this.prewarmHandle);
+      this.prewarmHandle = null;
+    }
     for (const u of this.unsubscribers) u();
     this.scene.remove(this.root);
     this.overlays.dispose();
     this.lighting.dispose();
+    
+    // Clear diff highlights
+    for (const h of this.diffHighlightMeshes) {
+      h.parent?.remove(h);
+    }
+
     for (const id of [...this.nodes.keys()]) this.removeFixtureNode(id);
     for (const g of this.productTemplates.values()) {
       g.traverse((o) => {

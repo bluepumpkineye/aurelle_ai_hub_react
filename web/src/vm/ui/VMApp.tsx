@@ -16,6 +16,7 @@ import { Dashboard } from "./Dashboard";
 import { EngineFailScreen } from "./GateScreens";
 import { FixtureLibraryPanel, PropertiesPanel, getProductImage } from "./panels";
 import { useStoreEvents, useToasts } from "./hooks";
+import { ScenarioPlanningPanel } from "./ScenarioPlanningPanel";
 
 const tbBtn =
   "px-2.5 py-1.5 rounded text-[11px] border border-[rgba(184,150,90,0.35)] text-[#d9d2c2] hover:bg-[rgba(184,150,90,0.14)] hover:text-[#f2e9d5] transition disabled:opacity-40";
@@ -32,6 +33,7 @@ export function VMApp() {
   const [showPalette, setShowPalette] = useState(false);
   const [cameraMode, setCameraMode] = useState<"orbit" | "walk">("orbit");
   const [popupProduct, setPopupProduct] = useState<SKU | null>(null);
+  const [activeTab, setActiveTab] = useState<"library" | "scenarios">("library");
 
   useEffect(() => {
     const vm = new VMController();
@@ -106,8 +108,36 @@ export function VMApp() {
             onDash={() => setShowDash((v) => !v)}
             onPalette={() => setShowPalette(true)}
           />
-          <div className="absolute left-3 top-16 bottom-3 z-20 flex flex-col">
-            <FixtureLibraryPanel vm={vm} />
+          <div className="absolute left-3 top-16 bottom-3 z-20 flex flex-col gap-2">
+            {/* Tab selector */}
+            <div className="bg-[#1b1916]/95 backdrop-blur border border-[rgba(184,150,90,0.25)] rounded-lg p-1 flex gap-1 shadow-xl">
+              <button
+                className={`flex-1 text-center py-1 rounded text-[10px] uppercase tracking-wider transition ${
+                  activeTab === "library"
+                    ? "bg-[rgba(184,150,90,0.2)] text-[#f2e9d5] border border-[rgba(184,150,90,0.35)]"
+                    : "text-[#8a857b] hover:text-[#d9d2c2]"
+                }`}
+                onClick={() => setActiveTab("library")}
+              >
+                Templates
+              </button>
+              <button
+                className={`flex-1 text-center py-1 rounded text-[10px] uppercase tracking-wider transition ${
+                  activeTab === "scenarios"
+                    ? "bg-[rgba(184,150,90,0.2)] text-[#f2e9d5] border border-[rgba(184,150,90,0.35)]"
+                    : "text-[#8a857b] hover:text-[#d9d2c2]"
+                }`}
+                onClick={() => setActiveTab("scenarios")}
+              >
+                Scenarios
+              </button>
+            </div>
+
+            {activeTab === "library" ? (
+              <FixtureLibraryPanel vm={vm} />
+            ) : (
+              <ScenarioPlanningPanel vm={vm} />
+            )}
           </div>
           <div className="absolute right-3 top-16 bottom-3 z-20 flex flex-col">
             <PropertiesPanel vm={vm} />

@@ -354,6 +354,36 @@ export const FIXTURE_TEMPLATES: FixtureTemplate[] = [
     ],
     description: "Grand circular island case anchoring the center of the showroom.",
   },
+  {
+    id: "decor-floral",
+    name: "Grand Floral Arrangement",
+    kind: "decor-floral",
+    categoryLabel: "Décor",
+    dims: {
+      min: { width: 0.4, depth: 0.4, height: 0.9 },
+      max: { width: 0.9, depth: 0.9, height: 1.6 },
+      default: { width: 0.62, depth: 0.62, height: 1.25 },
+    },
+    finish: "champagne-gold",
+    slotGrid: null,
+    lighting: [],
+    description: "Statement floral urn — abundant seasonal blooms in a footed metal vase.",
+  },
+  {
+    id: "decor-plant",
+    name: "Potted Palm",
+    kind: "decor-plant",
+    categoryLabel: "Décor",
+    dims: {
+      min: { width: 0.6, depth: 0.6, height: 1.2 },
+      max: { width: 1.3, depth: 1.3, height: 2.3 },
+      default: { width: 0.95, depth: 0.95, height: 1.75 },
+    },
+    finish: "champagne-gold",
+    slotGrid: null,
+    lighting: [],
+    description: "Tall foliage plant in a bronze planter — living greenery framing the salon.",
+  },
 ];
 
 export const TEMPLATE_BY_ID: Map<string, FixtureTemplate> = new Map(

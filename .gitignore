@@ -35,3 +35,10 @@ logs/
 *.xlsx
 *.xls
 out/
+
+# Runtime artifact — created by api.services.scenarios.init_db() on startup
+data/scenarios.db
+
+# Local design reference imagery (boutique inspiration), not app assets
+vm section/
+api/tests/test_scenarios.db

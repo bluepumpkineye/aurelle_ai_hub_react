@@ -132,7 +132,9 @@ export type FixtureKind =
   | "wall-bracket"
   | "light-track"
   | "light-recessed"
-  | "light-accent";
+  | "light-accent"
+  | "decor-floral"
+  | "decor-plant";
 
 export type MetalFinish = "champagne-gold" | "brushed-platinum";
 
@@ -192,6 +194,7 @@ export interface FixtureInstance {
   finish: MetalFinish;
   /** Per-instance variation seed (drives velvet jitter, wear, arrangement). */
   variationSeed: number;
+  locked?: boolean;
 }
 
 // ───────────────────────────── Architecture theme ─────────────────────────────
@@ -476,3 +479,53 @@ export function polygonCentroid(poly: Array<[number, number]>): [number, number]
   }
   return [cx / poly.length, cz / poly.length];
 }
+
+export interface Scenario {
+  id: string;
+  store_id: string;
+  name: string;
+  description: string;
+  baseline_scenario_id: string | null;
+  version_number: number;
+  created_by: string;
+  created_at: string;
+  status: "draft" | "baseline" | "winner";
+  notes: string | null;
+  approval_state: "draft" | "pending_review" | "approved";
+  scenario_payload_json?: string;
+  metric_payload_json?: string;
+  scenario_payload?: {
+    fixtures: FixtureInstance[];
+    slots: Record<string, SlotState>;
+    zones: ZoneConfig[];
+    floor: FloorSpec;
+  };
+  metric_payload?: {
+    score: number;
+    breakdown: {
+      space_efficiency: number;
+      zone_balance: number;
+      adjacency_conflicts: number;
+      traffic_exposure: number;
+      dwell_potential: number;
+      stock_coverage_risk: number;
+      category_visibility: number;
+    };
+    conflicts: Array<{
+      zoneA: string;
+      zoneB: string;
+      rule: string;
+      severity: "warn" | "flag";
+    }>;
+  };
+}
+
+export interface ScenarioVersion {
+  id: string;
+  scenario_id: string;
+  version_number: number;
+  created_at: string;
+  created_by: string;
+  notes: string;
+}
+

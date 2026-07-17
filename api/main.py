@@ -13,9 +13,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from starlette.types import Scope
 
-from api.routers import auth, clienteling, analytics
+from api.routers import auth, clienteling, analytics, scenarios
+from api.services.scenarios import init_db
 
 app = FastAPI(title="Aurelle API", version="0.1.0")
+
+@app.on_event("startup")
+def startup_event():
+    init_db()
 
 # Local dev: the Vite front-end runs on :5173.
 app.add_middleware(
@@ -34,6 +39,8 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(clienteling.router)
 app.include_router(analytics.router)
+app.include_router(scenarios.router)
+
 
 
 @app.get("/api/health")

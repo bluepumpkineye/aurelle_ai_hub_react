@@ -51,6 +51,19 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ role, client_id }),
     }),
+  // scenarios
+  listScenarios: (storeId: string) => req(`/api/scenarios?store_id=${storeId}`),
+  createScenario: (body: any) => req("/api/scenarios", { method: "POST", body: JSON.stringify(body) }),
+  getScenario: (id: string) => req(`/api/scenarios/${id}`),
+  updateScenario: (id: string, body: any) => req(`/api/scenarios/${id}`, { method: "PUT", body: JSON.stringify(body) }),
+  deleteScenario: (id: string) => req(`/api/scenarios/${id}`, { method: "DELETE" }),
+  duplicateScenario: (id: string, name: string) => req(`/api/scenarios/${id}/duplicate`, { method: "POST", body: JSON.stringify({ name }) }),
+  saveVersion: (id: string, notes: string) => req(`/api/scenarios/${id}/versions`, { method: "POST", body: JSON.stringify({ notes }) }),
+  listVersions: (id: string) => req(`/api/scenarios/${id}/versions`),
+  restoreVersion: (id: string, versionNumber: number) => req(`/api/scenarios/${id}/restore`, { method: "POST", body: JSON.stringify({ version_number: versionNumber }) }),
+  getWeights: () => req("/api/scenarios/weights"),
+  saveWeights: (role: string, weights: any) => req("/api/scenarios/weights", { method: "POST", body: JSON.stringify({ role, weights }) }),
+  applyPreset: (storeId: string, presetName: string, payload: any) => req("/api/scenarios/preset", { method: "POST", body: JSON.stringify({ store_id: storeId, preset_name: presetName, current_payload: payload }) }),
 };
 
 // Generic token-streaming POST (AI reports). Reads the response body stream.
