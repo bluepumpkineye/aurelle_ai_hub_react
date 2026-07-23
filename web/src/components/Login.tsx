@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { api, setToken } from "../lib/api";
-import { ThreeDScroll } from "./ThreeDScroll";
+import { WatchIntro } from "./WatchIntro";
 
 export function Login({ onAuthed }: { onAuthed: () => void }) {
   const [email, setEmail] = useState("admin@aurelle.com");
@@ -33,7 +33,7 @@ export function Login({ onAuthed }: { onAuthed: () => void }) {
     <div className="min-h-screen grid lg:grid-cols-2">
       {/* Brand panel */}
       <div className="relative hidden lg:flex flex-col justify-between bg-sidebar p-14 overflow-hidden">
-        <ThreeDScroll recede={recede} />
+        <WatchIntro recede={recede} />
         <div className="relative z-10 label text-gold">Asia Pacific</div>
         <div className="relative z-10">
           <div className="font-display text-6xl font-light tracking-[0.2em] text-cream">
